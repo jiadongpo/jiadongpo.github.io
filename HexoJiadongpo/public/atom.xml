@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cenrise.com/"/>
-  <updated>2017-06-21T03:36:30.642Z</updated>
+  <updated>2017-08-20T16:57:06.681Z</updated>
   <id>http://cenrise.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://cenrise.com/2017/06/09/%E6%9C%8D%E5%8A%A1/%E5%92%8C%E7%94%B0%E5%B8%82%E5%8D%AB%E6%B5%B4%E5%AE%89%E8%A3%85%E5%AE%B6%E5%85%B7%E5%AE%89%E8%A3%85/"/>
     <id>http://cenrise.com/2017/06/09/服务/和田市卫浴安装家具安装/</id>
     <published>2017-06-09T09:28:00.000Z</published>
-    <updated>2017-06-21T03:36:30.642Z</updated>
+    <updated>2017-08-20T16:57:06.681Z</updated>
     
     <content type="html">&lt;p&gt;#和田市卫浴安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介绍：从事家具（厨柜、床）、卫浴等工作20余年，目前在和田专业从事安具、厨卫安装、销售服务。&lt;/p&gt;
 &lt;p&gt;#和田市卫浴家具安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介绍：从事家具（厨柜、床）、卫浴等工作20余年，目前在和田专业从事安具、厨卫安装、销售服务。&lt;/p&gt;
@@ -46,7 +46,7 @@
     <link href="http://cenrise.com/2017/05/16/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%AE%AE%E6%8F%90%E5%87%BA%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>http://cenrise.com/2017/05/16/网络安全/安全组第一次会议提出的问题整理/</id>
     <published>2017-05-16T02:30:00.000Z</published>
-    <updated>2017-05-16T03:55:38.962Z</updated>
+    <updated>2017-08-20T16:57:06.685Z</updated>
     
     <content type="html">&lt;p&gt;创建安全组是个长期的、不断迭代的过程，目前我们公司系统百废末兴之际，各方面的系统也都在创建初期如果安全控制要求高，势必会影响部分工作进度；当然，从开始就严格控制，也会为后期不必要的重构提供有利条件。根据现有情况，可以优先进行投入少，回报多的工作，慢慢渗透。  &lt;/p&gt;
 &lt;h1 id=&quot;事前-防范&quot;&gt;&lt;a href=&quot;#事前-防范&quot; class=&quot;headerlink&quot; title=&quot;事前-防范&quot;&gt;&lt;/a&gt;事前-防范&lt;/h1&gt;&lt;p&gt;1.制定漏洞管理制度&lt;br&gt;为规范生产网和办公网安全漏洞发现、评估及处理，首先应该制定《漏洞管理制度》对漏洞评级，根据评级做不同和响应处理。&lt;br&gt;漏洞处理流程：发现漏洞-&amp;gt;评估漏洞-&amp;gt;如果是不可接受的风险对业务下线-&amp;gt;修补漏洞-&amp;gt;测试验收-&amp;gt;上线  &lt;/p&gt;
@@ -93,7 +93,7 @@
     <link href="http://cenrise.com/2017/05/08/hadoop/Hadoop%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>http://cenrise.com/2017/05/08/hadoop/Hadoop知识点/</id>
     <published>2017-05-08T15:43:49.000Z</published>
-    <updated>2017-05-08T15:10:28.638Z</updated>
+    <updated>2017-08-20T16:57:06.645Z</updated>
     
     <content type="html">&lt;p&gt;#Hadoop数据管理&lt;br&gt;主要包括Hadoop的分布式文件系统HDFS、分布式数据库HBase和数据仓库工具Hive&lt;/p&gt;
 &lt;p&gt;##HDFS的数据管理&lt;br&gt;HDFS是分布式计算的存储基石，Hadoop分布式文件系统和其它文件系统有很多类似的特性；&lt;br&gt;1）对于整个集群有单一的命名空间；&lt;br&gt;2）具有数据一致性，都适合一次写入多次读取的模型，客户端在文件没有被成功创建之前是无法看到文件存在的。&lt;br&gt;3）文件会被分割成多个文件块，每个文件块被分配存储到数据节点上，而且会根据配置由复制文件块来保证数据的安全性。&lt;br&gt;HDFS有三个重要的角色来进行文件系统的管理：NameNode、DataNode和Client。NameNode可以看做是分布式文件系统的管理者，主要负责管理文件系统的命名空间、集群配置信息和存储块的复制等。NameNode会将文件系统的Metadata存储在内存中，这些信息主要包括文件信息、每一个文件对应的文件块的信息和每一个文件块在DataNode中的信息等。DataNode是文件存储的基本单元，它将文件块（Block）存储在本地文件系统中，保存了所有Block的Metadata，同时周期性地将所有存在的Block信息发送给NameNode。Client就是需要获取分布式文件系统文件的应用程序。接下来三个具体的操作来说明HDFS对数据的管理。&lt;br&gt;（1）文件写入&lt;br&gt;1）Client向NameNode发起文件写入的请求。&lt;br&gt;2）NameNode根据文件的大小和文件块配置情况，返回给Client所管理的DataNode的信息。&lt;br&gt;3）Client将文件划分为多个Block，根据DataNode的地址信息，按顺序将其写入到每一个DataNode块中。&lt;br&gt;（2）文件读取&lt;br&gt;1）Client向NameNode发起文件读取的请求。&lt;br&gt;2）NameNode返回文件存储的DataNode信息。&lt;br&gt;3）Client读取文件信息。&lt;br&gt;（3）文件块（Block）复制&lt;br&gt;1）NameNode发现部分文件的Block不符合最小复制数这一要求或部分DataNode失效。&lt;br&gt;2）通知DataNode相互复制Block。&lt;br&gt;3）DataNode开始直接相互复制。  &lt;/p&gt;
@@ -131,7 +131,7 @@
     <link href="http://cenrise.com/2017/05/04/tools/vim/TODO-vim%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5/"/>
     <id>http://cenrise.com/2017/05/04/tools/vim/TODO-vim入门实践/</id>
     <published>2017-05-04T08:00:00.000Z</published>
-    <updated>2017-05-04T08:36:20.796Z</updated>
+    <updated>2017-08-20T16:57:06.677Z</updated>
     
     <content type="html">&lt;p&gt;#入门实践&lt;/p&gt;
 </content>
@@ -157,7 +157,7 @@
     <link href="http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs%E5%85%A5%E9%97%A8/"/>
     <id>http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs入门/</id>
     <published>2017-05-04T08:00:00.000Z</published>
-    <updated>2017-05-04T08:35:41.098Z</updated>
+    <updated>2017-08-20T16:57:06.677Z</updated>
     
     <content type="html">&lt;p&gt;#入门实践&lt;/p&gt;
 </content>
@@ -183,7 +183,7 @@
     <link href="http://cenrise.com/2017/05/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/"/>
     <id>http://cenrise.com/2017/05/02/设计模式/主要设计模式及简要介绍/</id>
     <published>2017-05-02T05:48:00.000Z</published>
-    <updated>2017-05-02T05:50:09.626Z</updated>
+    <updated>2017-08-20T16:57:06.685Z</updated>
     
     <content type="html">&lt;p&gt;#java设计模式分类&lt;/p&gt;
 &lt;p&gt;#设计模式概述&lt;/p&gt;
@@ -213,7 +213,7 @@
     <link href="http://cenrise.com/2017/05/02/linux/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E6%93%8D%E4%BD%9C/"/>
     <id>http://cenrise.com/2017/05/02/linux/Linux常用命令及操作/</id>
     <published>2017-05-02T02:54:00.000Z</published>
-    <updated>2017-05-02T03:07:23.541Z</updated>
+    <updated>2017-08-20T16:57:06.653Z</updated>
     
     <content type="html">&lt;p&gt;下面整理一些常用的命令，内容来自于网络整合，会把自己常用的收集在这里  &lt;/p&gt;
 &lt;p&gt;#CURL命令&lt;br&gt;下载单个文件，默认将输出打印到标准输出中(STDOUT)中&lt;br&gt;curl &lt;a href=&quot;http://www.centos.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.centos.org&lt;/a&gt;&lt;br&gt;通过-o/-O选项保存下载的文件到指定的文件中：&lt;br&gt;-o：将文件保存为命令行中指定的文件名的文件中&lt;br&gt;-O：使用URL中默认的文件名保存文件到本地  &lt;/p&gt;
@@ -255,7 +255,7 @@
     <link href="http://cenrise.com/2017/05/02/hadoop/HBase%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5/"/>
     <id>http://cenrise.com/2017/05/02/hadoop/HBase入门概念/</id>
     <published>2017-05-02T02:30:00.000Z</published>
-    <updated>2017-05-04T03:04:31.514Z</updated>
+    <updated>2017-08-20T16:57:06.637Z</updated>
     
     <content type="html">&lt;p&gt;#Hbase概念&lt;br&gt;HBase是一个分布式的、面向列的开源数据库。  &lt;/p&gt;
 &lt;p&gt;##Hbase术语&lt;br&gt;&lt;strong&gt;行键Row Key&lt;/strong&gt;：主键是用来检索记录的主键，访问hbasetable中的行。&lt;br&gt;&lt;strong&gt;列族Column Family&lt;/strong&gt;：Table在水平方向有一个或者多个ColumnFamily组成，一个ColumnFamily中可以由任意多个Column组成，即ColumnFamily支持动态扩展，无需预先定义Column的数量以及类型，所有Column均以二进制格式存储，用户需要自行进行类型转换。&lt;br&gt;&lt;strong&gt;列column&lt;/strong&gt;：由Hbase中的列族ColumnFamily + 列的名称（cell）组成列。&lt;br&gt;&lt;strong&gt;单元格cell&lt;/strong&gt;：HBase中通过row和columns确定的为一个存贮单元称为cell。&lt;br&gt;&lt;strong&gt;版本version&lt;/strong&gt;：每个 cell都保存着同一份数据的多个版本。版本通过时间戳来索引。  &lt;/p&gt;
@@ -297,7 +297,7 @@
     <link href="http://cenrise.com/2017/05/02/hadoop/Hive%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5/"/>
     <id>http://cenrise.com/2017/05/02/hadoop/Hive入门概念/</id>
     <published>2017-05-02T02:30:00.000Z</published>
-    <updated>2017-05-02T07:44:24.567Z</updated>
+    <updated>2017-08-20T16:57:06.645Z</updated>
     
     <content type="html">&lt;p&gt;#Hive&lt;br&gt;大数据生态下，通过Hadoop MapReduce，实现将计算分割成多个处理单元，然后分散到一群家用或服务器级别的硬件上，从而降低成本并提供可伸缩性；这个计算模型下是HDFS，这是个“可插拔的“文件系统。不过，这里存在一个问题，就是用户如何从一个现有的数据基础架构转移到Hadoop上，而这个基础架构是基于关系型数据库和结构化查询语句（SQL）？&lt;br&gt;这就是Hive出现的原因，Hive提供了被称为Hive查询语言的（或称为HiveQL或HQL）的SQL方言，来查询存储在Hadoop集群中的数据。Hive将大多数据的查询转换为MapRecue任务（ｊｏｂ）。&lt;/p&gt;
 &lt;p&gt;#Hive安装&lt;br&gt;Hive使用环境变量HADOOP_HOME来指定Hadoop的所有相关JAR和配置文件，因此在安装之前请确认下是否设置好了这个环境变量。&lt;br&gt;$cd ~&lt;br&gt;$curl -o &lt;a href=&quot;http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz&lt;/a&gt;&lt;br&gt;$tar -xzf hive-0.9.0.tar.gz&lt;br&gt;$sudo mkdir -p /user/hive/warehouse&lt;br&gt;$sudo chmod a+rwx /user/hive/warehouse&lt;/p&gt;
@@ -331,11 +331,33 @@
   </entry>
   
   <entry>
+    <title>react.js入门之HelloWorld</title>
+    <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/react.js/TODO-react.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
+    <id>http://cenrise.com/2017/04/27/前端/react.js/TODO-react.js入门之HelloWorld/</id>
+    <published>2017-04-27T07:00:00.000Z</published>
+    <updated>2017-08-20T16:57:06.681Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="react.js" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/react-js/"/>
+    
+    
+      <category term="react.js" scheme="http://cenrise.com/tags/react-js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vue.js入门之HelloWorld</title>
     <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/vue.js/TODO-vue.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
     <id>http://cenrise.com/2017/04/27/前端/vue.js/TODO-vue.js入门之HelloWorld/</id>
     <published>2017-04-27T07:00:00.000Z</published>
-    <updated>2017-04-27T09:24:54.086Z</updated>
+    <updated>2017-08-20T16:57:06.681Z</updated>
     
     <content type="html"></content>
     
@@ -357,7 +379,7 @@
     <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/angular.js/TODO-angular.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
     <id>http://cenrise.com/2017/04/27/前端/angular.js/TODO-angular.js入门之HelloWorld/</id>
     <published>2017-04-27T07:00:00.000Z</published>
-    <updated>2017-04-27T09:24:02.149Z</updated>
+    <updated>2017-08-20T16:57:06.681Z</updated>
     
     <content type="html"></content>
     
@@ -375,33 +397,11 @@
   </entry>
   
   <entry>
-    <title>react.js入门之HelloWorld</title>
-    <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/react.js/TODO-react.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
-    <id>http://cenrise.com/2017/04/27/前端/react.js/TODO-react.js入门之HelloWorld/</id>
-    <published>2017-04-27T07:00:00.000Z</published>
-    <updated>2017-04-27T09:20:32.742Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="react.js" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/react-js/"/>
-    
-    
-      <category term="react.js" scheme="http://cenrise.com/tags/react-js/"/>
-    
-  </entry>
-  
-  <entry>
     <title>jdk环境变量配置</title>
     <link href="http://cenrise.com/2017/04/18/java/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
     <id>http://cenrise.com/2017/04/18/java/jdk环境变量配置/</id>
     <published>2017-04-18T08:43:49.000Z</published>
-    <updated>2017-04-18T07:31:01.769Z</updated>
+    <updated>2017-08-20T16:57:06.649Z</updated>
     
     <content type="html">&lt;h1 id=&quot;jdk环境变量配置&quot;&gt;&lt;a href=&quot;#jdk环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;jdk环境变量配置&quot;&gt;&lt;/a&gt;jdk环境变量配置&lt;/h1&gt;&lt;p&gt;jdk环境变量配置&lt;br&gt;进行java开发，首先要安装jdk，安装了jdk后还要进行环境变量配置：&lt;br&gt;1、下载jdk（&lt;a href=&quot;http://java.sun.com/javase/downloads/index.jsp），我下载的版本是：jdk-6u14-windows-i586.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://java.sun.com/javase/downloads/index.jsp），我下载的版本是：jdk-6u14-windows-i586.exe&lt;/a&gt;&lt;br&gt;2、安装jdk-6u14-windows-i586.exe&lt;br&gt;3、配置环境变量：右击“我的电脑”–&amp;gt;”高级”–&amp;gt;”环境变量”&lt;br&gt;1）在系统变量里新建JAVA_HOME变量，变量值为：C:\Program Files\Java\jdk1.6.0_14（根据自己的安装路径填写）&lt;br&gt;2）新建classpath变量，变量值为：.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar&lt;br&gt;3）在path变量（已存在不用新建）添加变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin（注意变量值之间用“;”隔开）&lt;br&gt;4、“开始”–&amp;gt;“运行”–&amp;gt;输入“javac”–&amp;gt;”Enter”，如果能正常打印用法说明配置成功！&lt;br&gt;补充环境变量的解析:&lt;br&gt;JAVA_HOME:jdk的安装路径&lt;br&gt;classpath:java加载类路径，只有类在classpath中java命令才能识别，在路径前加了个”.”表示当前路径。&lt;br&gt;path：系统在任何路径下都可以识别java,javac命令。&lt;/p&gt;
 </content>
@@ -424,7 +424,7 @@
     <link href="http://cenrise.com/2017/04/18/Markdown%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
     <id>http://cenrise.com/2017/04/18/Markdown基础入门/</id>
     <published>2017-04-18T07:00:00.000Z</published>
-    <updated>2017-04-18T07:12:09.493Z</updated>
+    <updated>2017-08-20T16:57:06.637Z</updated>
     
     <content type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
 &lt;h2 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink&quot; title=&quot;表格&quot;&gt;&lt;/a&gt;表格&lt;/h2&gt;&lt;p&gt;实现表格的两种方式&lt;br&gt;方式一：当某项过长时，表格可能如下显示，不好看。&lt;br&gt;具体使用方式请看示例。&lt;br&gt;•    ——: 为右对齐。&lt;br&gt;•    :—— 为左对齐。&lt;br&gt;•    :——: 为居中对齐。&lt;br&gt;•    ——- 为使用默认居中对齐。&lt;br&gt;1.9.2 示例&lt;br&gt;|         属性项               |                    属性说明&lt;br&gt;|    ——: |    :——-:    |    :———   |    ——    |&lt;br&gt;|    组件名称    |    步骤的名字，这个名字在一个转换中必须是唯一的。    |&lt;br&gt;|    字段    |    指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流    |&lt;br&gt;|字段|指定排序的字段名。|&lt;br&gt;|升序|排序原则：升序或降序。如果选择升序，排序顺序将是：数字-&amp;gt;英文-&amp;gt;汉字，汉字是按照拼音排序的，也同样会按照声调排序。如果是多音字，只会取一个读音，无法根据语境判断其的读音。|&lt;/p&gt;
@@ -494,7 +494,7 @@
     <link href="http://cenrise.com/2017/04/18/spring/Spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"/>
     <id>http://cenrise.com/2017/04/18/spring/Spring源码分析之环境准备/</id>
     <published>2017-04-18T02:00:00.000Z</published>
-    <updated>2017-04-18T02:00:36.421Z</updated>
+    <updated>2017-08-20T16:57:06.677Z</updated>
     
     <content type="html">&lt;p&gt;#Spring源码分析之环境准备&lt;/p&gt;
 </content>
@@ -522,7 +522,7 @@
     <link href="http://cenrise.com/2017/04/18/java/JDK%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6HashMap/"/>
     <id>http://cenrise.com/2017/04/18/java/JDK源码分析之集合框架HashMap/</id>
     <published>2017-04-18T02:00:00.000Z</published>
-    <updated>2017-04-18T01:57:01.660Z</updated>
+    <updated>2017-08-20T16:57:06.645Z</updated>
     
     <content type="html">&lt;p&gt;#JDK源码分析之集合框架HashMap&lt;/p&gt;
 </content>
@@ -546,55 +546,133 @@
   </entry>
   
   <entry>
-    <title>Apache Spark与Apache Hadoop的关系</title>
-    <link href="http://cenrise.com/2017/04/16/hadoop/Apache%20Spark%E4%B8%8EApache%20Hadoop%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
-    <id>http://cenrise.com/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/</id>
+    <title>分布式计算</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%20/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式计算 /</id>
     <published>2017-04-16T15:43:49.000Z</published>
-    <updated>2017-04-18T01:58:16.827Z</updated>
+    <updated>2017-08-20T16:57:06.641Z</updated>
     
-    <content type="html">&lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
-&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：&lt;br&gt;1.传统数据管理系统，如果关系型数据库与主机&lt;br&gt;2.日志、机器生成的数据，以及其他类型的事件数据。&lt;br&gt;3.从现有的企业数据存储中输入的文件。&lt;/p&gt;
-&lt;p&gt;将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：&lt;br&gt;1.数据采集的时效性与可访问性&lt;br&gt;需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？&lt;/p&gt;
-&lt;p&gt;2.增量更新&lt;br&gt;如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？&lt;/p&gt;
-&lt;p&gt;3.数据访问和处理&lt;br&gt;数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？&lt;/p&gt;
-&lt;p&gt;4.数据分区及数据分片&lt;br&gt;数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？&lt;/p&gt;
-&lt;p&gt;5.数据存储格式&lt;br&gt;数据存储的格式是哪一种？&lt;/p&gt;
-&lt;p&gt;6.数据变换&lt;br&gt;需要变换尚未落地的数据吗？&lt;/p&gt;
-&lt;p&gt;下面简单列举一下这几点考量？&lt;/p&gt;
-&lt;p&gt;##1.数据采集的时效性&lt;br&gt;这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个&lt;br&gt;a.大型批处理&lt;br&gt;通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务&lt;/p&gt;
-&lt;p&gt;b.小型批处理&lt;br&gt;通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟&lt;/p&gt;
-&lt;p&gt;c.近实时决策支持&lt;br&gt;指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据&lt;/p&gt;
-&lt;p&gt;d.近实时事件处理&lt;br&gt;指在2秒内处理任务，速度可达到100毫秒&lt;/p&gt;
-&lt;p&gt;e.实时&lt;br&gt;这里指不超过100毫秒&lt;/p&gt;
-&lt;p&gt;可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。&lt;br&gt;使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。&lt;br&gt;当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。&lt;/p&gt;
-&lt;p&gt;##2.增量更新&lt;br&gt;新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。&lt;/p&gt;
-&lt;p&gt;#数据采集的选择&lt;/p&gt;
-&lt;p&gt;##1.文件传输&lt;br&gt;将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。&lt;/p&gt;
-&lt;p&gt;下面列一下文件传输的特点：&lt;br&gt;a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。&lt;br&gt;b.文件传输默认为单线程，不能并行 文件传输。&lt;br&gt;c.文件传输将文件从传统的文件系统导入HDFS&lt;br&gt;d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。&lt;br&gt;e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）&lt;/p&gt;
-&lt;p&gt;##文件传输与其他采集方法的考量&lt;br&gt;简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。&lt;br&gt;a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。&lt;br&gt;b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。&lt;br&gt;e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。&lt;br&gt;如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。&lt;/p&gt;
-&lt;p&gt;##Sqoop：Hadoop与关系数据库的批量传输&lt;br&gt;Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。&lt;/p&gt;
-&lt;p&gt;Flume:基于事件的数据收集及处理&lt;br&gt;Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。&lt;/p&gt;
-&lt;p&gt;##Kafka&lt;br&gt;Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。&lt;br&gt;Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。&lt;br&gt;Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。&lt;br&gt;前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。&lt;/p&gt;
-&lt;p&gt;#数据导出&lt;br&gt;数据导出的思路与导入类似。&lt;/p&gt;
+    <content type="html">&lt;p&gt;#MapRecue&lt;br&gt;在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须要被分割到成百上千的机器上才有可能在可以接受的时间内完成。怎样来实现并行计算？如何分发数据？如何进行错误处理？所有这些问题综合在一起，使得原来很简洁的计算，因为要大量的复杂代码来处理这些问题，而变得让人难以处理。 Google公司为了应对大数据的处理，内部已经实现了数据以百计的为专门目的而写的计算程序，其中MapRecue就是其著名的计算框架之王，与GFS、Bigtable一起被称为Google技术的“三宝”。 &lt;/p&gt;
+&lt;p&gt;##MapRecue简介&lt;br&gt;MapRecue是一个编程模型，用于大规模数据集（TB级）的并行运算。有关MapRecue的论文介绍，最早可以追溯到由Google的Jeffrey Dean和Sanjay Ghemawat发表在2004年OSDI（USENIX Symposium on Operationg Systems Design and Implementation）的《MapRecue：Simplified Data Processing on LargeClusters》。这篇文章描述了Google如何分割、处理、整合他们令人难以置信的大数据集。读者有兴趣可以在线阅读该论文&lt;a href=&quot;https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。&lt;/a&gt; 随后，开源软件先驱Doug Cutting等人受到该论文的启发，开始尝试实现MapRecue计算框架，并将它与NDFS（Nutch Distributed File System）结合，用以支持Nutch引擎的主要算法。由于NDFS与MapRecue在Nutch引擎中有着良好的应用，所以它们于2006年2月被分离出来，成为一套完整而独立的软件，并命名为Hadoop。 MapRecue程序模型应用成功要归功于以下几个方面。首先，由于该模型隐藏了并行、容错、本地优化以及负载平衡的细节，所以即便是那些没有并行和分布式系统经验的程序员也易于使用该模型。其次MapRecue计算可以很容易地表达大数据的各种问题。比如，MapRecue用于为Google的网页搜索服务生成数据，用于排序，用于数据挖掘，用于机器学习以及其他许多系统。再次，MapRecue的实现符合“由数千机器组成的大集群”的尺度，有效地利用了机器资源，所以非常适合解决大型计算问题。 &lt;/p&gt;
+&lt;p&gt;##MapRecue的编程模型&lt;br&gt;MapRecue是一个用于大规模数据集（TB级）并行运算的编程模型，其基本原理就是将大的数据分成小块逐个分析，最后再将提取出来的数据汇总分析，最终获得我们想要的内容。从名字可以看出，“Map(映射)”和“Reduce（归纳）”是MapRecue模型的核心，其灵感来源于函数式语言（比如Lisp）中的内置函数map和reduce：用户通过定义一个Map函数，处理key/value（键值对）以生成一个中间key/value集合，MapRecue库将所有拥有相同的key(key I)的中间状态key合并起来传递到Redure职数；一个叫作Reduce的函数用以合并所有先前Map过后的有相同key（Key I）的中间量。map(k1,v1) -&amp;gt; list&lt;k2,v2)reduce(k2,list(v2)) -=&quot;&quot;&gt; list(k3,v3)但上面的定义显然还是过于抽象。现实世界中的许多任务在这个模型中得到了很好的表达。Shekhar Gulati就在他的博客里《How I explained MapReduce to my Wife?》举了一个辣椒酱制作过程的例子，来形象地描述MapRecue的原理，如下所述。1.MapRecue制作辣椒酱的过程辣椒酱制作的过程是这样的，先取一个洋葱，把它切碎，然后拌入盐和水，最后放进混合研磨机研磨。这样就能得到洋葱辣椒酱了。 现在，假设你想用薄荷、洋葱、番茄、辣椒、大蒜弄一瓶混合辣椒酱。你会怎么做呢？你会取薄荷叶一撮，洋葱一个，番茄一个，辣椒一根，大蒜一根，切碎后加入适量的盐和水，再放入混合研磨机里研磨，这样你就可以得到一瓶混合辣椒酱了。 现在把MapRecue的概念应用到食谱上，Map和Reduce其实就是两种操作。 Map：把洋葱、番茄、辣椒和大蒜切磋，是各自作用在这些物体上的一个Map操作。所以你给Map一个洋葱，Map就会把洋葱切碎。同样地，你把辣椒、大蒜和番茄一一地拿给Map，你也会得到各种碎块。所以，当你在切像洋葱这样的蔬菜时，你执行的就是一个Map操作。Map操作适用于每一种蔬菜，它会相应地生产出一种或多种碎块，在我们的例子中生产的是蔬菜块。在Map操作中可能会出现有个洋葱坏掉了的情况，你只要把洋葱丢了就行了。所以，如果出现坏洋葱了，Map操作就会过滤掉这个坏洋葱而不会生产出任何的坏洋葱块。 Reduce：在这一阶段，你将各种蔬菜都放入研磨机时在进行研磨，你就可以得到一瓶辣椒酱了。这意味要制成一瓶辣椒酱，你得研磨所有的原料。因此，研磨机通常将Map操作的蔬菜聚焦在了一起。 当然上面内容只是MapRecue的一部分，MapRecue的强大在于分布式计算。假设你每天需要生产10000瓶辣椒酱，你会怎么办？这个时候你就不得不雇佣更多的人和研磨机来完成这项工作了，你需要几个人一起切蔬菜。每个人都要处理满满一袋子的蔬菜，而每一个人都相当于在执行一个简单的Map操作。每一个人都将不断地从袋子里拿出蔬菜来，并且每次只对一种蔬菜进行处理，也就是将它们切碎，直到袋子空了为止。这样，当所有的工人都切完以后，工作台（每个人工作的地方）上就有了洋葱块、番茄块和蒜蓉，等等。 MapRecue将所有输出的蔬菜都搅拌在了一起，这些蔬菜都在以key为基础的Map操作下产生的。搅拌将自动完成，你可以假设key是一种原料的名字，你像洋葱一样。所以全部的洋葱key都搅拌在一起，并转移到研磨洋葱的研磨器里。这样，你就能得到洋葱辣椒酱了。同样地，所有的番茄也会被转移地标记着番茄的研磨器里，并制造出番茄辣椒酱。 &lt;/k2,v2)reduce(k2,list(v2))&gt;&lt;/p&gt;
+&lt;p&gt;#Apache Hadoop&lt;br&gt;Apache Hadoop是一个由Apache基金会开发的分布式系统基础架构，它可以让用户在不了解分布式底层细节的情况下，开发出可靠、可扩展的分布式计算应用。&lt;br&gt;Apache Hadoop框架允许用户使用简单的编程模型来实现计算机集群的大型数据集的分布式处理。它的目的是支持从单一服务器到上千台机器的扩展，充分利用了每台机器所提供本地计算和存储，而不是依靠硬件来提高高可用性。其本身被设计成在应用层检测和处理故障的库，对于计算机集群来说，其中每台机器的顶层都被设计成可以容错的，以便提供一个高可用的服务。&lt;br&gt;Apache Hadoop的框架最核心的设计就是HDFS和MapRecue。HDFS为海量的数据提供了存储，而MapRecue则为海量的数据提供了计算。&lt;/p&gt;
+&lt;p&gt;##Apache Hadoop核心组件&lt;br&gt;Apache Hadoop包含以下模块：&lt;br&gt;Hadoop Common—常见实用工具，用来支持其他hadoop模块。&lt;br&gt;Hadoop Distributed File System（HDFS）—分布式文件系统，它提供对应用程序数据的高吞吐量访问&lt;br&gt;Hadoop YARN—-一个作业调度和集群资源管理框架&lt;br&gt;Hadoop MapRecue–基于YARN的大型数据集的并行处理系统&lt;/p&gt;
+&lt;p&gt;###其它Apache Hadoop 相关的项目包括：&lt;br&gt;Ambari—-一个基于Web的工具，用于配置、管理和监控的Apache Hadoop 集群，其中包括支持Hadoop  HDFS、Hadoop  MapRecue、Hive、HCatalog、HBase、ZooKeeperOozie、Pig和Sqoop。Ambari还提供了仪表盘用于查看集群的健康，如热图，并能够以用户友好的方式来查看MapRecue、Pig和Hive应用，方便诊断其性能。&lt;br&gt;Avro–数据序列化系统&lt;br&gt;Cassandra–可扩展的、无单点故障的多主数据库&lt;br&gt;Chukwa–数据采集系统，用于管理大型分布式系统。&lt;br&gt;Hbase–一个可扩展的分布式数据库，支持结构化数据的大表存储&lt;br&gt;Hive–数据仓库基础设施，提供数据汇总以及特定的查询&lt;br&gt;Mahout—一种可扩展的机器学习和数据挖掘库&lt;br&gt;Pig–一个高层次的数据流并行计算语言和执行框架&lt;br&gt;Spark—Hadoop数据的快速和通用计算引擎。Spark提供了简单和强大的编程模型用于支持广泛的应用，其中包括ETL、机器学习、流处理和图形处理。&lt;br&gt;TEZ–通用的数据流编程框架，建立在Hadoop YARN之上。它提供了一个强大而灵活的引擎来执行任意DAG任务，以实现批量和交互式数据的处理。TEZ正在被Hive、Pig和Hadoop生态系统中的其他框架所采用，也可以通过其他商业软件（例如，ETL工具），以取代hadoop mapreduce作为底层执行引擎。&lt;br&gt;ZooKeeper–一个高性能的分布式应用程序协调服务。&lt;/p&gt;
+&lt;p&gt;##Apache Spark&lt;br&gt;Spark是一个快速和通用的集群计算系统。特别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;快速 Spack具有支持循环数据流和内存计算的先进的DAG执行引擎，所以比Hadoop MapRecue在内存计算上快100倍，在硬盘计算上快10倍。&lt;/li&gt;
+&lt;li&gt;易于使用 Spark提供了Java，Scala，Python和R等语言的高级API，可以用于快速开发相关语言应用。Spark提供了超过80个高级的操作，可以轻松构建并行应用程序。&lt;/li&gt;
+&lt;li&gt;全面 Spark提供了Spark SQL，机器学习的MLlib，进行图形处理的GraphX，以及Spark Streaming等库。你可以在同一应用程序无缝地合并这些库。&lt;/li&gt;
+&lt;li&gt;到处运行 可以standalone cluster mode运行EC2、Hadoop YARN、或者Apache Mesos中。可以访问HDFS、Cassandra、HBase、Hive、Tachyon，以及任意的Hadoop数据源。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##Apache Mesos&lt;br&gt;在传统上，物理机和虚拟机是数据中心的典型的计算单元。当应用部署后，这些机器需要安装各种配置工具来管理这些应用。机器通常被组织成集群，提供独立的服务，而系统管理员则监督其日常的日常动作。当这些集群达到其最大容量时，需要多机联网来处理负载，这就是集群的扩展带来了挑战。&lt;br&gt;在2010年，UC Berkeley大学就对上述问题提出了解决方案，这就是现在的Apache Mesos，Mesos抽象了CPU、内存、硬盘资源，让数据中心的功能对外就像是一个大的机器。Mesos创建一个单独的底层集群来提供应用程序所需要的资源，而不会超出虚拟机和操作系统性能限制。&lt;/p&gt;
+&lt;p&gt;###Apache Mesos简介&lt;br&gt;Mesos是Apache下的开源分布式资源管理框架，它被称为分布式系统的内核，使用内置Linux内核相同的原理，只是在不同的抽象层次。该 Mesos内核运行在每个机器上，在整个数据中心和云环境内应用程序（例如Hadoop、Spark、Kafka、Elaborate等）提供资源管理和资源负载的API接口。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
-&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是
+      &lt;p&gt;#MapRecue&lt;br&gt;在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，
+    
+    </summary>
+    
+      <category term="分布式" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="分布式计算" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
+    
+    
+      <category term="分布式" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="分布式计算" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kylin入门概念</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Kylin%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Kylin入门概念/</id>
+    <published>2017-04-16T15:43:49.000Z</published>
+    <updated>2017-08-20T16:57:06.645Z</updated>
+    
+    <content type="html">&lt;p&gt;#Apache Kylin的工作原理&lt;br&gt;Apache Kylin的工作原理本质上是MOLAP（Multidimensional　Online　Analytical　Processing）Cube，也就是多维　立方体分析。这是数据分析中相当经典的理论，在关系数据库年代就已经有了广泛的应用，下面将其做简要的介绍。  &lt;/p&gt;
+&lt;p&gt;##维度和度量&lt;br&gt;简单来讲，维度就是观察数据的角度。比如电商的销售数据，可以从时间的维度来观察，也可以进一步细化，从时间和地区的维度来观察。维度一般是一组离散的值，比如时间维度上的每一个独立的日期，或者商品维度上的每一件独立的商品。因此统计时可以把维度值 相同的记录聚合在一起，然后应用聚合函数做累加、平均、去重计数等聚合计算。  &lt;img src=&quot;/2017/04/16/hadoop/Kylin入门概念/hadoop/kylin/维度和度量的例子.jpg&quot; alt=&quot;&amp;quot;维度和度量的例子&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;度量就是被聚合的统计值，也是聚合运算的结果，它一般是连续的值，如图1-2中的销售额，抑或是销售商品的总件数据 。通过比较和测量试题，分析师可以对数据进行评估，比如今年的销售额相比去年有多大的增长，增长的速度是否达到预期，不同商品类别的增长比例是否合理等。  &lt;/p&gt;
+&lt;p&gt;##Cube和Cuboid&lt;br&gt;有了维度和度量，一个数据表或数据模型上的所有字段就可以分类了，它们要么是维度，要么是度量（可以被聚合）。于是就有了根据维度和度量来做预计算的Cube理论。&lt;br&gt;给定一个数据模型，我们可以对其上的所有维度进行组合。对于N个维度来说，组合的所有可能共2的n次方种。对于每一种维度的组合，将度量做聚合运算，然后将运算的结果保存为一个物化视图，称为Cuboid。所有维度组合的Coboid作为一个整体，被称为Cube。所以简单来说一个Cube就是许多按维度聚合的物化视图的集合。&lt;br&gt;下面来举一个具体的例子。假定有一个电商的销售数据集，其中维度包括时间（Time）、商品（Item）、地点（Location）和供应商（Supplier），度量为销售额（GMV）。那么所有维度的组合就有2的4次方=16种，比如一维度（ID）的组合有[Time]、[Item]、[Location]、[Supplier]4种；二维度（3D）的组合有[Time,Item]、[Time，Location]、[Time,Supplier]、[Item,Location]、[Item,Supplier]、[Location,Supplier]6种；三维度（3D）的组合也有4种；最后零维度（0D）和四维度（4D）的组合各有1种，总共有16种组合。&lt;br&gt;&lt;img src=&quot;/2017/04/16/hadoop/Kylin入门概念/hadoop/kylin/一个四维Cube的例子.jpg&quot; alt=&quot;&amp;quot;一个四维Cube的例子&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;计算Cuboid，即按维度来聚合销售额。如果用SQL语句来表达计算Cuboid[Time,Location]，那么SQL语句如下：&lt;br&gt;Select Time,Location,Sum(GMV) as GMV from Sales group by Time,Location.&lt;br&gt;将计算的结果保存为物化视图，所有Cuboid物化视图的总称是Cube。&lt;/p&gt;
+&lt;p&gt;##工作原理&lt;br&gt;Apache Kylin的工作原理就是对数据模型做Cube预计算，并利用计算的结果加速查询，具体工作过程如下：&lt;br&gt;1）指定数据模型，定义维度和度量&lt;br&gt;2）预计算Cube，计算所有Cuboid并保存为物化视图。&lt;br&gt;3）执行查询时，读取Cuboid，运算，产生查询结果。&lt;br&gt;由于Kylin的查询过程不会扫描原始记录，而是通过预计算预先完成表的关联、聚合等复杂运算，并利用预计算的结果来执行查询，因此相比非预计算的查询技术，其速度一般要快一到两个数据级，并且这点在超磊的数据集上优势更加明显。当数据集达到千亿及至万亿级别时，Kylin的速度甚至可以超越其他非预计算技术1000倍以上。&lt;/p&gt;
+&lt;p&gt;#技术架构&lt;br&gt;Apache Kylin系统可以分为在线查询和离线构建两部分，技术架构如下图所示，在线查询的模块主要处于上半区，而离线构建则处于下半区。&lt;br&gt;&lt;img src=&quot;/2017/04/16/hadoop/Kylin入门概念/hadoop/kylin/Kylin的技术架构.jpg&quot; alt=&quot;&amp;quot;Kylin的技术架构&amp;quot;&quot;&gt;    &lt;/p&gt;
+&lt;p&gt;我们首先看看离线构建的部分。从图1-4可以看出，数据源在左侧，目前主要是Hadoop Hive，保存着待分析的用户数据。根据元数据的字义，下方构建引擎从数据源抽取数据，并构建Cube。数据以关系表的形式输入，且必须符合星形模型（Star Schema）（更复杂的雪花模型在成文时还不支持，可以通过视图将雪花模型转化为星形模型，再使用Kylin）。MapRecue是当前主要的构建技术。构建后的Cube保存在右侧的存储引擎中，一般选用HBase作为存储。&lt;br&gt;完成了离线构建之后，用户可以从上方查询系统发送SQL进行查询分析。Kylin提供了各种Rest　API、ＪＤＢＣ／ＯＤＢＣ接口。无论从哪个接口进入，SQL最终都会来到Rest服务层，再转交给查询引擎进行处理。这里需要注意的是，SQL语句是基于数据源的关系模型书写的，而不是Cube。Kylin在设计时刻意对查询用户屏蔽了Cube的概念，分析师只需要理解简单的关系模型就可以使用Kylin，没有额外的学习门槛，传统的SQL应用也很容易迁移。查询引擎解析SQL，生成基于关系表的逻辑执行计划，然后将其转义为基于Cube的物理执行计划，最后查询预计算生成的Cube并产生结果。整个过程不会访问原始数据源。  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：对于查询引擎下方的路由选择，在最初设计时曾考虑过将Kylin不能执行查询引导去Hive中继续执行，但在实践后发现Hive与Kylin的速度差异过大，导致用户无法对查询的速度有一致的期望，很可能大多数据查询几秒内就返回结果了，而有些查询则要等几分钟到几十分钟，因此体验非常糟糕。最后这个路由功能在发行版中默认关闭。&lt;/p&gt;
+&lt;p&gt;Apache Kylin 1.5版本引入了“可扩展架构”的概念。在图1-4中显示为三个粗虚框，表示的抽象层。可扩展指Kylin可以对其主要依赖的三个模块做任意的扩展和替换。Kylin的三大依赖模型分别是数据源、构建引擎和存储引擎。在设计之初，作为Hadoop家族 一员，这三者分别是Hive、MapRecue和HBase。但随着推广和使用的深入，渐渐有用户发现它们均存在不足之处。比如，实时分析可能会希望从Kafka导入数据而不是Hive；而Spark的迅速崛起，又使我们不得不考虑将MapRecue替换为Spark，以期大幅提高Cube的构建速度；至于HBase，它的读性能可能还不如Cassandra或Kudu等 。可见，是否可以将一种技术替换为另一种技术已成为一个常见的问题。于在1.5版本的系统架构进行了重构，将数据源、构建引擎、存储引擎三大依赖抽象为接口，而Hive、MapRecue、HBase只是默认实现。深度用户可以根据自己的需要做二次开发，将其中的一个或多个替换为更适合的技术。  &lt;/p&gt;
+&lt;p&gt;#核心概念&lt;/p&gt;
+&lt;p&gt;##数据仓库&lt;br&gt;数据仓库（Data Warehouse）是一种系统的资料储存理论，此理论强调的是利用某些特殊的资料储存方式，让所包含的资料特别有利于分析和处理，从而产生有价值的资讯，并可依此做出决策。&lt;br&gt;利用数据仓库的方式存放资料，具有一旦存入，便不会随时间发生变动的特性，此外，存入的资料必定包含时间属性，通常一个数据仓库中会含有大量的历史性资料，并且它可利用特定的分析方式，从其中发掘特定的资讯。&lt;/p&gt;
+&lt;p&gt;##OLAP&lt;br&gt;OLAP（Online Analytical Process），联机分析处理，以多维度的方式分析数据，而且能够弹性地提供上卷（Roll-up）、下钻（Drill-down）和透视分析（Pivot）等操作，它呈现集成性决策信息的方法，多用于决策支持系统、商务智能或数据仓库。其主要的功能在于方便大规模数据分析及统计计算，可对决策提供参考和支持。与之相区别的是取机交易处理（OLTP），联机交易处理，更侧重于基本的、日常的事务处理，包括数据的增删改查。&lt;br&gt;OLAP需要以大量历史数据为基础，再配合时间点的差异，对多维度及汇整型的信息进行复杂的分析。&lt;br&gt;OLAP需要用户有主观的信息需求定义，因此系统效率较佳。&lt;br&gt;OLAP的概念，在实际应用中存在广义和狭义两种不同的理解方式。广义上的理解与字面上的意义相同，泛指一切不会对数据进行更新的分析处理。但更多的情况下OLAP被理解为其狭义上的含义，即与多维分析相关，基于立方体（Cube）计算而进行的分析。&lt;/p&gt;
+&lt;p&gt;##BI&lt;br&gt;BI（Business Intelligence），即商务智能，指现代数据仓库技术、在线分析技术、数据挖掘和数据展现技术进行数据分析以实现商业价值。&lt;/p&gt;
+&lt;p&gt;##维度和度量&lt;br&gt;维度和度量是数据分析中的两个基本的概念&lt;br&gt;&lt;strong&gt;维度&lt;/strong&gt;是指审视数据的角度，它通常是数据记录的一个属性，例如时间、地点等。&lt;br&gt;&lt;strong&gt;度量&lt;/strong&gt;是基于数据所计算出来的考量值；它通常是一个数值，如总销售额、不同的用户数等。分析人员往往要结合若干个维度来审查度量值，以便在其中找到变化规律。在一个SQL查询中，Group By的属性通常就是维度，而所计算的值则是度量。如下面的示例：&lt;br&gt;    select part_dt,lstg_iste_id,sum(price) as total_selled,count(distinct seller_id) as sellers from kylin_sales group by part_dt,lstg_site_id&lt;/p&gt;
+&lt;p&gt;##事实表和维度表&lt;br&gt;&lt;strong&gt;事实表&lt;/strong&gt;（Fact Table）是指存储有事实记录的表，如系统日志、销售记录等；事实表的记录在不断地动态增长，所以它的体积通常远大于其他表。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;维度表&lt;/strong&gt;（Dimension Table）或维表，有时也称查找表（Lookup Table），是与事实表相对应的一种表；它保存了维度的属性值，可以跟事实表做关联；相当于将事实表上经常重复出现的属性抽取、规范出来用一张表进行管理。常见的维度表有：日期表（存储与日期对应的周、月、季度等属性）、地点表（包含国家、省、城市等属性）。使用维度表有诸多好处，具体如下：&lt;br&gt;a.缩小了事实表的大小&lt;br&gt;b.便于维度的管理和维护，增加、删除和修改维度的属性，不必对事实表的大量记录进行改动。&lt;br&gt;c.维度表可以为多个事实表重用，以减少重复工作。&lt;/p&gt;
+&lt;p&gt;##Cube、Cuboid和Cube Segment&lt;/p&gt;
+&lt;p&gt;###Cube&lt;br&gt;Cube（或Data Cube），即数据立方体，是一种常用于数据分析与索引的技术；它可以对原始数据建立多维度索引。通过Cube对数据进行分析，可以大大加快数据的查询效率。&lt;/p&gt;
+&lt;p&gt;###Cuboid&lt;br&gt;Cuboid在Kylin中特指在某一种维度组合下所计算的数据。&lt;/p&gt;
+&lt;p&gt;##Cube Segment&lt;br&gt;Cube Segment是指针对源数据中的某一片段，计算出来的Cube数据。通常数据仓库中的数据数量会随着时间的增长而增长，而Cube Segment也是按时间顺序来构建的。&lt;/p&gt;
+&lt;p&gt;#在Hive中准备数据&lt;br&gt;这里介绍准备Hive数据的一些注意事项。需要被分析的数据必须先保存为Hive表的形式，然后Kylin才能从Hive中导入数据，创建Cube。&lt;br&gt;Hive是一个基于Hadoop的数据仓库工具，可以将结构化的数据文件映射为数据库表，并可以将SQL语句转换为MapRecue或Tez任务进行运行，从而让用户以类SQL（HiveQL，也称HQL）的方式管理和查询Hadoop上的海量数据。&lt;br&gt;此外，Hive还提供了多种方式（如命令行、API和Web服务等）可供第三方方便地获取和使用元数据并进行查询。今天，Hive已经成为Hadoop数据仓库的首选，是Hadoop上不可或缺的一个重要组件，很多项目都已兼容或集成了Hive。基于此情况，Kylin选择Hive作为原始数据的主要来源。&lt;br&gt;在Hive中准备待分析的数据是使用Kylin的前提；将数据导入到Hive表中的方法有很多，用户管理数据的技术和工具也各式各样，因此具体步骤不在本书的讨论范围之内。&lt;/p&gt;
+&lt;p&gt;##星形模型&lt;br&gt;数据挖掘有几种常见的多维数据模型，如星形模型（Star Schema）、雪花模型（Snowf lake Schema）、事实星座模型（Fact Constellation）等。&lt;br&gt;星形模型中有一张事实表，以及零个或多个维度表；事实表与维度表通过主键外键相关联，维度表之间没有关联，就像很多星星围绕在一个恒星周围，帮取名为星形模型。&lt;br&gt;如果将星形模型中某些维度的表再做规范，抽取成更细的维度表，然后让维度表之间也进行关联，那么这种模型称为雪花模型。&lt;br&gt;星形模型是更复杂的模型，其中包含了多个事实表，而维度表是公用的，可以共享。&lt;br&gt;不过，Kylin只支持星形模型的数据集，这是基于以下考虑的。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;星形模型是最简单，也是最常用的模型  &lt;/li&gt;
+&lt;li&gt;由于星形模型只有一张大表，因此它相比于其它模型更适合于大数据处理  &lt;/li&gt;
+&lt;li&gt;其他模型可以通过一定的转换，变成星形模型。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##维度表的设计&lt;br&gt;除了数据模型以外，Kylin还对维度表有一定的要求，具体要求如下。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要具有数据一致性，主键值必须是唯一的；Kylin会进行检查，如果有两行的主键值相同则会报错。&lt;/li&gt;
+&lt;li&gt;维度越小越好，因为Kylin会将维度表加载到内存中供查询；过大的表不适合作为维度表，默认的阈值是300MB。  &lt;/li&gt;
+&lt;li&gt;改变频率低，Kylin会在每次构建中试图重用维度表的快照，如果维度表经常改变的话，重用就会失效，这就会导致要经常对维度表创建快照。&lt;/li&gt;
+&lt;li&gt;维度表最好不要是Hive视图（View），虽然在Kylin1.5.3中加入了对维度表是视图这种情况的支持，但每次都需要将视图进行物化，从而导致额外的时间开销。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##Hive表分区&lt;br&gt;Hive支持多分区（Partition）。简单来说，一个分区就是一个文件目录，存储了特定的数据文件。当有新的数据生成的时候，可以将数据加载到指定的分区，读取数据的时候也可以指定分区。对于 SQL查询，如果查询中指定了分区列的属性条件，则Hive会智能地选择特定分区（也就是目录），从而避免全量数据的扫描，减少读写操作对集群的压力。&lt;br&gt;下面举的一组SQL演示了如何使用分区：  &lt;/p&gt;
+&lt;p&gt;Hie&amp;gt;create table invites(id int,name string) partitioned by(ds string) row format delimited fields terminated by ‘t’ stroed as textfile;&lt;br&gt;Hive&amp;gt;load data local inpath ‘/user/hadoop/data.txt’ overwrite into table invites partition (ds=’2016-08-16’);&lt;br&gt;Hive&amp;gt;select * from invites where ds = ‘2016-08-16’;&lt;br&gt;Kylin支持增量的Cube构建，通常是按时间属性来增量地从Hive表中抽取数据。如果Hive表正好是按此时间属性做分区的话，那么就可以利用到Hive分区的好处，每次在Hive构建的时候都可以直接跳过不相干的日期的数据，节省Cube构建的时间。这样的列在Kylin里也称为分割时间列（Partition Time Column），通常它应该也是Hive表的分区列。&lt;/p&gt;
+&lt;p&gt;##了解维度的基数&lt;br&gt;维度的基数（Cardinality）指的是该维度在数据集中出现的不同值的个数；例如“国家”是一个维度，如果有200个不同的值，那么此维度的基数就是200.通常一个维度的基数会从几十到几万个不等，个别维度如“用户ID”的基数会超过百万甚至千万。基数超过一百万的维度通常称为超高维度（Ulta Hight Cardinality，UHC），需要引起设计者的注意。&lt;br&gt;Cube中所有维度的基数都可以体现Cube的复杂度，如果一个Cube中有好几个超高基数维度，那么这个Cube膨胀就会很高。在创建Cube前需要对所有维度的基数做一个了解，这样就可以帮助设计合理的Cube。计算基数有多种途径，最简单的方法就是让Hive执行一个count distinct的SQL查询；Kylin也提供计算基数的方法，在导入Hive表定义后可以看到每一个列的基数，参数名为Cardinality&lt;/p&gt;
+&lt;p&gt;##Sample Data&lt;br&gt;如果需要快速体验Kylin，可以用Kylin自带的Sample Data。运行${KYLIN_HOME}/bin/sample.sh来导入Sample Data，然后就能按照下面的流程来创建模型和Cube。&lt;br&gt;具体请执行下面命令，将Sample Data导入到Hive数据库。&lt;br&gt;cd ${KYLIN_HOME}&lt;br&gt;bin/sample.sh&lt;br&gt;Sample Data测试的样例数据集总共仅1M左右，共计3张表，其中事实表有10000条数据。数据集是一个规范的星形模型结构，它总包含3个数据表：&lt;br&gt;KYLIN_SALES是事实表，保存了销售订单的明细信息。各列分别保存着卖家、商品、分类、订单金额、商品数据等信息，每一行对应着一笔交易订单。&lt;br&gt;KYLIN_CATEGORY_GROUPINGS是维表，保存了商品分类的详细介绍，例如商品分类名称等。&lt;br&gt;KYLIN_CAL_DT也是维表，保存了时间的扩展信息。如单个日期所在的年始、月始、周始、年份、月份等。&lt;br&gt;这3张表一起构成了整个星形模型。  &lt;/p&gt;
+&lt;p&gt;#设计Cube&lt;br&gt;如果数据已经在Hive中准备好了，就可以开始创建Cube了。&lt;/p&gt;
+&lt;p&gt;##导入Hive表定义&lt;br&gt;登陆Kylin的Web界面，创建新的或选择一个已有的项目之后，需要做的就是将Hive表的定义导入到Kylin中。&lt;br&gt;单击Web界面的Model-&amp;gt;Data Source下的”Local Hive Table“图标，然后输入表的名称（可以一次导入多个表，以逗号分隔表名），单击按钮”Sync“，Kylin就会使用Hive的API从Hive中获取表的属性信息。&lt;br&gt;导入成功后，表的结构信息会以树状的形式显示在页面的左侧，可以单击展开或收缩。&lt;/p&gt;
+&lt;p&gt;同时Kylin会在后台触发一个MapRecue任务，计算此表的每个列的基数。通常稍过几分钟后再刷新页面，就会看到显示出来 的基数信息Cardinality&lt;/p&gt;
+&lt;p&gt;需要注意的是，这里Kylin对基数的计算方法采用的是HyperLogLog的近似算法，与精确值略有误差，只做参考值。&lt;/p&gt;
+&lt;p&gt;##创建数据模型&lt;br&gt;有了表信息之后，就可以开始创建数据模型（Data Model）了。数据模型是Cube的基础，它主要用于描述一个星形模型。有了数据模型以后，定义Cube的时候就可以直接从此模型定义的表和列中进行选择了，省去重复指定连接（join）条件的步骤。基于一个数据模型还可以创建多个Cube，以方便减少用户的重复性工作。&lt;br&gt;在Kylin界面中”Models“页面中单击”New”-&amp;gt;”New Model”，开始创建数据模型。&lt;/p&gt;
+&lt;p&gt;接下来选择用作维度和度量的列。这里只是选择一个范围，不代表这些列将来一定要用作Cube 的维度或度量，你可以把所有可能会用到表都选进来，后续创建Cube的时候，将只能从这些列中进行选择。   &lt;/p&gt;
+&lt;p&gt;选择维度列时，维度可以来自事实表或维度表&lt;br&gt;选择度量列时，度量只能来自事实表&lt;br&gt;最后一步，是为模型补充侵害时间列信息和过滤条件。如果此模型中的事实表记录是按时间增长的，那么可以指定一个日期/时间列作为模型的分割时间列，从而可以让Cube按此列做增量构建。&lt;/p&gt;
+&lt;p&gt;过滤（Filter）条件是指，如果想把一些记录忽略掉，那么这里可以设置一个过滤条件。Kylin在向Hive请求源数据的时候，会带上此过滤条件。&lt;/p&gt;
+&lt;p&gt;随后“Save”后，出现在“Model”的列表中。&lt;/p&gt;
+&lt;p&gt;##创建Cube&lt;br&gt;单击“New”，选择“New Cube”，会开启一个包含若干步骤的向导。&lt;/p&gt;
+&lt;p&gt;第一页，选择要使用的数据模型，并为此Cube输入一个唯一的名称（必需的）和描述（可选的）；这里还可以输入一个邮件通知列表，用于在构建完成或出错时收到通知。如果不想接收处于某些状态的通知，那么可以从“Notification Events”中将其去掉。&lt;/p&gt;
+&lt;p&gt;第二页，选择Cube的维度。可以通过以下两个按钮来添加维度。&lt;br&gt;&lt;strong&gt;“Add Mimension”&lt;/strong&gt;：逐个添加维度，可以是普通维度也可以是衍生（Derived）维度。&lt;br&gt;&lt;strong&gt;“Auto Generator”：&lt;/strong&gt;批量选择并添加，让Kylin自动完成其它信息。&lt;br&gt;使用第一种方法的时候需要为每个维度起个名字，然后选择表和列。&lt;br&gt;如果是衍生维度的话，则必须是来自于某个维度表，一次可以选择多个列；由于这些列值都可以从该维度表的主键值中衍生出来，所以实际上只有主键列会被Cube加入计算。而在Kylin 的具体实现中，往往采用事实表上的外键替代主键进行计算和存储。但是在逻辑上可以认为衍生列来自于维度表的主键。&lt;br&gt;使用第二种方法，Kylin会用一个树状结构呈现出所有的列，用户只需要勾选所需要的列即可，Kylin会自动补充其他信息，从而方便用户的操作。请注意，在这里Kylin会把维度表上的列都创建成衍生维度，这也许不是最合适的，在这种情况下请使用第一种方法。&lt;/p&gt;
+&lt;p&gt;第三页，创建度量。Kylin默认会创建一个Count(1)的度量。可以单击“+Measure”按钮来添加新度量。Kylin支持的度量有：SUM、MIN、MAX、COUNT、COUNT　DISTINCT、ＴＯＰ＿Ｎ、RAW等。请选择需要的度量类型，然后再选择适当的参数（通常为列名）&lt;/p&gt;
+&lt;p&gt;重复上面的步骤，创建所需要的度量。Kylin可以支持在一个Cube中添加多达上百个度量；添加完成所有度量之后，单击“Next”。&lt;/p&gt;
+&lt;p&gt;第四页，是关于Cube数据刷新的设置。在这里可以设置自动合并的阈值、数据保留的最短时间，以及第一个Segment的起点时间（如果Cube有分割时间列的话）。&lt;/p&gt;
+&lt;p&gt;第五页，高级设置。在此页面上可以设置聚合组和Rowkey&lt;br&gt;Kylin默认会把所有的维度都放在同一个聚合中；如果维度数据较多（例如&amp;gt;10），那么建议用户根据查询的习惯和模式，单击“New Aggregation Group+”，将维度分为多个聚合组。通过使用多个聚合组，可以大大降低Cube中的Cuboid数量。下面来举例说明，如果一个Cube有（M+N)个维度，那么默认它会有2的m+n次方个Cuboid；如果把这些维度分为两个不相交的聚合组，那么Cuboid的数量将被减少为2的m次方+2的n次方。&lt;br&gt;在单个聚合组中，可以对维度设置高级属性，例如Mandatory、Hierarchy、Joint等。这几个属性都是为了优化Cube的计算而设计的，了解这些属性的含义对日后更好地使用Cube至关重要。&lt;br&gt;Mandatory维度指的是那些总是会出现在where条件或Group By语句里的维度；通过将某个维度指定为Mandatory，Kylin就可以不用预计算那些不包含此维度的Cuboid，从而减少计算量。&lt;br&gt;Hierarchy是一组有层级关系的维度，例如：“国家”“省”“市”，这里的“国家”是高级的维度，“省”“市”依次是低级的维度。用户会按高级别维度进行查询，也会按低级别维度进行查询，但在查询低级别维度时，往往都会带上高级别维度的条件，而不会孤立地审视低级别维度的数据。例如，用户单击“国家”作为维度来查询汇总数据，也可能单击“国家”+“省”或者“国家”+“省”+“市”来查询，但是不会跨越国家直接Group By“省”或“市”。通过指定Hierarchy，Kylin可以省略不满足此模式的cuboid。&lt;br&gt;Joint是将多个维度组合成一个维度，其通常适用于如下两种情况。&lt;br&gt;1.总是会在一起查询的维度。&lt;br&gt;2.基数很低的维度&lt;br&gt;Kylin以Key-Value的方式将Cube存在到HBase中。HBase的key，也就是Rowkey，是由各维度的值拼接而成的；为了更高效地存储这些值，Kylin会对它们进行编码和压缩；每个维度均可以选择合适的编码（Encoding）方式，默认采用的是字典（Dictionary）编码技术；除了字典以外，还有整数（Int）和固定长度（Fixed Length）的编码。&lt;br&gt;字典编码是将此维度下所有值构建成一个从string到int的映射表；Kylin会将字典序列化保存，在Cube中存储int值，从而大大减小存储的大小。另外，字典是保持顺序的，即如果字符串A比字符串B大的话，那么A的编码后的int值也会比B编码后的值大；这样可以使得在HBase中进行比较查询的时候，依然使用编码后的值，而无需解码。&lt;/p&gt;
+&lt;p&gt;字典非常适合于非固定长度的string类型值的维度，而且用户无需指定编码后的长度；但是由于使用字典需要维护一张映射表，因些如果此维度的基数很高，那么字典的大小就非常可观，从而不适合于加载到内存中，在这种情况下就要选择其他的编码方式了。Kylin中字典编码允许的基数上限默认是500万（由参数”kylin.dictioinary.max.cardinality”配置）。&lt;br&gt;整数（int）编码适合于对int或bigint类型的值进行编码，它无需额外存储，同时还可以支持很大的基数。用户需要根据值域选择编码的长度。例如有一个手机号码的维度，它是一个11位的数字，如13800138000，我们知道它大于2的31次方，但是小于2的39次方减1，那么使用int(5)即可满足要求，每个值占用5字节，比按字符存储（11字节）要少占一半以上的空间。  &lt;/p&gt;
+&lt;p&gt;当上面几种编码方式都不适合的时候，就使用固定长度的编码了；此编码方式其实只是将原始值截断或补充成相同长度的一组字节，没有额外的转换，所以空间效率较差，通常只是作为一种权宜手段。&lt;br&gt;各维度在Rowkeys中的顺序，对于 查询的性能会产生较明显的影响。在这里用户可以根据查询的模式和习惯，通过拖拽的方式调整各个维度在Rowkeys上的顺序。通常的原则是，将过滤频率较高的列放置在过滤频率较低的列之前，将基数高的列放置在基数低的列之前。这样做的好处是，充分利用过滤条件来缩小在HBase中扫描的范围，从而提高查询的效率。&lt;br&gt;第五页，为Cube配置参数。和其他Hadoop工具一样，Kylin使用了很多配置参数以提高录活性，用户可以根据具体的环境、场景等配置不同的参数进行调优。Kylin全局的参数值可在conf/kylin.properties文件中进行配置；如果Cube需要覆盖全局设置的话，则需要在此页面中指定。单击“+Property”按钮，然后输入参数名和参数值。例如“kylin.hbase.region.cut=1”,这样此Cube在存储的时候，Kylin将会为每个HTbase Region分配1GB来创建一个HTbase Region。&lt;/p&gt;
+&lt;p&gt;#构建Cube&lt;br&gt;新创建的Cube只有定义，而没有计算的数据，它的状态是”DISABLED“，是不会被查询引擎挑中的。要想让Cube有数据，还需要对它进行构建。Cube的构建方式通常有两种：全量构建和增量构建；两者的构建步骤是完全一样的，区别只在于构建时读取的数据源是全集还是子集。&lt;br&gt;Cube的构建包含如下步骤，由任务引擎来调度执行。&lt;br&gt;1）创建临时的Hive平表（从Hive读取数据）&lt;br&gt;2）计算各维度的不同值，并收集各Cuboid的统计数据。&lt;br&gt;3）创建并保存字典。&lt;br&gt;4）保存Cuboid统计信息。&lt;br&gt;5）创建HTable。&lt;br&gt;6）计算Cube（一轮或若干轮MapRecue）。&lt;br&gt;7）将Cube的计算结果转成HFile。&lt;br&gt;8）加载HFile到HBase。&lt;br&gt;9）更新Cube元数据。&lt;br&gt;10）垃圾回收。&lt;br&gt;以上步骤中，前5步是计算Cube而做的准备工作，例如遍历维度值来创建字典，对数据做统计秋估算以创建HTable等；第6）步是真正的Cube计算，取决于所使用的Cube算法，它可能是一轮MapRecue任务，也可能是N（在没有优化的情况下，N可以被视作是维度数）轮迭代的MapRecue。由于Cube运算的中间结果是以SequenceFile的格式存储在HDFS上的，所以为了导入到HBase中，还需要第7）步将这些结果转换成HFile（HBase文件存储格式）。第8）步通过使用HBase BulkLoad工具，将HFile导入到HBase集群，这一步完成之后，HTable就可以查询到数据了。第9）步更新Cube的数据，将此次构建 Segment的状态从”NEW“更新为”ＲＥＡＤＹ＂，表示已经可借查询了。最后一步，清理构建过程中生成的临时文件等垃圾，释放集群资源。　　&lt;br&gt;Monitor页面会显示当前项目下近期的构建任务。　　&lt;/p&gt;
+&lt;p&gt;##全量构建和增量构建&lt;/p&gt;
+&lt;p&gt;###全量构建&lt;/p&gt;
+&lt;p&gt;###增量构建&lt;/p&gt;
+&lt;p&gt;##历史数据刷新&lt;/p&gt;
+&lt;p&gt;##合并&lt;/p&gt;
+&lt;p&gt;#查询Cube&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Apache Kylin的工作原理&lt;br&gt;Apache Kylin的工作原理本质上是MOLAP（Multidimensional　Online　Analytical　Processing）Cube，也就是多维　立方体分析。这是数据分析中相当经典的理论，在关系数据库年代就已
     
     </summary>
     
       <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="hadoop" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/"/>
+      <category term="kylin" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/kylin/"/>
     
     
       <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="hadoop" scheme="http://cenrise.com/tags/hadoop/"/>
-    
-      <category term="spark" scheme="http://cenrise.com/tags/spark/"/>
+      <category term="kylin" scheme="http://cenrise.com/tags/kylin/"/>
     
   </entry>
   
@@ -603,7 +681,7 @@
     <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90/"/>
     <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/</id>
     <published>2017-04-16T15:43:49.000Z</published>
-    <updated>2017-04-16T15:34:01.651Z</updated>
+    <updated>2017-08-20T16:57:06.641Z</updated>
     
     <content type="html">&lt;p&gt;少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计算这两类技术，能够从海量数据中快速分析出汇总结果。&lt;/p&gt;
 &lt;p&gt;#MPP架构&lt;br&gt;并行数据库往往采用MPP（Massively Parallel Processing，大规模并行处理）架构。MPP架构是一种不共享的结果，每个节点可以运行自己的操作系统、数据库等，每个节点内的CPU不能访问另一个节点的内存，节点之间的信息交互是通过节点互联网络实现的。&lt;/p&gt;
@@ -630,94 +708,30 @@
   </entry>
   
   <entry>
-    <title>分布式存储</title>
-    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
-    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式存储/</id>
+    <title>Spark体系概述</title>
+    <link href="http://cenrise.com/2017/04/16/spark/TODO-Spark%E4%BD%93%E7%B3%BB%E6%A6%82%E8%BF%B0/"/>
+    <id>http://cenrise.com/2017/04/16/spark/TODO-Spark体系概述/</id>
     <published>2017-04-16T15:43:49.000Z</published>
-    <updated>2017-04-18T02:03:53.463Z</updated>
+    <updated>2017-08-20T16:57:06.677Z</updated>
     
-    <content type="html">&lt;p&gt;##Bigtable&lt;br&gt;Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。&lt;/p&gt;
-&lt;p&gt;Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的Bigtable模型的开源实现为Apache HBase。&lt;/p&gt;
-&lt;p&gt;##HBase&lt;br&gt;HBase是一个高可靠、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可以在廉价PC上搭建起大规模结构化存储集群。&lt;br&gt;HBase是Google Bigtable的开源实现，类似于Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapRecue来处理Bigtable中的海量数据，HBase同样利用Hadoop MapRecue来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应。&lt;/p&gt;
-&lt;p&gt;###特性：&lt;br&gt;强一致性读写：HBase不是“Eventual Consistentcy（最终一致性）”数据存储，这让它很适合高速计数聚合类任务；&lt;br&gt;自动分片（Automatic sharding）：HBase表通过region分布在集群中，数据增长时，region会自动分割并重新分布；&lt;br&gt;RegionServer自动故障转移&lt;br&gt;Hadoop/HDFS集成：HBase支持开箱即用HDFS作为它的分布式文件系统；&lt;br&gt;MapRecue：HBase通过MapRecue支持大并发处理；&lt;br&gt;Java客户端API：HBase支持易于使用的Java API进行编程访问;&lt;br&gt;Thrift/REST API：HBase也支持Thrift和Rest作为非Java前端访问；&lt;br&gt;Block Cache和Bloom Filter：对于大容量查询优化，HBase支持Block Cache和Bloom Filter;&lt;br&gt;运维管理：HBase支持JMX提供内置网页用于运维。&lt;/p&gt;
-&lt;p&gt;###HBase应用场景&lt;br&gt;HBase不适合所有场景。&lt;br&gt;首先，确信有足够多数据，如果有上亿或上千亿行数据，HBase是很好的备选。如果只有上千或上百万行，则用传统的RDBMS可能是更好的选择。因为所有数据如果只需要在一两个节点进行存储，会导致集群其他节点闲置。&lt;br&gt;其次，确信可以不依赖于RDBMS的额外特性。例如，列数据类型、第二索引、事务、高级查询语言等&lt;br&gt;最后，确保有足够的硬件。因为HDFS在小于5个数据节点时，基本上体现不出来它的优势。&lt;br&gt;虽然HBase能在单独的笔记本上运行良好，但这应仅当成是开发阶段的配置 。&lt;/p&gt;
-&lt;p&gt;###HBase的优点&lt;br&gt;列可以动态增加，并且列为空就不存储数据，节省存储空间；&lt;br&gt;HBase可以自动切分数据，使得数据存储自动具有水平扩展功能；&lt;br&gt;HBase可以提供高并发读写操作的支持；&lt;br&gt;与Hadoop MapRecue相结合有利于数据分析；&lt;br&gt;容错性；&lt;br&gt;版权免费；&lt;br&gt;非常灵活的模式设计（或者说没有固定模式的限制）；&lt;br&gt;可以跟Hive集成，使用类SQL查询；&lt;br&gt;自动故障转移；&lt;br&gt;客户端接口易于使用；&lt;br&gt;行级别原子性，即PUT操作一定是完全成功或者完全失败。&lt;/p&gt;
-&lt;p&gt;###HBase的缺点&lt;br&gt;不能支持条件查询，只支持按照row key来查询；&lt;br&gt;容易产生单点故障（在只使用一个HMaster的时候）；&lt;br&gt;不支持事务；&lt;br&gt;JOIN不是数据库层支持的，而需要用MapRecue；&lt;br&gt;只能在主键上索引和排序；&lt;br&gt;没有内置的身份和权限认证；&lt;/p&gt;
-&lt;p&gt;###HBase与Hadoop/HDFS的差异&lt;br&gt;HDFS是分布式文件系统，适合保存大文件。官方宣称它并非普通用途的文件系统，不提供文件的个别记录的快速查询。另一方面，HBase基于HDFS，并能够提供大表的记录快速查询和更新。HBase内部将数据放到索引好的“StoreFiles”存储文件中，以便提供高速查询，而存储文件位于HDFS中。&lt;/p&gt;
-&lt;p&gt;##Cassandra&lt;br&gt;Cassandra是Facebook于2008年7月在Google Code上开源的项目。Cassandra实现了Dynamo风格的副本复制模型和没有单点失效的架构，增加了更加强大的column family数据模型。&lt;/p&gt;
-&lt;p&gt;##Memcached&lt;br&gt;Memcached可以更好利用内存&lt;/p&gt;
-&lt;p&gt;##Redis&lt;br&gt;Redis是一个key-value模型的内在数据存储系统。&lt;/p&gt;
-&lt;p&gt;##MongoDB&lt;br&gt;MongoDB是一个介于关系型数据库和非关系性数据库之间的产品，是非关系型 数据库中功能最丰富、最像关系型 数据库的，旨在为Web应用提供可扩展的高性能数据存储解决方案。&lt;/p&gt;
+    <content type="html">&lt;p&gt;本文目的是介绍spark框架下的内容，以简要概述方式。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;##Bigtable&lt;br&gt;Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。&lt;/p&gt;
-&lt;p&gt;Bigtable是闭源的，Cloud Bigtable
-    
-    </summary>
-    
-      <category term="分布式" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="分布式存储" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
-    
-    
-      <category term="分布式" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="分布式存储" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop数据移动</title>
-    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
-    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/</id>
-    <published>2017-04-16T15:43:49.000Z</published>
-    <updated>2017-04-16T13:33:36.247Z</updated>
-    
-    <content type="html">&lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
-&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：&lt;br&gt;1.传统数据管理系统，如果关系型数据库与主机&lt;br&gt;2.日志、机器生成的数据，以及其他类型的事件数据。&lt;br&gt;3.从现有的企业数据存储中输入的文件。&lt;/p&gt;
-&lt;p&gt;将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：&lt;br&gt;1.数据采集的时效性与可访问性&lt;br&gt;需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？&lt;/p&gt;
-&lt;p&gt;2.增量更新&lt;br&gt;如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？&lt;/p&gt;
-&lt;p&gt;3.数据访问和处理&lt;br&gt;数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？&lt;/p&gt;
-&lt;p&gt;4.数据分区及数据分片&lt;br&gt;数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？&lt;/p&gt;
-&lt;p&gt;5.数据存储格式&lt;br&gt;数据存储的格式是哪一种？&lt;/p&gt;
-&lt;p&gt;6.数据变换&lt;br&gt;需要变换尚未落地的数据吗？&lt;/p&gt;
-&lt;p&gt;下面简单列举一下这几点考量？&lt;/p&gt;
-&lt;p&gt;##1.数据采集的时效性&lt;br&gt;这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个&lt;br&gt;a.大型批处理&lt;br&gt;通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务&lt;/p&gt;
-&lt;p&gt;b.小型批处理&lt;br&gt;通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟&lt;/p&gt;
-&lt;p&gt;c.近实时决策支持&lt;br&gt;指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据&lt;/p&gt;
-&lt;p&gt;d.近实时事件处理&lt;br&gt;指在2秒内处理任务，速度可达到100毫秒&lt;/p&gt;
-&lt;p&gt;e.实时&lt;br&gt;这里指不超过100毫秒&lt;/p&gt;
-&lt;p&gt;可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。&lt;br&gt;使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。&lt;br&gt;当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。&lt;/p&gt;
-&lt;p&gt;##2.增量更新&lt;br&gt;新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。&lt;/p&gt;
-&lt;p&gt;#数据采集的选择&lt;/p&gt;
-&lt;p&gt;##1.文件传输&lt;br&gt;将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。&lt;/p&gt;
-&lt;p&gt;下面列一下文件传输的特点：&lt;br&gt;a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。&lt;br&gt;b.文件传输默认为单线程，不能并行 文件传输。&lt;br&gt;c.文件传输将文件从传统的文件系统导入HDFS&lt;br&gt;d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。&lt;br&gt;e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）&lt;/p&gt;
-&lt;p&gt;##文件传输与其他采集方法的考量&lt;br&gt;简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。&lt;br&gt;a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。&lt;br&gt;b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。&lt;br&gt;e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。&lt;br&gt;如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。&lt;/p&gt;
-&lt;p&gt;##Sqoop：Hadoop与关系数据库的批量传输&lt;br&gt;Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。&lt;/p&gt;
-&lt;p&gt;Flume:基于事件的数据收集及处理&lt;br&gt;Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。&lt;/p&gt;
-&lt;p&gt;##Kafka&lt;br&gt;Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。&lt;br&gt;Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。&lt;br&gt;Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。&lt;br&gt;前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。&lt;/p&gt;
-&lt;p&gt;#数据导出&lt;br&gt;数据导出的思路与导入类似。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
-&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是
+      &lt;p&gt;本文目的是介绍spark框架下的内容，以简要概述方式。&lt;/p&gt;
+
     
     </summary>
     
       <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="数据仓库" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+      <category term="spark" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/"/>
     
     
       <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="数据仓库" scheme="http://cenrise.com/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
-    
-      <category term="数据采集" scheme="http://cenrise.com/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+      <category term="spark" scheme="http://cenrise.com/tags/spark/"/>
     
   </entry>
   

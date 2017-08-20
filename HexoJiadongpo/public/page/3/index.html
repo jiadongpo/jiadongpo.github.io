@@ -265,8 +265,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Kylin入门概念/" itemprop="url">
-                  Kylin入门概念
+                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
+                  HDFS入门概念
                 </a>
               
             
@@ -305,8 +305,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/大数据/kylin/" itemprop="url" rel="index">
-                    <span itemprop="name">kylin</span>
+                  <a href="/categories/大数据/hdfs/" itemprop="url" rel="index">
+                    <span itemprop="name">hdfs</span>
                   </a>
                 </span>
 
@@ -340,11 +340,11 @@
       
         
           
-          #Apache Kylin的工作原理Apache Kylin的工作原理本质上是MOLAP（Multidimensional　Online　Analytical　Processing）Cube，也就是多维　立方体分析。这是数据分析中相当经典的理论，在关系数据库年代就已经有了广泛的应用，下面将其做简要的
+          #数据块 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Kylin入门概念/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/HDFS入门概念/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -395,8 +395,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之流式计算/" itemprop="url">
-                  流式计算
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之数据采集/" itemprop="url">
+                  Hadoop数据移动
                 </a>
               
             
@@ -435,8 +435,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/大数据/流式计算/" itemprop="url" rel="index">
-                    <span itemprop="name">流式计算</span>
+                  <a href="/categories/大数据/数据仓库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据仓库</span>
                   </a>
                 </span>
 
@@ -470,11 +470,12 @@
       
         
           
-          MapRecue及其扩展解决了离线批处理问题，但是无法保证实时性。对于实时性要求高的场景，可以采用流式计算或者实时分析系统进行处理。流式计算（Stream Processing）解决在线聚合（Online Aggregation）、在线过滤（Online Filter）等问题，流式计算同时具有存储系
+          数据采集本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。
+#数据采集考量虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Hadoop之流式计算/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之数据采集/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -656,8 +657,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式计算 /" itemprop="url">
-                  分布式计算
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式存储/" itemprop="url">
+                  分布式存储
                 </a>
               
             
@@ -696,8 +697,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/分布式/分布式计算/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式计算</span>
+                  <a href="/categories/分布式/分布式存储/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式存储</span>
                   </a>
                 </span>
 
@@ -731,11 +732,12 @@
       
         
           
-          #MapRecue在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须
+          ##BigtableBigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。
+Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Hadoop之分布式计算 /#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之分布式存储/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -786,8 +788,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/16/spark/TODO-Spark体系概述/" itemprop="url">
-                  Spark体系概述
+                <a class="post-title-link" href="/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/" itemprop="url">
+                  Apache Spark与Apache Hadoop的关系
                 </a>
               
             
@@ -826,8 +828,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/大数据/spark/" itemprop="url" rel="index">
-                    <span itemprop="name">spark</span>
+                  <a href="/categories/大数据/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
                   </a>
                 </span>
 
@@ -861,12 +863,12 @@
       
         
           
-          本文目的是介绍spark框架下的内容，以简要概述方式。
-
-          
+          数据采集本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。
+#数据采集考量虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对
+          ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/16/spark/TODO-Spark体系概述/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -917,8 +919,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
-                  HDFS入门概念
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之流式计算/" itemprop="url">
+                  流式计算
                 </a>
               
             
@@ -957,8 +959,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/大数据/hdfs/" itemprop="url" rel="index">
-                    <span itemprop="name">hdfs</span>
+                  <a href="/categories/大数据/流式计算/" itemprop="url" rel="index">
+                    <span itemprop="name">流式计算</span>
                   </a>
                 </span>
 
@@ -992,11 +994,11 @@
       
         
           
-          #数据块 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。
+          MapRecue及其扩展解决了离线批处理问题，但是无法保证实时性。对于实时性要求高的场景，可以采用流式计算或者实时分析系统进行处理。流式计算（Stream Processing）解决在线聚合（Online Aggregation）、在线过滤（Online Filter）等问题，流式计算同时具有存储系
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/16/hadoop/HDFS入门概念/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之流式计算/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
