@@ -1,5 +1,5 @@
 ---
-title: java.sql.SQLException: connection holder is null
+title: connection_holder_is_null
 
 date: 2017-08-18 09:55:00
 tags: [异常,tomcat]

@@ -1,5 +1,5 @@
 ---
-title: java.lang.OutOfMemoryError: Java heap space
+title: Java_heap_space_OutOfMemoryError
 date: 2017-08-18 20:30:00
 tags: [异常,tomcat]
 categories: [异常,tomcat]
