@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>中起之星</title>
+  <subtitle>Cenrise</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://cenrise.com/"/>
+  <updated>2017-06-21T03:36:30.642Z</updated>
+  <id>http://cenrise.com/</id>
+  
+  <author>
+    <name>dongpo.jia</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>和田市卫浴安装家具安装</title>
+    <link href="http://cenrise.com/2017/06/09/%E6%9C%8D%E5%8A%A1/%E5%92%8C%E7%94%B0%E5%B8%82%E5%8D%AB%E6%B5%B4%E5%AE%89%E8%A3%85%E5%AE%B6%E5%85%B7%E5%AE%89%E8%A3%85/"/>
+    <id>http://cenrise.com/2017/06/09/服务/和田市卫浴安装家具安装/</id>
+    <published>2017-06-09T09:28:00.000Z</published>
+    <updated>2017-06-21T03:36:30.642Z</updated>
+    
+    <content type="html">&lt;p&gt;#和田市卫浴安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介绍：从事家具（厨柜、床）、卫浴等工作20余年，目前在和田专业从事安具、厨卫安装、销售服务。&lt;/p&gt;
+&lt;p&gt;#和田市卫浴家具安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介绍：从事家具（厨柜、床）、卫浴等工作20余年，目前在和田专业从事安具、厨卫安装、销售服务。&lt;/p&gt;
+&lt;h1 id=&quot;可以接收什么类型的工作&quot;&gt;&lt;a href=&quot;#可以接收什么类型的工作&quot; class=&quot;headerlink&quot; title=&quot;可以接收什么类型的工作&quot;&gt;&lt;/a&gt;可以接收什么类型的工作&lt;/h1&gt;&lt;p&gt;1.家具安装，包含床、柜子、书桌等。&lt;br&gt;2.卫浴安装&lt;br&gt;3.品牌家具销售  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#和田市卫浴安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介绍：从事家具（厨柜、床）、卫浴等工作20余年，目前在和田专业从事安具、厨卫安装、销售服务。&lt;/p&gt;
+&lt;p&gt;#和田市卫浴家具安装工人&lt;br&gt;朱力&lt;br&gt;电话：139 9943 3811&lt;br&gt;介
+    
+    </summary>
+    
+      <category term="服务" scheme="http://cenrise.com/categories/%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="服务" scheme="http://cenrise.com/tags/%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安全组第一次会议提出的问题整理</title>
+    <link href="http://cenrise.com/2017/05/16/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E7%BB%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%AE%AE%E6%8F%90%E5%87%BA%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <id>http://cenrise.com/2017/05/16/网络安全/安全组第一次会议提出的问题整理/</id>
+    <published>2017-05-16T02:30:00.000Z</published>
+    <updated>2017-05-16T03:55:38.962Z</updated>
+    
+    <content type="html">&lt;p&gt;创建安全组是个长期的、不断迭代的过程，目前我们公司系统百废末兴之际，各方面的系统也都在创建初期如果安全控制要求高，势必会影响部分工作进度；当然，从开始就严格控制，也会为后期不必要的重构提供有利条件。根据现有情况，可以优先进行投入少，回报多的工作，慢慢渗透。  &lt;/p&gt;
+&lt;h1 id=&quot;事前-防范&quot;&gt;&lt;a href=&quot;#事前-防范&quot; class=&quot;headerlink&quot; title=&quot;事前-防范&quot;&gt;&lt;/a&gt;事前-防范&lt;/h1&gt;&lt;p&gt;1.制定漏洞管理制度&lt;br&gt;为规范生产网和办公网安全漏洞发现、评估及处理，首先应该制定《漏洞管理制度》对漏洞评级，根据评级做不同和响应处理。&lt;br&gt;漏洞处理流程：发现漏洞-&amp;gt;评估漏洞-&amp;gt;如果是不可接受的风险对业务下线-&amp;gt;修补漏洞-&amp;gt;测试验收-&amp;gt;上线  &lt;/p&gt;
+&lt;p&gt;2.敏感数据保护&lt;br&gt;    1) 银行卡可以显示首末4，手机号可以显示首3末4位，电话可以显示区号和末4位，身份证、邮箱、地址等。&lt;br&gt;    2) 日志文件里的敏感信息&lt;br&gt;    3) 用户名密码加密&lt;br&gt;    4) 数据库防篡改签名  &lt;/p&gt;
+&lt;p&gt;3.访问控制管理&lt;br&gt;    1) 制定信息授权的策略，及访问权限的管理策略；&lt;br&gt;    2) 规定每个用户或每组用户的访问控制规则和权力；  &lt;/p&gt;
+&lt;p&gt;4.用户帐号及权限安全。&lt;br&gt;    1) 最小权限原则&lt;br&gt;    最小权限是指限定系统中每个用户所必须的最小访问权限的原则，设定账号访问权限，控制用户仅能够访问到工作需要的信息。&lt;br&gt;    2) 职责分离原则&lt;br&gt;    职责分离主要是防止单个用户利用其所拥有的多重权限进行舞弊、盗窃或其它的非法行为，或对工作错误和违规活动进行掩盖。&lt;br&gt;    账号权限管理应按照职责分离的原则，确保不存在权限交叉而形成舞弊的可能  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;产品安全功能设计规范&lt;br&gt; 需要对产品的安全功能设计，如身份认证基本策略、用户登录失败/超时处理、账户信息输入防护、接口认证。  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;6.保密管理&lt;br&gt;     对文档、内容做好密级分类，哪些文件是对内，对外，或机密。  &lt;/p&gt;
+&lt;p&gt;7.测试规范，&lt;br&gt;    1) 依据《漏洞管理制度》判定漏洞等级，凡存在高危漏洞，除大领导特批外，禁止上线；低危或中危漏洞，可先上线后排期修复。&lt;br&gt;    任何系统未经过黑盒和白盒测试，禁止上线，特批和紧急情况除外。&lt;br&gt;    2) 为避免安全测试人员漏测，需定期对生产进行全面安全测试：&lt;br&gt;    • 半年内至少执行一次全面渗透测试；&lt;br&gt;    • 每个季度至少需要一次全面的ACL验证，系统底层漏洞检测；  &lt;/p&gt;
+&lt;p&gt;8.研发规范：&lt;br&gt;    1) 研发流程规范&lt;br&gt;    2) 代码规范&lt;br&gt;    3) 对技术的选型，比如组件、中间容器、中间件使用版本统一及安全、架构评审。  &lt;/p&gt;
+&lt;h1 id=&quot;事中-应急的规定&quot;&gt;&lt;a href=&quot;#事中-应急的规定&quot; class=&quot;headerlink&quot; title=&quot;事中-应急的规定&quot;&gt;&lt;/a&gt;事中-应急的规定&lt;/h1&gt;&lt;p&gt;  1) 建议成立应急指挥小组主要是在事故处理过程中进行信息收集、资源调度和沟通反馈信息。  应急处理流程如：信息收集-&amp;gt;初步判断-&amp;gt;事故处理-&amp;gt;信息通报-&amp;gt;事后处理-故障报告。  原则：以尽快恢复业务为第一优先。&lt;br&gt;  2) 故障时间之前做相关系统的上线或系统变更备份，在3分钟内无法定位故障原因的，立即执行回滚变更操作。  &lt;/p&gt;
+&lt;h1 id=&quot;事后-总结&quot;&gt;&lt;a href=&quot;#事后-总结&quot; class=&quot;headerlink&quot; title=&quot;事后-总结&quot;&gt;&lt;/a&gt;事后-总结&lt;/h1&gt;&lt;p&gt;  1) 做好故障记录，主要包括事故、事故发生时间，事故恢复时间、持续时间，等级、影响产品、影响商户、影响交易、事故发现、事故类型、产生原因等&lt;br&gt;  2) 故障报告改进措施跟进 ，主要是改进措施、目前的完成情况，遗留问题  &lt;/p&gt;
+&lt;h1 id=&quot;漏洞发现和处理流程&quot;&gt;&lt;a href=&quot;#漏洞发现和处理流程&quot; class=&quot;headerlink&quot; title=&quot;漏洞发现和处理流程&quot;&gt;&lt;/a&gt;漏洞发现和处理流程&lt;/h1&gt;&lt;p&gt;1.注册补天、漏洞盒子、乌云等国内外漏洞平台的企业帐号，针对企业贴平台会第一时间推送最新漏洞并进行安全指导。&lt;br&gt;2.可以在补天、漏洞盒子等平台以企业帐号方式创建安全测试平台，对外的白帽子增加奖励，鼓励大众参与众测。  &lt;/p&gt;
+&lt;h1 id=&quot;安全网站参考&quot;&gt;&lt;a href=&quot;#安全网站参考&quot; class=&quot;headerlink&quot; title=&quot;安全网站参考&quot;&gt;&lt;/a&gt;安全网站参考&lt;/h1&gt;&lt;p&gt;安全资讯&lt;br&gt;&lt;a href=&quot;http://www.freebuf.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.freebuf.com/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;乌云 (WooYun)(已停服)&lt;br&gt;&lt;a href=&quot;http://wooyun.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wooyun.org/&lt;/a&gt;&lt;br&gt;可通过如下查乌云数据：&lt;a href=&quot;http://wooyun.tangscan.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wooyun.tangscan.cn/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;补天&lt;br&gt;&lt;a href=&quot;http://loudong.360.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://loudong.360.cn/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;漏洞盒子&lt;br&gt;&lt;a href=&quot;https://www.vulbox.com/bounties&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.vulbox.com/bounties&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;阿里SRC&lt;br&gt;&lt;a href=&quot;https://security.alibaba.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://security.alibaba.com/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;腾讯SRC&lt;br&gt;&lt;a href=&quot;https://security.tencent.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://security.tencent.com/&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;创建安全组是个长期的、不断迭代的过程，目前我们公司系统百废末兴之际，各方面的系统也都在创建初期如果安全控制要求高，势必会影响部分工作进度；当然，从开始就严格控制，也会为后期不必要的重构提供有利条件。根据现有情况，可以优先进行投入少，回报多的工作，慢慢渗透。  &lt;/p&gt;
+&lt;h
+    
+    </summary>
+    
+      <category term="网络安全" scheme="http://cenrise.com/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="安全小组" scheme="http://cenrise.com/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E5%B0%8F%E7%BB%84/"/>
+    
+    
+      <category term="网络安全" scheme="http://cenrise.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="安全小组" scheme="http://cenrise.com/tags/%E5%AE%89%E5%85%A8%E5%B0%8F%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop知识点</title>
+    <link href="http://cenrise.com/2017/05/08/hadoop/Hadoop%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://cenrise.com/2017/05/08/hadoop/Hadoop知识点/</id>
+    <published>2017-05-08T15:43:49.000Z</published>
+    <updated>2017-05-08T15:10:28.638Z</updated>
+    
+    <content type="html">&lt;p&gt;#Hadoop数据管理&lt;br&gt;主要包括Hadoop的分布式文件系统HDFS、分布式数据库HBase和数据仓库工具Hive&lt;/p&gt;
+&lt;p&gt;##HDFS的数据管理&lt;br&gt;HDFS是分布式计算的存储基石，Hadoop分布式文件系统和其它文件系统有很多类似的特性；&lt;br&gt;1）对于整个集群有单一的命名空间；&lt;br&gt;2）具有数据一致性，都适合一次写入多次读取的模型，客户端在文件没有被成功创建之前是无法看到文件存在的。&lt;br&gt;3）文件会被分割成多个文件块，每个文件块被分配存储到数据节点上，而且会根据配置由复制文件块来保证数据的安全性。&lt;br&gt;HDFS有三个重要的角色来进行文件系统的管理：NameNode、DataNode和Client。NameNode可以看做是分布式文件系统的管理者，主要负责管理文件系统的命名空间、集群配置信息和存储块的复制等。NameNode会将文件系统的Metadata存储在内存中，这些信息主要包括文件信息、每一个文件对应的文件块的信息和每一个文件块在DataNode中的信息等。DataNode是文件存储的基本单元，它将文件块（Block）存储在本地文件系统中，保存了所有Block的Metadata，同时周期性地将所有存在的Block信息发送给NameNode。Client就是需要获取分布式文件系统文件的应用程序。接下来三个具体的操作来说明HDFS对数据的管理。&lt;br&gt;（1）文件写入&lt;br&gt;1）Client向NameNode发起文件写入的请求。&lt;br&gt;2）NameNode根据文件的大小和文件块配置情况，返回给Client所管理的DataNode的信息。&lt;br&gt;3）Client将文件划分为多个Block，根据DataNode的地址信息，按顺序将其写入到每一个DataNode块中。&lt;br&gt;（2）文件读取&lt;br&gt;1）Client向NameNode发起文件读取的请求。&lt;br&gt;2）NameNode返回文件存储的DataNode信息。&lt;br&gt;3）Client读取文件信息。&lt;br&gt;（3）文件块（Block）复制&lt;br&gt;1）NameNode发现部分文件的Block不符合最小复制数这一要求或部分DataNode失效。&lt;br&gt;2）通知DataNode相互复制Block。&lt;br&gt;3）DataNode开始直接相互复制。  &lt;/p&gt;
+&lt;p&gt;作为分布式文件系统，HDFS在数据管理方面还有值得借鉴的几个功能：&lt;br&gt;a.文件块（Block）的放置：一个Block会有三份备份，一份放在NameNode指定的DataNode上，另一份放在与指定DataNode不在同一机器上的DataNode上，最后一份放在与指定DataNode同一Rack的DataNode上。备份的目的是为了数据安全，采用这种配置方式主要是考虑同一Rack失败的情况，以及不同Rack之间进行数据复制会带来的性能问题。&lt;br&gt;b.心跳检测：用心跳检测DataNode的健康状况，如果发现问题就采取数据备份的方式来保证数据的安全性。&lt;br&gt;c.数据复制（场景为DataNode失败、需要平衡DataNode的存储利用率和平衡DataNode数据交互压力等情况）；使用Hadoop时可以用HDFS的balancer命令配置Threshold来平衡每一个DataNode的磁盘利用率。假设设置了Threshold为10%，那么执行balancer命令时，首先会统计所有的DataNode的磁盘利用率的平均值，然后判断如果某一个DataNode的磁盘利用率超过这个平均值，那么将会把这个DataNode的Block转移到磁盘利用率低的DataNode上，这对于新的节点为加入十分有用。&lt;br&gt;d.数据校验：采用CRC32做数据校验。在写入文件块的时候，除了会写入数据外还会写入校验信息，在读取的时候则需要先校验后读入。&lt;br&gt;e.数据管道性的写入：当客户端要写入文件到DataNode上时，首先会读取一个Block，然后将其写到每一个DataNode上，接着由第一个DataNode将其传递到备份的DataNode上，直到所有需要写入这个Block的DataNode都成功写入后，客户端才会开始写下一个Block。&lt;br&gt;f.安全模型：分布式文件系统启动时会进入安全模式（系统运行期间也可以通过命令进入安全模式），当分布式文件处于安全模式时，文件系统中的内容不允许修改也不允许删除，直到安DataNode上数据块的有效性，同时根据策略进行必要的复制或删除部分数据块。在实际操作过程中，如果在系统启动时修改和删除文件会出现安全模式不允许修改的错误提示，只需要等待一会即可。  &lt;/p&gt;
+&lt;p&gt;##HBase的数据管理&lt;br&gt;HBase是一个类似Bigtable的分布式数据库，它的大部分特性和Bigtable一样，是一个稀疏的、长期存储的（存在硬盘上）、多维度的排序映射表，这张表的索引是行关键字、列关键字和时间戳。表中的每个值是一个纯字符数组，数据都是字符串，没有类型，所以同一张表中的每一行数据都可以有截然不同的列。列名字的格式是“&lt;family&gt;:&lt;label&gt;“，它是由字符串组成的，每一张表有一个family集合，这个集合是固定不变的，相当于表的结构，只能通过改变表结构来改变表的family集合。但是label值相对于每一行来说都是可以改变的。&lt;br&gt;HBase把同一个family中的数据存储在同一个目录下，而HB的写操作是锁行的。每一行都是一个原子元素，都可以加锁。所有数据库的更新都有一个时间戳标记，每次更新都会生成一个新的版本，而HBase会保留一定数量的版本，这个值是可以设定的。客户端可以选择获取距离某个时间点最近的版本，或者一次获取所有版本。  &lt;/label&gt;&lt;/family&gt;&lt;/p&gt;
+&lt;p&gt;以上从微观上介绍了HBase的一些数据管理措施，那么HBase作为分布式数据为顺整体上从集群出发又是如何管理数据的呢？&lt;br&gt;HBase在分布式集群上主要依赖于HRegion、HMaster、HClient组成的体系结构从整体上管理数据。&lt;br&gt;HBase体系结构有三大重要组成部分：&lt;br&gt;a.HBaseMaster：HBase主服务器，与Bigtable的主服务器类似。&lt;br&gt;b.HRegionServer：HBase域服务器，与Bigtable的Tablet服务器类似。&lt;br&gt;c.Hbase Client：HBase客户端是由org.apache.hadoop.Hbase.client.HTable定义的。&lt;br&gt;下面将对这三个组件进行详细的介绍。&lt;br&gt;（1）HBaseMaster&lt;br&gt;一个HBase只部署一台主服务器，它通过领导选举算法确保只有唯一的主服务器是活跃的，ZooKeeper保存主服务器的服务器地址信息。如果主服务器瘫痪，可以通过领导选举算法从备用服务器中选择新的主服务器。&lt;br&gt;主服务器承担着初始化集群的任务。当主服务器每一次启动时，会试图从HDFS获取根或根域目录，如果获取失败则创建根或根域目录，以及第一个元域目录。在下次启动时，主服务器就可以获取集群和集群中所有域 的信息了。同时主服务器还负责集群中域的分配、域服务器运行状态的监控、表格的管理等工作。  &lt;/p&gt;
+&lt;p&gt;（2）HRegionServer&lt;br&gt;HBase域服务器的主要职责有服务于主服务器分配的域、处理端的读写请求、本地缓冲回写、本地数据压缩和分割域等功能。&lt;br&gt;每个域只能由一台域服务器来提供服务。当它开始服务于某域时，它会从HDFS文件系统中读取该域的日志和所有存储文件，同时还会管理操作HDFS文件的持久性存储工作。客户端通过与主服务器通信获取域或域服务器的列表信息后，就可以直接向域服务器发送域读写请求，来完成操作。  &lt;/p&gt;
+&lt;p&gt;（3）HBaseClient&lt;br&gt; HBase客户端负责查找用户域所在的域服务器地址。HBase客户端会与HBase主机交换消息以查找根域的位置，这是两者之间唯一的交流。&lt;br&gt;定位根域后，客户端连接根域所在的服务器，并扫描根域获取元域信息。元域信息中包含所需用户域的域服务器地址。客户端再连接元域所在的服务器，扫描元域以获取所需用户域所在的域服务器地址。客户端再连接元域所在的域服务器，扫描元域以获取所需用户域所有的域服务器地址。定位用户域后，客户端连接用户域所在的域服务器并发出读写请求。用户域的地址将在客户端被缓存，后续的请求无须重复上述过程。  &lt;/p&gt;
+&lt;p&gt;综上所述，HBase的体系结构中，HBase主要由主服务器、域服务器和客户端三部分组成。主服务器作为HBase的中心，管理整个集群中的所有域，监控每台域服务器的运行情况等；域服务器接收来自服务器的分配域，处理管理端的域读写请求并回写映射文件等；客户端主要用来查找用户域所在的域服务器地址信息。  &lt;/p&gt;
+&lt;p&gt;##Hive的数据管理&lt;br&gt;Hive是建立在Hadoop上的数据仓库基础架构。它提供了一系列的工具，用来进行数据提取、转化、加载，这是一种可以存储、查询和分析存储在Hadoop中的大规模数据的机制。Hive定义了简单的类SQL的查询语言，称为HiveQL，它允许熟悉SQL的用户用SQL语言查询数据。作为一个数据仓库，Hive的数据管理按照使用层次可以从元数据存储、数据存储和数据交换三方面来介绍。&lt;br&gt;（1）元数据存储&lt;br&gt;Hive将元数据存储在RDBMS中，有三种模式可以连接到数据库。&lt;br&gt;1）Single User Mode:此模式连接到一个In-memory的数据库Derby，一般用于Unit Test。&lt;br&gt;2）Multi User Mode：通过网络连接到一个数据库中，这是最常用的模式。&lt;br&gt;3）Remote Server Mode：用于非Java客户端访问元数据，在服务器端启动一个MetaStoreServer，客户端利用Thrift协议通过MetaStoreServer来访问元数据库。&lt;br&gt;（2）数据存储&lt;br&gt;首先，Hive没有专门的数据存储格式，也没有为数据建立索引，用户可以非常自由地组织Hive中的表，只需要在创建表的时候告诉Hive数据中的列分隔符和行分隔符，它就可以解析数据了。&lt;br&gt;其次，Hive中所有的数据都存储在HDFS中，Hive中包含4种数据模型：Table、External Table、Partition和Bucket。&lt;br&gt;Hive中的Table和数据库中的Table在概念上是类似的，每一个Table在Hive中都有一个相应的目录来存储数据。例如，一个表pvs，它在HDFS中的路径为:/wh/pvs，其中wh是在hive-site.xml中由${hive.metastore.warehouse.dir}指定的数据仓库的目录，所有的Table数据（不包括External Table）都保存在这个目录中。&lt;br&gt;（3）数据交换&lt;br&gt;数据交换主要分为以下部分，如图：&lt;/p&gt;
+&lt;p&gt;a）用户接口：包括客户端、Web界面和数据库接口。&lt;br&gt;b)元数据存储：通常存在在关系型数据库中，如MYSQL、Derby中。&lt;br&gt;c)解释器、编译器、优化器、执行器。&lt;br&gt;d)Hadoop：利用HDFS进行存储，利用MapRecue进行计算。&lt;br&gt;用户接口主要有三个：客户端、数据库接口和Web界面，其中最常用的是客户端。Client是Hive的客户端，当启动Client模式时，用户会想要连接Hive Server，这时需要指出Hive Server所在的节点，并且在该节点启动HiveServer。Web界面是通过浏览器访问Hive的。&lt;br&gt;Hive元数据存储在数据库中，如MYSQL、Derby中。Hive中的元数据包括表的名字、表的列、表的分区、表分区的属性、表的属性、表的数据所在目录等。&lt;br&gt;解释器、编译器、优化器完成HiveQL查询语句从记法分析、语法分析、编译、优化到查询计划的生成。生成的查询计划存储在HDFS中，并且随后由MapRecue调用执行。&lt;br&gt;Hive的数据存储在HDFS中，大部分的查询由MapRecue完成（包括&lt;em&gt;的查询不会生成MapRecue任务，比如select &lt;/em&gt; from tbl).  &lt;/p&gt;
+&lt;p&gt;#安装并运行Hadoop&lt;br&gt;介绍Hadoop安装之前，先介绍一下Hadoop对各个节点的角色定义。&lt;br&gt;Hadoop分别从三个角度将主机划分为两种角色。第一，最基本的划分为Master和Slave，即主人和奴隶；第二，从HDFS的角度，将主机划分为NameNode和DataNode（在分布式文件系统中，目录的管理很重要，管理目录相当于主人，而NameNode就是目录管理者）；第三，从MapRecue的角度，将主机划分为JobTracker和TaskTracker（一个Job经常被划分为多个Task，从这个角度不难理解它们之间的关系）。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Hadoop数据管理&lt;br&gt;主要包括Hadoop的分布式文件系统HDFS、分布式数据库HBase和数据仓库工具Hive&lt;/p&gt;
+&lt;p&gt;##HDFS的数据管理&lt;br&gt;HDFS是分布式计算的存储基石，Hadoop分布式文件系统和其它文件系统有很多类似的特性；&lt;br&gt;1）对于整
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hadoop" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/"/>
+    
+    
+      <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hadoop" scheme="http://cenrise.com/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vim入门实践</title>
+    <link href="http://cenrise.com/2017/05/04/tools/vim/TODO-vim%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://cenrise.com/2017/05/04/tools/vim/TODO-vim入门实践/</id>
+    <published>2017-05-04T08:00:00.000Z</published>
+    <updated>2017-05-04T08:36:20.796Z</updated>
+    
+    <content type="html">&lt;p&gt;#入门实践&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#入门实践&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="tools" scheme="http://cenrise.com/categories/tools/"/>
+    
+      <category term="vim" scheme="http://cenrise.com/categories/tools/vim/"/>
+    
+    
+      <category term="tools.vim" scheme="http://cenrise.com/tags/tools-vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>emacs入门</title>
+    <link href="http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs%E5%85%A5%E9%97%A8/"/>
+    <id>http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs入门/</id>
+    <published>2017-05-04T08:00:00.000Z</published>
+    <updated>2017-05-04T08:35:41.098Z</updated>
+    
+    <content type="html">&lt;p&gt;#入门实践&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#入门实践&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="tools" scheme="http://cenrise.com/categories/tools/"/>
+    
+      <category term="emacs" scheme="http://cenrise.com/categories/tools/emacs/"/>
+    
+    
+      <category term="tools.emacs" scheme="http://cenrise.com/tags/tools-emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TODO-主要设计模式及简要介绍</title>
+    <link href="http://cenrise.com/2017/05/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://cenrise.com/2017/05/02/设计模式/主要设计模式及简要介绍/</id>
+    <published>2017-05-02T05:48:00.000Z</published>
+    <updated>2017-05-02T05:50:09.626Z</updated>
+    
+    <content type="html">&lt;p&gt;#java设计模式分类&lt;/p&gt;
+&lt;p&gt;#设计模式概述&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#java设计模式分类&lt;/p&gt;
+&lt;p&gt;#设计模式概述&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="软件工程" scheme="http://cenrise.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="设计模式" scheme="http://cenrise.com/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="软件工程" scheme="http://cenrise.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="设计模式" scheme="http://cenrise.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用命令及操作</title>
+    <link href="http://cenrise.com/2017/05/02/linux/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E6%93%8D%E4%BD%9C/"/>
+    <id>http://cenrise.com/2017/05/02/linux/Linux常用命令及操作/</id>
+    <published>2017-05-02T02:54:00.000Z</published>
+    <updated>2017-05-02T03:07:23.541Z</updated>
+    
+    <content type="html">&lt;p&gt;下面整理一些常用的命令，内容来自于网络整合，会把自己常用的收集在这里  &lt;/p&gt;
+&lt;p&gt;#CURL命令&lt;br&gt;下载单个文件，默认将输出打印到标准输出中(STDOUT)中&lt;br&gt;curl &lt;a href=&quot;http://www.centos.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.centos.org&lt;/a&gt;&lt;br&gt;通过-o/-O选项保存下载的文件到指定的文件中：&lt;br&gt;-o：将文件保存为命令行中指定的文件名的文件中&lt;br&gt;-O：使用URL中默认的文件名保存文件到本地  &lt;/p&gt;
+&lt;h1 id=&quot;将文件下载到本地并命名为mygettext-html&quot;&gt;&lt;a href=&quot;#将文件下载到本地并命名为mygettext-html&quot; class=&quot;headerlink&quot; title=&quot;将文件下载到本地并命名为mygettext.html&quot;&gt;&lt;/a&gt;将文件下载到本地并命名为mygettext.html&lt;/h1&gt;&lt;p&gt;curl -o mygettext.html &lt;a href=&quot;http://www.gnu.org/software/gettext/manual/gettext.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.gnu.org/software/gettext/manual/gettext.html&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;将文件保存到本地并命名为gettext-html&quot;&gt;&lt;a href=&quot;#将文件保存到本地并命名为gettext-html&quot; class=&quot;headerlink&quot; title=&quot;将文件保存到本地并命名为gettext.html&quot;&gt;&lt;/a&gt;将文件保存到本地并命名为gettext.html&lt;/h1&gt;&lt;p&gt;curl -O &lt;a href=&quot;http://www.gnu.org/software/gettext/manual/gettext.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.gnu.org/software/gettext/manual/gettext.html&lt;/a&gt;&lt;br&gt;同样可以使用转向字符”&amp;gt;”对输出进行转向输出  &lt;/p&gt;
+&lt;p&gt;##同时获取多个文件&lt;br&gt;curl -O URL1 -O URL2  &lt;/p&gt;
+&lt;p&gt;#ECHO命令&lt;br&gt;在终端下打印变量value的时候也是常常用到的, 因此有必要了解下echo的用法&lt;br&gt;echo命令的功能是在显示器上显示一段文字，一般起到一个提示的作用。&lt;br&gt;该命令的一般格式为： echo [ -n ] 字符串&lt;br&gt;其中选项n表示输出文字后不换行；字符串能加引号，也能不加引号。用echo命令输出加引号的字符串时，将字符串原样输出；用echo命令输出不加引号的字符串时，将字符串中的各个单词作为字符串输出，各字符串之间用一个空格分割。&lt;br&gt;功能说明：显示文字。&lt;br&gt;语 　 法：echo [-ne][字符串]或 echo [–help][–version]&lt;br&gt;补充说明：echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开, 并在最后加上换行号。&lt;br&gt;参　　 数：-n 不要在最后自动换行&lt;br&gt;-e 若字符串中出现以下字符，则特别加以处理，而不会将它当成一般&lt;br&gt;文字输出：&lt;br&gt;   \a 发出警告声；&lt;br&gt;   \b 删除前一个字符；&lt;br&gt;   \c 最后不加上换行符号；&lt;br&gt;   \f 换行但光标仍旧停留在原来的位置；&lt;br&gt;   \n 换行且光标移至行首；&lt;br&gt;   \r 光标移至行首，但不换行；&lt;br&gt;   \t 插入tab；&lt;br&gt;   \v 与\f相同；&lt;br&gt;   \ 插入\字符；&lt;br&gt;   \nnn 插入nnn（八进制）所代表的ASCII字符；&lt;br&gt;–help 显示帮助&lt;br&gt;–version 显示版本信息  &lt;/p&gt;
+&lt;p&gt;##其它功能&lt;br&gt;ECHO命令是大家都熟悉的DOS批处理命令的一条子命令，但它的一些功能和用法也许你并不是全都知道，不信你瞧：&lt;br&gt;1． 作为控制批处理命令在执行时是否显示命令行自身的开关 格式：ECHO [ON|OFF] 如果想关闭“ECHO OFF”命令行自身的显示，则需要在该命令行前加上“@”。&lt;br&gt;2． 显示当前ECHO设置状态 格式：ECHO&lt;br&gt;3． 输出提示信息 格式：ECHO信息内容 上述是ECHO命令常见的三种用法，也是大家熟悉和会用的，但作为DOS命令淘金者你还应该知道下面的技巧：&lt;br&gt;4． 关闭DOS命令提示符 在DOS提示符状态下键入ECHO OFF，能够关闭DOS提示符的显示使屏幕只留下光标，直至键入ECHO ON，提示符才会重新出现。&lt;br&gt;5． 输出空行，即相当于输入一个回车 格式：ECHO． 值得注意的是命令行中的“．”要紧跟在ECHO后面中间不能有空格，否则“．”将被当作提示信息输出到屏幕。另外“．”可以用，：；”／[/]＋等任一符号替代。 在下面的例子中ECHO．输出的回车，经DOS管道转向作为TIME命令的输入，即相当于在TIME命令执行后给出一个回车。所以执行时系统会在显示当前时间后，自动返回到DOS提示符状态： C:〉ECHO.|TIME ECHO命令输出空行的另一个应用实例是：将ECHO．加在自动批处理文件中，使原本在屏幕下方显示的提示画面，出现在屏幕上方。&lt;br&gt;6． 答复命令中的提问 格式：ECHO答复语|命令文件名 上述格式可以用于简化一些需要人机对话的命令（如：CHKDSK／F；FORMAT Drive:；del &lt;em&gt;.&lt;/em&gt;）的操作，它是通过DOS管道命令把ECHO命令输出的预置答复语作为人机对话命令的输入。下面的例子就相当于在调用的命令出现人机对话时输入“Y”回车： C:〉ECHO Y|CHKDSK/F C:〉ECHO Y|DEL A :&lt;em&gt;.&lt;/em&gt;&lt;br&gt;7． 建立新文件或增加文件内容 格式：ECHO 文件内容＞文件名 ECHO 文件内容＞＞文件名 例如：C:〉ECHO @ECHO OFF〉AUTOEXEC.BAT建立自动批处理文件 C:〉ECHO C:/CPAV/BOOTSAFE〉〉AUTOEXEC.BAT向自动批处理文件中追加内容 C:TYPE AUTOEXEC.BAT显示该自动批处理文件 @ECHO OFF C:/CPAV/BOOTSAFE&lt;br&gt;    可用于设置环境变量，如：&lt;br&gt;    $sudo echo “export HIVE_HOME=$PWD/hive-0.9.0” &amp;gt; /etc/profile.d/hive.sh&lt;br&gt;    $sudo echo “PATH=$PATH:$HIVE_HOME/bin” &amp;gt;&amp;gt; /etc/profile.d/hive.sh&lt;br&gt;8． 向打印机输出打印内容或打印控制码 格式：ECHO 打印机控制码＞PRN ECHO 打印内容＞PRN 下面的例子是向M－1724打印机输入打印控制码。＜Alt＞156是按住Alt键在小键盘键入156，类似情况依此类推： C:〉ECHO 〈Alt〉+156〈Alt〉+42〈Alt〉+116〉PRN（输入下划线命令FS＊t） C:〉ECHO 〈Alt〉+155@〉PRN（输入初始化命令ESC@） C:〉ECHO.〉PRN（换行）&lt;br&gt;9． 使喇叭鸣响 C:〉ECHO ^G “^G”是用Ctrl＋G或Alt＋007输入，输入多个^G可以产生多声鸣响。使用方法是直接将其加入批处理文件中或做成批处理文件调用。&lt;br&gt;10．执行ESC控制序列修改屏幕和键盘设置 我们知道DOS的设备驱动程序ANSI.SYS提供了一套用来修改屏幕和键盘设置的ESC控制序列。如执行下述内容的批处理程序可以把功能键F12定义为DOS命令“DIR／W”，并把屏幕颜色修改为白色字符蓝色背景。 @ECHO”←[0;134;”DIR/W”;13p @ECHO”←[1;37;44m （注：批处理文件中“←”字符的输入方法是在编辑状态下按Alt中小键盘上的27） DOS命令是接触计算机的人首先要学到的，对许多人来说是太熟悉太简单了，其实不然，在这些命令中蕴藏着丰富的内容，仍有待于我们进一步去理解去开发，如果你是一个有心人就一定会从这些自以为熟知的命令中发现新的闪光点，淘得真金。  &lt;/p&gt;
+&lt;p&gt;#&amp;gt;和&amp;gt;&amp;gt;的区别,&amp;lt;号使用&lt;br&gt;Linux中经常会用到将内容输出到某文件当中，只需要在执行命令后面加上&amp;gt;或者&amp;gt;&amp;gt;号即可进入操作。&lt;br&gt;大于号：将一条命令执行结果（标准输出，或者错误输出，本来都要打印到屏幕上面的）重定向其它输出设备（文件，打开文件操作符，或打印机等等）&lt;br&gt;小于号：命令默认从键盘获得的输入，改成从文件，或者其它打开文件以及设备输入  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是追加内容&lt;br&gt;是覆盖原有内容&lt;br&gt;示例：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;bogon:Desktop wenxuechao$ echo ‘abc’ &amp;gt; test.txt    &lt;/li&gt;
+&lt;li&gt;bogon:Desktop wenxuechao$ echo ‘123’ &amp;gt;&amp;gt; test.txt&lt;br&gt;执行效果，第一句命令会在桌面创建个test.txt的文件，并且将abc写到文件中。&lt;br&gt;第二句命令，会在文件下方，再次写入内容。&lt;br&gt;&amp;lt;小于号&lt;br&gt;mysql -u root -p -h test &amp;lt; test.sql 导入数据    &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下面整理一些常用的命令，内容来自于网络整合，会把自己常用的收集在这里  &lt;/p&gt;
+&lt;p&gt;#CURL命令&lt;br&gt;下载单个文件，默认将输出打印到标准输出中(STDOUT)中&lt;br&gt;curl &lt;a href=&quot;http://www.centos.org&quot; target=&quot;_bla
+    
+    </summary>
+    
+      <category term="linux" scheme="http://cenrise.com/categories/linux/"/>
+    
+      <category term="linux基本配置" scheme="http://cenrise.com/categories/linux/linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="linux" scheme="http://cenrise.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HBase入门概念</title>
+    <link href="http://cenrise.com/2017/05/02/hadoop/HBase%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5/"/>
+    <id>http://cenrise.com/2017/05/02/hadoop/HBase入门概念/</id>
+    <published>2017-05-02T02:30:00.000Z</published>
+    <updated>2017-05-04T03:04:31.514Z</updated>
+    
+    <content type="html">&lt;p&gt;#Hbase概念&lt;br&gt;HBase是一个分布式的、面向列的开源数据库。  &lt;/p&gt;
+&lt;p&gt;##Hbase术语&lt;br&gt;&lt;strong&gt;行键Row Key&lt;/strong&gt;：主键是用来检索记录的主键，访问hbasetable中的行。&lt;br&gt;&lt;strong&gt;列族Column Family&lt;/strong&gt;：Table在水平方向有一个或者多个ColumnFamily组成，一个ColumnFamily中可以由任意多个Column组成，即ColumnFamily支持动态扩展，无需预先定义Column的数量以及类型，所有Column均以二进制格式存储，用户需要自行进行类型转换。&lt;br&gt;&lt;strong&gt;列column&lt;/strong&gt;：由Hbase中的列族ColumnFamily + 列的名称（cell）组成列。&lt;br&gt;&lt;strong&gt;单元格cell&lt;/strong&gt;：HBase中通过row和columns确定的为一个存贮单元称为cell。&lt;br&gt;&lt;strong&gt;版本version&lt;/strong&gt;：每个 cell都保存着同一份数据的多个版本。版本通过时间戳来索引。  &lt;/p&gt;
+&lt;p&gt;#Hbase安装&lt;br&gt;三种方式：单机、伪分布式、分布式&lt;/p&gt;
+&lt;p&gt;##单机模式&lt;br&gt;Hbase安装文件下载解压后，直接运行，在单机模式下HBase不使用HDFS。&lt;/p&gt;
+&lt;p&gt;##伪分布式&lt;br&gt;运行在单个节点上的分布式模式  &lt;/p&gt;
+&lt;p&gt;##全分布式&lt;br&gt;全分面式模式下的HBase集群需要ZooKeeper实例运行，并且需要所有的HBase节点都能够与ZooKeeper实例通信，默认情况下HBase自身维护着一组默认的ZooKeeper实例，不过用户也可以配置独立的ZooKeeper实例，这样能够使HBase更加健壮。&lt;/p&gt;
+&lt;p&gt;#运行HBase&lt;/p&gt;
+&lt;p&gt;##单机模式&lt;br&gt;start-hbase.sh&lt;br&gt;stop-hbase.sh&lt;/p&gt;
+&lt;p&gt;##伪分分面式&lt;br&gt;由于伪分布式运行基于HDFS，因此在期待运行HBase之前首先需要启动HDFS。&lt;br&gt;start-dfs.sh&lt;br&gt;然后start-hbase.sh&lt;/p&gt;
+&lt;p&gt;##全分布式&lt;br&gt;与伪分布式相同&lt;/p&gt;
+&lt;p&gt;#Hbase Shell&lt;br&gt;Hbase Shell提供了HBae命令，可以方便创建、删除及修改表，还可以向表中添加数据、列出表中相关信息等。&lt;br&gt;在启动hbase之后，用户可以通过下面的命令进入Hbase Shell：&lt;br&gt;hbase shell&lt;br&gt;输入help获取帮助&lt;br&gt;alter:修改列族模式&lt;br&gt;count:统计表中行的数量&lt;br&gt;create：创建表&lt;br&gt;describe:显示表相关的详细信息&lt;br&gt;delete:删除指定对象的值（可以为表、行、列对应的值，另外也可以指定时间戳的值）&lt;br&gt;deleteall:删除指定行的所有元素值&lt;br&gt;disable:使表无效&lt;br&gt;drop:删除表&lt;br&gt;enable:使表有效&lt;br&gt;exists：测试表是否存在&lt;br&gt;exit:退出Hbase Shell&lt;br&gt;get:获取行或单元(cell)的值&lt;br&gt;incr:增加指定表、行或列的值&lt;br&gt;list:列出HBase中存在的所有表&lt;br&gt;put:向指定的表单元添加值&lt;br&gt;tools:列出HBase所支持的工具&lt;br&gt;scan：通过对表的扫描来获取对应的值&lt;br&gt;status:返回HBase集群的状态信息&lt;br&gt;shutdown:关闭HBase集群&lt;br&gt;truncate:重新创建指定表&lt;br&gt;version:返回HBase版本信息&lt;br&gt;下面介绍几个详细的：&lt;br&gt;（1）create&lt;br&gt;通过表名及用逗号做好事开的列族信息来创建表&lt;br&gt;1）hbase&amp;gt;create ‘t1’,{NAME=&amp;gt;’f1’,VERSIONS=&amp;gt;5}&lt;br&gt;2)hbase&amp;gt;create ‘t1’,{NAME=&amp;gt;’f1’},{NAME=&amp;gt;’f2’},{NAME=&amp;gt;’f3’}&lt;br&gt;hbase&amp;gt;#上面的命令可以简写为下面所示的格式：&lt;br&gt;hbase&amp;gt;create ‘t1’,’f1’,’f2’,’f3’&lt;br&gt;3)hbase&amp;gt;create ‘t1’,{NAME=’f1’,VERSIONS=&amp;gt;1,TTL=&amp;gt;2592000,BLOCKCACHE=&amp;gt;true}&lt;br&gt;以”NAME=&amp;gt;’f1’举例说明，其中，列族参数的格式是箭头左侧为参数变量，右侧为参数对应的值，并用“=&amp;gt;”分开。  &lt;/p&gt;
+&lt;p&gt;（2）list&lt;br&gt;列出HBase中包含的表名称&lt;br&gt;hbase&amp;gt;list   &lt;/p&gt;
+&lt;p&gt;(3)put&lt;br&gt;向指定的HBase表单元添加值，例如向表t1的行r1、列c1:1添加值v1，并指定时间戳为ts的操作如下：&lt;br&gt;hbase&amp;gt;put ‘t1’,’r1’,’c1:1’,’value’,ta1  &lt;/p&gt;
+&lt;p&gt;(4)scan&lt;br&gt;获取指定表的相关信息，可以通过逗号分隔来指定扫描参数&lt;br&gt;例如：获取表test的所有值&lt;br&gt;hbase&amp;gt;scan ‘test’&lt;br&gt;获取表test的c1列的所有值&lt;br&gt;hbase&amp;gt;scan ‘test’,{COLUMNS=&amp;gt;’c1’}&lt;br&gt;获取表test的c1列的前一行的所有值&lt;br&gt;hbase&amp;gt;scan ‘test’,{COLUMNS=&amp;gt;’c1’,limit=&amp;gt;1}  &lt;/p&gt;
+&lt;p&gt;(5)get&lt;br&gt;获取行或单元的值，此命令可以指定表名、行值、以及可选的列值和时间戳。&lt;br&gt;获取表test行r1的值&lt;br&gt;hbase&amp;gt;get ‘test’,’r1’&lt;br&gt;获取表test行r1列c1:1的值&lt;br&gt;hbase&amp;gt;get ‘test’,’r1’{COLUMN=&amp;gt;’c1:1’}&lt;br&gt;需要注意的是，COLUMN和COLUMNS是不同的，scan操作中的COLUMNS指定的是表的列族，get操作中的COLUMN指定的是特定的列，COLUMN的值实质上为“列族+：+列修饰符”。&lt;br&gt;另外，在shell中，常量不需要用引号引起来，但二进制的值需要用双引号引起来，而其他值则用单引号引起来。&lt;br&gt;HBase Shell的常量可以通过shell中输入“Object.constants”命令来查看。  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Hbase概念&lt;br&gt;HBase是一个分布式的、面向列的开源数据库。  &lt;/p&gt;
+&lt;p&gt;##Hbase术语&lt;br&gt;&lt;strong&gt;行键Row Key&lt;/strong&gt;：主键是用来检索记录的主键，访问hbasetable中的行。&lt;br&gt;&lt;strong&gt;列族Column Fa
+    
+    </summary>
+    
+      <category term="分布式" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="hbase" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/hbase/"/>
+    
+    
+      <category term="分布式" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="hbase" scheme="http://cenrise.com/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive入门概念</title>
+    <link href="http://cenrise.com/2017/05/02/hadoop/Hive%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5/"/>
+    <id>http://cenrise.com/2017/05/02/hadoop/Hive入门概念/</id>
+    <published>2017-05-02T02:30:00.000Z</published>
+    <updated>2017-05-02T07:44:24.567Z</updated>
+    
+    <content type="html">&lt;p&gt;#Hive&lt;br&gt;大数据生态下，通过Hadoop MapReduce，实现将计算分割成多个处理单元，然后分散到一群家用或服务器级别的硬件上，从而降低成本并提供可伸缩性；这个计算模型下是HDFS，这是个“可插拔的“文件系统。不过，这里存在一个问题，就是用户如何从一个现有的数据基础架构转移到Hadoop上，而这个基础架构是基于关系型数据库和结构化查询语句（SQL）？&lt;br&gt;这就是Hive出现的原因，Hive提供了被称为Hive查询语言的（或称为HiveQL或HQL）的SQL方言，来查询存储在Hadoop集群中的数据。Hive将大多数据的查询转换为MapRecue任务（ｊｏｂ）。&lt;/p&gt;
+&lt;p&gt;#Hive安装&lt;br&gt;Hive使用环境变量HADOOP_HOME来指定Hadoop的所有相关JAR和配置文件，因此在安装之前请确认下是否设置好了这个环境变量。&lt;br&gt;$cd ~&lt;br&gt;$curl -o &lt;a href=&quot;http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz&lt;/a&gt;&lt;br&gt;$tar -xzf hive-0.9.0.tar.gz&lt;br&gt;$sudo mkdir -p /user/hive/warehouse&lt;br&gt;$sudo chmod a+rwx /user/hive/warehouse&lt;/p&gt;
+&lt;p&gt;可以定义HIVE_HOME环境变量&lt;br&gt;$sudo echo “export HIVE_HOME=$PWD/hive-0.9.0” &amp;gt; /etc/profile.d/hive.sh&lt;br&gt;$sudo echo “PATH=$PATH:$HIVE_HOME/bin” &amp;gt;&amp;gt; /etc/profile.d/hive.sh&lt;br&gt;$. /etc/profile&lt;/p&gt;
+&lt;p&gt;#Hive组成&lt;br&gt;主要包含三个部分：&lt;br&gt;1.代码本身，在$HIVE_HOME/lib下可以看到许多jar，例如hive-exec&lt;em&gt;.jar，hive-metastore&lt;/em&gt;.ja，每个jar文件都实现了hive功能中某个特定的部分。&lt;br&gt;2.可执行文件，在$HIVE_HOME/bin下，包含hive的命令行界面CLI，CLI是使用hive最常用的方式，一般会使用小写的hive代替。CLI用于提供交互式的界面供输入语句或用户执行hive语句的脚本。&lt;br&gt;3.metastoreservice（元数据服务），所有的hive客户端都需要元数据服务，hive使用这个服务来存储表模式信息和其他元数据信息。通常会使用关系型数据库来存储这些信息，默认使用内置的DerbySQL服务器，其可以提供有限的、单进程的存储服务。例如，当使用Derby时，用户不能执行2个并发的Hive CLI实例，然而，如果是在个人计算机上或某些开发任务上使用的话这样也没有问题。对于集群来说，需要使用MYSQL或类似的关系型数据库。&lt;br&gt;另外，hive还有一些组件，Thrift服务提供可远程访问的其他进程的功能，也提供JDBC和ODBC访问Hive的功能。Hive还提供了一个简单的网页界面HWI，提供远程访问Hive服务。&lt;/p&gt;
+&lt;p&gt;#Hive启动&lt;br&gt;使用$HIVE_HOME/bin/hive命令&lt;br&gt;$cd $HIVE_HOME&lt;br&gt;$bin/hive&lt;br&gt;hive&amp;gt;CREATE TABLE x (a INT);&lt;br&gt;hive&amp;gt;SELECT * from x;&lt;br&gt;hive&amp;gt;DROP TABLE x;&lt;br&gt;hive&amp;gt;exit;&lt;/p&gt;
+&lt;p&gt;#Hive命令&lt;br&gt;[root@cdhmaster~]#hive–help&lt;br&gt;Usage./hive&lt;parameters&gt;–serviceserviceName&lt;serviceparameters&gt;&lt;br&gt;ServiceList:beelinecleardanglingscratchdirclihelphiveburninclienthiveserver2hiveserverhwijarlineagemetastoremetatoolorcfiledumprcfilecatschemaToolversion&lt;br&gt;Parametersparsed:&lt;br&gt;–auxpath:Auxillaryjars&lt;br&gt;–config:Hiveconfigurationdirectory&lt;br&gt;–service:Startsspecificservice/component.cliisdefault&lt;br&gt;Parametersused:&lt;br&gt;HADOOP_HOMEorHADOOP_PREFIX:Hadoopinstalldirectory&lt;br&gt;HIVE_OPT:Hiveoptions&lt;br&gt;Forhelponaparticularservice:&lt;br&gt;./hive–serviceserviceName–help&lt;br&gt;Debughelp:./hive–debug–help&lt;br&gt;Youhavenewmailin/var/spool/mail/root&lt;br&gt;需要注意ServiceList:后面的内容，这里提供了几个服务，包括我们绝大多数据时间将要使用的CLI。用户可以通过–servicename服务名称来启用某个服务。  &lt;/serviceparameters&gt;&lt;/parameters&gt;&lt;/p&gt;
+&lt;p&gt;#常用SQL&lt;br&gt;显示数据库&lt;br&gt;hive&amp;gt;showdatabases;&lt;br&gt;OK&lt;br&gt;Default&lt;br&gt;hive&amp;gt;showdatabaselike’h.*’;&lt;br&gt;创建数据库&lt;br&gt;hive&amp;gt;createdatabasetest_test001;&lt;br&gt;use命令用于将某个数据库设置为用户当前的工作数据库&lt;br&gt;hive&amp;gt;usetest_test001;&lt;br&gt;设置当前工作数据库后，即可查询所有表&lt;br&gt;hive&amp;gt;showtables；&lt;br&gt;删除数据库&lt;br&gt;hive&amp;gt;dropdatabaseifexiststest_test001;  &lt;/p&gt;
+&lt;p&gt;创建数据&lt;br&gt;createtableifnotexistsmydb.employees(&lt;br&gt;namestringcomment’emplyeename’,&lt;br&gt;Salaryfloat&lt;br&gt;)  &lt;/p&gt;
+&lt;p&gt;删除表&lt;br&gt;droptableifexiststest_test001;  &lt;/p&gt;
+&lt;p&gt;修改表&lt;br&gt;altertable只会修改元数据  &lt;/p&gt;
+&lt;p&gt;表重命名&lt;br&gt;altertabletest_test001renametotes;  &lt;/p&gt;
+&lt;p&gt;set hive.cli.print.header=true; // 打印列名&lt;br&gt;set hive.cli.print.row.to.vertical=true; // 开启行转列功能, 前提必须开启打印列名功能&lt;br&gt;set hive.cli.print.row.to.vertical.num=1; // 设置每行显示的列数  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Hive&lt;br&gt;大数据生态下，通过Hadoop MapReduce，实现将计算分割成多个处理单元，然后分散到一群家用或服务器级别的硬件上，从而降低成本并提供可伸缩性；这个计算模型下是HDFS，这是个“可插拔的“文件系统。不过，这里存在一个问题，就是用户如何从一个现有的数据
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hive" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hive/"/>
+    
+    
+      <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hive" scheme="http://cenrise.com/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue.js入门之HelloWorld</title>
+    <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/vue.js/TODO-vue.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
+    <id>http://cenrise.com/2017/04/27/前端/vue.js/TODO-vue.js入门之HelloWorld/</id>
+    <published>2017-04-27T07:00:00.000Z</published>
+    <updated>2017-04-27T09:24:54.086Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="angular.js" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/angular-js/"/>
+    
+    
+      <category term="angular.js" scheme="http://cenrise.com/tags/angular-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>angular.js入门之HelloWorld</title>
+    <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/angular.js/TODO-angular.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
+    <id>http://cenrise.com/2017/04/27/前端/angular.js/TODO-angular.js入门之HelloWorld/</id>
+    <published>2017-04-27T07:00:00.000Z</published>
+    <updated>2017-04-27T09:24:02.149Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="angular.js" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/angular-js/"/>
+    
+    
+      <category term="angular.js" scheme="http://cenrise.com/tags/angular-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>react.js入门之HelloWorld</title>
+    <link href="http://cenrise.com/2017/04/27/%E5%89%8D%E7%AB%AF/react.js/TODO-react.js%E5%85%A5%E9%97%A8%E4%B9%8BHelloWorld/"/>
+    <id>http://cenrise.com/2017/04/27/前端/react.js/TODO-react.js入门之HelloWorld/</id>
+    <published>2017-04-27T07:00:00.000Z</published>
+    <updated>2017-04-27T09:20:32.742Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="react.js" scheme="http://cenrise.com/categories/%E5%89%8D%E7%AB%AF/react-js/"/>
+    
+    
+      <category term="react.js" scheme="http://cenrise.com/tags/react-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jdk环境变量配置</title>
+    <link href="http://cenrise.com/2017/04/18/java/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://cenrise.com/2017/04/18/java/jdk环境变量配置/</id>
+    <published>2017-04-18T08:43:49.000Z</published>
+    <updated>2017-04-18T07:31:01.769Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;jdk环境变量配置&quot;&gt;&lt;a href=&quot;#jdk环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;jdk环境变量配置&quot;&gt;&lt;/a&gt;jdk环境变量配置&lt;/h1&gt;&lt;p&gt;jdk环境变量配置&lt;br&gt;进行java开发，首先要安装jdk，安装了jdk后还要进行环境变量配置：&lt;br&gt;1、下载jdk（&lt;a href=&quot;http://java.sun.com/javase/downloads/index.jsp），我下载的版本是：jdk-6u14-windows-i586.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://java.sun.com/javase/downloads/index.jsp），我下载的版本是：jdk-6u14-windows-i586.exe&lt;/a&gt;&lt;br&gt;2、安装jdk-6u14-windows-i586.exe&lt;br&gt;3、配置环境变量：右击“我的电脑”–&amp;gt;”高级”–&amp;gt;”环境变量”&lt;br&gt;1）在系统变量里新建JAVA_HOME变量，变量值为：C:\Program Files\Java\jdk1.6.0_14（根据自己的安装路径填写）&lt;br&gt;2）新建classpath变量，变量值为：.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar&lt;br&gt;3）在path变量（已存在不用新建）添加变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin（注意变量值之间用“;”隔开）&lt;br&gt;4、“开始”–&amp;gt;“运行”–&amp;gt;输入“javac”–&amp;gt;”Enter”，如果能正常打印用法说明配置成功！&lt;br&gt;补充环境变量的解析:&lt;br&gt;JAVA_HOME:jdk的安装路径&lt;br&gt;classpath:java加载类路径，只有类在classpath中java命令才能识别，在路径前加了个”.”表示当前路径。&lt;br&gt;path：系统在任何路径下都可以识别java,javac命令。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;jdk环境变量配置&quot;&gt;&lt;a href=&quot;#jdk环境变量配置&quot; class=&quot;headerlink&quot; title=&quot;jdk环境变量配置&quot;&gt;&lt;/a&gt;jdk环境变量配置&lt;/h1&gt;&lt;p&gt;jdk环境变量配置&lt;br&gt;进行java开发，首先要安装jdk，安装了jdk后还要进行
+    
+    </summary>
+    
+      <category term="java" scheme="http://cenrise.com/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://cenrise.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown基础入门</title>
+    <link href="http://cenrise.com/2017/04/18/Markdown%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
+    <id>http://cenrise.com/2017/04/18/Markdown基础入门/</id>
+    <published>2017-04-18T07:00:00.000Z</published>
+    <updated>2017-04-18T07:12:09.493Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
+&lt;h2 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink&quot; title=&quot;表格&quot;&gt;&lt;/a&gt;表格&lt;/h2&gt;&lt;p&gt;实现表格的两种方式&lt;br&gt;方式一：当某项过长时，表格可能如下显示，不好看。&lt;br&gt;具体使用方式请看示例。&lt;br&gt;•    ——: 为右对齐。&lt;br&gt;•    :—— 为左对齐。&lt;br&gt;•    :——: 为居中对齐。&lt;br&gt;•    ——- 为使用默认居中对齐。&lt;br&gt;1.9.2 示例&lt;br&gt;|         属性项               |                    属性说明&lt;br&gt;|    ——: |    :——-:    |    :———   |    ——    |&lt;br&gt;|    组件名称    |    步骤的名字，这个名字在一个转换中必须是唯一的。    |&lt;br&gt;|    字段    |    指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流    |&lt;br&gt;|字段|指定排序的字段名。|&lt;br&gt;|升序|排序原则：升序或降序。如果选择升序，排序顺序将是：数字-&amp;gt;英文-&amp;gt;汉字，汉字是按照拼音排序的，也同样会按照声调排序。如果是多音字，只会取一个读音，无法根据语境判断其的读音。|&lt;/p&gt;
+&lt;p&gt;显示如下：  &lt;/p&gt;
+&lt;p&gt;注意  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每个Markdown解析器都不一样，可能左右居中对齐方式的表示方式不一样。  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方式二：表格形式（推荐）    &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;table&amp;gt;
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;th&amp;gt;属性项&amp;lt;/th&amp;gt;  
+        &amp;lt;th&amp;gt;属性说明&amp;lt;/th&amp;gt;  
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;组件名称&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;步骤的名字，这个名字在一个转换中必须是唯一的。&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;字段&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流。&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;字段&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;指定排序的字段名。&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;升序&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;排序原则：升序或降序。如果选择升序，    
+        排序顺序将是：数字-&amp;gt;英文-&amp;gt;汉字，汉字是按照拼音排序的，    
+        也同样会按照声调排序。如果是多音字，只会取一个读音，    
+        无法根据语境判断其的读音。&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;br&gt;输出如下：  &lt;/p&gt;
+&lt;table&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;th&gt;属性项&lt;/th&gt;&lt;br&gt;        &lt;th&gt;属性说明&lt;/th&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;组件名称&lt;/td&gt;&lt;br&gt;        &lt;td&gt;步骤的名字，这个名字在一个转换中必须是唯一的。&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;字段&lt;/td&gt;&lt;br&gt;        &lt;td&gt;指定字段名和排序方向(升序/降序);&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;字段&lt;/td&gt;&lt;br&gt;        &lt;td&gt;指定排序的字段名。&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;升序&lt;/td&gt;&lt;br&gt;        &lt;td&gt;排序原则：升序或降序。如果选择升&lt;br&gt;    &lt;/td&gt;&lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
+
+
+
+
+&lt;h2 id=&quot;首行缩进&quot;&gt;&lt;a href=&quot;#首行缩进&quot; class=&quot;headerlink&quot; title=&quot;首行缩进&quot;&gt;&lt;/a&gt;首行缩进&lt;/h2&gt;&lt;p&gt;由于markdown语法主要考虑的是英文，所以对于中文的首行缩进并不太友好，两种方法都可以完美解决这个问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把输入法由半角改为全角。 两次空格之后就能够有两个汉字的缩进。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在开头的时候，先输入下面的代码，然后紧跟着输入文本即可。分号也不要掉。   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;直接写&lt;br&gt;半方大的空白&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;全方大的空白```&amp;amp;emsp;```或```&amp;amp;#8195;```  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;不断行的空白格```&amp;amp;nbsp;```或```&amp;amp;#160;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;做为显示时这几个转义不能单独写，要在前后添加```&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
+&lt;h2 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink
+    
+    </summary>
+    
+      <category term="markdown" scheme="http://cenrise.com/categories/markdown/"/>
+    
+    
+      <category term="markdown" scheme="http://cenrise.com/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring源码分析之环境准备</title>
+    <link href="http://cenrise.com/2017/04/18/spring/Spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"/>
+    <id>http://cenrise.com/2017/04/18/spring/Spring源码分析之环境准备/</id>
+    <published>2017-04-18T02:00:00.000Z</published>
+    <updated>2017-04-18T02:00:36.421Z</updated>
+    
+    <content type="html">&lt;p&gt;#Spring源码分析之环境准备&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Spring源码分析之环境准备&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="开源项目" scheme="http://cenrise.com/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    
+      <category term="spring" scheme="http://cenrise.com/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/spring/"/>
+    
+    
+      <category term="java" scheme="http://cenrise.com/tags/java/"/>
+    
+      <category term="spring" scheme="http://cenrise.com/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDK源码分析之集合框架HashMap</title>
+    <link href="http://cenrise.com/2017/04/18/java/JDK%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6HashMap/"/>
+    <id>http://cenrise.com/2017/04/18/java/JDK源码分析之集合框架HashMap/</id>
+    <published>2017-04-18T02:00:00.000Z</published>
+    <updated>2017-04-18T01:57:01.660Z</updated>
+    
+    <content type="html">&lt;p&gt;#JDK源码分析之集合框架HashMap&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#JDK源码分析之集合框架HashMap&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="java" scheme="http://cenrise.com/categories/java/"/>
+    
+      <category term="jdk源码" scheme="http://cenrise.com/categories/java/jdk%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="java" scheme="http://cenrise.com/tags/java/"/>
+    
+      <category term="jdk源码" scheme="http://cenrise.com/tags/jdk%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache Spark与Apache Hadoop的关系</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Apache%20Spark%E4%B8%8EApache%20Hadoop%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/</id>
+    <published>2017-04-16T15:43:49.000Z</published>
+    <updated>2017-04-18T01:58:16.827Z</updated>
+    
+    <content type="html">&lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
+&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：&lt;br&gt;1.传统数据管理系统，如果关系型数据库与主机&lt;br&gt;2.日志、机器生成的数据，以及其他类型的事件数据。&lt;br&gt;3.从现有的企业数据存储中输入的文件。&lt;/p&gt;
+&lt;p&gt;将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：&lt;br&gt;1.数据采集的时效性与可访问性&lt;br&gt;需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？&lt;/p&gt;
+&lt;p&gt;2.增量更新&lt;br&gt;如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？&lt;/p&gt;
+&lt;p&gt;3.数据访问和处理&lt;br&gt;数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？&lt;/p&gt;
+&lt;p&gt;4.数据分区及数据分片&lt;br&gt;数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？&lt;/p&gt;
+&lt;p&gt;5.数据存储格式&lt;br&gt;数据存储的格式是哪一种？&lt;/p&gt;
+&lt;p&gt;6.数据变换&lt;br&gt;需要变换尚未落地的数据吗？&lt;/p&gt;
+&lt;p&gt;下面简单列举一下这几点考量？&lt;/p&gt;
+&lt;p&gt;##1.数据采集的时效性&lt;br&gt;这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个&lt;br&gt;a.大型批处理&lt;br&gt;通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务&lt;/p&gt;
+&lt;p&gt;b.小型批处理&lt;br&gt;通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟&lt;/p&gt;
+&lt;p&gt;c.近实时决策支持&lt;br&gt;指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据&lt;/p&gt;
+&lt;p&gt;d.近实时事件处理&lt;br&gt;指在2秒内处理任务，速度可达到100毫秒&lt;/p&gt;
+&lt;p&gt;e.实时&lt;br&gt;这里指不超过100毫秒&lt;/p&gt;
+&lt;p&gt;可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。&lt;br&gt;使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。&lt;br&gt;当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。&lt;/p&gt;
+&lt;p&gt;##2.增量更新&lt;br&gt;新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。&lt;/p&gt;
+&lt;p&gt;#数据采集的选择&lt;/p&gt;
+&lt;p&gt;##1.文件传输&lt;br&gt;将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。&lt;/p&gt;
+&lt;p&gt;下面列一下文件传输的特点：&lt;br&gt;a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。&lt;br&gt;b.文件传输默认为单线程，不能并行 文件传输。&lt;br&gt;c.文件传输将文件从传统的文件系统导入HDFS&lt;br&gt;d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。&lt;br&gt;e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）&lt;/p&gt;
+&lt;p&gt;##文件传输与其他采集方法的考量&lt;br&gt;简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。&lt;br&gt;a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。&lt;br&gt;b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。&lt;br&gt;e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。&lt;br&gt;如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。&lt;/p&gt;
+&lt;p&gt;##Sqoop：Hadoop与关系数据库的批量传输&lt;br&gt;Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。&lt;/p&gt;
+&lt;p&gt;Flume:基于事件的数据收集及处理&lt;br&gt;Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。&lt;/p&gt;
+&lt;p&gt;##Kafka&lt;br&gt;Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。&lt;br&gt;Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。&lt;br&gt;Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。&lt;br&gt;前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。&lt;/p&gt;
+&lt;p&gt;#数据导出&lt;br&gt;数据导出的思路与导入类似。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
+&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hadoop" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/"/>
+    
+    
+      <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hadoop" scheme="http://cenrise.com/tags/hadoop/"/>
+    
+      <category term="spark" scheme="http://cenrise.com/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实时分析</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/</id>
+    <published>2017-04-16T15:43:49.000Z</published>
+    <updated>2017-04-16T15:34:01.651Z</updated>
+    
+    <content type="html">&lt;p&gt;少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计算这两类技术，能够从海量数据中快速分析出汇总结果。&lt;/p&gt;
+&lt;p&gt;#MPP架构&lt;br&gt;并行数据库往往采用MPP（Massively Parallel Processing，大规模并行处理）架构。MPP架构是一种不共享的结果，每个节点可以运行自己的操作系统、数据库等，每个节点内的CPU不能访问另一个节点的内存，节点之间的信息交互是通过节点互联网络实现的。&lt;/p&gt;
+&lt;p&gt;#EMC Greenplum&lt;br&gt;Greenplum是EMC公司研发的一款采用MPP架构的OLAP产品，底层基于开源的PostgreSQL数据库。&lt;/p&gt;
+&lt;p&gt;#HP Vertica&lt;br&gt;Vertica是商业版。&lt;/p&gt;
+&lt;p&gt;#Google Dremel&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="实时分析" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="实时分析" scheme="http://cenrise.com/tags/%E5%AE%9E%E6%97%B6%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式存储</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式存储/</id>
+    <published>2017-04-16T15:43:49.000Z</published>
+    <updated>2017-04-18T02:03:53.463Z</updated>
+    
+    <content type="html">&lt;p&gt;##Bigtable&lt;br&gt;Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。&lt;/p&gt;
+&lt;p&gt;Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的Bigtable模型的开源实现为Apache HBase。&lt;/p&gt;
+&lt;p&gt;##HBase&lt;br&gt;HBase是一个高可靠、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可以在廉价PC上搭建起大规模结构化存储集群。&lt;br&gt;HBase是Google Bigtable的开源实现，类似于Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapRecue来处理Bigtable中的海量数据，HBase同样利用Hadoop MapRecue来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应。&lt;/p&gt;
+&lt;p&gt;###特性：&lt;br&gt;强一致性读写：HBase不是“Eventual Consistentcy（最终一致性）”数据存储，这让它很适合高速计数聚合类任务；&lt;br&gt;自动分片（Automatic sharding）：HBase表通过region分布在集群中，数据增长时，region会自动分割并重新分布；&lt;br&gt;RegionServer自动故障转移&lt;br&gt;Hadoop/HDFS集成：HBase支持开箱即用HDFS作为它的分布式文件系统；&lt;br&gt;MapRecue：HBase通过MapRecue支持大并发处理；&lt;br&gt;Java客户端API：HBase支持易于使用的Java API进行编程访问;&lt;br&gt;Thrift/REST API：HBase也支持Thrift和Rest作为非Java前端访问；&lt;br&gt;Block Cache和Bloom Filter：对于大容量查询优化，HBase支持Block Cache和Bloom Filter;&lt;br&gt;运维管理：HBase支持JMX提供内置网页用于运维。&lt;/p&gt;
+&lt;p&gt;###HBase应用场景&lt;br&gt;HBase不适合所有场景。&lt;br&gt;首先，确信有足够多数据，如果有上亿或上千亿行数据，HBase是很好的备选。如果只有上千或上百万行，则用传统的RDBMS可能是更好的选择。因为所有数据如果只需要在一两个节点进行存储，会导致集群其他节点闲置。&lt;br&gt;其次，确信可以不依赖于RDBMS的额外特性。例如，列数据类型、第二索引、事务、高级查询语言等&lt;br&gt;最后，确保有足够的硬件。因为HDFS在小于5个数据节点时，基本上体现不出来它的优势。&lt;br&gt;虽然HBase能在单独的笔记本上运行良好，但这应仅当成是开发阶段的配置 。&lt;/p&gt;
+&lt;p&gt;###HBase的优点&lt;br&gt;列可以动态增加，并且列为空就不存储数据，节省存储空间；&lt;br&gt;HBase可以自动切分数据，使得数据存储自动具有水平扩展功能；&lt;br&gt;HBase可以提供高并发读写操作的支持；&lt;br&gt;与Hadoop MapRecue相结合有利于数据分析；&lt;br&gt;容错性；&lt;br&gt;版权免费；&lt;br&gt;非常灵活的模式设计（或者说没有固定模式的限制）；&lt;br&gt;可以跟Hive集成，使用类SQL查询；&lt;br&gt;自动故障转移；&lt;br&gt;客户端接口易于使用；&lt;br&gt;行级别原子性，即PUT操作一定是完全成功或者完全失败。&lt;/p&gt;
+&lt;p&gt;###HBase的缺点&lt;br&gt;不能支持条件查询，只支持按照row key来查询；&lt;br&gt;容易产生单点故障（在只使用一个HMaster的时候）；&lt;br&gt;不支持事务；&lt;br&gt;JOIN不是数据库层支持的，而需要用MapRecue；&lt;br&gt;只能在主键上索引和排序；&lt;br&gt;没有内置的身份和权限认证；&lt;/p&gt;
+&lt;p&gt;###HBase与Hadoop/HDFS的差异&lt;br&gt;HDFS是分布式文件系统，适合保存大文件。官方宣称它并非普通用途的文件系统，不提供文件的个别记录的快速查询。另一方面，HBase基于HDFS，并能够提供大表的记录快速查询和更新。HBase内部将数据放到索引好的“StoreFiles”存储文件中，以便提供高速查询，而存储文件位于HDFS中。&lt;/p&gt;
+&lt;p&gt;##Cassandra&lt;br&gt;Cassandra是Facebook于2008年7月在Google Code上开源的项目。Cassandra实现了Dynamo风格的副本复制模型和没有单点失效的架构，增加了更加强大的column family数据模型。&lt;/p&gt;
+&lt;p&gt;##Memcached&lt;br&gt;Memcached可以更好利用内存&lt;/p&gt;
+&lt;p&gt;##Redis&lt;br&gt;Redis是一个key-value模型的内在数据存储系统。&lt;/p&gt;
+&lt;p&gt;##MongoDB&lt;br&gt;MongoDB是一个介于关系型数据库和非关系性数据库之间的产品，是非关系型 数据库中功能最丰富、最像关系型 数据库的，旨在为Web应用提供可扩展的高性能数据存储解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##Bigtable&lt;br&gt;Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。&lt;/p&gt;
+&lt;p&gt;Bigtable是闭源的，Cloud Bigtable
+    
+    </summary>
+    
+      <category term="分布式" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="分布式存储" scheme="http://cenrise.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
+    
+    
+      <category term="分布式" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="分布式存储" scheme="http://cenrise.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop数据移动</title>
+    <link href="http://cenrise.com/2017/04/16/hadoop/Hadoop%E4%B9%8B%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    <id>http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/</id>
+    <published>2017-04-16T15:43:49.000Z</published>
+    <updated>2017-04-16T13:33:36.247Z</updated>
+    
+    <content type="html">&lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
+&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：&lt;br&gt;1.传统数据管理系统，如果关系型数据库与主机&lt;br&gt;2.日志、机器生成的数据，以及其他类型的事件数据。&lt;br&gt;3.从现有的企业数据存储中输入的文件。&lt;/p&gt;
+&lt;p&gt;将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：&lt;br&gt;1.数据采集的时效性与可访问性&lt;br&gt;需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？&lt;/p&gt;
+&lt;p&gt;2.增量更新&lt;br&gt;如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？&lt;/p&gt;
+&lt;p&gt;3.数据访问和处理&lt;br&gt;数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？&lt;/p&gt;
+&lt;p&gt;4.数据分区及数据分片&lt;br&gt;数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？&lt;/p&gt;
+&lt;p&gt;5.数据存储格式&lt;br&gt;数据存储的格式是哪一种？&lt;/p&gt;
+&lt;p&gt;6.数据变换&lt;br&gt;需要变换尚未落地的数据吗？&lt;/p&gt;
+&lt;p&gt;下面简单列举一下这几点考量？&lt;/p&gt;
+&lt;p&gt;##1.数据采集的时效性&lt;br&gt;这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个&lt;br&gt;a.大型批处理&lt;br&gt;通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务&lt;/p&gt;
+&lt;p&gt;b.小型批处理&lt;br&gt;通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟&lt;/p&gt;
+&lt;p&gt;c.近实时决策支持&lt;br&gt;指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据&lt;/p&gt;
+&lt;p&gt;d.近实时事件处理&lt;br&gt;指在2秒内处理任务，速度可达到100毫秒&lt;/p&gt;
+&lt;p&gt;e.实时&lt;br&gt;这里指不超过100毫秒&lt;/p&gt;
+&lt;p&gt;可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。&lt;br&gt;使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。&lt;br&gt;当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。&lt;/p&gt;
+&lt;p&gt;##2.增量更新&lt;br&gt;新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。&lt;/p&gt;
+&lt;p&gt;#数据采集的选择&lt;/p&gt;
+&lt;p&gt;##1.文件传输&lt;br&gt;将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。&lt;/p&gt;
+&lt;p&gt;下面列一下文件传输的特点：&lt;br&gt;a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。&lt;br&gt;b.文件传输默认为单线程，不能并行 文件传输。&lt;br&gt;c.文件传输将文件从传统的文件系统导入HDFS&lt;br&gt;d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。&lt;br&gt;e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）&lt;/p&gt;
+&lt;p&gt;##文件传输与其他采集方法的考量&lt;br&gt;简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。&lt;br&gt;a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。&lt;br&gt;b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。&lt;br&gt;e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。&lt;br&gt;如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。&lt;/p&gt;
+&lt;p&gt;##Sqoop：Hadoop与关系数据库的批量传输&lt;br&gt;Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。&lt;/p&gt;
+&lt;p&gt;Flume:基于事件的数据收集及处理&lt;br&gt;Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。&lt;/p&gt;
+&lt;p&gt;##Kafka&lt;br&gt;Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。&lt;br&gt;Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。&lt;br&gt;Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。&lt;br&gt;前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。&lt;/p&gt;
+&lt;p&gt;#数据导出&lt;br&gt;数据导出的思路与导入类似。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数据采集&lt;br&gt;本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。&lt;/p&gt;
+&lt;p&gt;#数据采集考量&lt;br&gt;虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="数据仓库" scheme="http://cenrise.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+    
+    
+      <category term="大数据" scheme="http://cenrise.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="数据仓库" scheme="http://cenrise.com/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+    
+      <category term="数据采集" scheme="http://cenrise.com/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    
+  </entry>
+  
+</feed>
