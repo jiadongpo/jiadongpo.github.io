@@ -40,6 +40,12 @@ menu下，打开注释即可。
 footer.swig
 
 
+## 标题图标
+favicon:
+#  small: /images/favicon-16x16-next.png
+#  medium: /images/favicon-32x32-next.png
 
 
-
+侧边头像
+sidebar-author.styl
+avatar.gif
