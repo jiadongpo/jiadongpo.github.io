@@ -1,15 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,223 +46,228 @@
 
 
 
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="开源项目,kettle," />
 
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link rel="alternate" href="/atom.xml" title="中起之星" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-<meta name="description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接
-数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Kettle插件架构">
-<meta property="og:url" content="http://cenrise.com/2017/04/15/kettle/Kettle插件架构/index.html">
-<meta property="og:site_name" content="中起之星">
-<meta property="og:description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接
-数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
-<meta property="og:image" content="http://i.imgur.com/mLvXMuV.jpg">
-<meta property="og:updated_time" content="2017-08-20T16:57:06.649Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kettle插件架构">
-<meta name="twitter:description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接
-数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
-<meta name="twitter:image" content="http://i.imgur.com/mLvXMuV.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
-  <title> Kettle插件架构 | 中起之星 </title>
+
+  
+
+
+
+
+  <meta name="description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接 数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
+<meta name="keywords" content="开源项目,kettle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kettle插件架构">
+<meta property="og:url" content="http://cenrise.com/2017/04/15/kettle/Kettle插件架构/index.html">
+<meta property="og:site_name" content="中起之星">
+<meta property="og:description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接 数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/mLvXMuV.jpg">
+<meta property="og:updated_time" content="2017-08-18T01:44:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kettle插件架构">
+<meta name="twitter:description" content="#Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接 数据同步部分是：业务系统（RDBMS）-&amp;gt;Kettle(azkaban进行调度)-&amp;gt;数据中">
+<meta name="twitter:image" content="http://i.imgur.com/mLvXMuV.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cenrise.com/2017/04/15/kettle/Kettle插件架构/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Kettle插件架构 | 中起之星</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?77b6d7d41ac16d802d0eee278311a1d4";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">中起之星</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">中起之星</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Cenrise</p>
+      
+    
   </div>
-  <p class="site-subtitle">Cenrise</p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
 
+      
       
     </ul>
   
 
   
+    
+
+  
+
+  
 </nav>
 
- </div>
+
+
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -251,24 +275,36 @@
     
 
   
-  
 
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/15/kettle/Kettle插件架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Kettle插件架构
+          <h1 class="post-title" itemprop="name headline">Kettle插件架构
               
             
           </h1>
@@ -276,44 +312,68 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-15T19:42:49+08:00" content="2017-04-15">
-              2017-04-15
-            </time>
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-04-15 19:42:49" itemprop="dateCreated datePublished" datetime="2017-04-15T19:42:49+08:00">2017-04-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开源项目/" itemprop="url" rel="index">
-                    <span itemprop="name">开源项目</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
+                <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/开源项目/kettle/" itemprop="url" rel="index">
-                    <span itemprop="name">kettle</span>
-                  </a>
-                </span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/" itemprop="url" rel="index"><span itemprop="name">开源项目</span></a></span>
 
                 
                 
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/kettle/" itemprop="url" rel="index"><span itemprop="name">kettle</span></a></span>
 
+                
+                
               
             </span>
           
@@ -323,16 +383,21 @@
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -577,7 +642,7 @@ public class HelloworldStepMeta extends BaseStepMeta implements StepMetaInterfac
 }
 </code></pre><p>代码解析<br>    @Step(<br>            id=”Helloworld”,<br>            name=”name”,<br>            description=”description”,<br>            categoryDescription=”categoryDescription”,<br>            image=”org/kettlesolutions/plugin/step/helloworld/HelloWorld.png”,<br>            i18nPackageName=”org.kettlesolutions.plugin.step.helloworld”<br>    )<br>这段代码里的@Step annotation用来通知Kettle的插件注册系统：这个类是一个步骤类型的插件。在annotation里可以指定插件的ID、图标、国际代的包、本地化的名称、类别、描述。其中后三项是资源文件里的Key，需要在资源文件里设置真正的值。i18nPackageName指定了资源文件的包名，例如我们这个例子的资源文件位于org/kettlesolutions/plugin/step/helloworld/messages目录下，en_US（英语，美国）的本地代资源文件是messages_en_US.properties。我们例子里的这个资源文件的内容是：<br>name=Hello world<br>description=A very simple step that adds a new “Helllo world” field to the incoming stream<br>注意，如果你指定了不存在的分类，Spoon会创建这个分类，并在Spoon的分类树的最上方显示这个分类。<br>最后，annotation里的image标签指定了插件的图标。需要32*32像素的PNG文件，可以使用透明样式。<br>后面的代码行说明这个类实现了StepMetaInterface接口。在BaseStepMeta抽象类里定义了这个接口的很多默认实现，可以直接继承这个抽象类，然后把工作集中在插件特有的功能上。</p>
 <pre><code>public class HelloworldStepMeta extends BaseStepMeta implements StepMetaInterface
-</code></pre><p>下面的四个方法loadXML()、getXML()、readRep()和saveRep()把元数据保存到XML文件或资源库里，或者从XML文件或资源库读取元数据。保存到文件的方法利用了像XStream（<a href="http://xstream.codehaus.org）这样的XML串行化技术。" target="_blank" rel="external">http://xstream.codehaus.org）这样的XML串行化技术。</a></p>
+</code></pre><p>下面的四个方法loadXML()、getXML()、readRep()和saveRep()把元数据保存到XML文件或资源库里，或者从XML文件或资源库读取元数据。保存到文件的方法利用了像XStream（<a href="http://xstream.codehaus.org）这样的XML串行化技术。" target="_blank" rel="noopener">http://xstream.codehaus.org）这样的XML串行化技术。</a></p>
 <p>getFields()方法非常重要，因为它描述了输出数据行的结构。这个方法需要修改inputRowMeta对象，使这个对象和输出格式匹配。Spoon和后面的步骤都需要知道这个步骤要输出哪些字段。最常见的一种方法，可以给输出的RowMetaInterface对象添加一个ValueMetaInterface对象。在ValueMetaInterface对象里设置的信息越详细越好，可以设置的信息包括数据类型、长度、精度、格式掩码，等等。添加的字段描述元信息越多，后面生成的SQL就越准确。</p>
 <h4 id="值的元数据（Value-Metadata）"><a href="#值的元数据（Value-Metadata）" class="headerlink" title="####值的元数据（Value Metadata）"></a>####值的元数据（Value Metadata）</h4><p>值的元数据使用ValueMetaInterface接口描述数据流里的一个字段。这个接口里定义了字段的名字、数据类型、长度、精度，等等。下面的例子用于创建一个ValueMetaInterface对象。<br>    ValueMetaInterface dateMeta = new ValueMeta(“birthdate”,ValueMetaInterface.TYPE_DATE);<br>这个接口也负责转换数据格式。我们建议使用ValueMetaInterface接口来完成所有数据转换的工作。例如，日期类型的数据，如果想把它转换为dateMeta对象里定义的字符串格式，可以用下面的代码：<br>    //java.util.Date birthdate<br>    String birthDateString = dateMeta.getString(birthdate);<br>ValueMeta类负责转换。因为有ValueMetaInterface进行数据类型的转换，所以你不用再去做额外的数据类型转换的工作。<br>使用ValueMetaInterface接口时还要注意数据对象是否为Null。从上一个步骤可以接收到一个数据对象和一个描述数据对象的ValueMetaInterface对象。我们要检查这个数据对象是否为null，在某些情况下如果数据对象为空是不正确的。例如：<br>数据对象是String类型，有10个空格，Value Metadata需要trim这个字符串。<br>在Value Metadata里已经定义了从文本文件里加载的数据，要延迟转换为字符串。所以数据要由二进制的格式（原始数据格式），转换为字符串格式，然后再转换为其它格式的数据。<br>一般使用下面的方法检查数据对象是否为空：<br>    Boolean n = valueMeta.isNull(valueDate);<br>重要：要保证传给ValueMetaInterface对象的数据是在元数据里定义的数据类型。表23-1说明了  ValueMetaInterface里定义的数据类型和Java数据类型的对应关系。<br>Kettle元数据类型和Java里数据类型的对应关系  </p>
 <table><br>    <tr><br>        <th>Value Meta Type</th><br>        <th>Java Class</th><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_STRING</td><br>        <td>Java.lang.String</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_DATE</td><br>        <td>Java.util.Date</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BOOLEAN</td><br>        <td>Java.lang.Boolean</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_NUMBER</td><br>        <td>Java.lang.Double</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_INTEGER</td><br>        <td>Java.lang.Long</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BIGNUMBER</td><br>        <td>Java.math.BigDecimal</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BINARY</td><br>        <td>Byte[]</td><br>    </tr><br></table>
@@ -592,7 +657,7 @@ public class HelloworldStepMeta extends BaseStepMeta implements StepMetaInterfac
 <pre><code>public RowMetaInterface outputRowMeta;
 </code></pre><p>}</p>
 <h3 id="StepDialogInterface"><a href="#StepDialogInterface" class="headerlink" title="###StepDialogInterface"></a>###StepDialogInterface</h3><p>实现org.pentaho.di.trans.step.StepDialogInterfac接口的类用来提供一个用户界面，用户通过这个界面输入元数据（转换参数）。用户界面就是一个对话框。这个接口里包含了类似open()和setRepository()等的几个简单的方法。    </p>
-<h4 id="Eclipse-SWT"><a href="#Eclipse-SWT" class="headerlink" title="####Eclipse SWT"></a>####Eclipse SWT</h4><p>Kettle里使用Eclipse SWT作为界面开发包，所以你也要使用SWT来开发对话框窗口。SWT为不同的操作系统Windows、OS X、Linux和Unix提供了一个抽象层。所以SWT的图形界面和操作系统期货的程序的界面风格非常相近。<br>在开始进行SWT开发之前，建议先访问SWT主面以了解更多的内容<a href="http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：" target="_blank" rel="external">http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：</a><br>SWT控件页，<a href="http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。" target="_blank" rel="external">http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。</a><br>SWT样例页，<a href="http://www.eclipse.org/swt/snippets/，给出了许多代码例子。" target="_blank" rel="external">http://www.eclipse.org/swt/snippets/，给出了许多代码例子。</a><br>最好的资源就是Kettle里150个内置步骤的对话框源代码。  </p>
+<h4 id="Eclipse-SWT"><a href="#Eclipse-SWT" class="headerlink" title="####Eclipse SWT"></a>####Eclipse SWT</h4><p>Kettle里使用Eclipse SWT作为界面开发包，所以你也要使用SWT来开发对话框窗口。SWT为不同的操作系统Windows、OS X、Linux和Unix提供了一个抽象层。所以SWT的图形界面和操作系统期货的程序的界面风格非常相近。<br>在开始进行SWT开发之前，建议先访问SWT主面以了解更多的内容<a href="http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：" target="_blank" rel="noopener">http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：</a><br>SWT控件页，<a href="http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。" target="_blank" rel="noopener">http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。</a><br>SWT样例页，<a href="http://www.eclipse.org/swt/snippets/，给出了许多代码例子。" target="_blank" rel="noopener">http://www.eclipse.org/swt/snippets/，给出了许多代码例子。</a><br>最好的资源就是Kettle里150个内置步骤的对话框源代码。  </p>
 <p>HelloworldStepDialog.java<br>    package org.kettlesolutions.plugin.step.helloworld;</p>
 <pre><code>import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -968,33 +1033,36 @@ public class HelloworldStep extends BaseStep implements StepInterface {
 <pre><code>FileObject fileObject = KettleVFS.getFileObject(“zip:http://www.example.com/archive.zip!file.txt”);
 </code></pre><p><code>String value = environmentSubstritute(meta.getSringWithVariables());</code></p>
 <p>应该尽可能多地使用KettleVFS,因为它解决了或饶过了很多Apache VFS目前已知的问题。它也增强了SFTP协议。</p>
-<h4 id="步骤插件部署"><a href="#步骤插件部署" class="headerlink" title="####步骤插件部署"></a>####步骤插件部署</h4><p>部署之前，要把四个Java源代码文件编译为class文件。把编译好的class文件放到一个Jar包里。可以使用IDE来做这些事情，也可以手工使用ant脚本来做这些事情。<br>.jar文件应该放在Kettle的plugins/steps目录下。也可以使用一个子目录，把所有的依赖的jar包放在插件jar包所在目录的/lib目录下，不必再放Kettle的类路径中（Kettle的libext/目录）已经有了的jar包。另外可以把多个插件放在一个jar包里。<br>如果想在IDE里调试插件，可以把插件元数据类的名字放在Kettle_PLUGIN_CLASSES变量里（一个逗号分隔的列表）。关于这个主题的更多信息，请参考pentaho Wiki:<a href="http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin" target="_blank" rel="external">http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin</a> 。</p>
+<h4 id="步骤插件部署"><a href="#步骤插件部署" class="headerlink" title="####步骤插件部署"></a>####步骤插件部署</h4><p>部署之前，要把四个Java源代码文件编译为class文件。把编译好的class文件放到一个Jar包里。可以使用IDE来做这些事情，也可以手工使用ant脚本来做这些事情。<br>.jar文件应该放在Kettle的plugins/steps目录下。也可以使用一个子目录，把所有的依赖的jar包放在插件jar包所在目录的/lib目录下，不必再放Kettle的类路径中（Kettle的libext/目录）已经有了的jar包。另外可以把多个插件放在一个jar包里。<br>如果想在IDE里调试插件，可以把插件元数据类的名字放在Kettle_PLUGIN_CLASSES变量里（一个逗号分隔的列表）。关于这个主题的更多信息，请参考pentaho Wiki:<a href="http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin" target="_blank" rel="noopener">http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin</a> 。</p>
 
       
     </div>
 
-    <div>
-      
-        
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/开源项目/" rel="tag">#开源项目</a>
+            <a href="/tags/开源项目/" rel="tag"># 开源项目</a>
           
-            <a href="/tags/kettle/" rel="tag">#kettle</a>
+            <a href="/tags/kettle/" rel="tag"># kettle</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -1007,10 +1075,12 @@ public class HelloworldStep extends BaseStep implements StepInterface {
             
           </div>
 
+          <span class="post-nav-divider"></span>
+
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/16/hadoop/Hadoop之数据采集/" rel="prev" title="Hadoop数据移动">
-                Hadoop数据移动 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/16/hadoop/Hadoop之分布式计算 /" rel="prev" title="分布式计算">
+                分布式计算 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1020,6 +1090,10 @@ public class HelloworldStep extends BaseStep implements StepInterface {
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1033,11 +1107,8 @@ public class HelloworldStep extends BaseStep implements StepInterface {
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -1053,150 +1124,265 @@ public class HelloworldStep extends BaseStep implements StepInterface {
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="dongpo.jia" />
-          <p class="site-author-name" itemprop="name">dongpo.jia</p>
-          <p class="site-description motion-element" itemprop="description">个人博客</p>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">dongpo.jia</p>
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">46</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">41</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">38</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/jiadongpo" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-/images/github.png"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/zhichengchina" target="_blank" title="微薄">
-                  
-                    <i class="fa fa-fw fa-/images/weibo.jpg"></i>
-                  
-                  微薄
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.douban.com/people/cenrise/" target="_blank" title="豆瓣">
-                  
-                    <i class="fa fa-fw fa-/images/douban.jpg"></i>
-                  
-                  豆瓣
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/jiadongpo" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-/images/zhihu.png"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.quora.com/profile/Jia-Dongpo" target="_blank" title="quora">
-                  
-                    <i class="fa fa-fw fa-/images/quora.jpeg"></i>
-                  
-                  quora
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://shangqiu.me/" title="商丘" target="_blank">商丘</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kettle插件体系"><span class="nav-number">1.</span> <span class="nav-text">#Kettle插件体系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">1.1.</span> <span class="nav-text">##架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件类型"><span class="nav-number">1.2.</span> <span class="nav-text">##插件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换步骤插件"><span class="nav-number">1.3.</span> <span class="nav-text">##转换步骤插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StepMetaInterface"><span class="nav-number">1.3.1.</span> <span class="nav-text">###StepMetaInterface</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#值的元数据（Value-Metadata）"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">####值的元数据（Value Metadata）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行的元数据（Row-Meatadata）"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">####行的元数据（Row Meatadata）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StepDatainterface"><span class="nav-number">1.3.2.</span> <span class="nav-text">###StepDatainterface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StepDialogInterface"><span class="nav-number">1.3.3.</span> <span class="nav-text">###StepDialogInterface</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eclipse-SWT"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">####Eclipse SWT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗体布局"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">####窗体布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kettle-UI元素"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">####Kettle UI元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hello-World例子对话框"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">####Hello World例子对话框</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StepInteface"><span class="nav-number">1.3.4.</span> <span class="nav-text">###StepInteface</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#识别一个步骤拷贝"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">####识别一个步骤拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果反馈"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">####结果反馈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量替换"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">####变量替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Apache-VFS"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">####Apache VFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤插件部署"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">####步骤插件部署</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -1209,29 +1395,55 @@ public class HelloworldStep extends BaseStep implements StepInterface {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">dongpo.jia</span><br/>
-  <span class="beian" ><a href="http://www.miibeian.gov.cn" target="_blank">豫ICP备1302120</a></span><br/>
+  <span class="author" itemprop="copyrightHolder">dongpo.jia</span>
+
+  
+
   
 </div>
 
 
 
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+
+
+
+
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -1250,64 +1462,112 @@ public class HelloworldStep extends BaseStep implements StepInterface {
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+
+
+
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
 
   
   
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
   
 
   

@@ -1,15 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
 
 
 
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,224 +46,226 @@
 
 
 
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="oracle,数据库," />
 
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-  <link rel="alternate" href="/atom.xml" title="中起之星" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-<meta name="description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh
-2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件)
-SQL:D">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Oracle SQL基础知识">
-<meta property="og:url" content="http://cenrise.com/2016/05/22/oracle/Oracle SQL基础知识/index.html">
-<meta property="og:site_name" content="中起之星">
-<meta property="og:description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh
-2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件)
-SQL:D">
-<meta property="og:updated_time" content="2017-08-20T16:57:06.673Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle SQL基础知识">
-<meta name="twitter:description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh
-2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件)
-SQL:D">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
-  <title> Oracle SQL基础知识 | 中起之星 </title>
+
+  
+
+
+
+
+  <meta name="description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh 2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件) SQL:D">
+<meta name="keywords" content="oracle,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle SQL基础知识">
+<meta property="og:url" content="http://cenrise.com/2016/05/22/oracle/Oracle SQL基础知识/index.html">
+<meta property="og:site_name" content="中起之星">
+<meta property="og:description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh 2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件) SQL:D">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-18T01:44:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle SQL基础知识">
+<meta name="twitter:description" content="Oracle SQL基本知识安装数据库1）安装Oracle常用问题(常用”用户名/密码“规则)：超级管理员：sys /change_on_install普通管理员：system/manager普通用户：scott/tiger—–&amp;gt;默认是被锁定的大数据用户：sh/sh 2）SQL,DDL…SQL：structured query language 结构化查询语言1.file(文件) SQL:D">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cenrise.com/2016/05/22/oracle/Oracle SQL基础知识/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Oracle SQL基础知识 | 中起之星</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?77b6d7d41ac16d802d0eee278311a1d4";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">中起之星</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">中起之星</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Cenrise</p>
+      
+    
   </div>
-  <p class="site-subtitle">Cenrise</p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
 
+      
       
     </ul>
   
 
   
+    
+
+  
+
+  
 </nav>
 
- </div>
+
+
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -252,24 +273,36 @@ SQL:D">
     
 
   
-  
 
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2016/05/22/oracle/Oracle SQL基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Oracle SQL基础知识
+          <h1 class="post-title" itemprop="name headline">Oracle SQL基础知识
               
             
           </h1>
@@ -277,44 +310,68 @@ SQL:D">
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-22T14:43:49+08:00" content="2016-05-22">
-              2016-05-22
-            </time>
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-05-22 14:43:49" itemprop="dateCreated datePublished" datetime="2016-05-22T14:43:49+08:00">2016-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
+                <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
-                  </a>
-                </span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
 
+                
+                
               
             </span>
           
@@ -324,16 +381,21 @@ SQL:D">
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -358,7 +420,7 @@ SQL:D">
 <h5 id="1）null值的理解"><a href="#1）null值的理解" class="headerlink" title="1）null值的理解"></a>1）null值的理解</h5><p>1 null值出现在算术表达式中,结果必为null,null可以看作无穷大.<br>2 函数(function) nvl功能空值转换函数<br>nvl是函数名,p1,p2是参数,数据类型必须一致,函数本身有返回值<br>nvl(p1,p2)<br>nvl函数实现:<br>if p1 is null then<br>   return p2;<br>else<br>   return p1;<br>end if;</p>
 <p>3 若有多个null值,distinct去重时,结果集保留一个null值.<br>4 null = null 不成立 null &lt;&gt; null 不成立<br>5 若用in运算符,集合中有null值跟没有null值结果一致的,结果集中不会出现跟null值有关的记录<br>  若用not in运算符,集合中有null值,这个结果集不包含记录.no rows selected.</p>
 <h5 id="2）各个子句的功能"><a href="#2）各个子句的功能" class="headerlink" title="2）各个子句的功能"></a>2）各个子句的功能</h5><p>1 select后面跟列名,列别名,函数,表达式<br>2 select后面的distinct:去重<br>3 where子句<br>  where 条件表达式 (列名 比较运算符 值)<br>表达式 比较运算符 值(尽量不用,为了性能)<br>  where子句中的列为字符类型,放值的位置上不加单引号或加双引号当列名解释,加单引号当字符串解释.<br>  where子句中的列为字符类型,表达具体值时注意字符是大小写敏感的.<br>SQL提供的四个比较运算符<br>肯定形式<br>   between and 区间,范围<br>   in &lt;=&gt; =any  (= or = )(跟集合里的任意一个值相等就满足条件) 集合 离散值<br>   = 单值运算符<br>   in =any 多值运算符<br>   like 像…一样<br>   通配符: %表示0或任意多个字符 <em>任意一个字符<br>   ‘S’ ‘S%’ ‘S</em>‘<br>   is null  如何判断一个列的取值是否为空<br>否定形式<br>= &lt;&gt; != ^=<br>between and   not between and<br>in    not in (&lt;&gt; and &lt;&gt;) &lt;=&gt; &lt;&gt;all(跟集合里的所有值都不能相等)<br>like     not like<br>is null   is not null<br>各个子句的执行顺序<br>from–&gt;where–&gt;select</p>
-<h5 id="3）课堂练习"><a href="#3）课堂练习" class="headerlink" title="3）课堂练习"></a>3）课堂练习</h5><p>1 列出每个员工的名字和他的工资<br>  select ename,salary from emp_hiloo;<br>2 列出每个员工的名字和他的职位<br>  select ename,job from emp_hiloo;<br>3 列出每个员工的名字和他的年薪<br> select ename,salary<em>12 ann_sal from emp_hiloo;<br>4 列出每个员工的名字和他一年的总收入<br>  (salary+bonus)</em>12 (15000+null)<em>12=null<br>  select ename,(salary+nvl(bonus,0))</em>12 tol_sal<br>  from emp_hiloo;<br>5 输出结果如下:<br>  zhangwuji is in department 10.<br>  liucangsong is in department 10.<br>  …..<br>  guojing is in department 30.<br>select ename||’is in department’||deptno||’.’employee from emp_hiloo;<br>什么要加employee呢？Employee是列别名为了显示用的。<br>6 列出该公司有哪些职位<br>  select distinct(job) from emp_hiloo;<br>  select distinct job from emp_hiloo;<br>7 列出该公司不同的奖金<br>  select distinct bonus from emp_hiloo;<br>8 各个部门有哪些不同的职位?<br>  select distinct deptno,job from emp_hiloo;<br>  去重方式:deptno和job联合唯一.<br>  distinct之后和from之前的所有列联合唯一.<br>distinct是保证每一行的唯一性而非某一列的唯一性，所以必须紧跟在select后面。<br>所以distinct只能放在select后面，紧跟select不然会报缺失表达式错误。<br>9 哪些员工的工资高于5000?<br>  select ename,salary from emp_hiloo<br>  where salary &gt; 5000;<br>10 列出员工工资高于5000的员工的年薪?<br>  select ename,salary<em>12 from emp_hiloo<br>  where salary &gt; 5000;<br>11 列出员工年薪高于60000的员工的年薪?<br>  select ename,salary</em>12 from emp_hiloo<br>  where salary<em>12&gt; 60000;<br>  select ename,salary</em>12 ann_sal from emp_hiloo<br>  where ann_sal &gt; 60000(错误的写法)<br>  select ename,salary<em>12 from emp_hiloo<br>  where salary &gt; 5000;<br>12 zhangwuji的年薪是多少?<br>select ename,salary</em>12 from emp_hiloo<br>where ename=’zhangwuji’;<br>  哪些员工的职位是Manager?<br>select ename,job from emp_hiloo<br>where job=’Manager’;<br>  哪些员工的职位是clerk?<br>  select ename,job from emp_hiloo<br>  where job = ‘Manager’<br>   select ename,job from emp_hiloo<br>  where job = ‘clerk’(效率高)<br>  clerk的大小写不清楚<br>  函数:upper(),lower()<br>  select ename,job from emp_hiloo<br>  where upper(job) = ‘CLERK’ (通用性好)<br>13 员工工资在5000到10000之间的员工的年薪<br>   select ename,salary<em>12<br>   from emp_hiloo<br>   where salary &gt;= 5000<br>   and   salary &lt;= 10000;<br>   select ename,salary</em>12<br>   from emp_hiloo<br>   where salary between 5000 and 10000;<br>14 哪些员工的工资是5000或10000.<br>   select ename,salary<br>   from emp_hiloo<br>   where salary = 5000<br>   or salary = 10000<br>   select ename,salary<br>   from emp_hiloo<br>   where salary in (5000,10000)<br>   select ename,salary<br>   from emp_hiloo<br>   where salary =any (5000,10000)<br>15 哪个员工的名字的第二个字符是a.<br>   select ename<br>   from emp_hiloo<br>   where ename like ‘<em>a%’;<br>16 哪个员工的名字的第二个字符是</em>.<br>   select ename<br>   from emp<em>hiloo<br>   where ename like ‘</em>_%’ escape ‘\’;<br>   第一个<em>表示任意一个字符,代表通配符<br>   \</em>必须连起来看,表示下划线本身,escape定义哪个字符可以定义转义’\’<br>17 哪些员工没有奖金?<br>   select ename,bonus<br>   from emp_hiloo<br>   where bonus is null<br>18 哪些员工有奖金?<br>   select ename,bonus<br>   from emp_hiloo<br>   where bonus is not null<br>19哪些员工的工资不是5000也不是10000.<br>  select ename,salary<br>  from emp_hiloo<br>  where salary not in (5000,10000);<br>  select ename,salary<br>  from emp_hiloo<br>  where salary &lt;&gt; 5000<br>  and salary &lt;&gt; 10000</p>
+<h5 id="3）课堂练习"><a href="#3）课堂练习" class="headerlink" title="3）课堂练习"></a>3）课堂练习</h5><p>1 列出每个员工的名字和他的工资<br>  select ename,salary from emp_hiloo;<br>2 列出每个员工的名字和他的职位<br>  select ename,job from emp_hiloo;<br>3 列出每个员工的名字和他的年薪<br> select ename,salary<em>12 ann_sal from emp_hiloo;<br>4 列出每个员工的名字和他一年的总收入<br>  (salary+bonus)</em>12 (15000+null)<em>12=null<br>  select ename,(salary+nvl(bonus,0))</em>12 tol_sal<br>  from emp_hiloo;<br>5 输出结果如下:<br>  zhangwuji is in department 10.<br>  liucangsong is in department 10.<br>  …..<br>  guojing is in department 30.<br>select ename||’is in department’||deptno||’.’employee from emp_hiloo;<br>什么要加employee呢？Employee是列别名为了显示用的。<br>6 列出该公司有哪些职位<br>  select distinct(job) from emp_hiloo;<br>  select distinct job from emp_hiloo;<br>7 列出该公司不同的奖金<br>  select distinct bonus from emp_hiloo;<br>8 各个部门有哪些不同的职位?<br>  select distinct deptno,job from emp_hiloo;<br>  去重方式:deptno和job联合唯一.<br>  distinct之后和from之前的所有列联合唯一.<br>distinct是保证每一行的唯一性而非某一列的唯一性，所以必须紧跟在select后面。<br>所以distinct只能放在select后面，紧跟select不然会报缺失表达式错误。<br>9 哪些员工的工资高于5000?<br>  select ename,salary from emp_hiloo<br>  where salary &gt; 5000;<br>10 列出员工工资高于5000的员工的年薪?<br>  select ename,salary<em>12 from emp_hiloo<br>  where salary &gt; 5000;<br>11 列出员工年薪高于60000的员工的年薪?<br>  select ename,salary</em>12 from emp_hiloo<br>  where salary<em>12&gt; 60000;<br>  select ename,salary</em>12 ann_sal from emp_hiloo<br>  where ann_sal &gt; 60000(错误的写法)<br>  select ename,salary<em>12 from emp_hiloo<br>  where salary &gt; 5000;<br>12 zhangwuji的年薪是多少?<br>select ename,salary</em>12 from emp_hiloo<br>where ename=’zhangwuji’;<br>  哪些员工的职位是Manager?<br>select ename,job from emp_hiloo<br>where job=’Manager’;<br>  哪些员工的职位是clerk?<br>  select ename,job from emp_hiloo<br>  where job = ‘Manager’<br>   select ename,job from emp_hiloo<br>  where job = ‘clerk’(效率高)<br>  clerk的大小写不清楚<br>  函数:upper(),lower()<br>  select ename,job from emp_hiloo<br>  where upper(job) = ‘CLERK’ (通用性好)<br>13 员工工资在5000到10000之间的员工的年薪<br>   select ename,salary<em>12<br>   from emp_hiloo<br>   where salary &gt;= 5000<br>   and   salary &lt;= 10000;<br>   select ename,salary</em>12<br>   from emp_hiloo<br>   where salary between 5000 and 10000;<br>14 哪些员工的工资是5000或10000.<br>   select ename,salary<br>   from emp_hiloo<br>   where salary = 5000<br>   or salary = 10000<br>   select ename,salary<br>   from emp_hiloo<br>   where salary in (5000,10000)<br>   select ename,salary<br>   from emp_hiloo<br>   where salary =any (5000,10000)<br>15 哪个员工的名字的第二个字符是a.<br>   select ename<br>   from emp_hiloo<br>   where ename like ‘<em>a%’;<br>16 哪个员工的名字的第二个字符是</em>.<br>   select ename<br>   from emp_hiloo<br>   where ename like ‘__%’ escape ‘\’;<br>   第一个<em>表示任意一个字符,代表通配符<br>   \</em>必须连起来看,表示下划线本身,escape定义哪个字符可以定义转义’\’<br>17 哪些员工没有奖金?<br>   select ename,bonus<br>   from emp_hiloo<br>   where bonus is null<br>18 哪些员工有奖金?<br>   select ename,bonus<br>   from emp_hiloo<br>   where bonus is not null<br>19哪些员工的工资不是5000也不是10000.<br>  select ename,salary<br>  from emp_hiloo<br>  where salary not in (5000,10000);<br>  select ename,salary<br>  from emp_hiloo<br>  where salary &lt;&gt; 5000<br>  and salary &lt;&gt; 10000</p>
 <p>create table emp_hiloo<br>( hiredate date）<br>insert into emp_hiloo values (1001,’zhangwuji’,’Manager’,10000,2000,’12-MAR-10’,1005,10);<br>解决方案：<br>    insert into emp_hiloo values (1001,’zhangwuji’,’Manager’,10000,2000,’12-3月-10’,1005,10);</p>
 <h5 id="更改字段名字-mysql、orcle-："><a href="#更改字段名字-mysql、orcle-：" class="headerlink" title="更改字段名字(mysql、orcle)："></a>更改字段名字(mysql、orcle)：</h5><p>Oracle修改表<br>alter table 表名 rename column 原名 to 新名；<br>Mysql:<br>alter table 表名 change column(可写，可不写）原名 新名 字段类型；</p>
 <p>ORA-00904：“ANN_SAL”:invalid identifier<br>无效的标识符</p>
@@ -416,11 +478,7 @@ session 会话 connection(连接)
 <h5 id="非关联子查询的分类"><a href="#非关联子查询的分类" class="headerlink" title="非关联子查询的分类"></a>非关联子查询的分类</h5><p>单列子查询<br>select ename,salary<br>from emp_hiloo<br>where salary = (select min(salary)<br>                from emp_hiloo<br>                )<br>多列子查询:按键值对比较<br>select ename,salary,deptno<br>from emp_afei<br>where (deptno,salary) in<br>             (select deptno,round(avg(salary))<br>              from emp_afei<br>              group by deptno)</p>
 <p>2) 课堂练习<br>1哪些人是领导?(非关联子查询)<br>如果一个员工的empno能出现在mgr里就说明他是领导.<br>select ename<br>from emp_hiloo<br>where empno in (select mgr from emp_hiloo)<br>select ename<br>fro emp_afei<br>where empno in (1001,1005,1006,1008,null)<br>2 哪些人是员工?<br>他的empno绝对不能出现在mgr中,他的empno跟mgr的出现的所有的值不能相等. &lt;&gt;all<br>select ename<br>from emp_hiloo<br>where empno not in (select mgr from emp_hiloo)<br>select ename<br>fro emp_afei<br>where empno not in (1001,1005,1006,1008,null)<br>select ename<br>from emp_hiloo<br>where empno not in (select mgr from emp_hiloo<br>                    where mgr is not null)</p>
 <p>3哪些部门的平均工资比30部门的平均工资高?<br>select deptno,round(avg(salary))<br>from emp_hiloo<br>group by deptno<br>having round(avg(salary)) &gt;<br>                    (select round(avg(salary))<br>                     from emp_hiloo<br>                     where deptno = 30)<br>4哪些员工的工资比zhangwuji的工资高?<br>select ename,salary<br>from emp_afei<br>where salary &gt; (select salary from emp_afei<br>                where ename = ‘zhangwuji’)<br>ERROR at line 3:<br>ORA-01427: single-row subquery returns more than one row<br>单行子查询返回多条记录</p>
-<p>比所有人高 &gt; (select max(salary))</p>
-<pre><code>&gt;all
-</code></pre><p>比任意人高 &gt; (select min(salary)</p>
-<pre><code>&gt;any
-</code></pre><p>5哪些员工的工资等于本部门的平均工资?<br>select ename,salary,deptno<br>from emp_afei<br>where (deptno,salary) in<br>             (select deptno,round(avg(salary))<br>              from emp_afei<br>              group by deptno)<br>5哪些员工的工资比本部门的平均工资高?<br>select ename,salary,deptno<br>from emp_afei o<br>where salary &gt; (select round(avg(salary))<br>                from emp_afei i<br>                where i.deptno = o.deptno)<br>6哪些人是领导?(关联子查询)<br>select ename from emp_afei o<br>where exists<br>             (select 1 from emp_afei i<br>              where o.empno = i.mgr)<br>7哪些部门有员工?<br>select deptno,dname<br>from dept_afei o<br>where exists (select 1 from emp_afei i<br>              where o.deptno = i.deptno)</p>
+<p>比所有人高 &gt; (select max(salary))<br>           &gt;all<br>比任意人高 &gt; (select min(salary)<br>           &gt;any<br>5哪些员工的工资等于本部门的平均工资?<br>select ename,salary,deptno<br>from emp_afei<br>where (deptno,salary) in<br>             (select deptno,round(avg(salary))<br>              from emp_afei<br>              group by deptno)<br>5哪些员工的工资比本部门的平均工资高?<br>select ename,salary,deptno<br>from emp_afei o<br>where salary &gt; (select round(avg(salary))<br>                from emp_afei i<br>                where i.deptno = o.deptno)<br>6哪些人是领导?(关联子查询)<br>select ename from emp_afei o<br>where exists<br>             (select 1 from emp_afei i<br>              where o.empno = i.mgr)<br>7哪些部门有员工?<br>select deptno,dname<br>from dept_afei o<br>where exists (select 1 from emp_afei i<br>              where o.deptno = i.deptno)</p>
 <p>3) 课外练习day03am<br>1 zhangwuji的领导是谁,显示名称?<br>2 zangwuji领导谁,显示名称?<br>3 列出devoleper部门有哪些职位?<br>1) 课外练习day04am答案<br>1 zhangwuji的领导是谁,显示名称?<br>  select ename from emp_afei<br>  where empno in<br>        (select mgr from emp_afei<br>                 where ename = ‘zhangwuji’)</p>
 <p>zangwuji领导谁,显示名称?</p>
 <p> select ename from emp_afei<br> where mgr in (select empno from emp_afei<br>               where ename = ‘zhangwuji’)</p>
@@ -582,44 +640,49 @@ session 会话 connection(连接)
       
     </div>
 
-    <div>
-      
-        
-      
-    </div>
+    
 
-    <div>
-      
-        
+    
+    
+    
 
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/oracle/" rel="tag">#oracle</a>
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
           
-            <a href="/tags/数据库/" rel="tag">#数据库</a>
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
           
         </div>
+      
+
+      
+      
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/21/oracle/RAW类型/" rel="next" title="消息传送基础">
-                <i class="fa fa-chevron-left"></i> 消息传送基础
+              <a href="/2016/05/22/kettle/Sorted Merge组件/" rel="next" title="Sorted Merge组件">
+                <i class="fa fa-chevron-left"></i> Sorted Merge组件
               </a>
             
           </div>
 
+          <span class="post-nav-divider"></span>
+
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/22/kettle/Kettle源码构建过程/" rel="prev" title="Kettle源码构建过程">
-                Kettle源码构建过程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/20/linux/Linux固定IP上网方式/" rel="prev" title="固定IP上网方式">
+                固定IP上网方式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,6 +692,10 @@ session 会话 connection(连接)
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -642,11 +709,8 @@ session 会话 connection(连接)
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -662,150 +726,265 @@ session 会话 connection(连接)
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="dongpo.jia" />
-          <p class="site-author-name" itemprop="name">dongpo.jia</p>
-          <p class="site-description motion-element" itemprop="description">个人博客</p>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">dongpo.jia</p>
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">46</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">41</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">38</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/jiadongpo" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-/images/github.png"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/zhichengchina" target="_blank" title="微薄">
-                  
-                    <i class="fa fa-fw fa-/images/weibo.jpg"></i>
-                  
-                  微薄
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.douban.com/people/cenrise/" target="_blank" title="豆瓣">
-                  
-                    <i class="fa fa-fw fa-/images/douban.jpg"></i>
-                  
-                  豆瓣
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/jiadongpo" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-/images/zhihu.png"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.quora.com/profile/Jia-Dongpo" target="_blank" title="quora">
-                  
-                    <i class="fa fa-fw fa-/images/quora.jpeg"></i>
-                  
-                  quora
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://shangqiu.me/" title="商丘" target="_blank">商丘</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle-SQL基本知识"><span class="nav-number">1.</span> <span class="nav-text">Oracle SQL基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装数据库"><span class="nav-number">1.1.</span> <span class="nav-text">安装数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）安装Oracle常用问题-常用”用户名-密码“规则-："><span class="nav-number">1.1.1.</span> <span class="nav-text">1）安装Oracle常用问题(常用”用户名/密码“规则)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）SQL-DDL…"><span class="nav-number">1.1.2.</span> <span class="nav-text">2）SQL,DDL…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）RDBMS关系型数据库管理系统"><span class="nav-number">1.1.3.</span> <span class="nav-text">3）RDBMS关系型数据库管理系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）-登录该机器上的数据库系统"><span class="nav-number">1.1.4.</span> <span class="nav-text">4） 登录该机器上的数据库系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5）登录的是哪个数据库"><span class="nav-number">1.1.5.</span> <span class="nav-text">5）登录的是哪个数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据表信息："><span class="nav-number">1.1.5.1.</span> <span class="nav-text">数据表信息：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1）null值的理解"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">1）null值的理解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）各个子句的功能"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">2）各个子句的功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3）课堂练习"><span class="nav-number">1.1.5.4.</span> <span class="nav-text">3）课堂练习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更改字段名字-mysql、orcle-："><span class="nav-number">1.1.5.5.</span> <span class="nav-text">更改字段名字(mysql、orcle)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1）字符函数-upper-lower"><span class="nav-number">1.1.5.6.</span> <span class="nav-text">1）字符函数:upper,lower</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）数值函数"><span class="nav-number">1.1.5.7.</span> <span class="nav-text">2）数值函数:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-日期和日期函数"><span class="nav-number">1.1.5.8.</span> <span class="nav-text">3) 日期和日期函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-转换函数"><span class="nav-number">1.1.5.9.</span> <span class="nav-text">4) 转换函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他函数"><span class="nav-number">1.1.5.10.</span> <span class="nav-text">其他函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-多行函数-哪两个函数里只能放number"><span class="nav-number">1.1.6.</span> <span class="nav-text">2) 多行函数(哪两个函数里只能放number)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-group-by子句"><span class="nav-number">1.1.7.</span> <span class="nav-text">3) group by子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#having子句"><span class="nav-number">1.1.8.</span> <span class="nav-text">having子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GROUP-BY-语句"><span class="nav-number">1.1.9.</span> <span class="nav-text">GROUP BY 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-where和having比较"><span class="nav-number">1.1.10.</span> <span class="nav-text">4) where和having比较</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HAVING-子句"><span class="nav-number">1.1.10.1.</span> <span class="nav-text">HAVING 子句</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-DCL"><span class="nav-number">1.1.11.</span> <span class="nav-text">5) DCL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-关于null值的讨论"><span class="nav-number">1.1.12.</span> <span class="nav-text">6) 关于null值的讨论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5十分钟之后"><span class="nav-number">1.1.13.</span> <span class="nav-text">5十分钟之后</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">1.2.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询"><span class="nav-number">1.2.1.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子查询执行"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">子查询执行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非关联子查询的分类"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">非关联子查询的分类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TEXT"><span class="nav-number">2.</span> <span class="nav-text">TEXT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#索引"><span class="nav-number">2.0.1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#index的结构"><span class="nav-number">2.0.2.</span> <span class="nav-text">index的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哪些列适合建索引"><span class="nav-number">2.0.3.</span> <span class="nav-text">哪些列适合建索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引类型"><span class="nav-number">2.0.4.</span> <span class="nav-text">索引类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数索引"><span class="nav-number">2.0.5.</span> <span class="nav-text">函数索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列号"><span class="nav-number">2.0.6.</span> <span class="nav-text">序列号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库日期比较"><span class="nav-number">2.0.7.</span> <span class="nav-text">数据库日期比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词"><span class="nav-number">2.1.</span> <span class="nav-text">名词</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Oracle的方案（Schema）和用户（User）的区别"><span class="nav-number">2.1.1.</span> <span class="nav-text">Oracle的方案（Schema）和用户（User）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oracle的schema的含义"><span class="nav-number">2.1.2.</span> <span class="nav-text">oracle的schema的含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAME"><span class="nav-number">3.</span> <span class="nav-text">NAME</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAME-1"><span class="nav-number">4.</span> <span class="nav-text">NAME</span></a></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -818,29 +997,55 @@ session 会话 connection(连接)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">dongpo.jia</span><br/>
-  <span class="beian" ><a href="http://www.miibeian.gov.cn" target="_blank">豫ICP备1302120</a></span><br/>
+  <span class="author" itemprop="copyrightHolder">dongpo.jia</span>
+
+  
+
   
 </div>
 
 
 
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+
+
+
+
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -859,64 +1064,112 @@ session 会话 connection(连接)
 
 
 
-  
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+
+
+
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
 
   
   
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
   
 
   
