@@ -308,6 +308,575 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之实时分析/" itemprop="url">
+                  实时分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/实时分析/" itemprop="url" rel="index"><span itemprop="name">实时分析</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计算这两类技术，能够从海量数据中快速分析出汇总结果。</p>
+<p>#MPP架构<br>并行数据库往往采用MPP（Massively Parallel Processing，大规模并行处理）架构。MPP架构是一种不共享的结果，每个节点可以运行自己的操作系统、数据库等，每个节点内的CPU不能访问另一个节点的内存，节点之间的信息交互是通过节点互联网络实现的。</p>
+<p>#EMC Greenplum<br>Greenplum是EMC公司研发的一款采用MPP架构的OLAP产品，底层基于开源的PostgreSQL数据库。</p>
+<p>#HP Vertica<br>Vertica是商业版。</p>
+<p>#Google Dremel</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之数据采集/" itemprop="url">
+                  Hadoop数据移动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据仓库/" itemprop="url" rel="index"><span itemprop="name">数据仓库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>数据采集<br>本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。</p>
+<p>#数据采集考量<br>虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：<br>1.传统数据管理系统，如果关系型数据库与主机<br>2.日志、机器生成的数据，以及其他类型的事件数据。<br>3.从现有的企业数据存储中输入的文件。</p>
+<p>将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：<br>1.数据采集的时效性与可访问性<br>需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？</p>
+<p>2.增量更新<br>如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？</p>
+<p>3.数据访问和处理<br>数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？</p>
+<p>4.数据分区及数据分片<br>数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？</p>
+<p>5.数据存储格式<br>数据存储的格式是哪一种？</p>
+<p>6.数据变换<br>需要变换尚未落地的数据吗？</p>
+<p>下面简单列举一下这几点考量？</p>
+<p>##1.数据采集的时效性<br>这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个<br>a.大型批处理<br>通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务</p>
+<p>b.小型批处理<br>通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟</p>
+<p>c.近实时决策支持<br>指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据</p>
+<p>d.近实时事件处理<br>指在2秒内处理任务，速度可达到100毫秒</p>
+<p>e.实时<br>这里指不超过100毫秒</p>
+<p>可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。<br>使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。<br>当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。</p>
+<p>##2.增量更新<br>新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。</p>
+<p>#数据采集的选择</p>
+<p>##1.文件传输<br>将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。</p>
+<p>下面列一下文件传输的特点：<br>a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。<br>b.文件传输默认为单线程，不能并行 文件传输。<br>c.文件传输将文件从传统的文件系统导入HDFS<br>d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。<br>e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）</p>
+<p>##文件传输与其他采集方法的考量<br>简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。<br>a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。<br>b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。<br>e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。<br>如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。</p>
+<p>##Sqoop：Hadoop与关系数据库的批量传输<br>Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。</p>
+<p>Flume:基于事件的数据收集及处理<br>Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。</p>
+<p>##Kafka<br>Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。<br>Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。<br>Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。<br>前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。</p>
+<p>#数据导出<br>数据导出的思路与导入类似。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式存储/" itemprop="url">
+                  分布式存储
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式存储/" itemprop="url" rel="index"><span itemprop="name">分布式存储</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Bigtable<br>Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。</p>
+<p>Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的Bigtable模型的开源实现为Apache HBase。</p>
+<p>##HBase<br>HBase是一个高可靠、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可以在廉价PC上搭建起大规模结构化存储集群。<br>HBase是Google Bigtable的开源实现，类似于Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapRecue来处理Bigtable中的海量数据，HBase同样利用Hadoop MapRecue来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应。</p>
+<p>###特性：<br>强一致性读写：HBase不是“Eventual Consistentcy（最终一致性）”数据存储，这让它很适合高速计数聚合类任务；<br>自动分片（Automatic sharding）：HBase表通过region分布在集群中，数据增长时，region会自动分割并重新分布；<br>RegionServer自动故障转移<br>Hadoop/HDFS集成：HBase支持开箱即用HDFS作为它的分布式文件系统；<br>MapRecue：HBase通过MapRecue支持大并发处理；<br>Java客户端API：HBase支持易于使用的Java API进行编程访问;<br>Thrift/REST API：HBase也支持Thrift和Rest作为非Java前端访问；<br>Block Cache和Bloom Filter：对于大容量查询优化，HBase支持Block Cache和Bloom Filter;<br>运维管理：HBase支持JMX提供内置网页用于运维。</p>
+<p>###HBase应用场景<br>HBase不适合所有场景。<br>首先，确信有足够多数据，如果有上亿或上千亿行数据，HBase是很好的备选。如果只有上千或上百万行，则用传统的RDBMS可能是更好的选择。因为所有数据如果只需要在一两个节点进行存储，会导致集群其他节点闲置。<br>其次，确信可以不依赖于RDBMS的额外特性。例如，列数据类型、第二索引、事务、高级查询语言等<br>最后，确保有足够的硬件。因为HDFS在小于5个数据节点时，基本上体现不出来它的优势。<br>虽然HBase能在单独的笔记本上运行良好，但这应仅当成是开发阶段的配置 。</p>
+<p>###HBase的优点<br>列可以动态增加，并且列为空就不存储数据，节省存储空间；<br>HBase可以自动切分数据，使得数据存储自动具有水平扩展功能；<br>HBase可以提供高并发读写操作的支持；<br>与Hadoop MapRecue相结合有利于数据分析；<br>容错性；<br>版权免费；<br>非常灵活的模式设计（或者说没有固定模式的限制）；<br>可以跟Hive集成，使用类SQL查询；<br>自动故障转移；<br>客户端接口易于使用；<br>行级别原子性，即PUT操作一定是完全成功或者完全失败。</p>
+<p>###HBase的缺点<br>不能支持条件查询，只支持按照row key来查询；<br>容易产生单点故障（在只使用一个HMaster的时候）；<br>不支持事务；<br>JOIN不是数据库层支持的，而需要用MapRecue；<br>只能在主键上索引和排序；<br>没有内置的身份和权限认证；</p>
+<p>###HBase与Hadoop/HDFS的差异<br>HDFS是分布式文件系统，适合保存大文件。官方宣称它并非普通用途的文件系统，不提供文件的个别记录的快速查询。另一方面，HBase基于HDFS，并能够提供大表的记录快速查询和更新。HBase内部将数据放到索引好的“StoreFiles”存储文件中，以便提供高速查询，而存储文件位于HDFS中。</p>
+<p>##Cassandra<br>Cassandra是Facebook于2008年7月在Google Code上开源的项目。Cassandra实现了Dynamo风格的副本复制模型和没有单点失效的架构，增加了更加强大的column family数据模型。</p>
+<p>##Memcached<br>Memcached可以更好利用内存</p>
+<p>##Redis<br>Redis是一个key-value模型的内在数据存储系统。</p>
+<p>##MongoDB<br>MongoDB是一个介于关系型数据库和非关系性数据库之间的产品，是非关系型 数据库中功能最丰富、最像关系型 数据库的，旨在为Web应用提供可扩展的高性能数据存储解决方案。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/15/kettle/Kettle插件架构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1545,358 +2114,6 @@ SID_LIST_LISTENER =
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/oracle/Oracle数据库系统架构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/01/oracle/Oracle数据库系统架构/" itemprop="url">
-                  TODO-Oracle数据库系统架构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/oracle/Oracle SQL优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/01/oracle/Oracle SQL优化/" itemprop="url">
-                  TODO-Oracle SQL优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/网络安全/企业安全组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2257,7 +2474,7 @@ SID_LIST_LISTENER =
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2016/09/20/linux/Linux固定IP上网方式/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/oracle/Oracle数据库系统架构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -2276,8 +2493,8 @@ SID_LIST_LISTENER =
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/20/linux/Linux固定IP上网方式/" itemprop="url">
-                  固定IP上网方式
+                <a class="post-title-link" href="/2017/01/01/oracle/Oracle数据库系统架构/" itemprop="url">
+                  TODO-Oracle数据库系统架构
                 </a>
               
             
@@ -2303,7 +2520,7 @@ SID_LIST_LISTENER =
                 
               
 
-              <time title="创建时间：2016-09-20 09:43:49" itemprop="dateCreated datePublished" datetime="2016-09-20T09:43:49+08:00">2016-09-20</time>
+              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
             
 
             
@@ -2337,14 +2554,14 @@ SID_LIST_LISTENER =
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
 
                 
                 
@@ -2380,17 +2597,7 @@ SID_LIST_LISTENER =
       
         
           
-            <p>#固定IP上网方式#</p>
-<p><strong>1. 修改主机名称：/etc/sysconfig/network</strong><br>NETWORKING=yes<br>HOSTNAME=centos.dm.tsai</p>
-<p><strong>2. 设置网络参数：/etc/sysconfig/network-scripts/ifcfg-eth0</strong><br>请记得，这个ifcfg-eth0需与文件内的DEVICE名称设置相同，并且，在这个文件内的所有设置，基本上就是bash的变量设置规则</p>
-<p><strong>[root@linux ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0</strong><br>DEVICE=eth0                    网卡代号，需要ifcfg-eth0相对应<br>BOOTPROTO=static               开机协议，有dhcp及static,这里是static<br>BROADCAST=192.168.1.255        广播地址<br>HWADDR=00:40:D0:13:C3:46       网卡地址<br>IPADDR=192.168.1.13            IP<br>NETMASK=255.255.255.0          子屏蔽网络<br>NETWORK=192.168.1.0           网段，该网段的第一个IP<br>GATEWAY=192.168.1.2           默认路由<br>ONBOOT=yes                  是否开机启动<br>MTU=1500                    最大传输单元的设置值<br>GATEWAYDEV=eth0            主要路由的设备，通常不用设置  </p>
-<p>&emsp;&emsp;请注意每个变量（左边的英文）都应该要大写。否则我们的script会误判。关于IP的4个参数（IPADDR、NETMASK、NETWORK、BROADCAST），下面谈谈以下几个重要的设置值.<br>&emsp;&emsp;DEVICE: 这个设置后面接的是设备代号必须与文件名（ifcfg-eht0）的设备代号相同，否则会显示找不到设备名称。<br>&emsp;&emsp;BOOTPROTO：启动该网络接口时，使用何种协议？如果是手动设置IP的环境，请输入static或none，如果是自动取得IP的情况，请输入dhcp。<br>&emsp;&emsp;GATEWAY：代表的是整个主机系统的Default Gateway，所以，设置这个项目时，<strong>请特别留意。不要有重复设置的情况发生。</strong>也就是说，当您有ifcfg-eth0、Ifcfg-eht1等多个文件时，只要在其中一个文件里设置GATEWAY即可。<br>&emsp;&emsp;GATEWAYDEV：如果您不是使用固定的IP作为Gateway，而是使用网络设备作为Gateway（通常Route最常有这样的设置），那也可以使用GATEWAYDEV来设置通信网关设备。不过这个设置项目很少使用。<br>&emsp;&emsp;HWADDR：这是网卡的卡号。记得以前常常在讲，如果有两块一模一样的网卡存在，例如在一台主机上安装两张RealTek网卡，由于是相同的芯片，所以/etc/modprobe.conf内无法指定出明确的eth0与eth1的对应（因为模块使用相同），那么哪一个才是eth0?利用HWADDR指定网卡的卡号，就能够清楚定义出不同网卡的代号了。<br>&emsp;&emsp;事实上，如果想了解每个变量的项目意义时，建议参考/sbin/ifup这个script的内容，script很清楚地记录了每个项目的应用。</p>
-<p><strong>3. 启动与关闭网卡：ifup/ifdown</strong><br>启动与关闭网卡的方式有两种，下面分别介绍：<br>[root@linux~]#ifup eth0<br>[root@linux~]#ifdown eth0 </p>
-<p>上面的做法是针对eth0来进行启动(ifup)与关闭(ifdown)<br>[root@linux~]# /etc/init.d/network restart</p>
-<p>针对这台主机的所有网络接口(包含lo)与通信闸进行重新启动所以网络会停止再连接</p>
-<p>[root@linux~]#service network restart;</p>
-<p><strong>4. 设置DNS的IP： /etc/resolv.conf</strong><br>这个文件会影响到您是否可以查询到主机名称与IP的对应。通常进行如果设置就可以了。<br>nameServer 168.95.1.1</p>
-
+            
           
         
       
@@ -2443,7 +2650,7 @@ SID_LIST_LISTENER =
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2016/05/22/kettle/Kettle源码构建过程/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/oracle/Oracle SQL优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -2462,8 +2669,8 @@ SID_LIST_LISTENER =
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/05/22/kettle/Kettle源码构建过程/" itemprop="url">
-                  Kettle源码构建过程
+                <a class="post-title-link" href="/2017/01/01/oracle/Oracle SQL优化/" itemprop="url">
+                  TODO-Oracle SQL优化
                 </a>
               
             
@@ -2489,7 +2696,7 @@ SID_LIST_LISTENER =
                 
               
 
-              <time title="创建时间：2016-05-22 14:43:49" itemprop="dateCreated datePublished" datetime="2016-05-22T14:43:49+08:00">2016-05-22</time>
+              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
             
 
             
@@ -2523,14 +2730,14 @@ SID_LIST_LISTENER =
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/" itemprop="url" rel="index"><span itemprop="name">开源项目</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/kettle/" itemprop="url" rel="index"><span itemprop="name">kettle</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
 
                 
                 
@@ -2566,218 +2773,7 @@ SID_LIST_LISTENER =
       
         
           
-            <p>#Kettle 源码构建过程#</p>
-<p>&emsp;&emsp;Kettle 的源码托管在 Github 和 SVN上，但是托管在SVN上的源码自 5.0 之后就一直没有更新了，而托管在Github上的源码一直保持着更新状态，所以我猜 svn 上的源码并不会去进行维护了，我们以后只关注 git 上的源码就行。</p>
-<p>&emsp;&emsp;Kettle 的二进制文件下载地址：<br>  <a href="http://sourceforge.net/projects/pentaho/files/Data%20Integration/" target="_blank" rel="noopener">http://sourceforge.net/projects/pentaho/files/Data%20Integration/</a><br>&emsp;&emsp;Kettle 源码地址:<br>  git:<a href="https://github.com/pentaho/pentaho-kettle" target="_blank" rel="noopener">https://github.com/pentaho/pentaho-kettle</a><br>  svn:svn://source.pentaho.org/svnkettleroot/archive/Kettle/branches<br>&emsp;&emsp;其中二进制文件的下载版本分支与 git 上的源码分支是保持一致的，所以git上面的源码是跟着 kettle 的版本随时发布更新的，我们以后fork这个项目就可以一直获取最新发布的源码了。</p>
-<p><strong>下面是我的构建过程(版本5.4)：</strong><br>下载 ivy (<a href="http://ant.apache.org/ivy/download.html)。5.0版本之上的" target="_blank" rel="noopener">http://ant.apache.org/ivy/download.html)。5.0版本之上的</a> kettle 项目结构与之前的版本项目结构完全不同，构建工具也由ant 变为了 ant + ivy。所以需要下载 ivy 来完成构建过程。将下载的 ivy-2.4.0.jar包放置到 ant_home/lib 下即可。<br>从 git 上面 clone  kettle 5.4 的源码于某个目录。命令行进入到源码主目录，如下所示：<br>&emsp;&emsp;执行命令：ant clean-all resolve create-dot-classpath。  命令会执行很久很久(资源在国外，如果自己有 vpn 加速会快点)，而且会时不时的报错，找不到 jar 包。当遇到找不到jar 包时，我是自行到kettle 私服(<a href="http://nexus.pentaho.org/content/groups/omni/)中去下对应版本jar包，然后放置到ivy" target="_blank" rel="noopener">http://nexus.pentaho.org/content/groups/omni/)中去下对应版本jar包，然后放置到ivy</a> 的本地仓库中，并删掉 ivy 本地缓存中的源文件和未下载成功的垃圾文件，然后重复此命令进行构建。本地缓存文件位于C:\Users\${username}.ivy2\cache 。一直执行此命令，直到出现 successful 的提示。</p>
-<p>执行命令：ant dist ，该命令会根据源码生成一份对应的kettle 版本。同样的，在执行此命令的过程中，也会经常报各种错误，也需要自己去私服中找对应的jar包放置到对应的本地缓存目录。构建成功后，在根目录下会生成 一个 dist 文件夹，打开里面的spoon.bat 就可以使用 kettle 了，我下的5.4 版本的界面与之前的大有不同，感觉比以前的好看些，如下所示：</p>
-<p>到现在为止，就已经可以用源码构建了。下一步就是搭建好源码，kettle 的源码中分别提供了.project 文件和 .ipr 文件，所以可以用 eclipse和 idea 进行搭建。我是用的 idea 搭建的，eclipse 搭建应该会更简单点。</p>
-<p>在搭建之前，我删掉了kettle 中所有的.gitignore、.gitignoreattribute、.template、.project文件，然后在 .ipr 文件中注释掉版本管理的信息和未提供的插件项目信息，这样在导入源码的时候不会提示错误，如下所示：</p>
-<p>源码导入idea 中之后，会出现很多错误，需要手动导入一些jar包，由于里面有很多测试文件，所以我们需要手动依赖 /core/test_lib 文件夹里面的jar 包，范围指定为 test；</p>
-<p>从 libext 目录中复制 win64 位的swt.jar 包到 lib 目录，然后删除 swt_x86_64.jar 包；</p>
-<p>复制 ojdbc.jar 包到lib目录(为了解决登录资源库)；</p>
-<p>复制 dist/ui/*.xul 文件到 ui/目录；</p>
-<p>新建simple-jndi 空目录；</p>
-<p>到了这里，源码编译、调试就没问题了，程序启动的入口为org.pentaho.di.ui.spoon.Spoon.java，运行main入口函数即可启动 kettle，如下所示：</p>
-<p>再来欣赏下折腾摸索了这么久才弄出来的东西，确实比以前的好看些了，整体风格感觉统一了，而且向上兼容以前版本的，我用以前版本的转换在5.4 下测试了完全没问题，同时我也把以前写过的插件按照之前的机制进行处理，插件也是能加载出来并正常使用的，所以新的版本下的插件机制并没有发生变化:</p>
-<p>总结：上面这些步骤中好几个步骤是跑代码调试才知道的问题，所以调试还是一如既往的重要哈。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2016/05/22/kettle/Sorted Merge组件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/22/kettle/Sorted Merge组件/" itemprop="url">
-                  Sorted Merge组件
-                </a>
-              
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-22 14:43:49" itemprop="dateCreated datePublished" datetime="2016-05-22T14:43:49+08:00">2016-05-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/" itemprop="url" rel="index"><span itemprop="name">开源项目</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/kettle/" itemprop="url" rel="index"><span itemprop="name">kettle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Sorted-Merge组件"><a href="#Sorted-Merge组件" class="headerlink" title="Sorted Merge组件"></a>Sorted Merge组件</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><table><br>    <tr><br>        <th>图标</th><br>        <th>组件名称</th><br>        <th>功能说明</th><br>    </tr><br>    <tr><br>        <td>图片</td><br>        <td>Sorted Merge</td><br>        <td>合并来自多个输入步骤的记录，提供按给定的关键字段进行排序后的行记录。</td><br>    </tr><br></table><br>Sorted Merge组件处理来自多个输入步骤的记录，提供按给定的关键字段进行排序后的行记录的功能。<br>    用例:当您并行方式使用“记录排序”步骤的多个副本(通过“改变起始的副本数量”或集群环境中时)的每个排序块需要合并在一起,以确保正确的排序序列。可以通过在在“记录排序”组件后添加”Sorted Merge”组件来处理。<br>    注：应用于多个复本或集群环境下的并行运算时，前置组件必须为“记录排序”组件。表 0 15Sorted Merge组件属性说明<br><table><br>    <tr><br>        <th>属性项</th><br>        <th>属性说明</th><br>    </tr><br>    <tr><br>        <td>组件名称</td><br>        <td>步骤的名字，这个名字在一个转换中必须是唯一的。</td><br>    </tr><br>    <tr><br>        <td>字段</td><br>        <td>指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流。</td><br>    </tr><br>    <tr><br>        <td>字段</td><br>        <td>指定排序的字段名。</td><br>    </tr><br>    <tr><br>        <td>升序</td><br>        <td>排序原则：升序或降序。如果选择升序，<br>        排序顺序将是：数字-&gt;英文-&gt;汉字，汉字是按照拼音排序的，<br>        也同样会按照声调排序。如果是多音字，只会取一个读音，<br>        无法根据语境判断其的读音。</td><br>    </tr><br></table>
-
-<p>###问题释疑###</p>
-<ol>
-<li><p>Sorted Merge组件是如何工作的？<br>它用来合并2个输入数据流（按同一字段排序后的、相同格式的数据流）。</p>
-</li>
-<li><p>Sorted Merge组件的原理？<br>用于比较两组数据以确保合并后的输出也是排序的。它是通过串行方式来处理的，并不需要考虑整个数据集合。它实际上用于不同机器的集群环境下，而不是在单机上。运行效率取决于你有多少个可用的CPU。</p>
-</li>
-<li><p>Sorted Merge组件的使用前提？<br>对于“Sorted Merge”组件的所有输入行结构需要是相同的（相同的字段布局、字段类型等）且需要按指定的键进行排序。只有这样才能保证输出是该键进行排序的。</p>
-</li>
-<li><p>“Sorted Merge”组件的排序字段指定为与“字段排序”组件排序字段相同时，不能按指定排序?<br>Sorted Merge组件的合并是基于前置组件（”记录排序“组件）排好顺序的集合里的指定字段进行合并，排序是基于前置组件中相同排序字段的数据集内的排序，所以说在相同排序字段集中指定排序方式时，排序是不变的。既然没有意义为什么要保留呢？是因为与前置组件（Sorted Merge组件）保持一致，如果设计成按照排序字段的选择来去掉”Sorted Merge“组件中的对应字段，会增加复杂性，同时又需要解释为什么少一个字段，索性保留。</p>
-</li>
-<li><p>对于的分区功能，Sorted Merge组件必要性？<br>不是必须的。因为Sorted Merge多用于并行处理环境，常与分区功能组合使用，Sorted Merge组件是对分区的一种收集方式（Sorted Merge）的支持，所以说不是必须的，如果收集的记录不要求排序，我们完成可以不使用此组件；<br>注：分区的收集是指当分区的组件处理完成发送到没有分区的组件时，记录将被合并。目前支持的合并方法有两种方式，一种是轮流从各个分区接收记录，另一种是对于Sorted Merge的收集方式，Kettle中有”Sorted Merge“组件来完成。</p>
-</li>
-<li><p>记录排序组件和Sorted Merge组件都可以对多输入流的数据进行排序，有什么区别。<br>使用场景不同，Sorted Merge组件应用于并行数据处理环境，是分区后的一种数据收集方式（Sorted Merge收集方式）。在大数据量时，原则上希望把尽可能多的数据处理放在集群上处理，然后在主服务器上进行合并，因为Sorted Merge组件的算法是基于已排好顺序的集合(归并排序算法)，在对已排过序的集合的排序效率高于记录排序。我们完全没必须把从属服务器上收集到的已排序的数据，使用“记录排序”组件再打乱重新排序。基于效率上考虑建议在对已排好序的数据集进行排序时，使用Sorted Merge组件。</p>
-</li>
-<li><p>建议：分布式排序<br>当需要使用排序组件时，最好将排序组件水平扩展到集群上运行，以获得较好的运行效率。每个从属服务器对传入的记录进行排序，然后在主服务器上使用Sorted Merge组件合并来自从属服务器的排序结果。Sorted Merge组件被设计用来接收从前面的组件接收排序后的记录，并且在合并时能够保证记录的顺序。对于已排序过的多个数据集进行排序时，Sorted Merge的效率高于记录排序，这也是使用Sorted Merge组件的原因。</p>
-</li>
-</ol>
-<p><img src="images/sorted merger1.jpg" alt="&quot;分布式排序&quot;"></p>
-
           
         
       
@@ -2866,7 +2862,7 @@ SID_LIST_LISTENER =
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2961,7 +2957,11 @@ SID_LIST_LISTENER =
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3050,7 +3050,11 @@ SID_LIST_LISTENER =
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/18/Markdown基础入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -327,8 +327,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/" itemprop="url">
-                  Apache Spark与Apache Hadoop的关系
+                <a class="post-title-link" href="/2017/04/18/Markdown基础入门/" itemprop="url">
+                  Markdown基础入门
                 </a>
               
             
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+              <time title="创建时间：2017-04-18 15:00:00" itemprop="dateCreated datePublished" datetime="2017-04-18T15:00:00+08:00">2017-04-18</time>
             
 
             
@@ -388,14 +388,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a></span>
 
                 
                 
@@ -431,221 +424,53 @@
       
         
           
-            <p>数据采集<br>本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。</p>
-<p>#数据采集考量<br>虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：<br>1.传统数据管理系统，如果关系型数据库与主机<br>2.日志、机器生成的数据，以及其他类型的事件数据。<br>3.从现有的企业数据存储中输入的文件。</p>
-<p>将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：<br>1.数据采集的时效性与可访问性<br>需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？</p>
-<p>2.增量更新<br>如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？</p>
-<p>3.数据访问和处理<br>数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？</p>
-<p>4.数据分区及数据分片<br>数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？</p>
-<p>5.数据存储格式<br>数据存储的格式是哪一种？</p>
-<p>6.数据变换<br>需要变换尚未落地的数据吗？</p>
-<p>下面简单列举一下这几点考量？</p>
-<p>##1.数据采集的时效性<br>这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个<br>a.大型批处理<br>通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务</p>
-<p>b.小型批处理<br>通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟</p>
-<p>c.近实时决策支持<br>指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据</p>
-<p>d.近实时事件处理<br>指在2秒内处理任务，速度可达到100毫秒</p>
-<p>e.实时<br>这里指不超过100毫秒</p>
-<p>可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。<br>使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。<br>当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。</p>
-<p>##2.增量更新<br>新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。</p>
-<p>#数据采集的选择</p>
-<p>##1.文件传输<br>将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。</p>
-<p>下面列一下文件传输的特点：<br>a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。<br>b.文件传输默认为单线程，不能并行 文件传输。<br>c.文件传输将文件从传统的文件系统导入HDFS<br>d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。<br>e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）</p>
-<p>##文件传输与其他采集方法的考量<br>简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。<br>a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。<br>b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。<br>e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。<br>如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。</p>
-<p>##Sqoop：Hadoop与关系数据库的批量传输<br>Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。</p>
-<p>Flume:基于事件的数据收集及处理<br>Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。</p>
-<p>##Kafka<br>Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。<br>Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。<br>Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。<br>前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。</p>
-<p>#数据导出<br>数据导出的思路与导入类似。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式计算 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式计算 /" itemprop="url">
-                  分布式计算
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式计算/" itemprop="url" rel="index"><span itemprop="name">分布式计算</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#MapRecue<br>在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须要被分割到成百上千的机器上才有可能在可以接受的时间内完成。怎样来实现并行计算？如何分发数据？如何进行错误处理？所有这些问题综合在一起，使得原来很简洁的计算，因为要大量的复杂代码来处理这些问题，而变得让人难以处理。 Google公司为了应对大数据的处理，内部已经实现了数据以百计的为专门目的而写的计算程序，其中MapRecue就是其著名的计算框架之王，与GFS、Bigtable一起被称为Google技术的“三宝”。 </p>
-<p>##MapRecue简介<br>MapRecue是一个编程模型，用于大规模数据集（TB级）的并行运算。有关MapRecue的论文介绍，最早可以追溯到由Google的Jeffrey Dean和Sanjay Ghemawat发表在2004年OSDI（USENIX Symposium on Operationg Systems Design and Implementation）的《MapRecue：Simplified Data Processing on LargeClusters》。这篇文章描述了Google如何分割、处理、整合他们令人难以置信的大数据集。读者有兴趣可以在线阅读该论文<a href="https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。" target="_blank" rel="noopener">https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。</a> 随后，开源软件先驱Doug Cutting等人受到该论文的启发，开始尝试实现MapRecue计算框架，并将它与NDFS（Nutch Distributed File System）结合，用以支持Nutch引擎的主要算法。由于NDFS与MapRecue在Nutch引擎中有着良好的应用，所以它们于2006年2月被分离出来，成为一套完整而独立的软件，并命名为Hadoop。 MapRecue程序模型应用成功要归功于以下几个方面。首先，由于该模型隐藏了并行、容错、本地优化以及负载平衡的细节，所以即便是那些没有并行和分布式系统经验的程序员也易于使用该模型。其次MapRecue计算可以很容易地表达大数据的各种问题。比如，MapRecue用于为Google的网页搜索服务生成数据，用于排序，用于数据挖掘，用于机器学习以及其他许多系统。再次，MapRecue的实现符合“由数千机器组成的大集群”的尺度，有效地利用了机器资源，所以非常适合解决大型计算问题。 </p>
-<p>##MapRecue的编程模型<br>MapRecue是一个用于大规模数据集（TB级）并行运算的编程模型，其基本原理就是将大的数据分成小块逐个分析，最后再将提取出来的数据汇总分析，最终获得我们想要的内容。从名字可以看出，“Map(映射)”和“Reduce（归纳）”是MapRecue模型的核心，其灵感来源于函数式语言（比如Lisp）中的内置函数map和reduce：用户通过定义一个Map函数，处理key/value（键值对）以生成一个中间key/value集合，MapRecue库将所有拥有相同的key(key I)的中间状态key合并起来传递到Redure职数；一个叫作Reduce的函数用以合并所有先前Map过后的有相同key（Key I）的中间量。map(k1,v1) -&gt; list&lt;k2,v2)reduce(k2,list(v2)) -&gt; list(k3,v3)但上面的定义显然还是过于抽象。现实世界中的许多任务在这个模型中得到了很好的表达。Shekhar Gulati就在他的博客里《How I explained MapReduce to my Wife?》举了一个辣椒酱制作过程的例子，来形象地描述MapRecue的原理，如下所述。1.MapRecue制作辣椒酱的过程辣椒酱制作的过程是这样的，先取一个洋葱，把它切碎，然后拌入盐和水，最后放进混合研磨机研磨。这样就能得到洋葱辣椒酱了。 现在，假设你想用薄荷、洋葱、番茄、辣椒、大蒜弄一瓶混合辣椒酱。你会怎么做呢？你会取薄荷叶一撮，洋葱一个，番茄一个，辣椒一根，大蒜一根，切碎后加入适量的盐和水，再放入混合研磨机里研磨，这样你就可以得到一瓶混合辣椒酱了。 现在把MapRecue的概念应用到食谱上，Map和Reduce其实就是两种操作。 Map：把洋葱、番茄、辣椒和大蒜切磋，是各自作用在这些物体上的一个Map操作。所以你给Map一个洋葱，Map就会把洋葱切碎。同样地，你把辣椒、大蒜和番茄一一地拿给Map，你也会得到各种碎块。所以，当你在切像洋葱这样的蔬菜时，你执行的就是一个Map操作。Map操作适用于每一种蔬菜，它会相应地生产出一种或多种碎块，在我们的例子中生产的是蔬菜块。在Map操作中可能会出现有个洋葱坏掉了的情况，你只要把洋葱丢了就行了。所以，如果出现坏洋葱了，Map操作就会过滤掉这个坏洋葱而不会生产出任何的坏洋葱块。 Reduce：在这一阶段，你将各种蔬菜都放入研磨机时在进行研磨，你就可以得到一瓶辣椒酱了。这意味要制成一瓶辣椒酱，你得研磨所有的原料。因此，研磨机通常将Map操作的蔬菜聚焦在了一起。 当然上面内容只是MapRecue的一部分，MapRecue的强大在于分布式计算。假设你每天需要生产10000瓶辣椒酱，你会怎么办？这个时候你就不得不雇佣更多的人和研磨机来完成这项工作了，你需要几个人一起切蔬菜。每个人都要处理满满一袋子的蔬菜，而每一个人都相当于在执行一个简单的Map操作。每一个人都将不断地从袋子里拿出蔬菜来，并且每次只对一种蔬菜进行处理，也就是将它们切碎，直到袋子空了为止。这样，当所有的工人都切完以后，工作台（每个人工作的地方）上就有了洋葱块、番茄块和蒜蓉，等等。 MapRecue将所有输出的蔬菜都搅拌在了一起，这些蔬菜都在以key为基础的Map操作下产生的。搅拌将自动完成，你可以假设key是一种原料的名字，你像洋葱一样。所以全部的洋葱key都搅拌在一起，并转移到研磨洋葱的研磨器里。这样，你就能得到洋葱辣椒酱了。同样地，所有的番茄也会被转移地标记着番茄的研磨器里，并制造出番茄辣椒酱。 </p>
-<p>#Apache Hadoop<br>Apache Hadoop是一个由Apache基金会开发的分布式系统基础架构，它可以让用户在不了解分布式底层细节的情况下，开发出可靠、可扩展的分布式计算应用。<br>Apache Hadoop框架允许用户使用简单的编程模型来实现计算机集群的大型数据集的分布式处理。它的目的是支持从单一服务器到上千台机器的扩展，充分利用了每台机器所提供本地计算和存储，而不是依靠硬件来提高高可用性。其本身被设计成在应用层检测和处理故障的库，对于计算机集群来说，其中每台机器的顶层都被设计成可以容错的，以便提供一个高可用的服务。<br>Apache Hadoop的框架最核心的设计就是HDFS和MapRecue。HDFS为海量的数据提供了存储，而MapRecue则为海量的数据提供了计算。</p>
-<p>##Apache Hadoop核心组件<br>Apache Hadoop包含以下模块：<br>Hadoop Common—常见实用工具，用来支持其他hadoop模块。<br>Hadoop Distributed File System（HDFS）—分布式文件系统，它提供对应用程序数据的高吞吐量访问<br>Hadoop YARN—-一个作业调度和集群资源管理框架<br>Hadoop MapRecue–基于YARN的大型数据集的并行处理系统</p>
-<p>###其它Apache Hadoop 相关的项目包括：<br>Ambari—-一个基于Web的工具，用于配置、管理和监控的Apache Hadoop 集群，其中包括支持Hadoop  HDFS、Hadoop  MapRecue、Hive、HCatalog、HBase、ZooKeeperOozie、Pig和Sqoop。Ambari还提供了仪表盘用于查看集群的健康，如热图，并能够以用户友好的方式来查看MapRecue、Pig和Hive应用，方便诊断其性能。<br>Avro–数据序列化系统<br>Cassandra–可扩展的、无单点故障的多主数据库<br>Chukwa–数据采集系统，用于管理大型分布式系统。<br>Hbase–一个可扩展的分布式数据库，支持结构化数据的大表存储<br>Hive–数据仓库基础设施，提供数据汇总以及特定的查询<br>Mahout—一种可扩展的机器学习和数据挖掘库<br>Pig–一个高层次的数据流并行计算语言和执行框架<br>Spark—Hadoop数据的快速和通用计算引擎。Spark提供了简单和强大的编程模型用于支持广泛的应用，其中包括ETL、机器学习、流处理和图形处理。<br>TEZ–通用的数据流编程框架，建立在Hadoop YARN之上。它提供了一个强大而灵活的引擎来执行任意DAG任务，以实现批量和交互式数据的处理。TEZ正在被Hive、Pig和Hadoop生态系统中的其他框架所采用，也可以通过其他商业软件（例如，ETL工具），以取代hadoop mapreduce作为底层执行引擎。<br>ZooKeeper–一个高性能的分布式应用程序协调服务。</p>
-<p>##Apache Spark<br>Spark是一个快速和通用的集群计算系统。特别：</p>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Markdown 的目标是实现「易读易写」。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>实现表格的两种方式<br>方式一：当某项过长时，表格可能如下显示，不好看。<br>具体使用方式请看示例。<br>•    ——: 为右对齐。<br>•    :—— 为左对齐。<br>•    :——: 为居中对齐。<br>•    ——- 为使用默认居中对齐。<br>1.9.2 示例<br>|         属性项               |                    属性说明<br>|    ——: |    :——-:    |    :———   |    ——    |<br>|    组件名称    |    步骤的名字，这个名字在一个转换中必须是唯一的。    |<br>|    字段    |    指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流    |<br>|字段|指定排序的字段名。|<br>|升序|排序原则：升序或降序。如果选择升序，排序顺序将是：数字-&gt;英文-&gt;汉字，汉字是按照拼音排序的，也同样会按照声调排序。如果是多音字，只会取一个读音，无法根据语境判断其的读音。|</p>
+<p>显示如下：  </p>
+<p>注意  </p>
 <ol>
-<li>快速 Spack具有支持循环数据流和内存计算的先进的DAG执行引擎，所以比Hadoop MapRecue在内存计算上快100倍，在硬盘计算上快10倍。</li>
-<li>易于使用 Spark提供了Java，Scala，Python和R等语言的高级API，可以用于快速开发相关语言应用。Spark提供了超过80个高级的操作，可以轻松构建并行应用程序。</li>
-<li>全面 Spark提供了Spark SQL，机器学习的MLlib，进行图形处理的GraphX，以及Spark Streaming等库。你可以在同一应用程序无缝地合并这些库。</li>
-<li>到处运行 可以standalone cluster mode运行EC2、Hadoop YARN、或者Apache Mesos中。可以访问HDFS、Cassandra、HBase、Hive、Tachyon，以及任意的Hadoop数据源。</li>
+<li>每个Markdown解析器都不一样，可能左右居中对齐方式的表示方式不一样。  </li>
 </ol>
-<p>##Apache Mesos<br>在传统上，物理机和虚拟机是数据中心的典型的计算单元。当应用部署后，这些机器需要安装各种配置工具来管理这些应用。机器通常被组织成集群，提供独立的服务，而系统管理员则监督其日常的日常动作。当这些集群达到其最大容量时，需要多机联网来处理负载，这就是集群的扩展带来了挑战。<br>在2010年，UC Berkeley大学就对上述问题提出了解决方案，这就是现在的Apache Mesos，Mesos抽象了CPU、内存、硬盘资源，让数据中心的功能对外就像是一个大的机器。Mesos创建一个单独的底层集群来提供应用程序所需要的资源，而不会超出虚拟机和操作系统性能限制。</p>
-<p>###Apache Mesos简介<br>Mesos是Apache下的开源分布式资源管理框架，它被称为分布式系统的内核，使用内置Linux内核相同的原理，只是在不同的抽象层次。该 Mesos内核运行在每个机器上，在整个数据中心和云环境内应用程序（例如Hadoop、Spark、Kafka、Elaborate等）提供资源管理和资源负载的API接口。</p>
+<p>方式二：表格形式（推荐）    </p>
+<p><code>&lt;table&gt;
+    &lt;tr&gt;  
+        &lt;th&gt;属性项&lt;/th&gt;  
+        &lt;th&gt;属性说明&lt;/th&gt;  
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;组件名称&lt;/td&gt;
+        &lt;td&gt;步骤的名字，这个名字在一个转换中必须是唯一的。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;字段&lt;/td&gt;
+        &lt;td&gt;指定字段名和排序方向(升序/降序);点击获取字段检索列表字段从输入流。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;字段&lt;/td&gt;
+        &lt;td&gt;指定排序的字段名。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;升序&lt;/td&gt;
+        &lt;td&gt;排序原则：升序或降序。如果选择升序，    
+        排序顺序将是：数字-&gt;英文-&gt;汉字，汉字是按照拼音排序的，    
+        也同样会按照声调排序。如果是多音字，只会取一个读音，    
+        无法根据语境判断其的读音。&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code><br>输出如下：  </p>
+<table><br>    <tr><br>        <th>属性项</th><br>        <th>属性说明</th><br>    </tr><br>    <tr><br>        <td>组件名称</td><br>        <td>步骤的名字，这个名字在一个转换中必须是唯一的。</td><br>    </tr><br>    <tr><br>        <td>字段</td><br>        <td>指定字段名和排序方向(升序/降序);</td><br>    </tr><br>    <tr><br>        <td>字段</td><br>        <td>指定排序的字段名。</td><br>    </tr><br>    <tr><br>        <td>升序</td><br>        <td>排序原则：升序或降序。如果选择升<br>    </td></tr><br></table>
+
+
+
+
+<h2 id="首行缩进"><a href="#首行缩进" class="headerlink" title="首行缩进"></a>首行缩进</h2><p>由于markdown语法主要考虑的是英文，所以对于中文的首行缩进并不太友好，两种方法都可以完美解决这个问题。</p>
+<ul>
+<li>把输入法由半角改为全角。 两次空格之后就能够有两个汉字的缩进。  </li>
+</ul>
+<ul>
+<li>在开头的时候，先输入下面的代码，然后紧跟着输入文本即可。分号也不要掉。   </li>
+</ul>
+<p>直接写<br>半方大的空白<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">全方大的空白```&amp;emsp;```或```&amp;#8195;```  </span><br><span class="line">不断行的空白格```&amp;nbsp;```或```&amp;#160;</span><br></pre></td></tr></table></figure></p>
+<p>做为显示时这几个转义不能单独写，要在前后添加<code>`</code></p>
 
           
         
@@ -699,7 +524,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式存储/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/18/java/JDK源码分析之集合框架HashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -718,8 +543,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式存储/" itemprop="url">
-                  分布式存储
+                <a class="post-title-link" href="/2017/04/18/java/JDK源码分析之集合框架HashMap/" itemprop="url">
+                  JDK源码分析之集合框架HashMap
                 </a>
               
             
@@ -745,7 +570,7 @@
                 
               
 
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+              <time title="创建时间：2017-04-18 10:00:00" itemprop="dateCreated datePublished" datetime="2017-04-18T10:00:00+08:00">2017-04-18</time>
             
 
             
@@ -779,14 +604,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式存储/" itemprop="url" rel="index"><span itemprop="name">分布式存储</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/jdk源码/" itemprop="url" rel="index"><span itemprop="name">jdk源码</span></a></span>
 
                 
                 
@@ -822,18 +647,7 @@
       
         
           
-            <p>##Bigtable<br>Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。</p>
-<p>Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的Bigtable模型的开源实现为Apache HBase。</p>
-<p>##HBase<br>HBase是一个高可靠、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可以在廉价PC上搭建起大规模结构化存储集群。<br>HBase是Google Bigtable的开源实现，类似于Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapRecue来处理Bigtable中的海量数据，HBase同样利用Hadoop MapRecue来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应。</p>
-<p>###特性：<br>强一致性读写：HBase不是“Eventual Consistentcy（最终一致性）”数据存储，这让它很适合高速计数聚合类任务；<br>自动分片（Automatic sharding）：HBase表通过region分布在集群中，数据增长时，region会自动分割并重新分布；<br>RegionServer自动故障转移<br>Hadoop/HDFS集成：HBase支持开箱即用HDFS作为它的分布式文件系统；<br>MapRecue：HBase通过MapRecue支持大并发处理；<br>Java客户端API：HBase支持易于使用的Java API进行编程访问;<br>Thrift/REST API：HBase也支持Thrift和Rest作为非Java前端访问；<br>Block Cache和Bloom Filter：对于大容量查询优化，HBase支持Block Cache和Bloom Filter;<br>运维管理：HBase支持JMX提供内置网页用于运维。</p>
-<p>###HBase应用场景<br>HBase不适合所有场景。<br>首先，确信有足够多数据，如果有上亿或上千亿行数据，HBase是很好的备选。如果只有上千或上百万行，则用传统的RDBMS可能是更好的选择。因为所有数据如果只需要在一两个节点进行存储，会导致集群其他节点闲置。<br>其次，确信可以不依赖于RDBMS的额外特性。例如，列数据类型、第二索引、事务、高级查询语言等<br>最后，确保有足够的硬件。因为HDFS在小于5个数据节点时，基本上体现不出来它的优势。<br>虽然HBase能在单独的笔记本上运行良好，但这应仅当成是开发阶段的配置 。</p>
-<p>###HBase的优点<br>列可以动态增加，并且列为空就不存储数据，节省存储空间；<br>HBase可以自动切分数据，使得数据存储自动具有水平扩展功能；<br>HBase可以提供高并发读写操作的支持；<br>与Hadoop MapRecue相结合有利于数据分析；<br>容错性；<br>版权免费；<br>非常灵活的模式设计（或者说没有固定模式的限制）；<br>可以跟Hive集成，使用类SQL查询；<br>自动故障转移；<br>客户端接口易于使用；<br>行级别原子性，即PUT操作一定是完全成功或者完全失败。</p>
-<p>###HBase的缺点<br>不能支持条件查询，只支持按照row key来查询；<br>容易产生单点故障（在只使用一个HMaster的时候）；<br>不支持事务；<br>JOIN不是数据库层支持的，而需要用MapRecue；<br>只能在主键上索引和排序；<br>没有内置的身份和权限认证；</p>
-<p>###HBase与Hadoop/HDFS的差异<br>HDFS是分布式文件系统，适合保存大文件。官方宣称它并非普通用途的文件系统，不提供文件的个别记录的快速查询。另一方面，HBase基于HDFS，并能够提供大表的记录快速查询和更新。HBase内部将数据放到索引好的“StoreFiles”存储文件中，以便提供高速查询，而存储文件位于HDFS中。</p>
-<p>##Cassandra<br>Cassandra是Facebook于2008年7月在Google Code上开源的项目。Cassandra实现了Dynamo风格的副本复制模型和没有单点失效的架构，增加了更加强大的column family数据模型。</p>
-<p>##Memcached<br>Memcached可以更好利用内存</p>
-<p>##Redis<br>Redis是一个key-value模型的内在数据存储系统。</p>
-<p>##MongoDB<br>MongoDB是一个介于关系型数据库和非关系性数据库之间的产品，是非关系型 数据库中功能最丰富、最像关系型 数据库的，旨在为Web应用提供可扩展的高性能数据存储解决方案。</p>
+            <p>#JDK源码分析之集合框架HashMap</p>
 
           
         
@@ -887,7 +701,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/18/spring/Spring源码分析之环境准备/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -906,8 +720,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之实时分析/" itemprop="url">
-                  实时分析
+                <a class="post-title-link" href="/2017/04/18/spring/Spring源码分析之环境准备/" itemprop="url">
+                  Spring源码分析之环境准备
                 </a>
               
             
@@ -933,7 +747,7 @@
                 
               
 
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+              <time title="创建时间：2017-04-18 10:00:00" itemprop="dateCreated datePublished" datetime="2017-04-18T10:00:00+08:00">2017-04-18</time>
             
 
             
@@ -967,14 +781,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/" itemprop="url" rel="index"><span itemprop="name">开源项目</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/实时分析/" itemprop="url" rel="index"><span itemprop="name">实时分析</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开源项目/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -1010,582 +824,7 @@
       
         
           
-            <p>少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计算这两类技术，能够从海量数据中快速分析出汇总结果。</p>
-<p>#MPP架构<br>并行数据库往往采用MPP（Massively Parallel Processing，大规模并行处理）架构。MPP架构是一种不共享的结果，每个节点可以运行自己的操作系统、数据库等，每个节点内的CPU不能访问另一个节点的内存，节点之间的信息交互是通过节点互联网络实现的。</p>
-<p>#EMC Greenplum<br>Greenplum是EMC公司研发的一款采用MPP架构的OLAP产品，底层基于开源的PostgreSQL数据库。</p>
-<p>#HP Vertica<br>Vertica是商业版。</p>
-<p>#Google Dremel</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/数据分析软件分类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/数据分析软件分类/" itemprop="url">
-                  数据分析软件分类
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据分析/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#数据分析软件分类<br>下面介绍一些适合大数据分析的存储数据库，或者面向大数据分析，适用于TB级以上的数据库存储和分析任务。分为如下几类介绍：<br>1.商业数据库<br>2.开源时序数据库<br>3.开源计算框架<br>4.开源SQL on hadoop<br>5.云端数据分析SaaS  </p>
-<p>##商业软件<br>商业数据库软件种类繁多，但是真正能支持TB级别以上的数据存储和分析并不多，下面介绍几个有特点、支持大数据的商用数据库。  </p>
-<p>###HP Vertica<br>Vertica公司成立于2005年，创立者为数据库巨擘Michael Stonebraker。2011成Vertica被惠普收购。Vertica是能够提供高效数据存储和快速查询数据存储数据库实时分析平台，还支持大规模并行 处理（MPP）。产品广泛应用于高端数据营销、互联网客户分析处理，数据达到PB级别。<br>Vertical特点如下：<br>面向列的存储<br>灵活的压缩算法，根据数据的排序性和基数决定压缩算法。<br>高可用数据库和查询<br>MPP架构，分布式存储和任务负载，Shared nothing架构。<br>支持标准SQL查询、ODBC/JDBC等..<br>支持Projection（数据投射）功能。</p>
-<p>###Oracle Exadata<br>Oracle Exadata是数据库发展史上一个人传奇，它是数据库软件和最新硬件的完美结合。它提供最快、最可靠的数据库平台，不仅支持常规的数据库应用，也支持联机分析处理（OLAP）和数据仓库（DW）的场景。<br>Oracle Exadata采用了多种最新的硬件技术，例如40GB的InfiniBan网络</p>
-<p>###Teradata<br>Teradata（天睿）公司是专注于大数据分析、数据仓库和整合营销管理解决方案的供应商。Teradata采用纯粹的Shared noting架构，支持MPP。对于多维度的查询更加灵活，专注于数据仓库的应用领域。  </p>
-<p>##时序数据库<br>时序数据库用于记录过去时间的各个数据点的信息，典型的应用是服务器的各种性能指标，例如CPU、内存使用情况等 。目前时序数据库也广泛应用于各种传感器的数据收集分析工作中，这些数据的收集都有一个特点，就是对时间的依赖非常大，每天产生的数据量非常大，因此定入的量非常大，一般的关系型数据库无法满足这些场景。因此，时序数据库在设计上需要支持高吞吐、高效数据压缩，支持历史查询、分布式部署等。</p>
-<p>###1.OpenTSDB<br>OpenTSDB是一个开源的时序数据库，支持存储千亿的数据点，并提供精确查询功能。它采用Java语言编写，通过基于HBaser存储实现横向扩展。</p>
-<p>###2.InfluxDB<br>InfluxDB采用GoLang语言开发，也是一个开源应用，社区非常活跃。其技术特点包含：支持任意数量的列，支持方便、强大的查询语言，集成了数据采集、存储和可视化功能。</p>
-<p>##开源分布式计算平台<br>一个是Hadoop，另一个是Spark，这里就不一一介绍了。</p>
-<p>##开源分析数据库</p>
-<p>###Kylin<br>Kylin是Apache开源的开源分布式分析引擎。<br>与Kylin一样致力于大数据查询问题的开源产品如Apache Drill、Apache Impala、Druid、Hive、Presto（Facebook）、SparkSQL等。<br>从底层技术角度来看，这些开源产品有很大的共性，一些底层技术几乎被所有的产品一致采用。<br>1）大规模并行处理：可以通过增加机器的方式来扩容处理速度，在相同的时间里处理更多的数据。<br>2）列式存储：通过按列存储提高单位时间里数据的I/O吞吐率，还能跳过不需要访问的列。<br>3）索引：利用索引配合查询条件，可以迅速跳过不符合条件的数据块，仅扫描需要扫描的数据内容。<br>4）压缩：压缩数据然后存储，使得存储的密度更高，在有限的I/O速率下，在单位时间里读取更多的记录。<br>综上所述，我们可以注意到，所有这些方法都只是提高了单位时间内处理数据的能力，当大家都一致采用这些技术时，它们之间的区别将只停留在实现层面的代码细节上。最重要的是，这些技术都不会改变一个事实，那就是处理时间与数据量之间的正比例关系。当数据量翻倍时，MPP（在不扩容的前提下）需要翻倍的时间来完成计算；列式存储需要翻倍的存储空间；索引下符合条件的记录数据数也会翻倍；压缩事的数据大小也还是之间的两倍。因此查询速度也会随之就之前的两倍。当数据量成十倍地增长时，这些技术的查询速度就会成十倍地下降，最终变得不能接受。<br>Apache Kylin的特色在于，在上述的底层技术之外，另辟蹊径地使用了独特的Cube预计算技术。预计算将数据按维度组合进行了聚合，将结果保存为物化视图。经过聚合，物化视图的规模就只由维度的基数来决定，而不再随着数据量的增长呈线性增长。以电商为例，如果业务扩张，交易量增长了10倍，只要交易数据的维度不变（供应商/商品数量不变），聚合后的物化视图初依旧是原先的大小，查询的速度也将保持不变。<br>与那些类似产品相比，这一导技术的区别使得Kylin从外在功能上呈现出了不同的特性，具体如下：<br>1）SQL接口：除了Druid以外，所有的产品都支持SQL或类SQL接口。巧合的是Druid也是除了Kylin以外，查询性能相对更好的一个。这点除了Druid有自己的存储引擎之外，可能还利益于其较为受限的查询能力。　　<br>2）大数据支持：大数据产品的能力在亿级到十亿级数据量之间，再大的数据量将显著降低查询性能。而Kylin因为采用预计算技术，因此查询速度不受数据量的限制。<br>3）查询速度，不会随着数据量的增加而查询性能下降。<br>4）吞吐量：根据之前的实验数据，Kylin的单例吞吐量一般在每秒70个查询左右，并且可以线性扩展，而普通的产品因为所有计算都在查询时完成，所以需要调动集群的更多资源才能完成查询，通常极限在每秒20个查询左右，而且扩容成本较高，需要扩展整个集群。相对的，Kylin系统因为瓶颈不在整个集群，而在于Kylin服务器，因此只需要增加Kylin服务器就能成倍提高吞率，扩容成本低廉。</p>
-<p>###Druid<br>Druid是什么？<br>Druid是一个分布式的支持实时分析的数据存储系统（Data Store）,是美国广告技术公司MetaMarkets于2011年创建，2012年开源的项目，Druid设计之初是为分析而生。官方网站是：<a href="http://druid.io" target="_blank" rel="noopener">http://druid.io</a></p>
-<p>###Pinot<br>Pinot是Linkin于2015年开源的一个分布式列式数据存储系统。</p>
-<p>###神秘的谷歌Dremel<br>Dremel是谷歌的“交互式”数据分析系统，支持上千台机器的集群部署，处理PB级别的数据，可以对网状数据的只读数据进行随机查询访问，帮助数据分析分提供Ad Hoc查询功能，进行尝试的数据探索（Exploration）。</p>
-<p>###Apache Drill<br>Apache Drill通过开源方式实现了谷歌Dremel。Drill架构的整个思想还是通过优化查询引擎，进行快速全表扫描，以快速返回结果，其高层架构示意图如下：</p>
-<p>Apache Drill基于SQL的数据分析和商业智能引入了JSON文件模型，这使得用户能查询固定架构，支持各种格式和数据存储中的模式无关数据。该体系架构中的关系查询引擎和数据库构建是有先决条件的，即假设所有数据都有一个简单的静态架构。</p>
-<p>Apache Drill的架构是独一无二的，它是唯一一个支持复杂和无模式数据的柱状行引擎，也是唯一一个能在查询执行期间进行的数据驱动查询。</p>
-<p>###Elasticsearch<br>Elasticsearch（ES）是Elastic公司推出一个基于Lucerne的分布式</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之数据采集/" itemprop="url">
-                  Hadoop数据移动
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据仓库/" itemprop="url" rel="index"><span itemprop="name">数据仓库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>数据采集<br>本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。</p>
-<p>#数据采集考量<br>虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：<br>1.传统数据管理系统，如果关系型数据库与主机<br>2.日志、机器生成的数据，以及其他类型的事件数据。<br>3.从现有的企业数据存储中输入的文件。</p>
-<p>将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：<br>1.数据采集的时效性与可访问性<br>需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？</p>
-<p>2.增量更新<br>如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？</p>
-<p>3.数据访问和处理<br>数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？</p>
-<p>4.数据分区及数据分片<br>数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？</p>
-<p>5.数据存储格式<br>数据存储的格式是哪一种？</p>
-<p>6.数据变换<br>需要变换尚未落地的数据吗？</p>
-<p>下面简单列举一下这几点考量？</p>
-<p>##1.数据采集的时效性<br>这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个<br>a.大型批处理<br>通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务</p>
-<p>b.小型批处理<br>通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟</p>
-<p>c.近实时决策支持<br>指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据</p>
-<p>d.近实时事件处理<br>指在2秒内处理任务，速度可达到100毫秒</p>
-<p>e.实时<br>这里指不超过100毫秒</p>
-<p>可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。<br>使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。<br>当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。</p>
-<p>##2.增量更新<br>新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。</p>
-<p>#数据采集的选择</p>
-<p>##1.文件传输<br>将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。</p>
-<p>下面列一下文件传输的特点：<br>a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。<br>b.文件传输默认为单线程，不能并行 文件传输。<br>c.文件传输将文件从传统的文件系统导入HDFS<br>d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。<br>e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）</p>
-<p>##文件传输与其他采集方法的考量<br>简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。<br>a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。<br>b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。<br>e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。<br>如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。</p>
-<p>##Sqoop：Hadoop与关系数据库的批量传输<br>Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。</p>
-<p>Flume:基于事件的数据收集及处理<br>Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。</p>
-<p>##Kafka<br>Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。<br>Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。<br>Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。<br>前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。</p>
-<p>#数据导出<br>数据导出的思路与导入类似。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/HDFS入门概念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
-                  HDFS入门概念
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hdfs/" itemprop="url" rel="index"><span itemprop="name">hdfs</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#数据块<br> 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。</p>
+            <p>#Spring源码分析之环境准备</p>
 
           
         
@@ -1819,7 +1058,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/spark/TODO-Spark体系概述/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -1838,8 +1077,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/spark/TODO-Spark体系概述/" itemprop="url">
-                  Spark体系概述
+                <a class="post-title-link" href="/2017/04/16/hadoop/Apache Spark与Apache Hadoop的关系/" itemprop="url">
+                  Apache Spark与Apache Hadoop的关系
                 </a>
               
             
@@ -1906,7 +1145,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/spark/" itemprop="url" rel="index"><span itemprop="name">spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
 
                 
                 
@@ -1942,7 +1181,30 @@
       
         
           
-            <p>本文目的是介绍spark框架下的内容，以简要概述方式。</p>
+            <p>数据采集<br>本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。</p>
+<p>#数据采集考量<br>虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：<br>1.传统数据管理系统，如果关系型数据库与主机<br>2.日志、机器生成的数据，以及其他类型的事件数据。<br>3.从现有的企业数据存储中输入的文件。</p>
+<p>将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：<br>1.数据采集的时效性与可访问性<br>需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？</p>
+<p>2.增量更新<br>如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？</p>
+<p>3.数据访问和处理<br>数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？</p>
+<p>4.数据分区及数据分片<br>数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？</p>
+<p>5.数据存储格式<br>数据存储的格式是哪一种？</p>
+<p>6.数据变换<br>需要变换尚未落地的数据吗？</p>
+<p>下面简单列举一下这几点考量？</p>
+<p>##1.数据采集的时效性<br>这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个<br>a.大型批处理<br>通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务</p>
+<p>b.小型批处理<br>通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟</p>
+<p>c.近实时决策支持<br>指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据</p>
+<p>d.近实时事件处理<br>指在2秒内处理任务，速度可达到100毫秒</p>
+<p>e.实时<br>这里指不超过100毫秒</p>
+<p>可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。<br>使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。<br>当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。</p>
+<p>##2.增量更新<br>新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。</p>
+<p>#数据采集的选择</p>
+<p>##1.文件传输<br>将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。</p>
+<p>下面列一下文件传输的特点：<br>a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。<br>b.文件传输默认为单线程，不能并行 文件传输。<br>c.文件传输将文件从传统的文件系统导入HDFS<br>d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。<br>e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）</p>
+<p>##文件传输与其他采集方法的考量<br>简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。<br>a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。<br>b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。<br>e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。<br>如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。</p>
+<p>##Sqoop：Hadoop与关系数据库的批量传输<br>Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。</p>
+<p>Flume:基于事件的数据收集及处理<br>Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。</p>
+<p>##Kafka<br>Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。<br>Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。<br>Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。<br>前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。</p>
+<p>#数据导出<br>数据导出的思路与导入类似。</p>
 
           
         
@@ -2221,6 +1483,745 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/HDFS入门概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
+                  HDFS入门概念
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hdfs/" itemprop="url" rel="index"><span itemprop="name">hdfs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#数据块<br> 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/spark/TODO-Spark体系概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/spark/TODO-Spark体系概述/" itemprop="url">
+                  Spark体系概述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/spark/" itemprop="url" rel="index"><span itemprop="name">spark</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文目的是介绍spark框架下的内容，以简要概述方式。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/数据分析软件分类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/数据分析软件分类/" itemprop="url">
+                  数据分析软件分类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据分析/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#数据分析软件分类<br>下面介绍一些适合大数据分析的存储数据库，或者面向大数据分析，适用于TB级以上的数据库存储和分析任务。分为如下几类介绍：<br>1.商业数据库<br>2.开源时序数据库<br>3.开源计算框架<br>4.开源SQL on hadoop<br>5.云端数据分析SaaS  </p>
+<p>##商业软件<br>商业数据库软件种类繁多，但是真正能支持TB级别以上的数据存储和分析并不多，下面介绍几个有特点、支持大数据的商用数据库。  </p>
+<p>###HP Vertica<br>Vertica公司成立于2005年，创立者为数据库巨擘Michael Stonebraker。2011成Vertica被惠普收购。Vertica是能够提供高效数据存储和快速查询数据存储数据库实时分析平台，还支持大规模并行 处理（MPP）。产品广泛应用于高端数据营销、互联网客户分析处理，数据达到PB级别。<br>Vertical特点如下：<br>面向列的存储<br>灵活的压缩算法，根据数据的排序性和基数决定压缩算法。<br>高可用数据库和查询<br>MPP架构，分布式存储和任务负载，Shared nothing架构。<br>支持标准SQL查询、ODBC/JDBC等..<br>支持Projection（数据投射）功能。</p>
+<p>###Oracle Exadata<br>Oracle Exadata是数据库发展史上一个人传奇，它是数据库软件和最新硬件的完美结合。它提供最快、最可靠的数据库平台，不仅支持常规的数据库应用，也支持联机分析处理（OLAP）和数据仓库（DW）的场景。<br>Oracle Exadata采用了多种最新的硬件技术，例如40GB的InfiniBan网络</p>
+<p>###Teradata<br>Teradata（天睿）公司是专注于大数据分析、数据仓库和整合营销管理解决方案的供应商。Teradata采用纯粹的Shared noting架构，支持MPP。对于多维度的查询更加灵活，专注于数据仓库的应用领域。  </p>
+<p>##时序数据库<br>时序数据库用于记录过去时间的各个数据点的信息，典型的应用是服务器的各种性能指标，例如CPU、内存使用情况等 。目前时序数据库也广泛应用于各种传感器的数据收集分析工作中，这些数据的收集都有一个特点，就是对时间的依赖非常大，每天产生的数据量非常大，因此定入的量非常大，一般的关系型数据库无法满足这些场景。因此，时序数据库在设计上需要支持高吞吐、高效数据压缩，支持历史查询、分布式部署等。</p>
+<p>###1.OpenTSDB<br>OpenTSDB是一个开源的时序数据库，支持存储千亿的数据点，并提供精确查询功能。它采用Java语言编写，通过基于HBaser存储实现横向扩展。</p>
+<p>###2.InfluxDB<br>InfluxDB采用GoLang语言开发，也是一个开源应用，社区非常活跃。其技术特点包含：支持任意数量的列，支持方便、强大的查询语言，集成了数据采集、存储和可视化功能。</p>
+<p>##开源分布式计算平台<br>一个是Hadoop，另一个是Spark，这里就不一一介绍了。</p>
+<p>##开源分析数据库</p>
+<p>###Kylin<br>Kylin是Apache开源的开源分布式分析引擎。<br>与Kylin一样致力于大数据查询问题的开源产品如Apache Drill、Apache Impala、Druid、Hive、Presto（Facebook）、SparkSQL等。<br>从底层技术角度来看，这些开源产品有很大的共性，一些底层技术几乎被所有的产品一致采用。<br>1）大规模并行处理：可以通过增加机器的方式来扩容处理速度，在相同的时间里处理更多的数据。<br>2）列式存储：通过按列存储提高单位时间里数据的I/O吞吐率，还能跳过不需要访问的列。<br>3）索引：利用索引配合查询条件，可以迅速跳过不符合条件的数据块，仅扫描需要扫描的数据内容。<br>4）压缩：压缩数据然后存储，使得存储的密度更高，在有限的I/O速率下，在单位时间里读取更多的记录。<br>综上所述，我们可以注意到，所有这些方法都只是提高了单位时间内处理数据的能力，当大家都一致采用这些技术时，它们之间的区别将只停留在实现层面的代码细节上。最重要的是，这些技术都不会改变一个事实，那就是处理时间与数据量之间的正比例关系。当数据量翻倍时，MPP（在不扩容的前提下）需要翻倍的时间来完成计算；列式存储需要翻倍的存储空间；索引下符合条件的记录数据数也会翻倍；压缩事的数据大小也还是之间的两倍。因此查询速度也会随之就之前的两倍。当数据量成十倍地增长时，这些技术的查询速度就会成十倍地下降，最终变得不能接受。<br>Apache Kylin的特色在于，在上述的底层技术之外，另辟蹊径地使用了独特的Cube预计算技术。预计算将数据按维度组合进行了聚合，将结果保存为物化视图。经过聚合，物化视图的规模就只由维度的基数来决定，而不再随着数据量的增长呈线性增长。以电商为例，如果业务扩张，交易量增长了10倍，只要交易数据的维度不变（供应商/商品数量不变），聚合后的物化视图初依旧是原先的大小，查询的速度也将保持不变。<br>与那些类似产品相比，这一导技术的区别使得Kylin从外在功能上呈现出了不同的特性，具体如下：<br>1）SQL接口：除了Druid以外，所有的产品都支持SQL或类SQL接口。巧合的是Druid也是除了Kylin以外，查询性能相对更好的一个。这点除了Druid有自己的存储引擎之外，可能还利益于其较为受限的查询能力。　　<br>2）大数据支持：大数据产品的能力在亿级到十亿级数据量之间，再大的数据量将显著降低查询性能。而Kylin因为采用预计算技术，因此查询速度不受数据量的限制。<br>3）查询速度，不会随着数据量的增加而查询性能下降。<br>4）吞吐量：根据之前的实验数据，Kylin的单例吞吐量一般在每秒70个查询左右，并且可以线性扩展，而普通的产品因为所有计算都在查询时完成，所以需要调动集群的更多资源才能完成查询，通常极限在每秒20个查询左右，而且扩容成本较高，需要扩展整个集群。相对的，Kylin系统因为瓶颈不在整个集群，而在于Kylin服务器，因此只需要增加Kylin服务器就能成倍提高吞率，扩容成本低廉。</p>
+<p>###Druid<br>Druid是什么？<br>Druid是一个分布式的支持实时分析的数据存储系统（Data Store）,是美国广告技术公司MetaMarkets于2011年创建，2012年开源的项目，Druid设计之初是为分析而生。官方网站是：<a href="http://druid.io" target="_blank" rel="noopener">http://druid.io</a></p>
+<p>###Pinot<br>Pinot是Linkin于2015年开源的一个分布式列式数据存储系统。</p>
+<p>###神秘的谷歌Dremel<br>Dremel是谷歌的“交互式”数据分析系统，支持上千台机器的集群部署，处理PB级别的数据，可以对网状数据的只读数据进行随机查询访问，帮助数据分析分提供Ad Hoc查询功能，进行尝试的数据探索（Exploration）。</p>
+<p>###Apache Drill<br>Apache Drill通过开源方式实现了谷歌Dremel。Drill架构的整个思想还是通过优化查询引擎，进行快速全表扫描，以快速返回结果，其高层架构示意图如下：</p>
+<p>Apache Drill基于SQL的数据分析和商业智能引入了JSON文件模型，这使得用户能查询固定架构，支持各种格式和数据存储中的模式无关数据。该体系架构中的关系查询引擎和数据库构建是有先决条件的，即假设所有数据都有一个简单的静态架构。</p>
+<p>Apache Drill的架构是独一无二的，它是唯一一个支持复杂和无模式数据的柱状行引擎，也是唯一一个能在查询执行期间进行的数据驱动查询。</p>
+<p>###Elasticsearch<br>Elasticsearch（ES）是Elastic公司推出一个基于Lucerne的分布式</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式计算 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式计算 /" itemprop="url">
+                  分布式计算
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式计算/" itemprop="url" rel="index"><span itemprop="name">分布式计算</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#MapRecue<br>在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须要被分割到成百上千的机器上才有可能在可以接受的时间内完成。怎样来实现并行计算？如何分发数据？如何进行错误处理？所有这些问题综合在一起，使得原来很简洁的计算，因为要大量的复杂代码来处理这些问题，而变得让人难以处理。 Google公司为了应对大数据的处理，内部已经实现了数据以百计的为专门目的而写的计算程序，其中MapRecue就是其著名的计算框架之王，与GFS、Bigtable一起被称为Google技术的“三宝”。 </p>
+<p>##MapRecue简介<br>MapRecue是一个编程模型，用于大规模数据集（TB级）的并行运算。有关MapRecue的论文介绍，最早可以追溯到由Google的Jeffrey Dean和Sanjay Ghemawat发表在2004年OSDI（USENIX Symposium on Operationg Systems Design and Implementation）的《MapRecue：Simplified Data Processing on LargeClusters》。这篇文章描述了Google如何分割、处理、整合他们令人难以置信的大数据集。读者有兴趣可以在线阅读该论文<a href="https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。" target="_blank" rel="noopener">https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。</a> 随后，开源软件先驱Doug Cutting等人受到该论文的启发，开始尝试实现MapRecue计算框架，并将它与NDFS（Nutch Distributed File System）结合，用以支持Nutch引擎的主要算法。由于NDFS与MapRecue在Nutch引擎中有着良好的应用，所以它们于2006年2月被分离出来，成为一套完整而独立的软件，并命名为Hadoop。 MapRecue程序模型应用成功要归功于以下几个方面。首先，由于该模型隐藏了并行、容错、本地优化以及负载平衡的细节，所以即便是那些没有并行和分布式系统经验的程序员也易于使用该模型。其次MapRecue计算可以很容易地表达大数据的各种问题。比如，MapRecue用于为Google的网页搜索服务生成数据，用于排序，用于数据挖掘，用于机器学习以及其他许多系统。再次，MapRecue的实现符合“由数千机器组成的大集群”的尺度，有效地利用了机器资源，所以非常适合解决大型计算问题。 </p>
+<p>##MapRecue的编程模型<br>MapRecue是一个用于大规模数据集（TB级）并行运算的编程模型，其基本原理就是将大的数据分成小块逐个分析，最后再将提取出来的数据汇总分析，最终获得我们想要的内容。从名字可以看出，“Map(映射)”和“Reduce（归纳）”是MapRecue模型的核心，其灵感来源于函数式语言（比如Lisp）中的内置函数map和reduce：用户通过定义一个Map函数，处理key/value（键值对）以生成一个中间key/value集合，MapRecue库将所有拥有相同的key(key I)的中间状态key合并起来传递到Redure职数；一个叫作Reduce的函数用以合并所有先前Map过后的有相同key（Key I）的中间量。map(k1,v1) -&gt; list&lt;k2,v2)reduce(k2,list(v2)) -&gt; list(k3,v3)但上面的定义显然还是过于抽象。现实世界中的许多任务在这个模型中得到了很好的表达。Shekhar Gulati就在他的博客里《How I explained MapReduce to my Wife?》举了一个辣椒酱制作过程的例子，来形象地描述MapRecue的原理，如下所述。1.MapRecue制作辣椒酱的过程辣椒酱制作的过程是这样的，先取一个洋葱，把它切碎，然后拌入盐和水，最后放进混合研磨机研磨。这样就能得到洋葱辣椒酱了。 现在，假设你想用薄荷、洋葱、番茄、辣椒、大蒜弄一瓶混合辣椒酱。你会怎么做呢？你会取薄荷叶一撮，洋葱一个，番茄一个，辣椒一根，大蒜一根，切碎后加入适量的盐和水，再放入混合研磨机里研磨，这样你就可以得到一瓶混合辣椒酱了。 现在把MapRecue的概念应用到食谱上，Map和Reduce其实就是两种操作。 Map：把洋葱、番茄、辣椒和大蒜切磋，是各自作用在这些物体上的一个Map操作。所以你给Map一个洋葱，Map就会把洋葱切碎。同样地，你把辣椒、大蒜和番茄一一地拿给Map，你也会得到各种碎块。所以，当你在切像洋葱这样的蔬菜时，你执行的就是一个Map操作。Map操作适用于每一种蔬菜，它会相应地生产出一种或多种碎块，在我们的例子中生产的是蔬菜块。在Map操作中可能会出现有个洋葱坏掉了的情况，你只要把洋葱丢了就行了。所以，如果出现坏洋葱了，Map操作就会过滤掉这个坏洋葱而不会生产出任何的坏洋葱块。 Reduce：在这一阶段，你将各种蔬菜都放入研磨机时在进行研磨，你就可以得到一瓶辣椒酱了。这意味要制成一瓶辣椒酱，你得研磨所有的原料。因此，研磨机通常将Map操作的蔬菜聚焦在了一起。 当然上面内容只是MapRecue的一部分，MapRecue的强大在于分布式计算。假设你每天需要生产10000瓶辣椒酱，你会怎么办？这个时候你就不得不雇佣更多的人和研磨机来完成这项工作了，你需要几个人一起切蔬菜。每个人都要处理满满一袋子的蔬菜，而每一个人都相当于在执行一个简单的Map操作。每一个人都将不断地从袋子里拿出蔬菜来，并且每次只对一种蔬菜进行处理，也就是将它们切碎，直到袋子空了为止。这样，当所有的工人都切完以后，工作台（每个人工作的地方）上就有了洋葱块、番茄块和蒜蓉，等等。 MapRecue将所有输出的蔬菜都搅拌在了一起，这些蔬菜都在以key为基础的Map操作下产生的。搅拌将自动完成，你可以假设key是一种原料的名字，你像洋葱一样。所以全部的洋葱key都搅拌在一起，并转移到研磨洋葱的研磨器里。这样，你就能得到洋葱辣椒酱了。同样地，所有的番茄也会被转移地标记着番茄的研磨器里，并制造出番茄辣椒酱。 </p>
+<p>#Apache Hadoop<br>Apache Hadoop是一个由Apache基金会开发的分布式系统基础架构，它可以让用户在不了解分布式底层细节的情况下，开发出可靠、可扩展的分布式计算应用。<br>Apache Hadoop框架允许用户使用简单的编程模型来实现计算机集群的大型数据集的分布式处理。它的目的是支持从单一服务器到上千台机器的扩展，充分利用了每台机器所提供本地计算和存储，而不是依靠硬件来提高高可用性。其本身被设计成在应用层检测和处理故障的库，对于计算机集群来说，其中每台机器的顶层都被设计成可以容错的，以便提供一个高可用的服务。<br>Apache Hadoop的框架最核心的设计就是HDFS和MapRecue。HDFS为海量的数据提供了存储，而MapRecue则为海量的数据提供了计算。</p>
+<p>##Apache Hadoop核心组件<br>Apache Hadoop包含以下模块：<br>Hadoop Common—常见实用工具，用来支持其他hadoop模块。<br>Hadoop Distributed File System（HDFS）—分布式文件系统，它提供对应用程序数据的高吞吐量访问<br>Hadoop YARN—-一个作业调度和集群资源管理框架<br>Hadoop MapRecue–基于YARN的大型数据集的并行处理系统</p>
+<p>###其它Apache Hadoop 相关的项目包括：<br>Ambari—-一个基于Web的工具，用于配置、管理和监控的Apache Hadoop 集群，其中包括支持Hadoop  HDFS、Hadoop  MapRecue、Hive、HCatalog、HBase、ZooKeeperOozie、Pig和Sqoop。Ambari还提供了仪表盘用于查看集群的健康，如热图，并能够以用户友好的方式来查看MapRecue、Pig和Hive应用，方便诊断其性能。<br>Avro–数据序列化系统<br>Cassandra–可扩展的、无单点故障的多主数据库<br>Chukwa–数据采集系统，用于管理大型分布式系统。<br>Hbase–一个可扩展的分布式数据库，支持结构化数据的大表存储<br>Hive–数据仓库基础设施，提供数据汇总以及特定的查询<br>Mahout—一种可扩展的机器学习和数据挖掘库<br>Pig–一个高层次的数据流并行计算语言和执行框架<br>Spark—Hadoop数据的快速和通用计算引擎。Spark提供了简单和强大的编程模型用于支持广泛的应用，其中包括ETL、机器学习、流处理和图形处理。<br>TEZ–通用的数据流编程框架，建立在Hadoop YARN之上。它提供了一个强大而灵活的引擎来执行任意DAG任务，以实现批量和交互式数据的处理。TEZ正在被Hive、Pig和Hadoop生态系统中的其他框架所采用，也可以通过其他商业软件（例如，ETL工具），以取代hadoop mapreduce作为底层执行引擎。<br>ZooKeeper–一个高性能的分布式应用程序协调服务。</p>
+<p>##Apache Spark<br>Spark是一个快速和通用的集群计算系统。特别：</p>
+<ol>
+<li>快速 Spack具有支持循环数据流和内存计算的先进的DAG执行引擎，所以比Hadoop MapRecue在内存计算上快100倍，在硬盘计算上快10倍。</li>
+<li>易于使用 Spark提供了Java，Scala，Python和R等语言的高级API，可以用于快速开发相关语言应用。Spark提供了超过80个高级的操作，可以轻松构建并行应用程序。</li>
+<li>全面 Spark提供了Spark SQL，机器学习的MLlib，进行图形处理的GraphX，以及Spark Streaming等库。你可以在同一应用程序无缝地合并这些库。</li>
+<li>到处运行 可以standalone cluster mode运行EC2、Hadoop YARN、或者Apache Mesos中。可以访问HDFS、Cassandra、HBase、Hive、Tachyon，以及任意的Hadoop数据源。</li>
+</ol>
+<p>##Apache Mesos<br>在传统上，物理机和虚拟机是数据中心的典型的计算单元。当应用部署后，这些机器需要安装各种配置工具来管理这些应用。机器通常被组织成集群，提供独立的服务，而系统管理员则监督其日常的日常动作。当这些集群达到其最大容量时，需要多机联网来处理负载，这就是集群的扩展带来了挑战。<br>在2010年，UC Berkeley大学就对上述问题提出了解决方案，这就是现在的Apache Mesos，Mesos抽象了CPU、内存、硬盘资源，让数据中心的功能对外就像是一个大的机器。Mesos创建一个单独的底层集群来提供应用程序所需要的资源，而不会超出虚拟机和操作系统性能限制。</p>
+<p>###Apache Mesos简介<br>Mesos是Apache下的开源分布式资源管理框架，它被称为分布式系统的内核，使用内置Linux内核相同的原理，只是在不同的抽象层次。该 Mesos内核运行在每个机器上，在整个数据中心和云环境内应用程序（例如Hadoop、Spark、Kafka、Elaborate等）提供资源管理和资源负载的API接口。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2272,7 +2273,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2367,7 +2368,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2456,7 +2461,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
