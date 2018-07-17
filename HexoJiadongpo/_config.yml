@@ -72,6 +72,6 @@ deploy:
   type: git
   repo: https://github.com/jiadongpo/jiadongpo.github.io.git
   branch: master
-  message: thindpad
+  message: 手动部署提交
   
 avatar: /images/avatar.jpg
