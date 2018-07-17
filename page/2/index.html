@@ -431,196 +431,16 @@
       
         
           
-            <p>#Hadoop数据管理<br>主要包括Hadoop的分布式文件系统HDFS、分布式数据库HBase和数据仓库工具Hive</p>
-<p>##HDFS的数据管理<br>HDFS是分布式计算的存储基石，Hadoop分布式文件系统和其它文件系统有很多类似的特性；<br>1）对于整个集群有单一的命名空间；<br>2）具有数据一致性，都适合一次写入多次读取的模型，客户端在文件没有被成功创建之前是无法看到文件存在的。<br>3）文件会被分割成多个文件块，每个文件块被分配存储到数据节点上，而且会根据配置由复制文件块来保证数据的安全性。<br>HDFS有三个重要的角色来进行文件系统的管理：NameNode、DataNode和Client。NameNode可以看做是分布式文件系统的管理者，主要负责管理文件系统的命名空间、集群配置信息和存储块的复制等。NameNode会将文件系统的Metadata存储在内存中，这些信息主要包括文件信息、每一个文件对应的文件块的信息和每一个文件块在DataNode中的信息等。DataNode是文件存储的基本单元，它将文件块（Block）存储在本地文件系统中，保存了所有Block的Metadata，同时周期性地将所有存在的Block信息发送给NameNode。Client就是需要获取分布式文件系统文件的应用程序。接下来三个具体的操作来说明HDFS对数据的管理。<br>（1）文件写入<br>1）Client向NameNode发起文件写入的请求。<br>2）NameNode根据文件的大小和文件块配置情况，返回给Client所管理的DataNode的信息。<br>3）Client将文件划分为多个Block，根据DataNode的地址信息，按顺序将其写入到每一个DataNode块中。<br>（2）文件读取<br>1）Client向NameNode发起文件读取的请求。<br>2）NameNode返回文件存储的DataNode信息。<br>3）Client读取文件信息。<br>（3）文件块（Block）复制<br>1）NameNode发现部分文件的Block不符合最小复制数这一要求或部分DataNode失效。<br>2）通知DataNode相互复制Block。<br>3）DataNode开始直接相互复制。  </p>
-<p>作为分布式文件系统，HDFS在数据管理方面还有值得借鉴的几个功能：<br>a.文件块（Block）的放置：一个Block会有三份备份，一份放在NameNode指定的DataNode上，另一份放在与指定DataNode不在同一机器上的DataNode上，最后一份放在与指定DataNode同一Rack的DataNode上。备份的目的是为了数据安全，采用这种配置方式主要是考虑同一Rack失败的情况，以及不同Rack之间进行数据复制会带来的性能问题。<br>b.心跳检测：用心跳检测DataNode的健康状况，如果发现问题就采取数据备份的方式来保证数据的安全性。<br>c.数据复制（场景为DataNode失败、需要平衡DataNode的存储利用率和平衡DataNode数据交互压力等情况）；使用Hadoop时可以用HDFS的balancer命令配置Threshold来平衡每一个DataNode的磁盘利用率。假设设置了Threshold为10%，那么执行balancer命令时，首先会统计所有的DataNode的磁盘利用率的平均值，然后判断如果某一个DataNode的磁盘利用率超过这个平均值，那么将会把这个DataNode的Block转移到磁盘利用率低的DataNode上，这对于新的节点为加入十分有用。<br>d.数据校验：采用CRC32做数据校验。在写入文件块的时候，除了会写入数据外还会写入校验信息，在读取的时候则需要先校验后读入。<br>e.数据管道性的写入：当客户端要写入文件到DataNode上时，首先会读取一个Block，然后将其写到每一个DataNode上，接着由第一个DataNode将其传递到备份的DataNode上，直到所有需要写入这个Block的DataNode都成功写入后，客户端才会开始写下一个Block。<br>f.安全模型：分布式文件系统启动时会进入安全模式（系统运行期间也可以通过命令进入安全模式），当分布式文件处于安全模式时，文件系统中的内容不允许修改也不允许删除，直到安DataNode上数据块的有效性，同时根据策略进行必要的复制或删除部分数据块。在实际操作过程中，如果在系统启动时修改和删除文件会出现安全模式不允许修改的错误提示，只需要等待一会即可。  </p>
-<p>##HBase的数据管理<br>HBase是一个类似Bigtable的分布式数据库，它的大部分特性和Bigtable一样，是一个稀疏的、长期存储的（存在硬盘上）、多维度的排序映射表，这张表的索引是行关键字、列关键字和时间戳。表中的每个值是一个纯字符数组，数据都是字符串，没有类型，所以同一张表中的每一行数据都可以有截然不同的列。列名字的格式是“<family>:<label>“，它是由字符串组成的，每一张表有一个family集合，这个集合是固定不变的，相当于表的结构，只能通过改变表结构来改变表的family集合。但是label值相对于每一行来说都是可以改变的。<br>HBase把同一个family中的数据存储在同一个目录下，而HB的写操作是锁行的。每一行都是一个原子元素，都可以加锁。所有数据库的更新都有一个时间戳标记，每次更新都会生成一个新的版本，而HBase会保留一定数量的版本，这个值是可以设定的。客户端可以选择获取距离某个时间点最近的版本，或者一次获取所有版本。  </label></family></p>
-<p>以上从微观上介绍了HBase的一些数据管理措施，那么HBase作为分布式数据为顺整体上从集群出发又是如何管理数据的呢？<br>HBase在分布式集群上主要依赖于HRegion、HMaster、HClient组成的体系结构从整体上管理数据。<br>HBase体系结构有三大重要组成部分：<br>a.HBaseMaster：HBase主服务器，与Bigtable的主服务器类似。<br>b.HRegionServer：HBase域服务器，与Bigtable的Tablet服务器类似。<br>c.Hbase Client：HBase客户端是由org.apache.hadoop.Hbase.client.HTable定义的。<br>下面将对这三个组件进行详细的介绍。<br>（1）HBaseMaster<br>一个HBase只部署一台主服务器，它通过领导选举算法确保只有唯一的主服务器是活跃的，ZooKeeper保存主服务器的服务器地址信息。如果主服务器瘫痪，可以通过领导选举算法从备用服务器中选择新的主服务器。<br>主服务器承担着初始化集群的任务。当主服务器每一次启动时，会试图从HDFS获取根或根域目录，如果获取失败则创建根或根域目录，以及第一个元域目录。在下次启动时，主服务器就可以获取集群和集群中所有域 的信息了。同时主服务器还负责集群中域的分配、域服务器运行状态的监控、表格的管理等工作。  </p>
-<p>（2）HRegionServer<br>HBase域服务器的主要职责有服务于主服务器分配的域、处理端的读写请求、本地缓冲回写、本地数据压缩和分割域等功能。<br>每个域只能由一台域服务器来提供服务。当它开始服务于某域时，它会从HDFS文件系统中读取该域的日志和所有存储文件，同时还会管理操作HDFS文件的持久性存储工作。客户端通过与主服务器通信获取域或域服务器的列表信息后，就可以直接向域服务器发送域读写请求，来完成操作。  </p>
-<p>（3）HBaseClient<br> HBase客户端负责查找用户域所在的域服务器地址。HBase客户端会与HBase主机交换消息以查找根域的位置，这是两者之间唯一的交流。<br>定位根域后，客户端连接根域所在的服务器，并扫描根域获取元域信息。元域信息中包含所需用户域的域服务器地址。客户端再连接元域所在的服务器，扫描元域以获取所需用户域所在的域服务器地址。客户端再连接元域所在的域服务器，扫描元域以获取所需用户域所有的域服务器地址。定位用户域后，客户端连接用户域所在的域服务器并发出读写请求。用户域的地址将在客户端被缓存，后续的请求无须重复上述过程。  </p>
-<p>综上所述，HBase的体系结构中，HBase主要由主服务器、域服务器和客户端三部分组成。主服务器作为HBase的中心，管理整个集群中的所有域，监控每台域服务器的运行情况等；域服务器接收来自服务器的分配域，处理管理端的域读写请求并回写映射文件等；客户端主要用来查找用户域所在的域服务器地址信息。  </p>
-<p>##Hive的数据管理<br>Hive是建立在Hadoop上的数据仓库基础架构。它提供了一系列的工具，用来进行数据提取、转化、加载，这是一种可以存储、查询和分析存储在Hadoop中的大规模数据的机制。Hive定义了简单的类SQL的查询语言，称为HiveQL，它允许熟悉SQL的用户用SQL语言查询数据。作为一个数据仓库，Hive的数据管理按照使用层次可以从元数据存储、数据存储和数据交换三方面来介绍。<br>（1）元数据存储<br>Hive将元数据存储在RDBMS中，有三种模式可以连接到数据库。<br>1）Single User Mode:此模式连接到一个In-memory的数据库Derby，一般用于Unit Test。<br>2）Multi User Mode：通过网络连接到一个数据库中，这是最常用的模式。<br>3）Remote Server Mode：用于非Java客户端访问元数据，在服务器端启动一个MetaStoreServer，客户端利用Thrift协议通过MetaStoreServer来访问元数据库。<br>（2）数据存储<br>首先，Hive没有专门的数据存储格式，也没有为数据建立索引，用户可以非常自由地组织Hive中的表，只需要在创建表的时候告诉Hive数据中的列分隔符和行分隔符，它就可以解析数据了。<br>其次，Hive中所有的数据都存储在HDFS中，Hive中包含4种数据模型：Table、External Table、Partition和Bucket。<br>Hive中的Table和数据库中的Table在概念上是类似的，每一个Table在Hive中都有一个相应的目录来存储数据。例如，一个表pvs，它在HDFS中的路径为:/wh/pvs，其中wh是在hive-site.xml中由${hive.metastore.warehouse.dir}指定的数据仓库的目录，所有的Table数据（不包括External Table）都保存在这个目录中。<br>（3）数据交换<br>数据交换主要分为以下部分，如图：</p>
-<p>a）用户接口：包括客户端、Web界面和数据库接口。<br>b)元数据存储：通常存在在关系型数据库中，如MYSQL、Derby中。<br>c)解释器、编译器、优化器、执行器。<br>d)Hadoop：利用HDFS进行存储，利用MapRecue进行计算。<br>用户接口主要有三个：客户端、数据库接口和Web界面，其中最常用的是客户端。Client是Hive的客户端，当启动Client模式时，用户会想要连接Hive Server，这时需要指出Hive Server所在的节点，并且在该节点启动HiveServer。Web界面是通过浏览器访问Hive的。<br>Hive元数据存储在数据库中，如MYSQL、Derby中。Hive中的元数据包括表的名字、表的列、表的分区、表分区的属性、表的属性、表的数据所在目录等。<br>解释器、编译器、优化器完成HiveQL查询语句从记法分析、语法分析、编译、优化到查询计划的生成。生成的查询计划存储在HDFS中，并且随后由MapRecue调用执行。<br>Hive的数据存储在HDFS中，大部分的查询由MapRecue完成（包括<em>的查询不会生成MapRecue任务，比如select </em> from tbl).  </p>
-<p>#安装并运行Hadoop<br>介绍Hadoop安装之前，先介绍一下Hadoop对各个节点的角色定义。<br>Hadoop分别从三个角度将主机划分为两种角色。第一，最基本的划分为Master和Slave，即主人和奴隶；第二，从HDFS的角度，将主机划分为NameNode和DataNode（在分布式文件系统中，目录的管理很重要，管理目录相当于主人，而NameNode就是目录管理者）；第三，从MapRecue的角度，将主机划分为JobTracker和TaskTracker（一个Job经常被划分为多个Task，从这个角度不难理解它们之间的关系）。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs入门/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/04/tools/emacs/TODO-emacs入门/" itemprop="url">
-                  emacs入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-04 16:00:00" itemprop="dateCreated datePublished" datetime="2017-05-04T16:00:00+08:00">2017-05-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tools/emacs/" itemprop="url" rel="index"><span itemprop="name">emacs</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#入门实践</p>
-
-          
+          #Hadoop数据管理主要包括Hadoop的分布式文件系统HDFS、分布式数据库HBase和数据仓库工具Hive
+##HDFS的数据管理HDFS是分布式计算的存储基石，Hadoop分布式文件系统和其它文件系统有很多类似的特性；1）对于整个集群有单一的命名空间；2）具有数据一致性，都适合一次写入多次读
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/08/hadoop/Hadoop知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -795,9 +615,200 @@
       
         
           
-            <p>#入门实践</p>
+          #入门实践
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/04/tools/vim/TODO-vim入门实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/05/04/tools/emacs/TODO-emacs入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/04/tools/emacs/TODO-emacs入门/" itemprop="url">
+                  emacs入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-04 16:00:00" itemprop="dateCreated datePublished" datetime="2017-05-04T16:00:00+08:00">2017-05-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tools/emacs/" itemprop="url" rel="index"><span itemprop="name">emacs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #入门实践
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/04/tools/emacs/TODO-emacs入门/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -972,10 +983,17 @@
       
         
           
-            <p>#java设计模式分类</p>
-<p>#设计模式概述</p>
+          #java设计模式分类
+#设计模式概述
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/设计模式/主要设计模式及简要介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1150,25 +1168,16 @@
       
         
           
-            <p>下面整理一些常用的命令，内容来自于网络整合，会把自己常用的收集在这里  </p>
-<p>#CURL命令<br>下载单个文件，默认将输出打印到标准输出中(STDOUT)中<br>curl <a href="http://www.centos.org" target="_blank" rel="noopener">http://www.centos.org</a><br>通过-o/-O选项保存下载的文件到指定的文件中：<br>-o：将文件保存为命令行中指定的文件名的文件中<br>-O：使用URL中默认的文件名保存文件到本地  </p>
-<h1 id="将文件下载到本地并命名为mygettext-html"><a href="#将文件下载到本地并命名为mygettext-html" class="headerlink" title="将文件下载到本地并命名为mygettext.html"></a>将文件下载到本地并命名为mygettext.html</h1><p>curl -o mygettext.html <a href="http://www.gnu.org/software/gettext/manual/gettext.html" target="_blank" rel="noopener">http://www.gnu.org/software/gettext/manual/gettext.html</a>  </p>
-<h1 id="将文件保存到本地并命名为gettext-html"><a href="#将文件保存到本地并命名为gettext-html" class="headerlink" title="将文件保存到本地并命名为gettext.html"></a>将文件保存到本地并命名为gettext.html</h1><p>curl -O <a href="http://www.gnu.org/software/gettext/manual/gettext.html" target="_blank" rel="noopener">http://www.gnu.org/software/gettext/manual/gettext.html</a><br>同样可以使用转向字符”&gt;”对输出进行转向输出  </p>
-<p>##同时获取多个文件<br>curl -O URL1 -O URL2  </p>
-<p>#ECHO命令<br>在终端下打印变量value的时候也是常常用到的, 因此有必要了解下echo的用法<br>echo命令的功能是在显示器上显示一段文字，一般起到一个提示的作用。<br>该命令的一般格式为： echo [ -n ] 字符串<br>其中选项n表示输出文字后不换行；字符串能加引号，也能不加引号。用echo命令输出加引号的字符串时，将字符串原样输出；用echo命令输出不加引号的字符串时，将字符串中的各个单词作为字符串输出，各字符串之间用一个空格分割。<br>功能说明：显示文字。<br>语 　 法：echo [-ne][字符串]或 echo [–help][–version]<br>补充说明：echo会将输入的字符串送往标准输出。输出的字符串间以空白字符隔开, 并在最后加上换行号。<br>参　　 数：-n 不要在最后自动换行<br>-e 若字符串中出现以下字符，则特别加以处理，而不会将它当成一般<br>文字输出：<br>   \a 发出警告声；<br>   \b 删除前一个字符；<br>   \c 最后不加上换行符号；<br>   \f 换行但光标仍旧停留在原来的位置；<br>   \n 换行且光标移至行首；<br>   \r 光标移至行首，但不换行；<br>   \t 插入tab；<br>   \v 与\f相同；<br>   \ 插入\字符；<br>   \nnn 插入nnn（八进制）所代表的ASCII字符；<br>–help 显示帮助<br>–version 显示版本信息  </p>
-<p>##其它功能<br>ECHO命令是大家都熟悉的DOS批处理命令的一条子命令，但它的一些功能和用法也许你并不是全都知道，不信你瞧：<br>1． 作为控制批处理命令在执行时是否显示命令行自身的开关 格式：ECHO [ON|OFF] 如果想关闭“ECHO OFF”命令行自身的显示，则需要在该命令行前加上“@”。<br>2． 显示当前ECHO设置状态 格式：ECHO<br>3． 输出提示信息 格式：ECHO信息内容 上述是ECHO命令常见的三种用法，也是大家熟悉和会用的，但作为DOS命令淘金者你还应该知道下面的技巧：<br>4． 关闭DOS命令提示符 在DOS提示符状态下键入ECHO OFF，能够关闭DOS提示符的显示使屏幕只留下光标，直至键入ECHO ON，提示符才会重新出现。<br>5． 输出空行，即相当于输入一个回车 格式：ECHO． 值得注意的是命令行中的“．”要紧跟在ECHO后面中间不能有空格，否则“．”将被当作提示信息输出到屏幕。另外“．”可以用，：；”／[/]＋等任一符号替代。 在下面的例子中ECHO．输出的回车，经DOS管道转向作为TIME命令的输入，即相当于在TIME命令执行后给出一个回车。所以执行时系统会在显示当前时间后，自动返回到DOS提示符状态： C:〉ECHO.|TIME ECHO命令输出空行的另一个应用实例是：将ECHO．加在自动批处理文件中，使原本在屏幕下方显示的提示画面，出现在屏幕上方。<br>6． 答复命令中的提问 格式：ECHO答复语|命令文件名 上述格式可以用于简化一些需要人机对话的命令（如：CHKDSK／F；FORMAT Drive:；del <em>.</em>）的操作，它是通过DOS管道命令把ECHO命令输出的预置答复语作为人机对话命令的输入。下面的例子就相当于在调用的命令出现人机对话时输入“Y”回车： C:〉ECHO Y|CHKDSK/F C:〉ECHO Y|DEL A :<em>.</em><br>7． 建立新文件或增加文件内容 格式：ECHO 文件内容＞文件名 ECHO 文件内容＞＞文件名 例如：C:〉ECHO @ECHO OFF〉AUTOEXEC.BAT建立自动批处理文件 C:〉ECHO C:/CPAV/BOOTSAFE〉〉AUTOEXEC.BAT向自动批处理文件中追加内容 C:TYPE AUTOEXEC.BAT显示该自动批处理文件 @ECHO OFF C:/CPAV/BOOTSAFE<br>    可用于设置环境变量，如：<br>    $sudo echo “export HIVE_HOME=$PWD/hive-0.9.0” &gt; /etc/profile.d/hive.sh<br>    $sudo echo “PATH=$PATH:$HIVE_HOME/bin” &gt;&gt; /etc/profile.d/hive.sh<br>8． 向打印机输出打印内容或打印控制码 格式：ECHO 打印机控制码＞PRN ECHO 打印内容＞PRN 下面的例子是向M－1724打印机输入打印控制码。＜Alt＞156是按住Alt键在小键盘键入156，类似情况依此类推： C:〉ECHO 〈Alt〉+156〈Alt〉+42〈Alt〉+116〉PRN（输入下划线命令FS＊t） C:〉ECHO 〈Alt〉+155@〉PRN（输入初始化命令ESC@） C:〉ECHO.〉PRN（换行）<br>9． 使喇叭鸣响 C:〉ECHO ^G “^G”是用Ctrl＋G或Alt＋007输入，输入多个^G可以产生多声鸣响。使用方法是直接将其加入批处理文件中或做成批处理文件调用。<br>10．执行ESC控制序列修改屏幕和键盘设置 我们知道DOS的设备驱动程序ANSI.SYS提供了一套用来修改屏幕和键盘设置的ESC控制序列。如执行下述内容的批处理程序可以把功能键F12定义为DOS命令“DIR／W”，并把屏幕颜色修改为白色字符蓝色背景。 @ECHO”←[0;134;”DIR/W”;13p @ECHO”←[1;37;44m （注：批处理文件中“←”字符的输入方法是在编辑状态下按Alt中小键盘上的27） DOS命令是接触计算机的人首先要学到的，对许多人来说是太熟悉太简单了，其实不然，在这些命令中蕴藏着丰富的内容，仍有待于我们进一步去理解去开发，如果你是一个有心人就一定会从这些自以为熟知的命令中发现新的闪光点，淘得真金。  </p>
-<p>#&gt;和&gt;&gt;的区别,&lt;号使用<br>Linux中经常会用到将内容输出到某文件当中，只需要在执行命令后面加上&gt;或者&gt;&gt;号即可进入操作。<br>大于号：将一条命令执行结果（标准输出，或者错误输出，本来都要打印到屏幕上面的）重定向其它输出设备（文件，打开文件操作符，或打印机等等）<br>小于号：命令默认从键盘获得的输入，改成从文件，或者其它打开文件以及设备输入  </p>
-<blockquote>
-<blockquote>
-<p>是追加内容<br>是覆盖原有内容<br>示例：  </p>
-<ol>
-<li>bogon:Desktop wenxuechao$ echo ‘abc’ &gt; test.txt    </li>
-<li>bogon:Desktop wenxuechao$ echo ‘123’ &gt;&gt; test.txt<br>执行效果，第一句命令会在桌面创建个test.txt的文件，并且将abc写到文件中。<br>第二句命令，会在文件下方，再次写入内容。<br>&lt;小于号<br>mysql -u root -p -h test &lt; test.sql 导入数据    </li>
-</ol>
-</blockquote>
-</blockquote>
-
-          
+          下面整理一些常用的命令，内容来自于网络整合，会把自己常用的收集在这里  
+#CURL命令下载单个文件，默认将输出打印到标准输出中(STDOUT)中curl http://www.centos.org通过-o/-O选项保存下载的文件到指定的文件中：-o：将文件保存为命令行中指定的文件名的文件中-O：使
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/linux/Linux常用命令及操作/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1343,23 +1352,16 @@
       
         
           
-            <p>#Hbase概念<br>HBase是一个分布式的、面向列的开源数据库。  </p>
-<p>##Hbase术语<br><strong>行键Row Key</strong>：主键是用来检索记录的主键，访问hbasetable中的行。<br><strong>列族Column Family</strong>：Table在水平方向有一个或者多个ColumnFamily组成，一个ColumnFamily中可以由任意多个Column组成，即ColumnFamily支持动态扩展，无需预先定义Column的数量以及类型，所有Column均以二进制格式存储，用户需要自行进行类型转换。<br><strong>列column</strong>：由Hbase中的列族ColumnFamily + 列的名称（cell）组成列。<br><strong>单元格cell</strong>：HBase中通过row和columns确定的为一个存贮单元称为cell。<br><strong>版本version</strong>：每个 cell都保存着同一份数据的多个版本。版本通过时间戳来索引。  </p>
-<p>#Hbase安装<br>三种方式：单机、伪分布式、分布式</p>
-<p>##单机模式<br>Hbase安装文件下载解压后，直接运行，在单机模式下HBase不使用HDFS。</p>
-<p>##伪分布式<br>运行在单个节点上的分布式模式  </p>
-<p>##全分布式<br>全分面式模式下的HBase集群需要ZooKeeper实例运行，并且需要所有的HBase节点都能够与ZooKeeper实例通信，默认情况下HBase自身维护着一组默认的ZooKeeper实例，不过用户也可以配置独立的ZooKeeper实例，这样能够使HBase更加健壮。</p>
-<p>#运行HBase</p>
-<p>##单机模式<br>start-hbase.sh<br>stop-hbase.sh</p>
-<p>##伪分分面式<br>由于伪分布式运行基于HDFS，因此在期待运行HBase之前首先需要启动HDFS。<br>start-dfs.sh<br>然后start-hbase.sh</p>
-<p>##全分布式<br>与伪分布式相同</p>
-<p>#Hbase Shell<br>Hbase Shell提供了HBae命令，可以方便创建、删除及修改表，还可以向表中添加数据、列出表中相关信息等。<br>在启动hbase之后，用户可以通过下面的命令进入Hbase Shell：<br>hbase shell<br>输入help获取帮助<br>alter:修改列族模式<br>count:统计表中行的数量<br>create：创建表<br>describe:显示表相关的详细信息<br>delete:删除指定对象的值（可以为表、行、列对应的值，另外也可以指定时间戳的值）<br>deleteall:删除指定行的所有元素值<br>disable:使表无效<br>drop:删除表<br>enable:使表有效<br>exists：测试表是否存在<br>exit:退出Hbase Shell<br>get:获取行或单元(cell)的值<br>incr:增加指定表、行或列的值<br>list:列出HBase中存在的所有表<br>put:向指定的表单元添加值<br>tools:列出HBase所支持的工具<br>scan：通过对表的扫描来获取对应的值<br>status:返回HBase集群的状态信息<br>shutdown:关闭HBase集群<br>truncate:重新创建指定表<br>version:返回HBase版本信息<br>下面介绍几个详细的：<br>（1）create<br>通过表名及用逗号做好事开的列族信息来创建表<br>1）hbase&gt;create ‘t1’,{NAME=&gt;’f1’,VERSIONS=&gt;5}<br>2)hbase&gt;create ‘t1’,{NAME=&gt;’f1’},{NAME=&gt;’f2’},{NAME=&gt;’f3’}<br>hbase&gt;#上面的命令可以简写为下面所示的格式：<br>hbase&gt;create ‘t1’,’f1’,’f2’,’f3’<br>3)hbase&gt;create ‘t1’,{NAME=’f1’,VERSIONS=&gt;1,TTL=&gt;2592000,BLOCKCACHE=&gt;true}<br>以”NAME=&gt;’f1’举例说明，其中，列族参数的格式是箭头左侧为参数变量，右侧为参数对应的值，并用“=&gt;”分开。  </p>
-<p>（2）list<br>列出HBase中包含的表名称<br>hbase&gt;list   </p>
-<p>(3)put<br>向指定的HBase表单元添加值，例如向表t1的行r1、列c1:1添加值v1，并指定时间戳为ts的操作如下：<br>hbase&gt;put ‘t1’,’r1’,’c1:1’,’value’,ta1  </p>
-<p>(4)scan<br>获取指定表的相关信息，可以通过逗号分隔来指定扫描参数<br>例如：获取表test的所有值<br>hbase&gt;scan ‘test’<br>获取表test的c1列的所有值<br>hbase&gt;scan ‘test’,{COLUMNS=&gt;’c1’}<br>获取表test的c1列的前一行的所有值<br>hbase&gt;scan ‘test’,{COLUMNS=&gt;’c1’,limit=&gt;1}  </p>
-<p>(5)get<br>获取行或单元的值，此命令可以指定表名、行值、以及可选的列值和时间戳。<br>获取表test行r1的值<br>hbase&gt;get ‘test’,’r1’<br>获取表test行r1列c1:1的值<br>hbase&gt;get ‘test’,’r1’{COLUMN=&gt;’c1:1’}<br>需要注意的是，COLUMN和COLUMNS是不同的，scan操作中的COLUMNS指定的是表的列族，get操作中的COLUMN指定的是特定的列，COLUMN的值实质上为“列族+：+列修饰符”。<br>另外，在shell中，常量不需要用引号引起来，但二进制的值需要用双引号引起来，而其他值则用单引号引起来。<br>HBase Shell的常量可以通过shell中输入“Object.constants”命令来查看。  </p>
-
-          
+          #Hbase概念HBase是一个分布式的、面向列的开源数据库。  
+##Hbase术语行键Row Key：主键是用来检索记录的主键，访问hbasetable中的行。列族Column Family：Table在水平方向有一个或者多个ColumnFamily组成，一个ColumnFamily中可以由任意
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/hadoop/HBase入门概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1534,20 +1536,15 @@
       
         
           
-            <p>#Hive<br>大数据生态下，通过Hadoop MapReduce，实现将计算分割成多个处理单元，然后分散到一群家用或服务器级别的硬件上，从而降低成本并提供可伸缩性；这个计算模型下是HDFS，这是个“可插拔的“文件系统。不过，这里存在一个问题，就是用户如何从一个现有的数据基础架构转移到Hadoop上，而这个基础架构是基于关系型数据库和结构化查询语句（SQL）？<br>这就是Hive出现的原因，Hive提供了被称为Hive查询语言的（或称为HiveQL或HQL）的SQL方言，来查询存储在Hadoop集群中的数据。Hive将大多数据的查询转换为MapRecue任务（ｊｏｂ）。</p>
-<p>#Hive安装<br>Hive使用环境变量HADOOP_HOME来指定Hadoop的所有相关JAR和配置文件，因此在安装之前请确认下是否设置好了这个环境变量。<br>$cd ~<br>$curl -o <a href="http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz" target="_blank" rel="noopener">http://archive.apache.org/dis/hive/hive-0.9.0/hive-0.9.0-bin.tar.gz</a><br>$tar -xzf hive-0.9.0.tar.gz<br>$sudo mkdir -p /user/hive/warehouse<br>$sudo chmod a+rwx /user/hive/warehouse</p>
-<p>可以定义HIVE_HOME环境变量<br>$sudo echo “export HIVE_HOME=$PWD/hive-0.9.0” &gt; /etc/profile.d/hive.sh<br>$sudo echo “PATH=$PATH:$HIVE_HOME/bin” &gt;&gt; /etc/profile.d/hive.sh<br>$. /etc/profile</p>
-<p>#Hive组成<br>主要包含三个部分：<br>1.代码本身，在$HIVE_HOME/lib下可以看到许多jar，例如hive-exec<em>.jar，hive-metastore</em>.ja，每个jar文件都实现了hive功能中某个特定的部分。<br>2.可执行文件，在$HIVE_HOME/bin下，包含hive的命令行界面CLI，CLI是使用hive最常用的方式，一般会使用小写的hive代替。CLI用于提供交互式的界面供输入语句或用户执行hive语句的脚本。<br>3.metastoreservice（元数据服务），所有的hive客户端都需要元数据服务，hive使用这个服务来存储表模式信息和其他元数据信息。通常会使用关系型数据库来存储这些信息，默认使用内置的DerbySQL服务器，其可以提供有限的、单进程的存储服务。例如，当使用Derby时，用户不能执行2个并发的Hive CLI实例，然而，如果是在个人计算机上或某些开发任务上使用的话这样也没有问题。对于集群来说，需要使用MYSQL或类似的关系型数据库。<br>另外，hive还有一些组件，Thrift服务提供可远程访问的其他进程的功能，也提供JDBC和ODBC访问Hive的功能。Hive还提供了一个简单的网页界面HWI，提供远程访问Hive服务。</p>
-<p>#Hive启动<br>使用$HIVE_HOME/bin/hive命令<br>$cd $HIVE_HOME<br>$bin/hive<br>hive&gt;CREATE TABLE x (a INT);<br>hive&gt;SELECT * from x;<br>hive&gt;DROP TABLE x;<br>hive&gt;exit;</p>
-<p>#Hive命令<br>[root@cdhmaster~]#hive–help<br>Usage./hive<parameters>–serviceserviceName<serviceparameters><br>ServiceList:beelinecleardanglingscratchdirclihelphiveburninclienthiveserver2hiveserverhwijarlineagemetastoremetatoolorcfiledumprcfilecatschemaToolversion<br>Parametersparsed:<br>–auxpath:Auxillaryjars<br>–config:Hiveconfigurationdirectory<br>–service:Startsspecificservice/component.cliisdefault<br>Parametersused:<br>HADOOP_HOMEorHADOOP_PREFIX:Hadoopinstalldirectory<br>HIVE_OPT:Hiveoptions<br>Forhelponaparticularservice:<br>./hive–serviceserviceName–help<br>Debughelp:./hive–debug–help<br>Youhavenewmailin/var/spool/mail/root<br>需要注意ServiceList:后面的内容，这里提供了几个服务，包括我们绝大多数据时间将要使用的CLI。用户可以通过–servicename服务名称来启用某个服务。  </serviceparameters></parameters></p>
-<p>#常用SQL<br>显示数据库<br>hive&gt;showdatabases;<br>OK<br>Default<br>hive&gt;showdatabaselike’h.*’;<br>创建数据库<br>hive&gt;createdatabasetest_test001;<br>use命令用于将某个数据库设置为用户当前的工作数据库<br>hive&gt;usetest_test001;<br>设置当前工作数据库后，即可查询所有表<br>hive&gt;showtables；<br>删除数据库<br>hive&gt;dropdatabaseifexiststest_test001;  </p>
-<p>创建数据<br>createtableifnotexistsmydb.employees(<br>namestringcomment’emplyeename’,<br>Salaryfloat<br>)  </p>
-<p>删除表<br>droptableifexiststest_test001;  </p>
-<p>修改表<br>altertable只会修改元数据  </p>
-<p>表重命名<br>altertabletest_test001renametotes;  </p>
-<p>set hive.cli.print.header=true; // 打印列名<br>set hive.cli.print.row.to.vertical=true; // 开启行转列功能, 前提必须开启打印列名功能<br>set hive.cli.print.row.to.vertical.num=1; // 设置每行显示的列数  </p>
-
-          
+          #Hive大数据生态下，通过Hadoop MapReduce，实现将计算分割成多个处理单元，然后分散到一群家用或服务器级别的硬件上，从而降低成本并提供可伸缩性；这个计算模型下是HDFS，这是个“可插拔的“文件系统。不过，这里存在一个问题，就是用户如何从一个现有的数据基础架构转移到Hadoop上，而这
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/hadoop/Hive入门概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1722,8 +1719,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/27/前端/react.js/TODO-react.js入门之HelloWorld/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1898,8 +1902,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/27/前端/angular.js/TODO-angular.js入门之HelloWorld/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2074,8 +2085,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/27/前端/vue.js/TODO-vue.js入门之HelloWorld/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

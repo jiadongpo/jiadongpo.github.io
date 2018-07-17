@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之流式计算/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/spark/TODO-Spark体系概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -327,8 +327,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之流式计算/" itemprop="url">
-                  流式计算
+                <a class="post-title-link" href="/2017/04/16/spark/TODO-Spark体系概述/" itemprop="url">
+                  Spark体系概述
                 </a>
               
             
@@ -395,7 +395,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/流式计算/" itemprop="url" rel="index"><span itemprop="name">流式计算</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/spark/" itemprop="url" rel="index"><span itemprop="name">spark</span></a></span>
 
                 
                 
@@ -431,12 +431,16 @@
       
         
           
-            <p>MapRecue及其扩展解决了离线批处理问题，但是无法保证实时性。对于实时性要求高的场景，可以采用流式计算或者实时分析系统进行处理。<br>流式计算（Stream Processing）解决在线聚合（Online Aggregation）、在线过滤（Online Filter）等问题，流式计算同时具有存储系统和计算系统的特点，经常应用在一些类似于反作弊、交易异常监控等场景。流式计算的操作算子和时间相关，处理最近一段时间窗口内的数据。</p>
-<p>#原理<br>流式计算强调的是数据流的实时性。MapRecue系统主要解决的是对静态数据的批量处理，当MapRecue作业启动时，已经准备好了输入数据，比如保存在分布式文件系统上。而流式计算系统在启动时，输入数据一般并没有完全到位，而是经由外部数据流源源不断地流入。另外，流式计算并不像批处理系统那样，重视数据处理的总吞吐量，而是更加重视对数据处理的延迟。<br>MapRecue及其扩展采用的是一种比较静态的模型，如果用它来做数据流的处理，首先需要将数据流缓存并分块，然后放入集群计算。如果MapRecue每次处理的数据量较小，缓存数据流的时间较短，但是，MapRecue框架造成的额外开销将会占用很大比重；如果MapRecue每次处理的数据量较大，缓存数据流的时间会很长，无法满足实时性的要求。</p>
-<p>#Yahoo S4</p>
-<p>#Twitter Stoorm</p>
+          本文目的是介绍spark框架下的内容，以简要概述方式。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/spark/TODO-Spark体系概述/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -611,23 +615,15 @@
       
         
           
-            <p>#MapRecue<br>在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须要被分割到成百上千的机器上才有可能在可以接受的时间内完成。怎样来实现并行计算？如何分发数据？如何进行错误处理？所有这些问题综合在一起，使得原来很简洁的计算，因为要大量的复杂代码来处理这些问题，而变得让人难以处理。 Google公司为了应对大数据的处理，内部已经实现了数据以百计的为专门目的而写的计算程序，其中MapRecue就是其著名的计算框架之王，与GFS、Bigtable一起被称为Google技术的“三宝”。 </p>
-<p>##MapRecue简介<br>MapRecue是一个编程模型，用于大规模数据集（TB级）的并行运算。有关MapRecue的论文介绍，最早可以追溯到由Google的Jeffrey Dean和Sanjay Ghemawat发表在2004年OSDI（USENIX Symposium on Operationg Systems Design and Implementation）的《MapRecue：Simplified Data Processing on LargeClusters》。这篇文章描述了Google如何分割、处理、整合他们令人难以置信的大数据集。读者有兴趣可以在线阅读该论文<a href="https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。" target="_blank" rel="noopener">https://www.usenix.org/legacy/events/osdi04/tech/full_papers/dean/dean.pdf。</a> 随后，开源软件先驱Doug Cutting等人受到该论文的启发，开始尝试实现MapRecue计算框架，并将它与NDFS（Nutch Distributed File System）结合，用以支持Nutch引擎的主要算法。由于NDFS与MapRecue在Nutch引擎中有着良好的应用，所以它们于2006年2月被分离出来，成为一套完整而独立的软件，并命名为Hadoop。 MapRecue程序模型应用成功要归功于以下几个方面。首先，由于该模型隐藏了并行、容错、本地优化以及负载平衡的细节，所以即便是那些没有并行和分布式系统经验的程序员也易于使用该模型。其次MapRecue计算可以很容易地表达大数据的各种问题。比如，MapRecue用于为Google的网页搜索服务生成数据，用于排序，用于数据挖掘，用于机器学习以及其他许多系统。再次，MapRecue的实现符合“由数千机器组成的大集群”的尺度，有效地利用了机器资源，所以非常适合解决大型计算问题。 </p>
-<p>##MapRecue的编程模型<br>MapRecue是一个用于大规模数据集（TB级）并行运算的编程模型，其基本原理就是将大的数据分成小块逐个分析，最后再将提取出来的数据汇总分析，最终获得我们想要的内容。从名字可以看出，“Map(映射)”和“Reduce（归纳）”是MapRecue模型的核心，其灵感来源于函数式语言（比如Lisp）中的内置函数map和reduce：用户通过定义一个Map函数，处理key/value（键值对）以生成一个中间key/value集合，MapRecue库将所有拥有相同的key(key I)的中间状态key合并起来传递到Redure职数；一个叫作Reduce的函数用以合并所有先前Map过后的有相同key（Key I）的中间量。map(k1,v1) -&gt; list&lt;k2,v2)reduce(k2,list(v2)) -&gt; list(k3,v3)但上面的定义显然还是过于抽象。现实世界中的许多任务在这个模型中得到了很好的表达。Shekhar Gulati就在他的博客里《How I explained MapReduce to my Wife?》举了一个辣椒酱制作过程的例子，来形象地描述MapRecue的原理，如下所述。1.MapRecue制作辣椒酱的过程辣椒酱制作的过程是这样的，先取一个洋葱，把它切碎，然后拌入盐和水，最后放进混合研磨机研磨。这样就能得到洋葱辣椒酱了。 现在，假设你想用薄荷、洋葱、番茄、辣椒、大蒜弄一瓶混合辣椒酱。你会怎么做呢？你会取薄荷叶一撮，洋葱一个，番茄一个，辣椒一根，大蒜一根，切碎后加入适量的盐和水，再放入混合研磨机里研磨，这样你就可以得到一瓶混合辣椒酱了。 现在把MapRecue的概念应用到食谱上，Map和Reduce其实就是两种操作。 Map：把洋葱、番茄、辣椒和大蒜切磋，是各自作用在这些物体上的一个Map操作。所以你给Map一个洋葱，Map就会把洋葱切碎。同样地，你把辣椒、大蒜和番茄一一地拿给Map，你也会得到各种碎块。所以，当你在切像洋葱这样的蔬菜时，你执行的就是一个Map操作。Map操作适用于每一种蔬菜，它会相应地生产出一种或多种碎块，在我们的例子中生产的是蔬菜块。在Map操作中可能会出现有个洋葱坏掉了的情况，你只要把洋葱丢了就行了。所以，如果出现坏洋葱了，Map操作就会过滤掉这个坏洋葱而不会生产出任何的坏洋葱块。 Reduce：在这一阶段，你将各种蔬菜都放入研磨机时在进行研磨，你就可以得到一瓶辣椒酱了。这意味要制成一瓶辣椒酱，你得研磨所有的原料。因此，研磨机通常将Map操作的蔬菜聚焦在了一起。 当然上面内容只是MapRecue的一部分，MapRecue的强大在于分布式计算。假设你每天需要生产10000瓶辣椒酱，你会怎么办？这个时候你就不得不雇佣更多的人和研磨机来完成这项工作了，你需要几个人一起切蔬菜。每个人都要处理满满一袋子的蔬菜，而每一个人都相当于在执行一个简单的Map操作。每一个人都将不断地从袋子里拿出蔬菜来，并且每次只对一种蔬菜进行处理，也就是将它们切碎，直到袋子空了为止。这样，当所有的工人都切完以后，工作台（每个人工作的地方）上就有了洋葱块、番茄块和蒜蓉，等等。 MapRecue将所有输出的蔬菜都搅拌在了一起，这些蔬菜都在以key为基础的Map操作下产生的。搅拌将自动完成，你可以假设key是一种原料的名字，你像洋葱一样。所以全部的洋葱key都搅拌在一起，并转移到研磨洋葱的研磨器里。这样，你就能得到洋葱辣椒酱了。同样地，所有的番茄也会被转移地标记着番茄的研磨器里，并制造出番茄辣椒酱。 </p>
-<p>#Apache Hadoop<br>Apache Hadoop是一个由Apache基金会开发的分布式系统基础架构，它可以让用户在不了解分布式底层细节的情况下，开发出可靠、可扩展的分布式计算应用。<br>Apache Hadoop框架允许用户使用简单的编程模型来实现计算机集群的大型数据集的分布式处理。它的目的是支持从单一服务器到上千台机器的扩展，充分利用了每台机器所提供本地计算和存储，而不是依靠硬件来提高高可用性。其本身被设计成在应用层检测和处理故障的库，对于计算机集群来说，其中每台机器的顶层都被设计成可以容错的，以便提供一个高可用的服务。<br>Apache Hadoop的框架最核心的设计就是HDFS和MapRecue。HDFS为海量的数据提供了存储，而MapRecue则为海量的数据提供了计算。</p>
-<p>##Apache Hadoop核心组件<br>Apache Hadoop包含以下模块：<br>Hadoop Common—常见实用工具，用来支持其他hadoop模块。<br>Hadoop Distributed File System（HDFS）—分布式文件系统，它提供对应用程序数据的高吞吐量访问<br>Hadoop YARN—-一个作业调度和集群资源管理框架<br>Hadoop MapRecue–基于YARN的大型数据集的并行处理系统</p>
-<p>###其它Apache Hadoop 相关的项目包括：<br>Ambari—-一个基于Web的工具，用于配置、管理和监控的Apache Hadoop 集群，其中包括支持Hadoop  HDFS、Hadoop  MapRecue、Hive、HCatalog、HBase、ZooKeeperOozie、Pig和Sqoop。Ambari还提供了仪表盘用于查看集群的健康，如热图，并能够以用户友好的方式来查看MapRecue、Pig和Hive应用，方便诊断其性能。<br>Avro–数据序列化系统<br>Cassandra–可扩展的、无单点故障的多主数据库<br>Chukwa–数据采集系统，用于管理大型分布式系统。<br>Hbase–一个可扩展的分布式数据库，支持结构化数据的大表存储<br>Hive–数据仓库基础设施，提供数据汇总以及特定的查询<br>Mahout—一种可扩展的机器学习和数据挖掘库<br>Pig–一个高层次的数据流并行计算语言和执行框架<br>Spark—Hadoop数据的快速和通用计算引擎。Spark提供了简单和强大的编程模型用于支持广泛的应用，其中包括ETL、机器学习、流处理和图形处理。<br>TEZ–通用的数据流编程框架，建立在Hadoop YARN之上。它提供了一个强大而灵活的引擎来执行任意DAG任务，以实现批量和交互式数据的处理。TEZ正在被Hive、Pig和Hadoop生态系统中的其他框架所采用，也可以通过其他商业软件（例如，ETL工具），以取代hadoop mapreduce作为底层执行引擎。<br>ZooKeeper–一个高性能的分布式应用程序协调服务。</p>
-<p>##Apache Spark<br>Spark是一个快速和通用的集群计算系统。特别：</p>
-<ol>
-<li>快速 Spack具有支持循环数据流和内存计算的先进的DAG执行引擎，所以比Hadoop MapRecue在内存计算上快100倍，在硬盘计算上快10倍。</li>
-<li>易于使用 Spark提供了Java，Scala，Python和R等语言的高级API，可以用于快速开发相关语言应用。Spark提供了超过80个高级的操作，可以轻松构建并行应用程序。</li>
-<li>全面 Spark提供了Spark SQL，机器学习的MLlib，进行图形处理的GraphX，以及Spark Streaming等库。你可以在同一应用程序无缝地合并这些库。</li>
-<li>到处运行 可以standalone cluster mode运行EC2、Hadoop YARN、或者Apache Mesos中。可以访问HDFS、Cassandra、HBase、Hive、Tachyon，以及任意的Hadoop数据源。</li>
-</ol>
-<p>##Apache Mesos<br>在传统上，物理机和虚拟机是数据中心的典型的计算单元。当应用部署后，这些机器需要安装各种配置工具来管理这些应用。机器通常被组织成集群，提供独立的服务，而系统管理员则监督其日常的日常动作。当这些集群达到其最大容量时，需要多机联网来处理负载，这就是集群的扩展带来了挑战。<br>在2010年，UC Berkeley大学就对上述问题提出了解决方案，这就是现在的Apache Mesos，Mesos抽象了CPU、内存、硬盘资源，让数据中心的功能对外就像是一个大的机器。Mesos创建一个单独的底层集群来提供应用程序所需要的资源，而不会超出虚拟机和操作系统性能限制。</p>
-<p>###Apache Mesos简介<br>Mesos是Apache下的开源分布式资源管理框架，它被称为分布式系统的内核，使用内置Linux内核相同的原理，只是在不同的抽象层次。该 Mesos内核运行在每个机器上，在整个数据中心和云环境内应用程序（例如Hadoop、Spark、Kafka、Elaborate等）提供资源管理和资源负载的API接口。</p>
-
-          
+          #MapRecue在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之分布式计算 /#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -679,7 +675,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式存储/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -698,196 +694,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式存储/" itemprop="url">
-                  分布式存储
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式存储/" itemprop="url" rel="index"><span itemprop="name">分布式存储</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##Bigtable<br>Bigtable是非关系型数据库，是一个稀疏的、分布式的、持久化存储的多维度排序map。Bigtable设计的目的是快速且可靠地处理PB级别的数据，并且能够部署到上千台机器上。</p>
-<p>Bigtable是闭源的，Cloud Bigtable是Google提供的大数据存储云服务。业界相关的Bigtable模型的开源实现为Apache HBase。</p>
-<p>##HBase<br>HBase是一个高可靠、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可以在廉价PC上搭建起大规模结构化存储集群。<br>HBase是Google Bigtable的开源实现，类似于Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统；Google运行MapRecue来处理Bigtable中的海量数据，HBase同样利用Hadoop MapRecue来处理HBase中的海量数据；Google Bigtable利用Chubby作为协同服务，HBase利用Zookeeper作为对应。</p>
-<p>###特性：<br>强一致性读写：HBase不是“Eventual Consistentcy（最终一致性）”数据存储，这让它很适合高速计数聚合类任务；<br>自动分片（Automatic sharding）：HBase表通过region分布在集群中，数据增长时，region会自动分割并重新分布；<br>RegionServer自动故障转移<br>Hadoop/HDFS集成：HBase支持开箱即用HDFS作为它的分布式文件系统；<br>MapRecue：HBase通过MapRecue支持大并发处理；<br>Java客户端API：HBase支持易于使用的Java API进行编程访问;<br>Thrift/REST API：HBase也支持Thrift和Rest作为非Java前端访问；<br>Block Cache和Bloom Filter：对于大容量查询优化，HBase支持Block Cache和Bloom Filter;<br>运维管理：HBase支持JMX提供内置网页用于运维。</p>
-<p>###HBase应用场景<br>HBase不适合所有场景。<br>首先，确信有足够多数据，如果有上亿或上千亿行数据，HBase是很好的备选。如果只有上千或上百万行，则用传统的RDBMS可能是更好的选择。因为所有数据如果只需要在一两个节点进行存储，会导致集群其他节点闲置。<br>其次，确信可以不依赖于RDBMS的额外特性。例如，列数据类型、第二索引、事务、高级查询语言等<br>最后，确保有足够的硬件。因为HDFS在小于5个数据节点时，基本上体现不出来它的优势。<br>虽然HBase能在单独的笔记本上运行良好，但这应仅当成是开发阶段的配置 。</p>
-<p>###HBase的优点<br>列可以动态增加，并且列为空就不存储数据，节省存储空间；<br>HBase可以自动切分数据，使得数据存储自动具有水平扩展功能；<br>HBase可以提供高并发读写操作的支持；<br>与Hadoop MapRecue相结合有利于数据分析；<br>容错性；<br>版权免费；<br>非常灵活的模式设计（或者说没有固定模式的限制）；<br>可以跟Hive集成，使用类SQL查询；<br>自动故障转移；<br>客户端接口易于使用；<br>行级别原子性，即PUT操作一定是完全成功或者完全失败。</p>
-<p>###HBase的缺点<br>不能支持条件查询，只支持按照row key来查询；<br>容易产生单点故障（在只使用一个HMaster的时候）；<br>不支持事务；<br>JOIN不是数据库层支持的，而需要用MapRecue；<br>只能在主键上索引和排序；<br>没有内置的身份和权限认证；</p>
-<p>###HBase与Hadoop/HDFS的差异<br>HDFS是分布式文件系统，适合保存大文件。官方宣称它并非普通用途的文件系统，不提供文件的个别记录的快速查询。另一方面，HBase基于HDFS，并能够提供大表的记录快速查询和更新。HBase内部将数据放到索引好的“StoreFiles”存储文件中，以便提供高速查询，而存储文件位于HDFS中。</p>
-<p>##Cassandra<br>Cassandra是Facebook于2008年7月在Google Code上开源的项目。Cassandra实现了Dynamo风格的副本复制模型和没有单点失效的架构，增加了更加强大的column family数据模型。</p>
-<p>##Memcached<br>Memcached可以更好利用内存</p>
-<p>##Redis<br>Redis是一个key-value模型的内在数据存储系统。</p>
-<p>##MongoDB<br>MongoDB是一个介于关系型数据库和非关系性数据库之间的产品，是非关系型 数据库中功能最丰富、最像关系型 数据库的，旨在为Web应用提供可扩展的高性能数据存储解决方案。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之数据采集/" itemprop="url">
-                  Hadoop数据移动
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之实时分析/" itemprop="url">
+                  实时分析
                 </a>
               
             
@@ -954,7 +762,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据仓库/" itemprop="url" rel="index"><span itemprop="name">数据仓库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/实时分析/" itemprop="url" rel="index"><span itemprop="name">实时分析</span></a></span>
 
                 
                 
@@ -990,32 +798,199 @@
       
         
           
-            <p>数据采集<br>本文主要是讲外部系统与Hadoop之间的数据传递，包括从外部系统采集数据导入到hadoop，以及从Hadoop中提取数据导入外部系统中。</p>
-<p>#数据采集考量<br>虽然Hadoop提出了文件客户端，便于在Hadoop中和Hadoop外复制文件，但是大多数据 Hadoop应用需要从不同来源导入数据，而且对不同的导入频率也提出了要求，Hadoop常用的数据来源包括以下：<br>1.传统数据管理系统，如果关系型数据库与主机<br>2.日志、机器生成的数据，以及其他类型的事件数据。<br>3.从现有的企业数据存储中输入的文件。</p>
-<p>将数据从不同的系统输入Hadoop时需要考虑很多因素。如下：<br>1.数据采集的时效性与可访问性<br>需要采集数据在采集频率方面有哪些要求？下游的处理要求数据多长时间准备完毕？</p>
-<p>2.增量更新<br>如何添加新数据？需要将数据添加到现有数据库吗？需要重写现有数据吗？</p>
-<p>3.数据访问和处理<br>数据会用于处理过程吗？如果会，数据会用于批处理任务吗？需要的数据是不是随机获取的？</p>
-<p>4.数据分区及数据分片<br>数据采集后应该如何分区？需要将数据导入到多个目录系统（如HDFS与HBase）吗？</p>
-<p>5.数据存储格式<br>数据存储的格式是哪一种？</p>
-<p>6.数据变换<br>需要变换尚未落地的数据吗？</p>
-<p>下面简单列举一下这几点考量？</p>
-<p>##1.数据采集的时效性<br>这里的时效性是指可进行数据采集的时间与Hadoop中工具可访问数据的时间之间的间隔。采集架构的时间分类会对存储媒介和采集方法造成很大的影响。一般来说数据采集构架，可以使用以下分类中的一个<br>a.大型批处理<br>通常指15分钟到数据小时的任务，有时可能指时间跨度达到一天的任务</p>
-<p>b.小型批处理<br>通常指大约2分钟发送一次任务，但是总的来说不会超过15分钟</p>
-<p>c.近实时决策支持<br>指接受信息后“立即作出反应”，并在2秒到2分钟内发送数据</p>
-<p>d.近实时事件处理<br>指在2秒内处理任务，速度可达到100毫秒</p>
-<p>e.实时<br>这里指不超过100毫秒</p>
-<p>可以注意到随着实现时间到达实时，实现的复杂度和成本会大大增加。从批处理出发（比如使用简单文件传输）通常是个不错的选择。HDFS对时效性的要求比较宽松，所以可能更加适合成为主要存储位置。而一个简单文件传输或Sqoop任务则适合作为采集数据的工具。比如，执行hadoop fs -put命令将复制一个文件，并进行全面的校验，以确定正确地复制数据。<br>使用hadoop fs -put命令与Sqoop时，你需要明白一点：HDFS上的数据存储格式可能并不适合数据的长期存储和处理。因此，在使用这些工具的时候，可能需要通过额外的批处理操作，以将数据存储为需要的格式。<br>当用户需要从简单的批处理转向更高频率的更新时，就应该考虑Flume或kafka之类的工具了。这里时间要求不起过2分钟，所以Sqoop与文件转换器不适用。而且，因为要求时间不起过2分钟，所以存储层可能需要变成HBase或Solr，这样插入与读取操作会获得更细的粒度。当要求到实时水平时，我们首先需要考虑内存，然后是永久性存储。全世界所有的平行化处理都不会有助于将反应要求控制在500毫秒以内，只要硬盘驱动器保持处理操作的状态。基于这一点，我们开始进入流处理领域，采用Storm或Spark Streaming之类的工具。这里需要强调的是，这些工具应该真正用于大数据处理，而不是像Flume或Sqoop那样用于数据采集。</p>
-<p>##2.增量更新<br>新的数据是要添加到已有数据集中，还是要修改已有数据集。如果仅要求添加数据，那么HDFS对于大部分实现都很适用。HDFS能够并行 化多个驱动器的I/O操作，所以读写性能很高。HDFS的缺点是无法添加或者随机写入创建后的文件。</p>
-<p>#数据采集的选择</p>
-<p>##1.文件传输<br>将数据导入导出到Hadoop最简单的方法就是文件传输，就是hadoop fs -put与hadoop fs -get命令。这有时也是最快的方法，所以在设计Hadoop新的数据处理流水线时，首先应该考虑选择文件传输。</p>
-<p>下面列一下文件传输的特点：<br>a.这是一种all-or-nothing批处理方法，所以如果文件传输过程中出现错误，则不会写入或读取任何数据。这种方法与Flume、Kafka之类的采集方法不同，后者提供一定程度的错误处理功能，并且有传输保障。<br>b.文件传输默认为单线程，不能并行 文件传输。<br>c.文件传输将文件从传统的文件系统导入HDFS<br>d.不支持数据转换，数据按原样导入HDFS。数据导入HDFS后才能进行处理，这一点与传输过程中的数据转换截然相反。类似于Flume的系统支持传输过程中的数据转换。<br>e.这种加载是逐字进行的，所以能传输任何类型的文件（文件、二进制、图书等）</p>
-<p>##文件传输与其他采集方法的考量<br>简单文件传输在某些情况下是适用的，尤其是在需要将已存在 的一系列文件输入到HDFS中，而且可以接受保持源文件格式的情况下。否则，在决定是否可以接受文件传输或者是否使用类似于Flume的工具时，需要考虑以下因素。<br>a.需要将数据采集到多个位置吗？比如，是需要将数据同时输入HDFS和Solr，还是需要将数据同时输入HDFS和HBase？这种情况下，如果使用文件传输，那么在文件采集完成之后将需要额外的工作，因些采用Flume更合适。<br>b.对可靠性的要求高不高？如果高，那么一旦传输时出现错误，文件传输就必须重新开始，这时，Fluem同样是更好的选择。<br>e.数据采集之前需要转换操作吗？如果需要Flume无疑是适合的工具。<br>如果需要采集文件，可以考虑使用Flume Spooling  Directory源。采用这种方法，用户将文件放置到磁盘特定的目录就可以采集文件。这种采集文件的方法简单可靠，而且需要时能够实现传输过程中的数据转换。</p>
-<p>##Sqoop：Hadoop与关系数据库的批量传输<br>Sqoop是一种工具，能批量地将数据从关系型数据管理系统导出到Hadoop中，也能批量地将数据从Hadoop导出至关系型数据库中。</p>
-<p>Flume:基于事件的数据收集及处理<br>Flume是一种分布式的可靠开源系统，用于流数据的高效收集、聚焦和移动。Flume通常用于移动日志数据，但是也能移动大量事件数据，如社交媒体订阅、消息队列事件或网络流量数据。</p>
-<p>##Kafka<br>Apache Kafka是一种发布订单消息的分布式系统，能够将消息归类为不同主题。应用程序能在Kafka上发布信息，或订阅主题进而接受特定主要下发布的消息。Producer发布消息，而Consumer收集并处理消息。作为分布式系统，Kafka在集群中运行，每个节点被称为Broker。<br>Kafka维护每个主题的分区日志。消息会发布到相应的主题中，每个分区都是一个有序的消息子集。同一个主题的多个分区能够通过集群中的多个Broker传送，这种方法提高了主题的容量与吞吐量，使其超越了单一机器所能提供的容量与吞吐量。消息在分区内被有序排列，每个消息都包含一个特定的偏移量。Kafka中消息可以通过一个包含主题、分区以及偏移量的组合来确定。Producer能够根据消息的主键选择消息应该写入哪一个分区，也能够简单地用循环的方式，让消息分布在各分区之间。<br>Consumer会在Consumer组中注册，每个组包括一个或多个Consumer，每个Consumer读取一个或多个主题分区。每组中的每条消息只能传送给一个Consumer。但是，如果多个组订阅了同一个主题，那么每个组都将得到所有的消息。一个组中包含多个Consumer有助于获得加载平衡（可以支持高于单个Consumer处理能力的吞吐量）与高可用性（如果一个Consumer出现错误，它所读取的分区将重新分配给组中其它Consumer）。<br>前面提到，对于应用层面的数据分类，主要单位是主题。一个Consumer或Consumer组将读取其订阅主题的所有数据，所以如果一个应用只关注一个数据子集，那么就应该将该数据子集与其他数据放在两个不同的主题中。如果多个信息集总是一起读取和处理，那么应该将它们归在同一个主题中。</p>
-<p>#数据导出<br>数据导出的思路与导入类似。</p>
+          少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之实时分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/数据分析软件分类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/数据分析软件分类/" itemprop="url">
+                  数据分析软件分类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/数据分析/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #数据分析软件分类下面介绍一些适合大数据分析的存储数据库，或者面向大数据分析，适用于TB级以上的数据库存储和分析任务。分为如下几类介绍：1.商业数据库2.开源时序数据库3.开源计算框架4.开源SQL on hadoop5.云端数据分析SaaS  
+##商业软件商业数据库软件种类繁多，但是真正能支持T
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/hadoop/数据分析软件分类/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1190,638 +1165,16 @@
       
         
           
-            <h1 id="Kettle插件体系"><a href="#Kettle插件体系" class="headerlink" title="#Kettle插件体系"></a>#Kettle插件体系</h1><p>最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接</p>
-<p>数据同步部分是：业务系统（RDBMS）-&gt;Kettle(azkaban进行调度)-&gt;数据中心，因为Kettle的增量抽取组件经常出现数据不一致等问题，所以目前已更改为：业务系统（RDBMS）-&gt;OGG（CDC增量抽取）-&gt;数据中心的方式。</p>
-<p>本文主要介绍如何扩展Kettle的功能，部分内容来自《Pentaho Kettle解决方案：使用PDI构建开源ETL解决方案》一书，推荐购买阅读。</p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="##架构"></a>##架构</h2><p>我们先看Kettle插件架构。<br> <img src="http://i.imgur.com/mLvXMuV.jpg" alt=""><br>从功能上看，Kettle内部的对象和外部插件没有任何区别。因为它们使用的API都是一样的，它们只是在运行时的加载方式不同。<br>从Kettle4以后，Kettle内部有一个插件注册系统，它负责加载各种内部和外部插件。插件有以下两个标识属性。<br><strong>插件类型</strong>：由PluginTypeInterface接口定义。例如StepPluginType、JobEntryPluginType、PartitionerPluginType和RepositoryPluginType。<br><strong>插件ID</strong>：这是一个字符串数组，用来唯一标识一个插件。因为旧的插件可以被新的插件代替，一个插件可以有多个ID。在大多数情况下，插件只使用一个单一的字符串，如TableInput是“表输入”步骤的ID，MYSQL是MySQL数据库类型的ID。<br>当Kettle环境初始化以后，插件注册系统首先加载所有的内部对象，Kettle读取下面的配置文件来加载内部对象，这些配置文件位于Kettle的.jar文件中。<br>     Kettle-steps.xml：内部转换步骤。<br>     Kettle-job-entries.xml：内部作业项。<br>     Kettle-partition-plugins.xml：内部分区类型。<br>     Kettle-database-types.xml：内部数据库类型。<br>     Kettle-repositories.xml：内部资源库类型。</p>
-<p>插件注册系统加载了所有的内部对象后，就要搜索可用的外部插件。通过浏览plugins/目录的各个子目录下的.jar文件来完成。它搜索特定的Kettle annotations来判断一个类是否是插件。加载过程将在本章的后面介绍。<br>因为在内部对象加载后才加载插件，所以插件会替代相同ID的已加载的内部对象。例如，你创建了插件，插件的ID是TableInput，就可以替换Kettle标准的“表输入”步骤。这个功能可以让你用插件替换Kettle内置的步骤。可以通过子类继承方式，直接扩展已有步骤的某些功能。</p>
-<h2 id="插件类型"><a href="#插件类型" class="headerlink" title="##插件类型"></a>##插件类型</h2><p>Kettle有下面几种插件类型（下面的插件是Kettle4.0的插件类型，新版kettle包含了很多新的插件，比如视图插件、大数据插件等等）。</p>
-<ul>
-<li>转换步骤插件：在Kettle转换中使用的步骤，用来处理数据行。</li>
-</ul>
-<ul>
-<li>作业项插件：在Kettle作业中使用的作业项，用来实现某个任务。</li>
-</ul>
-<ul>
-<li>分区方法插件：利用输入字段的值指定自己的分区规则。</li>
-</ul>
-<ul>
-<li>数据库类型插件：用来扩展不同的数据库类型。</li>
-</ul>
-<ul>
-<li>资源库类型插件：可以把Kettle元数据保存为自定义类型或格式。</li>
-</ul>
-<p>说明：除了这些类型，还有Spoon类型的插件，可以把功能扩展到Spoon，本书不介绍这个功能。</p>
-<h2 id="转换步骤插件"><a href="#转换步骤插件" class="headerlink" title="##转换步骤插件"></a>##转换步骤插件</h2><p>转换步骤插件包括了四个Java类，这四个类分别实现四个接口。</p>
-<ul>
-<li>StepMetaInterface：这个接口对外 提供步骤的元数据并处理串行化。</li>
-</ul>
-<ul>
-<li>StepInterface:这个接口根据上面接口提供的元数据，来实现步骤的具体功能。</li>
-</ul>
-<ul>
-<li>StepDataInterface:这个接口用来存储步骤的临时数据、文件句柄等。</li>
-</ul>
-<ul>
-<li>StepDialogInterface:这个接口是Spoon里的图形界面，用来编辑步骤的元数据。</li>
-</ul>
-<p>接下来，我们介绍这些接口的基本内容。对于每个接口，在一个简单的“Hello World”例子里提供这些类的相应实现。“Hello World”例子将在数据流里增加一个字段，字段名用户可以自定义，字段值是”Hello world!“。最后介绍一下如何部署这个例子。</p>
-<h3 id="StepMetaInterface"><a href="#StepMetaInterface" class="headerlink" title="###StepMetaInterface"></a>###StepMetaInterface</h3><p>接口org.pentaho.di.trans.step.StepMetaInterface负责步骤里所有和元数据相关的任务。和元数据相关的工作包括：<br>元数据和XML(或资源库)之间的序列化和反序列化<br>getXML（）和loadXML()<br>saveRep()和readRep()  </p>
-<p>描述输出字段<br>getFields()  </p>
-<p>检验元数据是否正确<br>Check()  </p>
-<p>获取步骤相应的要SQL语句，使步骤可以正确运行<br>getSQLStatements()  </p>
-<p>给元数据设置默认值<br>setDefault()  </p>
-<p>完成对数据库的影响分析<br>analyseImpact()  </p>
-<p>描述各类输入和输出流<br>getStepIOMeta()<br>searchInfoAndTargetSteps()<br>handleStreamSelection()<br>getOptionalStreams()<br>resetStepIoMeta()  </p>
-<p>导出元数据资源<br>exportResources()<br>getResourceDependencies()  </p>
-<p>描述使用的库<br>getUsedLibraries()  </p>
-<p>描述使用的数据库连接<br>getUsedDatabaseConnections()  </p>
-<p>描述这个步骤需要的字段（通常是一个数据库表）<br>getRequiredFields()  </p>
-<p>描述步骤是否具有某些功能<br>supportsErrorHandling()<br>excludeFromRowLayoutVerification()<br>excludeFromCopyDistributeVerification()  </p>
-<p>这个接口里还定义了几个方法来说明这四个接口如何结合到一起。<br>String getDialogClassName():用来描述实现了StepDialogInterface接口的对话框类的名字。如果这个方法返回了null，调用类会根据实现了StepMetaInterface接口的类的类名和包名来自动生成对话框类的名字。<br>SetpInterface getStep():创建一个实现了StepInterface接口的类。<br>StepDataInterface getStepData():创建一个实现了StepDataInterface接口的类。<br>现在我们看看”Hello World”例子里对SetpMetaInterface接口的实现<br>HelloworldStepMeta.java<br>    package org.kettlesolutions.plugin.step.helloworld;</p>
-<pre><code>import java.util.List;
-import java.util.Map;
-
-import org.pentaho.di.core.CheckResult;
-import org.pentaho.di.core.CheckResultInterface;
-import org.pentaho.di.core.Const;
-import org.pentaho.di.core.Counter;
-import org.pentaho.di.core.annotations.Step;
-import org.pentaho.di.core.database.DatabaseMeta;
-import org.pentaho.di.core.exception.KettleException;
-import org.pentaho.di.core.exception.KettleStepException;
-import org.pentaho.di.core.exception.KettleXMLException;
-import org.pentaho.di.core.row.RowMetaInterface;
-import org.pentaho.di.core.row.ValueMeta;
-import org.pentaho.di.core.row.ValueMetaInterface;
-import org.pentaho.di.core.variables.VariableSpace;
-import org.pentaho.di.core.xml.XMLHandler;
-import org.pentaho.di.i18n.BaseMessages;
-import org.pentaho.di.repository.ObjectId;
-import org.pentaho.di.repository.Repository;
-import org.pentaho.di.trans.Trans;
-import org.pentaho.di.trans.TransMeta;
-import org.pentaho.di.trans.step.BaseStepMeta;
-import org.pentaho.di.trans.step.StepDataInterface;
-import org.pentaho.di.trans.step.StepInterface;
-import org.pentaho.di.trans.step.StepMeta;
-import org.pentaho.di.trans.step.StepMetaInterface;
-import org.w3c.dom.Node;
-
-@Step(
-        id=&quot;Helloworld&quot;,
-        name=&quot;name&quot;,
-        description=&quot;description&quot;,
-        categoryDescription=&quot;categoryDescription&quot;, 
-        image=&quot;org/kettlesolutions/plugin/step/helloworld/HelloWorld.png&quot;,
-        i18nPackageName=&quot;org.kettlesolutions.plugin.step.helloworld&quot;
-) 
-public class HelloworldStepMeta extends BaseStepMeta implements StepMetaInterface {
-    /**
-     * PKG变量说明了messages包的位置，在messages包里有各种国际化的资源文件。
-     * 在本章后面经常要看到的BaseMessages.getString()方法，就是根据软件的国际化
-     * 设置，从不同的文件中获取文字。PKG变量通常位于类的最上方，被国际化图形工具使用，
-     * 通过国际化图形工具，国际化人员可以编辑不同的国际化资源文件。所以我们会在很多Kettle
-     * 代码里看见这样的结构。
-     */
-    private static Class&lt;?&gt; PKG = HelloworldStep.class; //for i18n
-    public enum Tag {//field_name用于保存用户输入的字段名：保存“Hello，world！&quot;字符串的字段名。
-        field_name,
-    };
-
-    private String fieldName;
-
-    /**
-     * @return the fieldName
-     */
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    /**
-     * @param fieldName the fieldName to set
-     */
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    /**
-     * checks parameters, adds result to List&lt;CheckResultInterface&gt;
-     * used in Action &gt; Verify transformation
-     * 验证用户是否在对话框里输入了字段名，并把验证结果添加到检验转换时出现的问题列表里。（最好
-     * 要检验用户输入的所有选项，而不只是容易出错的选项）
-     */
-    public void check(List&lt;CheckResultInterface&gt; remarks, TransMeta transMeta, StepMeta stepMeta, 
-            RowMetaInterface prev, String input[], String output[], RowMetaInterface info) {
-
-        if (Const.isEmpty(fieldName)) {
-            CheckResultInterface error = new CheckResult(
-                CheckResult.TYPE_RESULT_ERROR, 
-                BaseMessages.getString(PKG, &quot;HelloworldMeta.CHECK_ERR_NO_FIELD&quot;), 
-                stepMeta
-            );
-            remarks.add(error);
-        } else {
-            CheckResultInterface ok = new CheckResult(
-                CheckResult.TYPE_RESULT_OK, 
-                BaseMessages.getString(PKG, &quot;HelloworldMeta.CHECK_OK_FIELD&quot;), 
-                stepMeta
-            );
-            remarks.add(ok);//把验证结果添加到检验转换时出现的问题列表里。
-        }
-    }
-
-    /**
-     *    creates a new instance of the step (factory)
-     * getStep、getStepData和getDialogClassName()方法提供了与这个步骤里其它三个接口之间的桥梁
-     这个接口里还定义了几个方法来说明这四个接口如何结合到一起。
-    String getDialogClassName():用来描述实现了StepDialogInterace接口的对话框类的名字。如果这个方法返回
-                了null，调用类会根据实现了StepMetaInterface接口的类的类名和包名来自动生成对话框类的名字。
-    StepInterface getStep():创建一个实现了StepInterface接口的类。
-    StepInterface getStepData():创建一个实现了StepDataInterface接口的类。
-
-     */
-    public StepInterface getStep(StepMeta stepMeta, StepDataInterface stepDataInterface,
-            int copyNr, TransMeta transMeta, Trans trans) {
-        return new HelloworldStep(stepMeta, stepDataInterface, copyNr, transMeta, trans);
-    }
-
-    /**
-     * creates new instance of the step data (factory)
-     * getStep、getStepData和getDialogClassName()方法提供了与这个步骤里其它三个接口之间的桥梁
-     */
-    public StepDataInterface getStepData() {
-        return new HelloworldStepData();
-    }
-    /**
-     * getStep、getStepData和getDialogClassName()方法提供了与这个步骤里其它三个接口之间的桥梁
-     */
-    @Override
-    public String getDialogClassName() {
-        return HelloworldStepDialog.class.getName();
-    }
-
-    /**
-     * deserialize from xml 
-     * databases = list of available connections
-     * counters = list of sequence steps
-     * 
-     * 下面的四个方法loadXML()、getXML()、readRep()和saveRep()把元数据保存到XML文件或资源库里，
-     * 或者从XML文件或资源库读取元数据。保存到文件的方法利用了像XStream（http://xstream.codehaus.org）这
-     * 样的XML串行化技术。
-     */
-    public void loadXML(Node stepDomNode, List&lt;DatabaseMeta&gt; databases,
-            Map&lt;String, Counter&gt; sequenceCounters) throws KettleXMLException {
-        fieldName = XMLHandler.getTagValue(stepDomNode, Tag.field_name.name());
-    }
-
-    /**
-     * @Override
-     */
-    public String getXML() throws KettleException {
-        StringBuilder xml = new StringBuilder();
-        xml.append(XMLHandler.addTagValue(Tag.field_name.name(), fieldName));
-        return xml.toString();
-    }
-
-    /**
-     * De-serialize from repository (see loadXML)
-     */
-    public void readRep(Repository repository, ObjectId stepIdInRepository,
-            List&lt;DatabaseMeta&gt; databases, Map&lt;String, Counter&gt; sequenceCounters)
-            throws KettleException {
-        fieldName = repository.getStepAttributeString(stepIdInRepository, Tag.field_name.name());
-    }
-
-    /**
-     * serialize to repository
-     */
-    public void saveRep(Repository repository, ObjectId idOfTransformation, ObjectId idOfStep)
-            throws KettleException {
-        repository.saveStepAttribute(idOfTransformation, idOfStep, Tag.field_name.name(), fieldName);
-    }
-
-
-    /**
-     * initiailize parameters to default
-     */
-    public void setDefault() {
-        fieldName = &quot;helloField&quot;;
-    }
-
-    /**
-     * getFields()方法非常重要，因为它描述了输出数据行的结构。这个方法需要修改inputRowMeta对象，使这个对象和
-     * 输出格式匹配。Spoon和后面的步骤都需要知道这个步骤要输出哪些字段。最常见的一种方法，可以给输出的RowMetaInterface对象
-     * 添加一个ValueMetaInterface对象。在ValueMetaInterface对象里设置的信息越详细越好，可以设置的信息包括数据类型、长度、
-     * 精度、格式掩码，等等。添加的字段描述元信息越多，后面生成的SQL就越准确。
-     */
-    @Override
-    public void getFields(RowMetaInterface inputRowMeta, String name,
-            RowMetaInterface[] info, StepMeta nextStep, VariableSpace space)
-            throws KettleStepException {
-        String realFieldName = space.environmentSubstitute(fieldName);
-        //值的元数据使用ValueMetaInterface接口描述数据流里的一个字段。这个接口里定义了字段的名字、数据类型、长度、精度，等等。下面的例子用于创建一个ValueMetaInterface对象。
-        ValueMetaInterface field = new ValueMeta(realFieldName, ValueMetaInterface.TYPE_STRING);
-        field.setOrigin(name);        
-        inputRowMeta.addValueMeta(field);
-    }
-}
-</code></pre><p>代码解析<br>    @Step(<br>            id=”Helloworld”,<br>            name=”name”,<br>            description=”description”,<br>            categoryDescription=”categoryDescription”,<br>            image=”org/kettlesolutions/plugin/step/helloworld/HelloWorld.png”,<br>            i18nPackageName=”org.kettlesolutions.plugin.step.helloworld”<br>    )<br>这段代码里的@Step annotation用来通知Kettle的插件注册系统：这个类是一个步骤类型的插件。在annotation里可以指定插件的ID、图标、国际代的包、本地化的名称、类别、描述。其中后三项是资源文件里的Key，需要在资源文件里设置真正的值。i18nPackageName指定了资源文件的包名，例如我们这个例子的资源文件位于org/kettlesolutions/plugin/step/helloworld/messages目录下，en_US（英语，美国）的本地代资源文件是messages_en_US.properties。我们例子里的这个资源文件的内容是：<br>name=Hello world<br>description=A very simple step that adds a new “Helllo world” field to the incoming stream<br>注意，如果你指定了不存在的分类，Spoon会创建这个分类，并在Spoon的分类树的最上方显示这个分类。<br>最后，annotation里的image标签指定了插件的图标。需要32*32像素的PNG文件，可以使用透明样式。<br>后面的代码行说明这个类实现了StepMetaInterface接口。在BaseStepMeta抽象类里定义了这个接口的很多默认实现，可以直接继承这个抽象类，然后把工作集中在插件特有的功能上。</p>
-<pre><code>public class HelloworldStepMeta extends BaseStepMeta implements StepMetaInterface
-</code></pre><p>下面的四个方法loadXML()、getXML()、readRep()和saveRep()把元数据保存到XML文件或资源库里，或者从XML文件或资源库读取元数据。保存到文件的方法利用了像XStream（<a href="http://xstream.codehaus.org）这样的XML串行化技术。" target="_blank" rel="noopener">http://xstream.codehaus.org）这样的XML串行化技术。</a></p>
-<p>getFields()方法非常重要，因为它描述了输出数据行的结构。这个方法需要修改inputRowMeta对象，使这个对象和输出格式匹配。Spoon和后面的步骤都需要知道这个步骤要输出哪些字段。最常见的一种方法，可以给输出的RowMetaInterface对象添加一个ValueMetaInterface对象。在ValueMetaInterface对象里设置的信息越详细越好，可以设置的信息包括数据类型、长度、精度、格式掩码，等等。添加的字段描述元信息越多，后面生成的SQL就越准确。</p>
-<h4 id="值的元数据（Value-Metadata）"><a href="#值的元数据（Value-Metadata）" class="headerlink" title="####值的元数据（Value Metadata）"></a>####值的元数据（Value Metadata）</h4><p>值的元数据使用ValueMetaInterface接口描述数据流里的一个字段。这个接口里定义了字段的名字、数据类型、长度、精度，等等。下面的例子用于创建一个ValueMetaInterface对象。<br>    ValueMetaInterface dateMeta = new ValueMeta(“birthdate”,ValueMetaInterface.TYPE_DATE);<br>这个接口也负责转换数据格式。我们建议使用ValueMetaInterface接口来完成所有数据转换的工作。例如，日期类型的数据，如果想把它转换为dateMeta对象里定义的字符串格式，可以用下面的代码：<br>    //java.util.Date birthdate<br>    String birthDateString = dateMeta.getString(birthdate);<br>ValueMeta类负责转换。因为有ValueMetaInterface进行数据类型的转换，所以你不用再去做额外的数据类型转换的工作。<br>使用ValueMetaInterface接口时还要注意数据对象是否为Null。从上一个步骤可以接收到一个数据对象和一个描述数据对象的ValueMetaInterface对象。我们要检查这个数据对象是否为null，在某些情况下如果数据对象为空是不正确的。例如：<br>数据对象是String类型，有10个空格，Value Metadata需要trim这个字符串。<br>在Value Metadata里已经定义了从文本文件里加载的数据，要延迟转换为字符串。所以数据要由二进制的格式（原始数据格式），转换为字符串格式，然后再转换为其它格式的数据。<br>一般使用下面的方法检查数据对象是否为空：<br>    Boolean n = valueMeta.isNull(valueDate);<br>重要：要保证传给ValueMetaInterface对象的数据是在元数据里定义的数据类型。表23-1说明了  ValueMetaInterface里定义的数据类型和Java数据类型的对应关系。<br>Kettle元数据类型和Java里数据类型的对应关系  </p>
-<table><br>    <tr><br>        <th>Value Meta Type</th><br>        <th>Java Class</th><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_STRING</td><br>        <td>Java.lang.String</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_DATE</td><br>        <td>Java.util.Date</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BOOLEAN</td><br>        <td>Java.lang.Boolean</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_NUMBER</td><br>        <td>Java.lang.Double</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_INTEGER</td><br>        <td>Java.lang.Long</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BIGNUMBER</td><br>        <td>Java.math.BigDecimal</td><br>    </tr><br>    <tr><br>        <td>ValueMetaInterface.TYPE_BINARY</td><br>        <td>Byte[]</td><br>    </tr><br></table>
-
-
-<h4 id="行的元数据（Row-Meatadata）"><a href="#行的元数据（Row-Meatadata）" class="headerlink" title="####行的元数据（Row Meatadata）"></a>####行的元数据（Row Meatadata）</h4><p>行的元数据使用RowMetaInterface接口来描述数据行的元数据，而不是一个列的元数据。实际上，RowMetaInterface的类里包含了一组ValueMetaInterface。另外还包括了一些方法来操作行元数据，倒如查询值、检查值是否存、替换值的元数据等。<br>行的元数据里唯一的规则就是一行里的列的名字必须唯一。当你添加了一个新列时，如果新列的名字和已有列的名字相同，列名后面会自动加上“_2”后缀。如果再加一个同名的列会自动加上”_3“后缀，等等。<br>因为在步骤里通常是和数据行打交道，所以从数据行里直接取数据会更方便。可以使用很多类似于getNumber()、getString()这样的方法直接从数据行取数据。例如，销售数据存储在第四列里，可以用下面的代码获取这个数据：  </p>
-<pre><code>Double sales = getInputRowMeta().getNumber(rowData,3);
-</code></pre><p>通过索引获取数据是最快的方式。通过indexOfValue()方法可以获取列在一行里的索引。这个方法扫描列数组，速度并不快。所以，如果要处理所有数据行，我们建议只查询一次列索引。一般是在步骤接收到第一行数据时，就查询列索引，将查询到的列索引保存起来，供后面的数据行使用。  </p>
-<h3 id="StepDatainterface"><a href="#StepDatainterface" class="headerlink" title="###StepDatainterface"></a>###StepDatainterface</h3><p>实现了org.pentaho.di.trans.step.StepDataInterface接口的类用来维护步骤的执行状态，以及存储临时对象。例如，可以把输出行的元数据、数据库连接、输入输出流等存储到这个对象里。<br>HelloworldStepData.java<br>    package org.kettlesolutions.plugin.step.helloworld;</p>
-<p>import org.pentaho.di.core.row.RowMetaInterface;<br>import org.pentaho.di.trans.step.BaseStepData;<br>import org.pentaho.di.trans.step.StepDataInterface;</p>
-<p>public class HelloworldStepData extends BaseStepData implements StepDataInterface {</p>
-<pre><code>public RowMetaInterface outputRowMeta;
-</code></pre><p>}</p>
-<h3 id="StepDialogInterface"><a href="#StepDialogInterface" class="headerlink" title="###StepDialogInterface"></a>###StepDialogInterface</h3><p>实现org.pentaho.di.trans.step.StepDialogInterfac接口的类用来提供一个用户界面，用户通过这个界面输入元数据（转换参数）。用户界面就是一个对话框。这个接口里包含了类似open()和setRepository()等的几个简单的方法。    </p>
-<h4 id="Eclipse-SWT"><a href="#Eclipse-SWT" class="headerlink" title="####Eclipse SWT"></a>####Eclipse SWT</h4><p>Kettle里使用Eclipse SWT作为界面开发包，所以你也要使用SWT来开发对话框窗口。SWT为不同的操作系统Windows、OS X、Linux和Unix提供了一个抽象层。所以SWT的图形界面和操作系统期货的程序的界面风格非常相近。<br>在开始进行SWT开发之前，建议先访问SWT主面以了解更多的内容<a href="http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：" target="_blank" rel="noopener">http://www.eclipse/org/swt。在SWT的网站上，你可以了解到SWT能做出什么样的界面效果：</a><br>SWT控件页，<a href="http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。" target="_blank" rel="noopener">http://www.eclipse.org/swt/widgets/，给出了你能使用的所有控件。</a><br>SWT样例页，<a href="http://www.eclipse.org/swt/snippets/，给出了许多代码例子。" target="_blank" rel="noopener">http://www.eclipse.org/swt/snippets/，给出了许多代码例子。</a><br>最好的资源就是Kettle里150个内置步骤的对话框源代码。  </p>
-<p>HelloworldStepDialog.java<br>    package org.kettlesolutions.plugin.step.helloworld;</p>
-<pre><code>import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.ShellAdapter;
-import org.eclipse.swt.events.ShellEvent;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
-import org.pentaho.di.core.Const;
-import org.pentaho.di.i18n.BaseMessages;
-import org.pentaho.di.trans.TransMeta;
-import org.pentaho.di.trans.step.BaseStepMeta;
-import org.pentaho.di.trans.step.StepDialogInterface;
-import org.pentaho.di.ui.core.widget.TextVar;
-import org.pentaho.di.ui.trans.step.BaseStepDialog;
-
-public class HelloworldStepDialog extends BaseStepDialog implements
-        StepDialogInterface {
-
-    private static Class&lt;?&gt; PKG = HelloworldStepMeta.class; // for i18n
-                                                            // purposes, needed
-                                                            // by Translator2!!
-                                                            // $NON-NLS-1$
-
-    private HelloworldStepMeta input;
-
-    private TextVar wFieldname;
-
-    public HelloworldStepDialog(Shell parent, Object baseStepMeta,
-            TransMeta transMeta, String stepname) {
-        //初始化元数据对象以及步骤对话框的父类
-        super(parent, (BaseStepMeta) baseStepMeta, transMeta, stepname);
-        input = (HelloworldStepMeta) baseStepMeta;
-    }
-
-    public String open() {
-        Shell parent = getParent();
-        Display display = parent.getDisplay();
-
-        shell = new Shell(parent, SWT.DIALOG_TRIM | SWT.RESIZE | SWT.MIN
-                | SWT.MAX);
-        props.setLook(shell);
-        setShellImage(shell, input);
-
-        ModifyListener lsMod = new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
-                input.setChanged();
-            }
-        };
-        changed = input.hasChanged();
-
-        FormLayout formLayout = new FormLayout();
-        formLayout.marginWidth = Const.FORM_MARGIN;
-        formLayout.marginHeight = Const.FORM_MARGIN;
-
-        shell.setLayout(formLayout);
-        shell.setText(BaseMessages.getString(PKG,
-                &quot;HelloworldDialog.Shell.Title&quot;)); //$NON-NLS-1$
-
-        //所有控件的右侧使用一个自定义的百分对对齐。控件之间的间距使用一个常量，常量值是4像素。
-        int middle = props.getMiddlePct();
-        int margin = Const.MARGIN;
-
-        // Stepname line
-        wlStepname = new Label(shell, SWT.RIGHT);
-        wlStepname.setText(BaseMessages.getString(PKG,
-                &quot;HelloworldDialog.Stepname.Label&quot;)); //$NON-NLS-1$
-        props.setLook(wlStepname);
-        fdlStepname = new FormData();
-        fdlStepname.left = new FormAttachment(0, 0);
-        fdlStepname.right = new FormAttachment(middle, -margin);
-        fdlStepname.top = new FormAttachment(0, margin);
-        wlStepname.setLayoutData(fdlStepname);
-        wStepname = new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
-        wStepname.setText(stepname);
-        props.setLook(wStepname);
-        wStepname.addModifyListener(lsMod);
-        fdStepname = new FormData();
-        fdStepname.left = new FormAttachment(middle, 0);
-        fdStepname.top = new FormAttachment(0, margin);
-        fdStepname.right = new FormAttachment(100, 0);
-        wStepname.setLayoutData(fdStepname);
-        Control lastControl = wStepname;
-
-        // Fieldname line
-        //创建一个新的标签控件，控件里文本靠右对齐
-        Label wlFieldname = new Label(shell, SWT.RIGHT);
-        wlFieldname.setText(BaseMessages.getString(PKG,
-                &quot;HelloworldDialog.Fieldname.Label&quot;)); //$NON-NLS-1$
-        //下面一行为控件设置用户定义的背景色和字体
-        props.setLook(wlFieldname);
-        FormData fdlFieldname = new FormData();
-        fdlFieldname.left = new FormAttachment(0, 0);
-        fdlFieldname.right = new FormAttachment(middle, -margin);
-        fdlFieldname.top = new FormAttachment(lastControl, margin);
-        wlFieldname.setLayoutData(fdlFieldname);
-        wFieldname = new TextVar(transMeta, shell, SWT.SINGLE | SWT.LEFT
-                | SWT.BORDER);
-        props.setLook(wFieldname);
-        wFieldname.addModifyListener(lsMod);
-        FormData fdFieldname = new FormData();
-        fdFieldname.left = new FormAttachment(middle, 0);
-        fdFieldname.top = new FormAttachment(lastControl, margin);
-        fdFieldname.right = new FormAttachment(100, 0);
-        wFieldname.setLayoutData(fdFieldname);
-        lastControl = wFieldname;
-
-        // Some buttons
-        wOK = new Button(shell, SWT.PUSH);
-        wOK.setText(BaseMessages.getString(PKG, &quot;System.Button.OK&quot;)); //$NON-NLS-1$
-        wCancel = new Button(shell, SWT.PUSH);
-        wCancel.setText(BaseMessages.getString(PKG, &quot;System.Button.Cancel&quot;)); //$NON-NLS-1$
-
-        setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
-
-        // Add listeners
-        lsCancel = new Listener() {
-            public void handleEvent(Event e) {
-                cancel();
-            }
-        };
-        lsOK = new Listener() {
-            public void handleEvent(Event e) {
-                ok();
-            }
-        };
-
-        wCancel.addListener(SWT.Selection, lsCancel);
-        wOK.addListener(SWT.Selection, lsOK);
-
-        lsDef = new SelectionAdapter() {
-            public void widgetDefaultSelected(SelectionEvent e) {
-                ok();
-            }
-        };
-
-        wStepname.addSelectionListener(lsDef);
-        wFieldname.addSelectionListener(lsDef);
-
-        // Detect X or ALT-F4 or something that kills this window...
-        shell.addShellListener(new ShellAdapter() {//保证了窗口在非正常关闭时，取消用户的编辑
-            public void shellClosed(ShellEvent e) {
-                cancel();
-            }
-        });
-
-        // Populate the data of the controls
-        //下面的代码把数据从步骤的元数据对象里复制到窗口的控件里
-        getData();
-
-        // Set the shell size, based upon previous time...
-        //窗口的大小和位置将根据窗口的自然属性、上次窗口大小和位置，以及显示屏的大小自动设置
-        setSize();
-
-        input.setChanged(changed);
-
-        shell.open();
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch())
-                display.sleep();
-        }
-        return stepname;
-    }
-
-    /**
-     * Copy information from the meta-data input to the dialog fields.
-     */
-    public void getData() {
-        wStepname.selectAll();
-        //为了防止用户向控件里输入空值，Kettle提供了一个静态方法来检查宿舍，Const.NVL()
-        wFieldname.setText(Const.NVL(input.getFieldName(), &quot;&quot;));
-    }
-
-    private void cancel() {
-        stepname = null;
-        input.setChanged(changed);
-        dispose();
-    }
-    //单击OK把控件里用户输入的数据都写入到步骤的元数据对象中。
-    private void ok() {
-        if (Const.isEmpty(wStepname.getText()))
-            return;
-
-        stepname = wStepname.getText(); // return value
-
-        input.setFieldName(wFieldname.getText());
-
-        dispose();
-    }
-}
-</code></pre><h4 id="窗体布局"><a href="#窗体布局" class="headerlink" title="####窗体布局"></a>####窗体布局</h4><p>如果你看过步骤对话框的源代码，你就会发现窗体类里有很多烦琐的代码。这些代码确保Kettle可以在各种操作系统下以合适的方式展现窗体。可以发现窗体里的大部分代码都和布局以及控件位置有关。<br>FormLayout是SWT里经常看到的布局方式。程序员可以通过FormLayout指定控件的百分比、偏移。下面是我们例子里的窗口布局的代码（HelloworldStepDialog.java）<br>    //创建一个新的标签控件，控件里文本靠右对齐<br>    Label label = new Label(shell, SWT.RIGHT);<br>    label.setText(BaseMessages.getString(PKG,”HelloworldDialog.Fieldname.Label”)); //$NON-NLS-1$<br>    //下面一行为控件设置用户定义的背景色和字体<br>    props.setLook(label);<br>    /**</p>
-<pre><code>* 下面几行将标签的左侧和对话框的最左侧对齐，把标签的右侧放在对话框中间（50%）的左侧10个像素
-* 的位置。标签的顶部放在距离对话框顶部25个像素的位置。
-*/
-FormData fdLabel = new FormData();
-fdlFieldname.left = new FormAttachment(0, 0);
-fdlFieldname.right = new FormAttachment(50, -10);
-fdlFieldname.top = new FormAttachment(0, 25);
-wlFieldname.setLayoutData(fdLabel);  
-</code></pre><p>简而言之，不要感到痛苦；图形用户界面的代码都比较烦琐，但代码并不复杂。  </p>
-<h4 id="Kettle-UI元素"><a href="#Kettle-UI元素" class="headerlink" title="####Kettle UI元素"></a>####Kettle UI元素</h4><p>除了标准的SWT组件，还可以使用Kettle自带的一些控件，Kettle开发人员的工作可以更简单一些。Kettle自带的组件包括以下一些。<br>TableView：这是一个数据表格组件，支持排序、选择、键盘快捷键和撤销/重做，以及右键菜单。<br>TextVar：这是一个支持变量的文本输入框，这个输入框的右上角有一个$符号。用户可以通过”Ctrl  +Alt+空格”的方式，在弹出的下拉列表中选择变量。其他功能和普通的文本框相同。<br>ComboVar：标准的组合下拉列表，支持变量。<br>ConditionEditor：过滤行步骤里使用的输入条件控件。<br>另外还有很多常用的对话框帮你完成相应的工作，如下所示:<br>EnterListDialog:从字符串列表里选择一个或多个字符串。左侧显示字符串列表，右侧是选中的字符串，并提供把字符串从左侧移动到右侧的按钮。<br>EnterNumberDialog:用户可以输入数字<br>EnterPasswordDialog:让用户输入密码<br>EnterSelectionDialog:通过高亮显示，从列表里选择多项<br>EnterMappingDialog:输入两组字符串的映射<br>PreviewRowsDialog:在对话框里预览一组数据行。<br>SQLEditor:一个简单的SQL编辑器，可以输入查询和DDL.<br>ErrorDialog:显示异常信息，列出详细的错误栈对话框  </p>
-<h4 id="Hello-World例子对话框"><a href="#Hello-World例子对话框" class="headerlink" title="####Hello World例子对话框"></a>####Hello World例子对话框</h4><p>现在我们已经基本了解了SWT以及对话框的布局方式，再看看我们的例子，下面的代码是HelloWorldStepDialog.java里的例子。<br>代码的第一部分是初始化元数据对象以及步骤对话框的父类：<br>    public class HelloworldStepDialog extends BaseStepDialog implements<br>            StepDialogInterface {<br>        private static Class&lt;?&gt; PKG = HelloworldStepMeta.class;<br>        private HelloworldStepMeta input;<br>        private TextVar wFieldname;<br>        public HelloworldStepDialog(Shell parent, Object baseStepMeta,<br>                TransMeta transMeta, String stepname) {<br>            //初始化元数据对象以及步骤对话框的父类<br>            super(parent, (BaseStepMeta) baseStepMeta, transMeta, stepname);<br>            input = (HelloworldStepMeta) baseStepMeta;<br>        }<br>在下面的open()方法里创建对话框里的所有控件。SWT使用事件监听模式，可以为控件创建各种监听方法，以响应控件内容的变化和用户的动作。<br>    public String open() {<br>            Shell parent = getParent();<br>            Display display = parent.getDisplay();<br>            shell = new Shell(parent, SWT.DIALOG_TRIM | SWT.RESIZE | SWT.MIN<br>                    | SWT.MAX);<br>            props.setLook(shell);<br>            setShellImage(shell, input);<br>            ModifyListener lsMod = new ModifyListener() {<br>                public void modifyText(ModifyEvent e) {<br>                    input.setChanged();<br>                }<br>            };<br>            changed = input.hasChanged();</p>
-<p>下面代码说明窗体里的控件将使用formLayout的布局方式：<br>    FormLayout formLayout = new FormLayout();<br>            formLayout.marginWidth = Const.FORM_MARGIN;<br>            formLayout.marginHeight = Const.FORM_MARGIN;<br>            shell.setLayout(formLayout);<br>所有控件的右侧使用一个自定义的百分比对齐：props.getMiddlePct()；控件之间的间距使用一个常量，常量值是4像素。<br>    shell.setLayout(formLayout);<br>            shell.setText(BaseMessages.getString(PKG,<br>                    “HelloworldDialog.Shell.Title”)); //$NON-NLS-1$<br>            int middle = props.getMiddlePct();<br>            int margin = Const.MARGIN;<br>下面的代码在对话框的最上面添加了一行步骤名称标签和输入文本框：<br>    // Stepname line<br>            wlStepname = new Label(shell, SWT.RIGHT);<br>            wlStepname.setText(BaseMessages.getString(PKG,<br>                    “HelloworldDialog.Stepname.Label”)); //$NON-NLS-1$<br>            props.setLook(wlStepname);<br>            fdlStepname = new FormData();<br>            fdlStepname.left = new FormAttachment(0, 0);<br>            fdlStepname.right = new FormAttachment(middle, -margin);<br>            fdlStepname.top = new FormAttachment(0, margin);<br>            wlStepname.setLayoutData(fdlStepname);<br>            wStepname = new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);<br>            wStepname.setText(stepname);<br>            props.setLook(wStepname);<br>            wStepname.addModifyListener(lsMod);<br>            fdStepname = new FormData();<br>            fdStepname.left = new FormAttachment(middle, 0);<br>            fdStepname.top = new FormAttachment(0, margin);<br>            fdStepname.right = new FormAttachment(100, 0);<br>            wStepname.setLayoutData(fdStepname);<br>            Control lastControl = wStepname;</p>
-<p>下面是新增输出列的列名设置的输入框：<br>    // Fieldname line<br>        //创建一个新的标签控件，控件里文本靠右对齐<br>        Label wlFieldname = new Label(shell, SWT.RIGHT);<br>        wlFieldname.setText(BaseMessages.getString(PKG,<br>                “HelloworldDialog.Fieldname.Label”)); //$NON-NLS-1$<br>        //下面一行为控件设置用户定义的背景色和字体<br>        props.setLook(wlFieldname);<br>        FormData fdlFieldname = new FormData();<br>        fdlFieldname.left = new FormAttachment(0, 0);<br>        fdlFieldname.right = new FormAttachment(middle, -margin);<br>        fdlFieldname.top = new FormAttachment(lastControl, margin);<br>        wlFieldname.setLayoutData(fdlFieldname);<br>        wFieldname = new TextVar(transMeta, shell, SWT.SINGLE | SWT.LEFT<br>                | SWT.BORDER);<br>        props.setLook(wFieldname);<br>        wFieldname.addModifyListener(lsMod);<br>        FormData fdFieldname = new FormData();<br>        fdFieldname.left = new FormAttachment(middle, 0);<br>        fdFieldname.top = new FormAttachment(lastControl, margin);<br>        fdFieldname.right = new FormAttachment(100, 0);<br>        wFieldname.setLayoutData(fdFieldname);<br>        lastControl = wFieldname;</p>
-<p>然后创建两个按钮，“确认”和“取消”按钮，以及按钮单击事件的监听方法，把按钮放在对话框的最下面：<br>    // Some buttons<br>        wOK = new Button(shell, SWT.PUSH);<br>        wOK.setText(BaseMessages.getString(PKG, “System.Button.OK”)); //$NON-NLS-1$<br>        wCancel = new Button(shell, SWT.PUSH);<br>        wCancel.setText(BaseMessages.getString(PKG, “System.Button.Cancel”)); //$NON-NLS-1$</p>
-<pre><code>setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
-
-// Add listeners
-lsCancel = new Listener() {
-    public void handleEvent(Event e) {
-        cancel();
-    }
-};
-lsOK = new Listener() {
-    public void handleEvent(Event e) {
-        ok();
-    }
-};
-wCancel.addListener(SWT.Selection, lsCancel);
-wOK.addListener(SWT.Selection, lsOK);
-</code></pre><p>下面的代码做了两件事情，上部代码可以保证当步骤名称或输出字段名称的输入框在编辑状态时，单击“确定”按钮，正在编辑的内容不会丢失；下部的代码保证了窗口在非正常关闭时（没有使用“确定”或“取消”按钮关闭），取消用户的编辑。<br>    lsDef = new SelectionAdapter() {<br>            public void widgetDefaultSelected(SelectionEvent e) {<br>                ok();<br>            }<br>        };</p>
-<pre><code>wStepname.addSelectionListener(lsDef);
-wFieldname.addSelectionListener(lsDef);
-
-// Detect X or ALT-F4 or something that kills this window...
-shell.addShellListener(new ShellAdapter() {//保证了窗口在非正常关闭时，取消用户的编辑
-    public void shellClosed(ShellEvent e) {
-        cancel();
-    }
-});
-</code></pre><p>下面的代码把数据从步骤的元数据对象里复制到窗口的控件里：<br>    // Populate the data of the controls<br>            getData();<br>窗口的大小和位置将根据窗口的自然属性、上次窗口大小和位置，以及显示屏的大小自动设置。<br>    // Set the shell size, based upon previous time…<br>            //窗口的大小和位置将根据窗口的自然属性、上次窗口大小和位置，以及显示屏的大小自动设置<br>            setSize();<br>            input.setChanged(changed);</p>
-<pre><code>    shell.open();
-    while (!shell.isDisposed()) {
-        if (!display.readAndDispatch())
-            display.sleep();
-    }
-    return stepname;
-}
-</code></pre><p>为了防止用户身控件里输入空值，Kettle提供了一个静态方法来检查空值，ConstNVL();<br>    /**</p>
-<pre><code> * Copy information from the meta-data input to the dialog fields.
- */
-public void getData() {
-    wStepname.selectAll();
-    wFieldname.setText(Const.NVL(input.getFieldName(), &quot;&quot;));
-}
-</code></pre><p>最后，单击OK按钮后，把控件里用户输入的数据都写入到步骤的元数据对象中：<br>    private void cancel() {<br>            stepname = null;<br>            input.setChanged(changed);<br>            dispose();<br>        }<br>        //单击OK把控件里用户输入的数据都写入到步骤的元数据对象中。<br>        private void ok() {<br>            if (Const.isEmpty(wStepname.getText()))<br>                return;</p>
-<pre><code>    stepname = wStepname.getText(); // return value
-
-    input.setFieldName(wFieldname.getText());
-
-    dispose();
-}
-</code></pre><h3 id="StepInteface"><a href="#StepInteface" class="headerlink" title="###StepInteface"></a>###StepInteface</h3><pre><code>这个类实现了org.pentaho.di.trans.step.StepInterface接口，这个类读取上个步骤传来的数据行，利用StepMetaInterface对象里定义的元数据，逐行转换和处理上个步骤传来的数据行，Kettle引擎直接使用这个接口里的很多方法来执行转换过程，但大部分方法都已经由BaseStep类实现了，通常开发人员只需要重载其中的几个方法。
-Init():步骤初始化方法，用来初始化一个步骤。初始化结果是一个true或者false的Boolean值。如果你的步骤没有任何初始化的工作，可以不用重载这个方法。
-Dispose():如果有需要释放的资源，可以在dispose()方法里释放，例如可以关闭数据库连接、释放文件、清除缓存等。在转换的最后Kettle引擎会调用这个方法。如果没有需要释放或清除的资源，可以不用重载这个方法。
-processRow():这个方法，是步骤实现工作的地方。只要这个方法返回true，转换引擎就会重复调用这个方法。
-</code></pre><p>下面是HellWorld例子实现的StepInterface接口（HelloworldStep.java）</p>
-<p>HelloworldStep.java<br>    package org.kettlesolutions.plugin.step.helloworld;</p>
-<pre><code>import org.pentaho.di.core.exception.KettleException;
-import org.pentaho.di.core.row.RowDataUtil;
-import org.pentaho.di.trans.Trans;
-import org.pentaho.di.trans.TransMeta;
-import org.pentaho.di.trans.step.BaseStep;
-import org.pentaho.di.trans.step.StepDataInterface;
-import org.pentaho.di.trans.step.StepInterface;
-import org.pentaho.di.trans.step.StepMeta;
-import org.pentaho.di.trans.step.StepMetaInterface;
-/**
- * BaseStep抽象类已经实现了接口里的很多方法，我们只要覆盖需要修改的方法即可。
- * @author Administrator
- *
- */
-public class HelloworldStep extends BaseStep implements StepInterface {
-    /**
-     * 类的构造函数通常直接把参数传递给BaseStep父类。由父类里的方法来构造对象，然后可以直接
-     * 使用类似transMeta这样的对象。
-     * @param stepMeta
-     * @param stepDataInterface
-     * @param copyNr
-     * @param transMeta
-     * @param trans
-     */
-    public HelloworldStep(StepMeta stepMeta, StepDataInterface stepDataInterface,
-            int copyNr, TransMeta transMeta, Trans trans) {
-        super(stepMeta, stepDataInterface, copyNr, transMeta, trans);
-        // TODO Auto-generated constructor stub
-    }
-
-
-    public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException {
-
-        HelloworldStepMeta meta  = (HelloworldStepMeta) smi;
-        HelloworldStepData data = (HelloworldStepData) sdi;
-        /**
-         * getRow()方法从上一个步骤获取一行数据。如果没有更多要获取的数据行，这个方法就会返回null。
-         * 如果前面的步骤不能及时提供数据，这个方法就会阻塞，直到有可用的数据行。这样这个步骤的速度就会降低，也会影响
-         * 其它步骤的速度。
-         */
-        Object[] row = getRow();
-        if (row==null) {
-            /**
-             * setOutputDone()方法用来通知其它的步骤，本步骤已经没有输出数据行。下一个步骤如果
-             * 再调用getRow()方法就会返回null,转换也不再调用processRow()方法。
-             */
-            setOutputDone();
-            return false;
-        }
-
-        if (first) {
-            first=false;
-            /**
-             * 从性能上考虑，getRow()方法不提供数据行的元数据，只提供上个步骤输出的数据。可以使用getInputRowMeta()方法
-            获取元数据，元数据只获取一次即可，所以在first代码块里获取元数据。
-               如果要把数据传到下一个步骤，要使用putRow()方法。除了输出数据，还要输出RowMetaInterface元数据。
-               第一行使用clone()方法把输入行的元数据结构复制给输出行。输出行的元数据结构是在输入行的基础上增加一个字段，但
-               构造输出行的元数据结构只能构造一次，因为所有输出数据行的结构都是一样的，产生了输出行以后，元数据结构就不能再变化。
-               所以输出行的元数据结构在first代码块里构造。first是一个内部成员，first代码块里的代码只在处理第一行数据时执行。
-               下面代码的最后一行，给输出数据增加了一个字段。
-             */
-            data.outputRowMeta = getInputRowMeta().clone();
-            meta.getFields(data.outputRowMeta, getStepname(), null, null, this);
-        }
-        /**
-         * 下面的代码，把数据写入输出流。从性能角度考虑，数据行实现就是Java数组。为了开发方便，可以使用RowDataUtil类提供
-         * 的一些静态方法来操作数据。使用RowDatautil静态方法复制数据，还可以提高性能。
-         */
-        String value = &quot;Hello, world!&quot;;
-
-        Object[] outputRow = RowDataUtil.addValueData(row, getInputRowMeta().size(), value);
-
-        putRow(data.outputRowMeta, outputRow);
-
-        return true;
-    }
-}
-</code></pre><p>解析：<br>public class HelloworldStep extends BaseStep implements StepInterface {<br>BaseStep抽象类已经实现了接口里的很多方法，我们只要覆盖需要修改的方法即可。<br>类的构造函数通常直接把参数传递给BaseStep父类。由父类里的方法来构造对象，然后可以直接使用类似transMeta这样的对象。<br>public HelloworldStep(StepMeta stepMeta, StepDataInterface stepDataInterface,<br>            int copyNr, TransMeta transMeta, Trans trans) {<br>        super(stepMeta, stepDataInterface, copyNr, transMeta, trans);<br>    }<br>getRow()方法从上一个步骤获取一行数据。如果没有更多要获取的数据行，这个方法就会返回null。如果前面的步骤不能及时提供数据，这个方法就会阻塞，直到有可用的数据行。这样这个步骤的速度就会降低，也会影响其它步骤的速度。<br>public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException {<br>        HelloworldStepMeta meta  = (HelloworldStepMeta) smi;<br>        HelloworldStepData data = (HelloworldStepData) sdi;<br>        Object[] row = getRow();<br>        if (row==null) {<br>            setOutputDone();<br>            return false;<br>        }</p>
-<pre><code>    if (first) {
-        first=false;
-        data.outputRowMeta = getInputRowMeta().clone();
-        meta.getFields(data.outputRowMeta, getStepname(), null, null, this);
-    }
-    String value = &quot;Hello, world!&quot;;
-    Object[] outputRow = RowDataUtil.addValueData(row, getInputRowMeta().size(), value);
-
-    putRow(data.outputRowMeta, outputRow);
-
-    return true;
-}
-</code></pre><p>从性能上考虑，getRow()方法不提供数据行的元数据，只提供上个步骤输出的数据。可以使用getInputRowMeta()方法获取元数据，元数据只获取一次即可，所以在first代码块里获取元数据。<br>setOutputDone()方法用来通知其它的步骤，本步骤已经没有输出数据行。下一个步骤如果再调用getRow()方法就会返回null,转换也不再调用processRow()方法。</p>
-<pre><code>Object[] row = getRow();
-        if (row==null) {
-            setOutputDone();
-            return false;
-        }
-</code></pre><p>   如果要把数据传到下一个步骤，要使用putRow()方法。除了输出数据，还要输出RowMetaInterface元数据。<br>    data.outputRowMeta = getInputRowMeta().clone();<br>    meta.getFields(data.outputRowMeta, getStepname(), null, null, this);<br>第一行使用clone()方法把输入行的元数据结构复制给输出行。输出行的元数据结构是在输入行的基础上增加一个字段，但构造输出行的元数据结构只能构造一次，因为所有输出数据行的结构都是一样的，产生了输出行以后，元数据结构就不能再变化。所以输出行的元数据结构在first代码块里构造。first是一个内部成员，first代码块里的代码只在处理第一行数据时执行。下面代码的最后一行，给输出数据增加了一个字段。</p>
-<p>下面的代码，把数据写入输出流。<br>        String value = “Hello, world!”;<br>        Object[] outputRow = RowDataUtil.addValueData(row, getInputRowMeta().size(), value);<br>        putRow(data.outputRowMeta, outputRow);<br>从性能角度考虑，数据行实现就是Java数组。为了开发方便，可以使用RowDataUtil类提供的一些静态方法来操作数据。使用RowDatautil静态方法复制数据，还可以提高性能。<br>从指定的步骤读取数据行<br>如果你想从前面的某个指定的步骤读取数据行，例如”流查询“步骤，可以使用getRowFrom()方法。<br>       RowSet rowSet = findInputRowSet(Source Step Name);<br>       Object[] rowData = getRowFrom(rowSet);<br>           还可以通过rowSet对象获得数据行的元数据：<br>       RowMetaInterface rowMeta = rowSet.getRowMeta();<br>把数据行写入指定的步骤<br>如果想把数据写入到某个特定的步骤，例如”过滤“步骤，可以使用putRowTo()方法<br>      RowSet rowSet = findOutputRowSet(Target Step Name);<br>      ….<br>      putRowTo(outputRowMeta,rowData,rowSet);<br>很明显，输入和输出的RowSet对象只需获得一次即可，这样才更有效率。<br>把数据行写入到错误处理步骤<br>如果想让你的步骤支持错误处理，而且元数据类返回的supportErrorHandling()方法返回了true，就可以把数据输出<br>      到错误处理步骤里。下面是使用putError()方法的例子：<br>      Object[] rowData = getRow();<br>      …<br>      try{<br>          …<br>          putRow(…);<br>      }catch(Exception e){<br>          if(getStepMeta().isDoingErrorHandling()){<br>              putError(getInputRowMeta(),rowData,errorCode);<br>          }else{<br>              throw(e);<br>          }<br>      }<br>      从例子里可以看到，这段代码把错误的行数、错误字段名、消息、错误编码都传递给错误处理步骤。<br>      错误处理的其他工作都自动完成了。</p>
-<h4 id="识别一个步骤拷贝"><a href="#识别一个步骤拷贝" class="headerlink" title="####识别一个步骤拷贝"></a>####识别一个步骤拷贝</h4><p>因为一个步骤可以有多份拷贝同时执行，有时需要识别出正在使用的是哪个步骤拷贝，可以用下面几个方法。<br>     getCopy():获得拷贝号。拷贝号可以唯一标识出步骤的一个拷贝，拷贝号的聚会范围是0-N，N=getStepMeta().getCopies()-1<br>     getUniqueStepNrAcrossSlaves():获得在集群模式下运行的步骤拷贝号。<br>     getUniqueStepCountAcrossSlaves():获得在集群模式下运行的步骤拷贝总数。<br>     通过这些方法可以把一个步骤的工作分配给多份拷贝去完成。例如”CSV文件输入“和”固定文件输入“步骤里都有并行读取文件的选项，这样可以把读取文件的工作放在多个拷贝里或集群里来完成。</p>
-<h4 id="结果反馈"><a href="#结果反馈" class="headerlink" title="####结果反馈"></a>####结果反馈</h4><p>在调用getRow()和putRow()方法时，引擎会自动计算两类度量值，读行数和写行数。这两类度量值可以在界面或日志中记录下来，以监控程序运行的状态。下面几个方法用来操作这两类度量值。<br>    incrementLinesRead():增加从前面步骤读取到的行数。<br>    incrementLinesWritten():增加定稿到后面步骤中的行数。<br>    incrementLinesInput():增加从文件、数据库、网络等资源读取到的行数<br>    incrementLinesOutput:增加写入到文件、数据库、网络等资源的行数。<br>    incrementLinesUpdate():增加更新的行数。<br>    incrementLinesSkipped()：增加跳过的数据行的行数。<br>    incrementLinesRejected():增加拒绝的数据行的行数。<br>    这些度量值用来说明步骤执行的情况。可以在Spoon的转换度量面板里看到，也可以存到日志数据库表里。<br>    使用addResultFile()方法，可以把步骤用到的文件保留下来，保存到结果文件列表里。结果文件列表可以被其它转换或作业项使用。例如，下面的”CSV文件输入“的代码：<br>ResultFile resultFile = new ResultFile(<br>    ResultFile.FILE_TYPE_GENERAL,<br>    fileObject,<br>getTransMeta().getName(),<br>getStepName()<br>);<br>resultFile.setComment(“File was read by a Csv Input step”);<br>addREsultFile(resultFile);</p>
-<h4 id="变量替换"><a href="#变量替换" class="headerlink" title="####变量替换"></a>####变量替换</h4><pre><code>如果输入框需要支持变量，可以使用environmentSubstritute()方法获取变量。例如，若想在“Hello World”例子的字段名输入框里使用变量，就要把StepMetaInterface里的getFields()方法修改成下面的语句：
-</code></pre><p>String realFiledName = apace. environmentSubstritute(fieldName)；<br>因为步骤本身是一个VariableSpace对象，所以也可以使用下面的语句做变量替换：String value = environmentSubstritute(meta.getSringWithVariables());</p>
-<h4 id="Apache-VFS"><a href="#Apache-VFS" class="headerlink" title="####Apache VFS"></a>####Apache VFS</h4><p>Kettle里所有操作文件的步骤，都使用Apache VFS系统的方式操作。Apache VFS不但可以从文件系统读取文件（如java.io.File），还可以从很多其他来源读取文件，如FTP服务器、Z学压缩文件，等 等 。<br>Apache VFS里的FileObject对象提供了文件的抽象层，然后在Kettle的KettleVFS类里还提供了一系列的静态方法，来更方便使用FileObject对象，例如下面的代码 ：  </p>
-<pre><code>FileObject fileObject = KettleVFS.getFileObject(“zip:http://www.example.com/archive.zip!file.txt”);
-</code></pre><p><code>String value = environmentSubstritute(meta.getSringWithVariables());</code></p>
-<p>应该尽可能多地使用KettleVFS,因为它解决了或饶过了很多Apache VFS目前已知的问题。它也增强了SFTP协议。</p>
-<h4 id="步骤插件部署"><a href="#步骤插件部署" class="headerlink" title="####步骤插件部署"></a>####步骤插件部署</h4><p>部署之前，要把四个Java源代码文件编译为class文件。把编译好的class文件放到一个Jar包里。可以使用IDE来做这些事情，也可以手工使用ant脚本来做这些事情。<br>.jar文件应该放在Kettle的plugins/steps目录下。也可以使用一个子目录，把所有的依赖的jar包放在插件jar包所在目录的/lib目录下，不必再放Kettle的类路径中（Kettle的libext/目录）已经有了的jar包。另外可以把多个插件放在一个jar包里。<br>如果想在IDE里调试插件，可以把插件元数据类的名字放在Kettle_PLUGIN_CLASSES变量里（一个逗号分隔的列表）。关于这个主题的更多信息，请参考pentaho Wiki:<a href="http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin" target="_blank" rel="noopener">http://wiki.pentaho.com/display/EAI/How+to+debug+a+Kettle+4+plugin</a> 。</p>
-
-          
+          #Kettle插件体系最近公司内有业务系统到数据中心同步的升级改造需求，从各个业务系统收集增量数据到数据中心的数据仓库平台。因为开发周期短暂，需要快速的响应，开发出可用的产品，所以决定借鉴开源程序Kettle，开发一个文件解析组件，然后利用Kettle平台的大数据组件进行与数据中心大数据平台对接
+数
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/15/kettle/Kettle插件架构/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1996,38 +1349,16 @@ public class HelloworldStep extends BaseStep implements StepInterface {
       
         
           
-            <p>#开源ETL工具-kettle<br>说明：本文部分内容参考网络的资料，如果侵权之处请告知一下，不胜感激！</p>
-<p>Kettle是Pentaho公司开发的一款ETL产品，以工作流为核心，强调面向解决方案而非工具的，基于java平台的商业智能(Business Intelligence,BI)套件。Kettle的开源协议是LGPL，该协议来自GNU，因功能强大，被FSF(Free Software Foundation)列为首选协议。LGPL协议允许Kettle作为商业（非开源）代码的链接库，使用Kettle的商业代码无须开源。LGPL带来的不仅是Kettle API，你还可以对它进行拓展对外提供商业软件或服务。</p>
-<h2 id="ETL是什么"><a href="#ETL是什么" class="headerlink" title="##ETL是什么"></a>##ETL是什么</h2><p>ETL早期作为数据仓库的关键环节，负责将分布的、异构数据源中的数据如关系数据、平面数据文件等抽取到临时中间层后进行清洗、转换、集成，最后加载到数据仓库（Data Warehouse）或数据集市（Data Mart）中，成为联机分析处理（On-Line Analytical Processing，OLAP）、数据挖掘（Data Mining）的基础。</p>
-<p>Exract：从多种异构数据源中抽取数据</p>
-<p>Transform：经过清洗，统一化和转换</p>
-<p>Load：将数据加载到目的数据源中</p>
-<h2 id="Kettle产品特点"><a href="#Kettle产品特点" class="headerlink" title="##Kettle产品特点"></a>##Kettle产品特点</h2><p>适用于将多个应用系统的大批量的、异构的数据进行整合，有强大的数据转换功能。<br>高效适配多种类型的异构数据库、文件和应用系统。<br>快速构建复杂数据大集中应用、无需编码。</p>
-<p>Kettle构成</p>
-<p>TODO以Github上的名词进行定义Spoon，Cart等</p>
-<p>左边是集成开发工具（Spoon），可以进行流程的开发、配置、调试、部署、执行(转换、任务)，也可以对运行情况进行监控、对处理过程的日志进行查看、也可以通过接口调用方式进行远程管理。</p>
-<p>中间是服务器(Carte)，包括实际执行转换和任务的ETL引擎、监控管理的接口、认证授权接口，还有一个可以拓展的接口。</p>
-<p>下面是在开发过程中，用于保存集成开发工具中创建的转换、任务、数据库等项的，资源库包含两类，一个是数据库资源库，一个是文件资源库。</p>
-<p>右边个是是第三方平台，可以基于kettle提供的接口实现相应的功能包括状态监控、启停控制、日志查看等功能。</p>
-<p>组成部分<br>名称<br>描述<br>Spoon<br>一个基于swt开发的流式处理客户端，用户开发转换、任务、创建数据库、集群、分区等<br>Pan<br>一个独立的命令行程序，支持通过命令行实现界面的功能，如果转换启停、任务启停。状态查看等<br>Kitchen<br>一个独立的命令行程序，用于执行由Spoon编辑的作业。<br>Carte<br>Carte是一个轻量级的Web容器，用于建立专用、远程的ETL Server。</p>
-<p>PDI相关术语和概念<br>Job(任务)、Transformation(转换)是kettle的两个最重要的概念。任务做的一件完整的事，包含开始、结束等整个生命周期；而转换是要做这件事的某一个小的功能。比如你要从A数据源中解析数据后放入B数据源，那么你可以创建两个转换，一个是从A数据源加载数据-&gt;处理数据-&gt;放入存储中；另一个是把数据放入B数据源，然后在一个任务中处理他们。</p>
-<p>下面我们通过集成开发工具去了解一个转换和任务</p>
-<p>Transformation（转换）<br>Transformation（转换)是由step(步骤)和hops(节点连接线)组成，一个转换，可以看成一段数据流，每一个步骤完成一项数据处理的工作，节点连接线用于数据的流动。</p>
-<p>转换可以单独运行完成某一项工作，文件的扩展名为.ktr</p>
-<p>Steps（步骤）<br>Steps（步骤）是转换的重要组件部分，在Spoon中步骤根据功能分为输入类、输出类、脚本类等，每一个步骤完成一种特定的功能，比如excel输出组件，用于把数据流输出为excel文件格式。参考如下：</p>
-<p>Hops（节点连接）<br>Hops（节点连接）是数据传输的通道，用于连接两个步骤，使数据从一个步骤传递到另一个步骤，支持分发、复制等方式。注意数据处理的顺序并不是按照节点连接箭头的顺序，因为第个步骤都是单独的线程。</p>
-<p>Jobs（工作）<br>Jobs（工作）是基于工作流模型的，顺序处理。把步骤、转换组织在一起完成一件完整的事情。<br>文件扩展名为.kjb</p>
-<p>下载使用<br>kettle下载 目前最新版7.0<br><a href="https://sourceforge.net/projects/pentaho/files/Data%20Integration/" target="_blank" rel="noopener">https://sourceforge.net/projects/pentaho/files/Data%20Integration/</a></p>
-<p>下载解压后是一个如：pdi-ce-7.0.0.0-25的文件，目录内容如下</p>
-<p>windown下直接双拼Spoon.bat、linux下直接运行./spoon.sh即可。<br>注： could not find the main class:org.pentaho.commons.launcher.Launcher. Program will exit. 表示jdk版本错误 。7.0版本只支持jdk1.8，可以单独配置kettle的jdk，添加配置到系统中即可：<br>名称：PENTAHO_JAVA_HOME<br>值：C:\Program Files\Java\jdk1.8.0_45<br>    mac系统下/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/<br>启动后界面如下</p>
-<p>新建转换：快捷键Ctrl+N</p>
-<p>首先从核心对象区选择“生成记录组件，编辑：</p>
-<p>然后选择Excel输出组件到工作区，创建生成记录步骤到Excel输出步骤的连接线，编辑excel输出目录和字段</p>
-<p>最后生成如下，点击运行：</p>
-<p>运行后的结果是输出excel文件，并可以查看每个步骤的处理情况，读、写、输入、输出等</p>
-<p>其它参考链接<br>kettle源码下载，可以选择各个版本下载，自己编译。<br><a href="https://github.com/pentaho/pentaho-kettle" target="_blank" rel="noopener">https://github.com/pentaho/pentaho-kettle</a><br>大数据插件源码<br><a href="https://github.com/pentaho/big-data-plugin" target="_blank" rel="noopener">https://github.com/pentaho/big-data-plugin</a><br>kettle支持的大数据环境源码，主要是hdp,cdh。<br><a href="https://github.com/pentaho/pentaho-hadoop-shims" target="_blank" rel="noopener">https://github.com/pentaho/pentaho-hadoop-shims</a><br>kettle nexus<br><a href="http://repo.pentaho.org/content/groups/omni/pentaho/" target="_blank" rel="noopener">http://repo.pentaho.org/content/groups/omni/pentaho/</a><br><a href="http://repository.pentaho.org/artifactory/repo/" target="_blank" rel="noopener">http://repository.pentaho.org/artifactory/repo/</a><br>所有组件实现说明<br><a href="http://wiki.pentaho.com/display/EAI/Pentaho+Data+Integration+Steps" target="_blank" rel="noopener">http://wiki.pentaho.com/display/EAI/Pentaho+Data+Integration+Steps</a><br>所有组件测试说明<br><a href="http://wiki.pentaho.com/display/EAI/test" target="_blank" rel="noopener">http://wiki.pentaho.com/display/EAI/test</a><br>帮助<br><a href="http://help.pentaho.com/Documentation" target="_blank" rel="noopener">http://help.pentaho.com/Documentation</a> </p>
-
-          
+          #开源ETL工具-kettle说明：本文部分内容参考网络的资料，如果侵权之处请告知一下，不胜感激！
+Kettle是Pentaho公司开发的一款ETL产品，以工作流为核心，强调面向解决方案而非工具的，基于java平台的商业智能(Business Intelligence,BI)套件。Kettle的开源
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/15/kettle/开源ETL工具-kettle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2202,413 +1533,16 @@ public class HelloworldStep extends BaseStep implements StepInterface {
       
         
           
-            <p>内容来自《Oracle Database 11g 数据库管理艺术》</p>
-<h1 id="网络概念：Oracle网络如何工作"><a href="#网络概念：Oracle网络如何工作" class="headerlink" title="网络概念：Oracle网络如何工作"></a>网络概念：Oracle网络如何工作</h1><p>在希望从客户机（不管是传统客户机还是基于浏览器的客户机）打开数据库会话时，需要通过网络连接到数据库。假如要将台式电脑通过现有网络连接到UNIX服务器上的一个Oracle数据库，则需要在电脑和Oracle数据库（它使用专门的软件）之间构造一个连接方法。需要某种界面来处理会话（在此例子中为SQL*Plus），并且需要某种与业内标准的网络协议（如TCP/IP）通信的方法。<br>为方便配置和管理网络连接，Oracle提供了Oracle Net Services，它是一套在分布式异构计算环境中提供连接方案的组件。Oracle Net Services由Oracle Net、Oracle Net Listener、Oracle Connection Manager、Oracle Net Configuration Assistant和Oracle Net Manager组成。Oracle Net Services软件是在Oracle Database Server或Oracle Client软件安装的过程中自动安装的。<br>Oracle Net是一个初始化、建立及维护客户机和服务器之间的连接的组件。这就是为什么必须在客户机和服务器上都安装Oracle Net的原因。Oracle Net主要由两个组件构成。<br>Oracle Network Foundation Layer：负责建立和维护客户机应用程序与服务器之间的连接，以及它们之间的交换信息。<br>Oracle Protocol Support： 负责映射Transparent Net Substrate（TNS）功能到连接使用的业内标准协议。<br>驻留Oracle数据库的所有服务器还运行一个名为Oracle Net Listener（通常也称为监听器）的服务，其主要功能是监听来自客户机服务登录Oracle数据库的请求。监听器在保证客户机服务具有与数据库匹配的信息（协议、端口和实例名）后，将客户机请求传递到数据库。假如用户名和密码通过认证，则数据库将允许客户机登录。一旦监听器把用户请求交付给数据库，客户机和数据库将直接连接，不再需要监听器的帮助。<br>Oracle提供了基于GUI的大量的实用程序，以帮助配置数据库的网络连接。这些实用程序包括Oracle Connection Manager、Oracle Net Manager和Oracle Net Configuragion Assistant等。这些工具帮助处理所有网络需求。在结束本章学习后，可单击这些程序的图标，开始测试连接的实验。  </p>
-<h1 id="Web应用如何连接到Oracle数据库"><a href="#Web应用如何连接到Oracle数据库" class="headerlink" title="Web应用如何连接到Oracle数据库"></a>Web应用如何连接到Oracle数据库</h1><p>为了构造Oracle数据库的一个Internet连接，客户机上的Web浏览器要与Web服务器通信并使用HTTP进行连接请求。Web服务器将此请求传递给一个应用，该应用处理收到的请求并用Oracle Net（配置在数据库服务器和客户机上）与Oracle数据库服务器通信<br>    下面介绍Oracle网络中几个关键的术语  </p>
-<h2 id="数据库实例名"><a href="#数据库实例名" class="headerlink" title="数据库实例名"></a>数据库实例名</h2><p>正如所知，Oracle实例由SGA和一组Oracle进程组成。数据库实例名在初始化文件（init.ora）中作为INSTANCE_NAME参数给出。在谈到Oracle SID（System identifier，系统标识符）时，指的是Oracle实例。<br>    通常，每个数据库只有一个与其关联的实例。但在Oracle RAC配置中，单个数据库可关联到多个实例。  </p>
-<h2 id="全局数据库名"><a href="#全局数据库名" class="headerlink" title="全局数据库名"></a>全局数据库名</h2><p>全局数据库名唯一地标识一个Oracle数据库，其格式为database_name.database_domain，如sales.us.acme.com。在这个全局数据库中，sales为数据库名，us.acme.com为数据库域。因为相同的域中两个数据库不会有相同的数据库名，所以每个全局数据库名都是唯一的。  </p>
-<h2 id="数据库服务名"><a href="#数据库服务名" class="headerlink" title="数据库服务名"></a>数据库服务名</h2><p>对于客户机，数据库在逻辑上简单地表现为一个服务。在服务和数据库之间存在一个多对多的关系，因为一个数据库可被一个或多个服务所代表，每个服务都专用于一组不同的客户机，而一个服务可覆盖不止一个数据库实例。我们在自己的系统中用每个数据库的服务名来标识它，用初始化参数SERVICE_NAMES来指定数据库的服务名。服务名参数值默认为全局数据库名。<br>请注意，一个数据库可由多个服务名来访问。如果希望不同的客户机组访问适合于它们的特定需求的不同数据库，应该这样做。例如，可对相同数据库创建如下两个服务名：<br>Sales.us.acme.com<br>Finance.us.acme.com<br>销售人员使用sales.us.acme.com服务名，而财务人员则使用finance.us.acme.com服务名。  </p>
-<h2 id="连接描述符"><a href="#连接描述符" class="headerlink" title="连接描述符"></a>连接描述符</h2><p>为了将电脑连接到世界上的任何数据库服务，需要提供两个信息：<br>    数据库服务名；<br>    地址。<br>Oracle使用术语连接描述符(connect descriptor)来表示数据库连接的两个必需的部分：数据库服务名和地址。连接描述符的地址部分包含三个部分，分别是：连接使用的通信协议、主机名和端口号。<br>了解通信协议有助于保证使用合适的网络协议，以便建立连接。标准的协议为TCP/IP或带SSL（Secure Sockets Layer，安全套接层）的TCP/IP。UNIX服务器上的Oracle连接的标准端口为1521或1526.Windows机器上的默认端口为1521.因为任何主机上的数据库具有唯一服务名，所以一个Oracle数据库服务名和一个主机名将唯一地标识任何数据库。下面是一个典型的连接描述符的例子：<br>(DESCRIPTION<br>(ADDRESS=(PROTOCOL=tcp)(HOST=sales-server)(PORT=1521))<br>(CONNECT_DATA=<br>(SERVICE_NAME=sales.us.acme.com)))<br>在此连接描述符中，ADDRESS行指出网络通信将使用TCP协议。HOST指定UNIX（或Windows）服务器，服务器上的Oracle监听器正监听来自端口1521的连接请求。连接描述符的ADDRESS部分也称为协议地址(protocol address)。<br>希望连接数据库的客户机首先连接到Oracle监听器进程。监听器接收到达的请求并把它们交给数据库服务器。一旦客户机和数据库服务器通过监听器的引导连接上，它们就直接通信，在此客户机连接的通信过程中不再需要监听器。  </p>
-<h2 id="连接标识符"><a href="#连接标识符" class="headerlink" title="连接标识符"></a>连接标识符</h2><p>连接标识符（connect identifier）与连接描述符紧密关联。可把连接描述符作为连接标识符，或者可简单地映射一个数据库服务名为一个连接描述符。例如，可以把一个服务名(如sales)映射为11.2.5节所看到的连接描述符。下面是说明映射sales连接标识符的例子。<br>Sales=<br>(DESCRIPTION<br>(ADDRESS=(PROTOCOL=tcp)(HOST=sales-server)(PORT=1521))<br>(CONNECT_DATA=<br>(SERVICE_NAME=sales.us.acme.com)))  </p>
-<h2 id="连接串"><a href="#连接串" class="headerlink" title="连接串"></a>连接串</h2><p>通过提供一个连接串(connect string)连接到数据库。连接串包含用户名/密码组合及一个连接标识符。最常见的连接标识符之一是节点服务名，它是一个数据库服务的名字。<br>下面的例子给出一个连接串，它把一个完整的连接描述符作为连接标识符<br>    CONNECT scott/tiger@(DESCRIPTION=<br>    (ADDRESS=(PROTOCOL=tcp)<br>    (HOST=sales-server)<br>    (PORT=1521))<br>    (CONNECT_DATA=<br>    (SERVICE_NAME=sales.us.acme.com)))<br>下面是一个更简单的连接到相同数据库的方法，它使用连接标识符sales：<br>    CONNECT scott/tiger@sales<br>上面两个例子都能连接到sales数据库，但显然第二个连接串（使用sales连接标识符）简单得多。  </p>
-<h2 id="使用Oracle网络服务工具"><a href="#使用Oracle网络服务工具" class="headerlink" title="使用Oracle网络服务工具"></a>使用Oracle网络服务工具</h2><p>Oracle Net提供了配置客户机与数据库服务之间的连接的几个GUI和命令行工具。最常用的命令行工具是isnrctl实用程序，它帮助管理Oracle监听器服务。下面是帮助管理Oracle Net Servcies的重要GUI工具。<br>Oracle NCA（Net Configuration Assistant，Oracle网络配置助手）。此工具主要用于在安装中配置网络组件，它允许在配置客户机连接的几个选项（本章稍后介绍这些选项）中进行选择。其便于使用的GUI界面使你能在所选择的任何命名方法下快速配置客户机连接。在UNIX/Linux系统上，可通过从$ORACLE_HOME/bin目录执行netca来启动NCA。在Window系统上，选择Start|Programs|Oracle-HOME_NAME|Configuration and Migration Tools|Net ConfigurationAssistant。<br>Oracle网络配置管理器（Oracle Net Manager）。Oracle Net Manager可在客户机和服务器上运行，它允许配置各种命名方法和监听器。利用此工具，可在本地tnsnames.ora文件或在集中式的OID中配置连接描述符，而且可以方便地增加和修改连接方法。<br>为了从Oracle企业管理器控制台启动Oracle Net Manager，选择Tools|Service Management|Oracle Net Manager。为了在Unix上作为独立的应用启动Oracle Net Manager，在ORACLE_HOME/bin目录执行netmgr。在windown上，选择Start|Programs|Oracle-HOME_NAME|Configuration and Migration Tools|NetManager。<br>Oracle企业管理器（Oracle Enterprise Manager）。Oracle Database 11g中的OEM可以完成Oracle Net Manager能完成的所有任务，但不能跨多个文件系统管理多个Oracle主目录。此外，使用OEM可导出目录命名项到tnsnames.ora文件。<br>Oracle目录管理器（Oracle Directory Manager）。这个功能强大的工具允许创建使用OID必需的各种域和环境。用此工具还可以执行密码策略管理及完成许多Oracle高级安全任务。在UNIX/LINUX系统上，可从$ORACLE_HOME/bin目录执行oidadmin来启动OID。在Window系统上，选择Start|Programs|Oracle-HOME_NAME|Integrated Manager Tools|Oracle Directory Manager。  </p>
-<h1 id="即时客户机"><a href="#即时客户机" class="headerlink" title="即时客户机"></a>即时客户机</h1><p>之前说过Oracle客户机安装需要经历常规的Oracle数据库服务器软件安排的所有预备步骤。幸而为连接到Oracle数据库并不总是需要安装完整的Oracle客户机软件。Oracle的新Instant Client（即时客户机）软件允许执行应用程序而不必安装标准的Oracle客户机也不必具有ORACLE_HOME。不需要为访问Oracle数据库的每台机器安装Oracle客户机软件。所有现有的OCI、ODBC和JDBC应用程序都可以使用Instan Client。如果愿意，甚至可以用Instant Client使用SQL<em>Plus。<br>    相对于完整的Oracle客户机，Instant Clients提供以下好处：<br>A. 它是免费的；<br>B. 战胜磁盘空间较少<br>C. 安装更快（5分钟左右）<br>D. 不需要CD<br>E. 它具有Oracle客户机的所有特性，如果有必要甚至包括使用SQL</em>Plus。  </p>
-<h1 id="安装Instant-Client"><a href="#安装Instant-Client" class="headerlink" title="安装Instant Client"></a>安装Instant Client</h1><p>以下是安装新Instant Client软件并快速连接到Oracle数据库的步骤。<br>(1) 从OTN Web站点下载Instant Client软件。你必须安装基本的客户机程序包，还可以包括其他高级可选的程序包。此程序包含以下内容：<br>    a) Basic：运行OCI、OCCI和JDBC-OCI应用程序所需的文件。<br>    b) SQL<em>Plus：为用Instant Client运行SQL</em>Plus需要的库和可执行文件。<br>    c) JDBC Supplement：另外支持XA、国际化及JDBC下的RowSet操作。<br>    d) ODBC Supplement：启用带Instant Client的ODBC应用的另外的库（仅对Windows）。<br>    e) SDK：用于Instant Client开发Oracle应用程序所需的其他文件。<br>(2) 将选择的程序包解压到某个目录，将些目录命名为instantclient或其它类似的名称。<br>(3) 在UNIX和Linux系统中，将环境变量LD_LIBRARY_PATH设置为instantclient（从而保证此参数的设置与程序包所有所在的目录名匹配）。在Winddows系统上，将环境变量PATH设置为instantclient。<br>(4) 测试对Oracle服务器的连接。  </p>
-<h1 id="监听器和连接"><a href="#监听器和连接" class="headerlink" title="监听器和连接"></a>监听器和连接</h1><p>Oracle监听器是一个只运行在服务器上并监听连接请求的服务。Oracle提供一个名为lsnrctl的实用程序来管理监听器进程。以下是监听器如何配合Oracle网络的概述。<br>a. 数据库用监听器记录关于服务、实例及服务处理器的信息<br>b. 客户机与监听器进行初步连接<br>c. 监听器接收和验证客户机连接请求并把此请求交给数据库服务的服务处理器。一旦交付了客户机请求，监听器在该连接中不再起作用。<br>Listener.ora文件默认位置在UNIX系统上为$ORACLE_HOME/network/admin目录，在Windows系统上为$ORACLE_HOME\network\admin目录，它包含监听器的配置信息。因为监听器服务只运行在服务器上，因此在客户机上没有listener.ora文件。代码清单11-1给出了一个典型的listener.ora文件。<br>Listener中的所有配置参数都具有默认值，不需要手动配置监听器服务。在服务器上创建了第一个数据库后，监听器服务自动启动，并且将监听器配置文件listener.ora放于默认目录中。新数据库创建后，数据库的网络和服务信息自动添加到监听器的配置文件中。实例启动后，数据库自动向监听器注册，并且监听器开始监听对此数据库的连接请求。<br>代码清单11-1 典型的监听器配置文件<br>代码清单11-1 典型的监听器配置文件   </p>
-<pre><code>#LISTENRE.ORA Network Configuration file 
-/u01/app/oracle/product/11.1.0.6.0/db_1/network/admin/listener.ora
-SID_LIST_LISTENER = 
-(DESCRIPTION_LIST =
-    (DESCRIPTION = 
-          (ADDRESS_LIST = 
-            (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC4))
-        )
-        (ADDRESS_LIST = 
-            (ADDRESS = (PROTOCOL = TCP)(HOST = NTL-ALAPATISAM)(PORT = 1521))
-        )
-    )
-)
-SID_LIST_LISTENER = 
-    (SID_LIST = 
-    (SID_DESC = 
-        (SID_NAME = PLSExtProc)
-        (ORACLE_HOME = /u01/app/oracle/product/11.1.0/db_1)
-        (PROGRAM = extproc)
-    )
-    (SID_DESC = 
-        (GLOBAL_DBNAME = remorse.world)
-        (ORACLE_HOME = /u01/app/oracle/product/11.1.0/db_1)
-        (SID_NAME = remorse)
-    )
-    (SID_DESC = 
-        (GLOBAL_DBNAME = finance.world)
-        (ORACLE_HOME = /u01/app/oracle/product/11.1.0/db_1)
-        (SID_NAME = finance)
-    )
-)
-</code></pre><h2 id="自动服务注册"><a href="#自动服务注册" class="headerlink" title="自动服务注册"></a>自动服务注册</h2><p>Oracle PMON进程负责向监听器动态服务注册新Oracle数据库服务名，也就是说，在创建新Oracle数据库时，它们将自动向监听器服务注册。PMON进程将在每个新数据库在服务器上创建之后更新listener.ora文件。<br>为自动服务注册，ini.ora文件或SPFILE应该包含如下参数：<br>a. SERVICE_NAMES(如sales.us.oracle.com)<br>b. INSTANCE_NAME(如sales)<br>如果不指定SERVICE_NAMES参数的值，它默认为全局数据库名，全局数据库名是DB_NAME和DB_DOMAIN参数的组合。INSTANCE_NAME参数的默认值为Oracle安装或数据库创建时输入的SID。<br>可使用lsnrctl实用程序查看服务器上监听器的状态，如代码清单11-2所示。相应的输出说明监听器启动了多长时间，监听器服务的配置文件位于何处。它还给出监听器为连接请求而监听的数据库的名称。<br>代码清单11-2 使用lsnrctl实用程序查看监听器的状态<br>$ lsnrctl status  </p>
-<p>在代码清单11-2的Services Summary部分，相应的状态可具有如下的某个值。<br>a. READY：此实例可接受连接<br>b. BLOCKED：此实例不能接受连接<br>c. UNKNOWN：此实例在listener.ora文件中注册而不是通过动态服务注册，因而不知道其状态  </p>
-<h2 id="监听器命令"><a href="#监听器命令" class="headerlink" title="监听器命令"></a>监听器命令</h2><p>在调用lsnrctl实用程序后，除了status命令外还可以执行其他一些重要的命令。例如，service命令允许查看监听器正为连接请求而监控的是什么服务。<br>注解：还可以从Oracle企业管理器的Net Services Administration页面查看监听器服务的状态。<br>代码清单11-2 使用lsnrctl help列出lsnrctl命令<br>$lsnrctl help<br>可以调用lsnrctl实用程序后，使用start命令启动监听器，使用stop命令停业监听器。如果希望从操作系统命令行发布这些命令，可使用lsnrctl start和lsnrctl stop命令执行这两个任务。<br>如果对listener.ora文件做了更改，为使更改起作用的一种方法是重启监听器。另一种安全的方法是重新装载监听信息，包括对监听器配置文件所做的最新更改。Lsnrctl reload命令允许在运行中重新装载监听器，而不用重新启动它。在监听器重装载（甚至是重启）的过程中，当前连接的客户机将继续保持连接，因为监听器已经将连接“交付”给数据库，在客户和数据库服务之间不起作用。<br>注意：我的忠告是，如非绝对有必要，不要修改listener.ora文件，而且对于动态自动服务注册，几乎没有必要修改此文件。不过，有时可能需要修改监听器文件的某些部分，此文件由监听器监控连接请求的所有服务的网络配置信息组成。  </p>
-<h2 id="命名和连接"><a href="#命名和连接" class="headerlink" title="命名和连接"></a>命名和连接</h2><p>在前面连接描述符和连接标识符的例子中，使用sales连接标识符来连接sales服务。连接标识符可以是连接描述符本身，也可以是一个能解析为连接描述符的简单名字(如sales)。一般使用的简单连接标识符称为net service name(网络服务名)。因此前面例子中的sales连接标识符就是一个net service name。<br>因为每次进行连接时都需要提供一下完整的连接描述符非常令人厌烦，使用网络服务名是明智的。但这需要维护网络服务名和连接描述信息之间所有映射的一个中心信息库(central repository)，以便Oracle验证这些网络服务名。因此，在一个用户使用网络服务名sales启动连接进程时，Oracle将搜索中心信息库查找sales的连接描述符。找到连接描述符后，Oracle Net会为指定服务器上的数据库初始化一个连接。<br>Oracle允许几种类型的命名信息库，可用下列4种命名方法访问存储在这些位置中的映射信息。<br>a. 本地命令(local naming )：使用存储在每个客户机上的名为tnsnames.ora的文件连接到数据库服务器。<br>b. 简易连接命名(easy connect naming)：允许连接而无需任何服务名配置。<br>c. 外部命名(external naming)：使用第三方命名服务来解析服务名。<br>d. 目录命令(directory naming)：使用一个集中式的符合LDAP的目录服务器来解析服务名。<br>    不管使用何种命名方法，名字解析过程都是相同的。每种命名法都遵循以下步骤将连接描述符解析为网络服务名：<br>i. 选择命令方法—本地、简易连接、外部命名或目录服务命名<br>ii. 映射连接描述符到服务名；<br>iii. 配置客户机以使用步骤1中选择的命名方法  </p>
-<h2 id="本地命名方法"><a href="#本地命名方法" class="headerlink" title="本地命名方法"></a>本地命名方法</h2><p>本地命令是建立Oracle连接最简单、最容易的方法。使用这种方法，在名为tnsnames.ora的本地化配置文件中存储服务名及其连接描述符。此文件默认存储在$ORACLE_HOME/network/admin目录中。  </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/算法/常用算法概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/01/算法/常用算法概述/" itemprop="url">
-                  TODO-常用算法概述
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件工程/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件工程/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#工作内容指导</p>
-<p>#安全小组工作范围</p>
-<p>#关注的领域</p>
-<p>#分类</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/oracle/Oracle SQL优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/01/oracle/Oracle SQL优化/" itemprop="url">
-                  TODO-Oracle SQL优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
+          内容来自《Oracle Database 11g 数据库管理艺术》
+网络概念：Oracle网络如何工作在希望从客户机（不管是传统客户机还是基于浏览器的客户机）打开数据库会话时，需要通过网络连接到数据库。假如要将台式电脑通过现有网络连接到UNIX服务器上的一个Oracle数据库，则需要在电脑和Orac
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/01/oracle/Oracle网络和数据库连接/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2783,8 +1717,389 @@ SID_LIST_LISTENER =
       
         
           
+          
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/01/oracle/Oracle数据库系统架构/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/算法/常用算法概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/01/算法/常用算法概述/" itemprop="url">
+                  TODO-常用算法概述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件工程/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件工程/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #工作内容指导
+#安全小组工作范围
+#关注的领域
+#分类
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/01/算法/常用算法概述/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/01/01/网络安全/企业安全组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/01/网络安全/企业安全组/" itemprop="url">
+                  TODO-企业安全组
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络安全/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络安全/安全小组/" itemprop="url" rel="index"><span itemprop="name">安全小组</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #工作内容指导
+#安全小组工作范围
+#关注的领域
+#分类
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/01/网络安全/企业安全组/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
