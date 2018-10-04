@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/HDFS入门概念/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Kylin入门概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -327,8 +327,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
-                  HDFS入门概念
+                <a class="post-title-link" href="/2017/04/16/hadoop/Kylin入门概念/" itemprop="url">
+                  Kylin入门概念
                 </a>
               
             
@@ -395,7 +395,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hdfs/" itemprop="url" rel="index"><span itemprop="name">hdfs</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/kylin/" itemprop="url" rel="index"><span itemprop="name">kylin</span></a></span>
 
                 
                 
@@ -431,11 +431,11 @@
       
         
           
-          #数据块 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。
+          #Apache Kylin的工作原理Apache Kylin的工作原理本质上是MOLAP（Multidimensional　Online　Analytical　Processing）Cube，也就是多维　立方体分析。这是数据分析中相当经典的理论，在关系数据库年代就已经有了广泛的应用，下面将其做简要的
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/04/16/hadoop/HDFS入门概念/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Kylin入门概念/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -491,7 +491,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之实时分析/">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式计算 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dongpo.jia">
@@ -510,8 +510,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之实时分析/" itemprop="url">
-                  实时分析
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式计算 /" itemprop="url">
+                  分布式计算
                 </a>
               
             
@@ -571,14 +571,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/实时分析/" itemprop="url" rel="index"><span itemprop="name">实时分析</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式计算/" itemprop="url" rel="index"><span itemprop="name">分布式计算</span></a></span>
 
                 
                 
@@ -614,11 +614,11 @@
       
         
           
-          少量数据离线分析对于MapRecue这样的批处理系统挑战并不大，如果要求时实而又分为两种情况：如果查询模式单一，那么，可以通过MapRecue预处理后将最终结果导入到在线系统提供实时查询；如果查询模式复杂，例如涉及多个列任意组合查询，那么，只能通过实时分析系统解决。实时分析系统融合了并行数据库和云计
+          #MapRecue在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Hadoop之实时分析/#more" rel="contents">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之分布式计算 /#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -858,372 +858,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之流式计算/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之流式计算/" itemprop="url">
-                  流式计算
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/流式计算/" itemprop="url" rel="index"><span itemprop="name">流式计算</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          MapRecue及其扩展解决了离线批处理问题，但是无法保证实时性。对于实时性要求高的场景，可以采用流式计算或者实时分析系统进行处理。流式计算（Stream Processing）解决在线聚合（Online Aggregation）、在线过滤（Online Filter）等问题，流式计算同时具有存储系
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Hadoop之流式计算/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之分布式计算 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongpo.jia">
-      <meta itemprop="description" content="个人博客">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中起之星">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之分布式计算 /" itemprop="url">
-                  分布式计算
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/分布式计算/" itemprop="url" rel="index"><span itemprop="name">分布式计算</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          #MapRecue在过去的20年里，互联网产生了大量的数据，比如爬虫文档、Web讲求日志等；也包括了计算各种类型的派生数据，比如，倒排索引、Web文档的图结构的各种表示、每台主机页面数量概要、每天被请求数量最多的集合，等等。很多这样的计算在概念上很容易理解的。然而，当输入的数据量很大时，这些计算必须
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/16/hadoop/Hadoop之分布式计算 /#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之数据采集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1353,6 +987,372 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/16/hadoop/Hadoop之数据采集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/HDFS入门概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/HDFS入门概念/" itemprop="url">
+                  HDFS入门概念
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/hdfs/" itemprop="url" rel="index"><span itemprop="name">hdfs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          #数据块 每个磁盘都有默认的数据块大小，这是磁盘进行数据读/写的最小单位。构建于单个磁盘之上的文件系统通过磁盘块来管理该文件系统的块，该文件系统块的大小的可以是磁盘块的整数倍。文件系统块一般为几千字节，而磁盘块一般为512字节。这些信息–文件系统块大小—对于需要读/写文件的文件系统用户来说是透明的。
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/hadoop/HDFS入门概念/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cenrise.com/2017/04/16/hadoop/Hadoop之流式计算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongpo.jia">
+      <meta itemprop="description" content="个人博客">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中起之星">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/16/hadoop/Hadoop之流式计算/" itemprop="url">
+                  流式计算
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-16 23:43:49" itemprop="dateCreated datePublished" datetime="2017-04-16T23:43:49+08:00">2017-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-18 09:44:35" itemprop="dateModified" datetime="2017-08-18T09:44:35+08:00">2017-08-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/流式计算/" itemprop="url" rel="index"><span itemprop="name">流式计算</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          MapRecue及其扩展解决了离线批处理问题，但是无法保证实时性。对于实时性要求高的场景，可以采用流式计算或者实时分析系统进行处理。流式计算（Stream Processing）解决在线聚合（Online Aggregation）、在线过滤（Online Filter）等问题，流式计算同时具有存储系
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/hadoop/Hadoop之流式计算/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
