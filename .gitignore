@@ -24,3 +24,4 @@ hs_err_pid*
 /HexoJiadongpo/node_modules/
 /HexoJiadongpo/public/
 /HexoJiadongpo/.deploy_git/
+.idea/*

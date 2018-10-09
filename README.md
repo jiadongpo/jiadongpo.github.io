@@ -69,4 +69,14 @@ wechatpay: /images/wechatpay.jpg
 alipay: /images/alipay.jpg
 
 
+### ERROR Deployer not found: git
+发布时出现错误：
+bogon% hexo deploy
+ERROR Deployer not found: git
+解决
+npm install --save hexo-deployer-git
 
+### Cannot GET/xxxx
+hexo s后访问localhost:4000出现错误Cannot GET/xxxx
+
+解决：检查主题配置文件_config.yml。
