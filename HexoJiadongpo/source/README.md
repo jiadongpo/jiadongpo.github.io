@@ -1,2 +1,2 @@
 # jiadongpo.github.io
-cenrise.com
+biannuo.com

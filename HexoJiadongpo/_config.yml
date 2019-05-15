@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Cenrise
-subtitle: Cenrise
+title: 边诺
+subtitle: 来自边疆的承诺
 description: 个人博客
-author: dongpo.jia
+author: 四月竹
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://cenrise.com
+url: http://biannuo.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
